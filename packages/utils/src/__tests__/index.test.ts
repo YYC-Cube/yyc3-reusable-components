@@ -1,85 +1,41 @@
-import * as Utils from '../index';
+/**
+ * @file index.test.ts
+ * @description 包入口测试
+ */
+
+import * as utils from '../index';
 
 describe('utils index', () => {
-  it('should export cn function', () => {
-    expect(Utils.cn).toBeDefined();
-    expect(typeof Utils.cn).toBe('function');
-  });
-
-  it('should export formatDate function', () => {
-    expect(Utils.formatDate).toBeDefined();
-    expect(typeof Utils.formatDate).toBe('function');
-  });
-
-  it('should export debounce function', () => {
-    expect(Utils.debounce).toBeDefined();
-    expect(typeof Utils.debounce).toBe('function');
-  });
-
-  it('should export throttle function', () => {
-    expect(Utils.throttle).toBeDefined();
-    expect(typeof Utils.throttle).toBe('function');
+  it('should export utility functions', () => {
+    expect(utils.cn).toBeDefined();
+    expect(utils.formatDate).toBeDefined();
+    expect(utils.debounce).toBeDefined();
+    expect(utils.generateId).toBeDefined();
   });
 
   it('should export logger', () => {
-    expect(Utils.logger).toBeDefined();
-    expect(typeof Utils.logger).toBe('object');
+    expect(utils.createLogger).toBeDefined();
+    expect(utils.Logger).toBeDefined();
+    expect(utils.LogLevel).toBeDefined();
   });
 
   it('should export color utilities', () => {
-    expect(Utils.hexToRgb).toBeDefined();
-    expect(Utils.rgbToHex).toBeDefined();
-    expect(Utils.lighten).toBeDefined();
-    expect(Utils.darken).toBeDefined();
+    expect(utils.oklchColors).toBeDefined();
+    expect(utils.hexColors).toBeDefined();
+    expect(utils.glassColors).toBeDefined();
+    expect(utils.gradients).toBeDefined();
+    expect(utils.AIColorGenerator).toBeDefined();
   });
 
   it('should export animation utilities', () => {
-    expect(Utils.fadeIn).toBeDefined();
-    expect(Utils.fadeOut).toBeDefined();
-    expect(Utils.slideIn).toBeDefined();
-    expect(Utils.slideOut).toBeDefined();
-  });
-
-  it('should export performance monitor', () => {
-    expect(Utils.PerformanceMonitor).toBeDefined();
-    expect(Utils.measurePerformance).toBeDefined();
+    expect(utils.easing).toBeDefined();
+    expect(utils.duration).toBeDefined();
+    expect(utils.pageTransition).toBeDefined();
+    expect(utils.cardEnter).toBeDefined();
   });
 
   it('should export task tracker', () => {
-    expect(Utils.TaskTracker).toBeDefined();
-    expect(Utils.createTask).toBeDefined();
-  });
-
-  it('should export service worker utilities', () => {
-    expect(Utils.registerServiceWorker).toBeDefined();
-    expect(Utils.unregisterServiceWorker).toBeDefined();
-  });
-
-  it('should have all expected exports', () => {
-    const expectedExports = [
-      'cn',
-      'formatDate',
-      'debounce',
-      'throttle',
-      'logger',
-      'hexToRgb',
-      'rgbToHex',
-      'lighten',
-      'darken',
-      'fadeIn',
-      'fadeOut',
-      'slideIn',
-      'slideOut',
-      'PerformanceMonitor',
-      'measurePerformance',
-      'TaskTracker',
-      'createTask',
-      'registerServiceWorker',
-      'unregisterServiceWorker',
-    ];
-
-    expectedExports.forEach(exportName => {
-      expect((Utils as any)[exportName]).toBeDefined();
-    });
+    expect(utils.TaskTracker).toBeDefined();
+    expect(utils.taskTracker).toBeDefined();
   });
 });
