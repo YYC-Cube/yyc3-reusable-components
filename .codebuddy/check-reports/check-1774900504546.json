@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-03-30T19:55:04.546Z",
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "warnings": 2,
+    "total": 3,
+    "successRate": 33.3
+  },
+  "checks": [
+    {
+      "name": "ESLint",
+      "status": "warning",
+      "duration": 7971
+    },
+    {
+      "name": "TypeScript",
+      "status": "passed",
+      "duration": 1513
+    },
+    {
+      "name": "Prettier",
+      "status": "fixed",
+      "duration": 4093
+    }
+  ],
+  "git": {
+    "branch": "feature/code-quality-improvements",
+    "commit": "02077bc138a49d0b1321896290ff0fbcbd4082fd",
+    "changedFiles": [
+      ".codebuddy/check-reports/check-1774899820868.json",
+      ".codebuddy/check-reports/check-1774900181864.json",
+      "packages/effects/src/__tests__/integration.test.tsx"
+    ]
+  }
+}
