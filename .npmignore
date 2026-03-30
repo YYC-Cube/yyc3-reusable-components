@@ -1,0 +1,54 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+*.tsx
+
+# Config files
+tsconfig.json
+tsup.config.ts
+vite.config.ts
+vitest.config.ts
+jest.config.js
+eslint.config.js
+.prettierrc
+
+# Tests
+__tests__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+coverage/
+
+# Stories
+*.stories.tsx
+.storybook/
+
+# Documentation
+docs/
+*.md
+!README.md
+!CHANGELOG.md
+!LICENSE
+
+# Development files
+.env
+.env.*
+.editorconfig
+.gitignore
+.gitattributes
+
+# Build artifacts
+*.map
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

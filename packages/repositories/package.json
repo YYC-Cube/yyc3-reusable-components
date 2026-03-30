@@ -1,0 +1,60 @@
+{
+  "name": "@yyc3/repositories",
+  "version": "1.0.0",
+  "description": "YYC³数据访问层 - 数据库和API仓库",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:run": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@yyc3/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "tsup": "^8.0.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YYC-Cube/yyc3-reusable-components.git",
+    "directory": "packages/repositories"
+  },
+  "keywords": [
+    "yyc3",
+    "repositories",
+    "data-access",
+    "database"
+  ],
+  "author": "YYC³ Team <admin@0379.email>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YYC-Cube/yyc3-reusable-components/issues"
+  },
+  "homepage": "https://github.com/YYC-Cube/yyc3-reusable-components#readme"
+}

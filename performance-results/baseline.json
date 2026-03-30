@@ -1,0 +1,244 @@
+{
+  "Button": {
+    "firstRenderTime": 8.5,
+    "reRenderTime": 4.2,
+    "mountTime": 45.0,
+    "unmountTime": 25.0,
+    "clickResponseTime": 25.0,
+    "stateChangeTime": 12.0,
+    "memoryLeak": 81920
+  },
+  "Input": {
+    "firstRenderTime": 9.2,
+    "reRenderTime": 5.1,
+    "mountTime": 48.0,
+    "unmountTime": 28.0,
+    "inputLatency": 8.0,
+    "stateChangeTime": 14.0,
+    "memoryLeak": 98304
+  },
+  "Card": {
+    "firstRenderTime": 12.3,
+    "reRenderTime": 7.8,
+    "mountTime": 65.0,
+    "unmountTime": 35.0,
+    "stateChangeTime": 18.0,
+    "memoryLeak": 131072
+  },
+  "Modal": {
+    "firstRenderTime": 15.8,
+    "reRenderTime": 9.5,
+    "mountTime": 85.0,
+    "unmountTime": 45.0,
+    "stateChangeTime": 22.0,
+    "memoryLeak": 163840
+  },
+  "Table": {
+    "firstRenderTime": 18.5,
+    "reRenderTime": 12.3,
+    "mountTime": 120.0,
+    "unmountTime": 65.0,
+    "stateChangeTime": 28.0,
+    "memoryLeak": 262144
+  },
+  "Dashboard": {
+    "firstRenderTime": 45.2,
+    "reRenderTime": 28.5,
+    "mountTime": 250.0,
+    "unmountTime": 120.0,
+    "stateChangeTime": 65.0,
+    "memoryLeak": 524288
+  },
+  "Employees": {
+    "firstRenderTime": 38.5,
+    "reRenderTime": 24.2,
+    "mountTime": 210.0,
+    "unmountTime": 105.0,
+    "stateChangeTime": 58.0,
+    "memoryLeak": 458752
+  },
+  "Orders": {
+    "firstRenderTime": 42.8,
+    "reRenderTime": 26.5,
+    "mountTime": 235.0,
+    "unmountTime": 115.0,
+    "stateChangeTime": 62.0,
+    "memoryLeak": 491520
+  },
+  "Inventory": {
+    "firstRenderTime": 40.5,
+    "reRenderTime": 25.8,
+    "mountTime": 225.0,
+    "unmountTime": 110.0,
+    "stateChangeTime": 60.0,
+    "memoryLeak": 471040
+  },
+  "Customers": {
+    "firstRenderTime": 36.2,
+    "reRenderTime": 22.5,
+    "mountTime": 200.0,
+    "unmountTime": 100.0,
+    "stateChangeTime": 55.0,
+    "memoryLeak": 425984
+  },
+  "Invoices": {
+    "firstRenderTime": 35.8,
+    "reRenderTime": 21.2,
+    "mountTime": 195.0,
+    "unmountTime": 98.0,
+    "stateChangeTime": 52.0,
+    "memoryLeak": 409600
+  },
+  "Payroll": {
+    "firstRenderTime": 44.5,
+    "reRenderTime": 27.8,
+    "mountTime": 245.0,
+    "unmountTime": 118.0,
+    "stateChangeTime": 64.0,
+    "memoryLeak": 507904
+  },
+  "Projects": {
+    "firstRenderTime": 39.2,
+    "reRenderTime": 23.5,
+    "mountTime": 215.0,
+    "unmountTime": 108.0,
+    "stateChangeTime": 56.0,
+    "memoryLeak": 440403
+  },
+  "Procurement": {
+    "firstRenderTime": 41.5,
+    "reRenderTime": 25.2,
+    "mountTime": 230.0,
+    "unmountTime": 112.0,
+    "stateChangeTime": 61.0,
+    "memoryLeak": 483328
+  },
+  "Reports": {
+    "firstRenderTime": 43.8,
+    "reRenderTime": 26.8,
+    "mountTime": 240.0,
+    "unmountTime": 116.0,
+    "stateChangeTime": 63.0,
+    "memoryLeak": 504832
+  },
+  "Accounting": {
+    "firstRenderTime": 37.5,
+    "reRenderTime": 22.8,
+    "mountTime": 205.0,
+    "unmountTime": 102.0,
+    "stateChangeTime": 54.0,
+    "memoryLeak": 432537
+  },
+  "Attendance": {
+    "firstRenderTime": 34.2,
+    "reRenderTime": 20.5,
+    "mountTime": 190.0,
+    "unmountTime": 95.0,
+    "stateChangeTime": 51.0,
+    "memoryLeak": 401408
+  },
+  "Assets": {
+    "firstRenderTime": 32.8,
+    "reRenderTime": 19.2,
+    "mountTime": 180.0,
+    "unmountTime": 92.0,
+    "stateChangeTime": 48.0,
+    "memoryLeak": 385024
+  },
+  "Approvals": {
+    "firstRenderTime": 33.5,
+    "reRenderTime": 19.8,
+    "mountTime": 185.0,
+    "unmountTime": 94.0,
+    "stateChangeTime": 49.0,
+    "memoryLeak": 393216
+  },
+  "Contracts": {
+    "firstRenderTime": 36.8,
+    "reRenderTime": 21.5,
+    "mountTime": 200.0,
+    "unmountTime": 100.0,
+    "stateChangeTime": 53.0,
+    "memoryLeak": 425984
+  },
+  "Payments": {
+    "firstRenderTime": 35.2,
+    "reRenderTime": 20.8,
+    "mountTime": 192.0,
+    "unmountTime": 96.0,
+    "stateChangeTime": 50.0,
+    "memoryLeak": 405504
+  },
+  "Leads": {
+    "firstRenderTime": 38.2,
+    "reRenderTime": 22.2,
+    "mountTime": 208.0,
+    "unmountTime": 104.0,
+    "stateChangeTime": 55.0,
+    "memoryLeak": 434176
+  },
+  "Loans": {
+    "firstRenderTime": 37.8,
+    "reRenderTime": 21.8,
+    "mountTime": 206.0,
+    "unmountTime": 103.0,
+    "stateChangeTime": 54.0,
+    "memoryLeak": 429916
+  },
+  "Logistics": {
+    "firstRenderTime": 40.2,
+    "reRenderTime": 24.5,
+    "mountTime": 225.0,
+    "unmountTime": 112.0,
+    "stateChangeTime": 59.0,
+    "memoryLeak": 471040
+  },
+  "Performance": {
+    "firstRenderTime": 42.5,
+    "reRenderTime": 25.8,
+    "mountTime": 235.0,
+    "unmountTime": 118.0,
+    "stateChangeTime": 62.0,
+    "memoryLeak": 498073
+  },
+  "Suppliers": {
+    "firstRenderTime": 36.5,
+    "reRenderTime": 21.2,
+    "mountTime": 198.0,
+    "unmountTime": 99.0,
+    "stateChangeTime": 52.0,
+    "memoryLeak": 417792
+  },
+  "Warehouse": {
+    "firstRenderTime": 39.8,
+    "reRenderTime": 23.8,
+    "mountTime": 218.0,
+    "unmountTime": 109.0,
+    "stateChangeTime": 57.0,
+    "memoryLeak": 458752
+  },
+  "Documents": {
+    "firstRenderTime": 41.2,
+    "reRenderTime": 24.2,
+    "mountTime": 228.0,
+    "unmountTime": 114.0,
+    "stateChangeTime": 60.0,
+    "memoryLeak": 483328
+  },
+  "WorkOrders": {
+    "firstRenderTime": 43.5,
+    "reRenderTime": 26.2,
+    "mountTime": 242.0,
+    "unmountTime": 121.0,
+    "stateChangeTime": 64.0,
+    "memoryLeak": 511180
+  },
+  "VAT": {
+    "firstRenderTime": 34.8,
+    "reRenderTime": 20.2,
+    "mountTime": 194.0,
+    "unmountTime": 97.0,
+    "stateChangeTime": 51.0,
+    "memoryLeak": 405504
+  }
+}

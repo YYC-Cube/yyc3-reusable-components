@@ -1,0 +1,51 @@
+{
+  "name": "yyc3-reusable-components",
+  "version": "1.0.0",
+  "private": true,
+  "description": "YYC³ Component Library - Unified Monorepo for AI Assistant and Business Management",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=... && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@types/node": "^20.10.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.10.0",
+  "keywords": [
+    "yyc3",
+    "component-library",
+    "monorepo",
+    "ui",
+    "business",
+    "smart",
+    "ai",
+    "react",
+    "typescript"
+  ],
+  "author": "YYC³ Team <admin@0379.email>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YYC-Cube/yyc3-reusable-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YYC-Cube/yyc3-reusable-components/issues"
+  },
+  "homepage": "https://github.com/YYC-Cube/yyc3-reusable-components#readme"
+}

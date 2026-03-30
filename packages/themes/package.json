@@ -1,0 +1,49 @@
+{
+  "name": "@yyc3/themes",
+  "version": "1.0.0",
+  "description": "YYC³主题系统 - Cyberpunk、Liquid Glass 等主题样式",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/styles/index.css",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/styles/index.css",
+    "./styles/cyberpunk": "./dist/styles/cyberpunk.css",
+    "./styles/liquid-glass": "./dist/styles/liquid-glass.css",
+    "./styles/theme": "./dist/styles/theme.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YYC-Cube/yyc3-reusable-components.git",
+    "directory": "packages/themes"
+  },
+  "keywords": [
+    "yyc3",
+    "themes",
+    "cyberpunk",
+    "glassmorphism",
+    "css"
+  ],
+  "author": "YYC³ Team <admin@0379.email>",
+  "license": "MIT"
+}
