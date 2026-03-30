@@ -1,6 +1,6 @@
 /**
  * @file database.ts
- * @description 数据库仓库类型定义
+ * @description 数据库服务类型定义
  * @author YYC³ Team
  * @version 1.0.0
  */
@@ -12,6 +12,8 @@ export interface DatabaseConfig {
   username: string;
   password: string;
   ssl?: boolean;
+  sslMode?: string;
+  schema?: string;
 }
 
 export interface LocalAPIProxyConfig {
@@ -31,8 +33,8 @@ export interface DatabaseResult<T = any> {
   rowCount: number;
   fields?: string[];
   duration?: number;
-  success?: boolean; // 添加 success 属性
-  error?: string; // 添加 error 属性
+  success?: boolean;
+  error?: string;
 }
 
 export interface ConnectionHealth {
@@ -43,3 +45,27 @@ export interface ConnectionHealth {
 }
 
 export type ConnectionStatus = 'connected' | 'disconnected' | 'connecting' | 'error';
+
+export interface DatabaseConnection {
+  id: string;
+  name: string;
+  config: DatabaseConfig;
+  status: ConnectionStatus;
+  lastConnected?: Date;
+  error?: string;
+}
+
+export interface QueryResult<T = any> {
+  rows: T[];
+  rowCount: number;
+  fields?: string[];
+  duration?: number;
+}
+
+export interface DatabaseStats {
+  totalConnections: number;
+  activeConnections: number;
+  queries: number;
+  slowQueries: number;
+  errors: number;
+}

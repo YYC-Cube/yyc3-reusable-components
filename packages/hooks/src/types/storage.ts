@@ -19,11 +19,20 @@ export interface AIConfig {
 // UI 设置类型
 export interface UISettings {
   theme: 'light' | 'dark' | 'system';
+  themeColorId?: string;
+  bgOpacity?: number;
   primaryColor: string;
   fontSize: 'small' | 'medium' | 'large';
+  fontId?: string;
   fontFamily: string;
   reducedMotion: boolean;
   highContrast: boolean;
+  scanlines?: number;
+  curvature?: boolean;
+  animations?: boolean;
+  topBarText?: string;
+  systemDisplayName?: string;
+  version?: number;
 }
 
 // 主题颜色选项
@@ -67,4 +76,23 @@ export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
   content: string;
   timestamp: string;
+}
+
+// 通知类型
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  type: 'info' | 'success' | 'warning' | 'error';
+  read: boolean;
+  createdAt: string;
+}
+
+// 响应式状态
+export interface ResponsiveState {
+  isMobile: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
+  width: number;
+  height: number;
 }
