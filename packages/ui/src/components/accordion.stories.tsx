@@ -10,12 +10,7 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from './accordion';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion';
 
 const meta: Meta<typeof Accordion> = {
   title: 'UI/Accordion',
@@ -46,9 +41,7 @@ export const Default: Story = {
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger>支持哪些框架？</AccordionTrigger>
-        <AccordionContent>
-          目前主要支持 React 18+，使用 TypeScript 编写。
-        </AccordionContent>
+        <AccordionContent>目前主要支持 React 18+，使用 TypeScript 编写。</AccordionContent>
       </AccordionItem>
     </Accordion>
   ),
@@ -59,21 +52,15 @@ export const MultipleOpen: Story = {
     <Accordion type="multiple" className="w-[400px]">
       <AccordionItem value="item-1">
         <AccordionTrigger>功能特性</AccordionTrigger>
-        <AccordionContent>
-          支持单开和多开两种模式，灵活配置。
-        </AccordionContent>
+        <AccordionContent>支持单开和多开两种模式，灵活配置。</AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>设计理念</AccordionTrigger>
-        <AccordionContent>
-          基于 Radix UI 构建，提供无障碍访问和键盘导航支持。
-        </AccordionContent>
+        <AccordionContent>基于 Radix UI 构建，提供无障碍访问和键盘导航支持。</AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger>主题定制</AccordionTrigger>
-        <AccordionContent>
-          使用 Tailwind CSS，支持完全自定义样式。
-        </AccordionContent>
+        <AccordionContent>使用 Tailwind CSS，支持完全自定义样式。</AccordionContent>
       </AccordionItem>
     </Accordion>
   ),
@@ -84,15 +71,11 @@ export const DefaultOpen: Story = {
     <Accordion type="single" collapsible defaultValue="item-1" className="w-[400px]">
       <AccordionItem value="item-1">
         <AccordionTrigger>默认展开项</AccordionTrigger>
-        <AccordionContent>
-          此项默认展开，通过 defaultValue 属性设置。
-        </AccordionContent>
+        <AccordionContent>此项默认展开，通过 defaultValue 属性设置。</AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>其他项目</AccordionTrigger>
-        <AccordionContent>
-          这是另一个可折叠的内容区域。
-        </AccordionContent>
+        <AccordionContent>这是另一个可折叠的内容区域。</AccordionContent>
       </AccordionItem>
     </Accordion>
   ),

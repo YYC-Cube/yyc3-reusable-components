@@ -1,0 +1,232 @@
+import React from 'react';
+import { Package, Plus, Search, Filter, TrendingUp, TrendingDown, Layers, Scale, AlertTriangle, ArrowDownLeft } from 'lucide-react';
+import { Button } from '@yyc3/ui';
+import { useAppContext } from '../context/AppContext';
+
+interface InventoryProps {
+  currentLanguage: string;
+}
+
+export function Inventory({ currentLanguage }: InventoryProps) {
+  const { stockLevels } = useAppContext();
+
+  // Helper to format numbers
+  const formatNumber = (num: number) => num.toLocaleString();
+
+  // Calculate totals
+  const totalWeight = Object.values(stockLevels).reduce((a, b) => a + b, 0);
+  const totalValue = totalWeight * 4.5; // Simplified valuation logic
+
+  const inventoryItems = [
+    {
+      id: 'MTL-001',
+      name: { en: 'Copper Scrap Grade A', zh: 'A级废铜' },
+      key: 'Copper Wire', // Matches context key
+      type: { en: 'Copper', zh: '铜' },
+      valueRate: 68, // CNY per kg
+      trend: '+2.5%',
+      status: 'high'
+    },
+    {
+      id: 'MTL-002',
+      name: { en: 'Steel HMS 1', zh: '1号重废钢' },
+      key: 'Steel Scrap',
+      type: { en: 'Steel', zh: '钢铁' },
+      valueRate: 3.2,
+      trend: '-1.2%',
+      status: 'normal'
+    },
+    {
+      id: 'MTL-003',
+      name: { en: 'Aluminum Tense', zh: '铝 Tense' },
+      key: 'Aluminum Scrap',
+      type: { en: 'Aluminum', zh: '铝' },
+      valueRate: 18.5,
+      trend: '+0.8%',
+      status: 'low'
+    },
+    {
+      id: 'MTL-004',
+      name: { en: 'Brass Honey', zh: '黄铜 Honey' },
+      key: 'Brass Scrap',
+      type: { en: 'Brass', zh: '黄铜' },
+      valueRate: 45,
+      trend: '+1.5%',
+      status: 'normal'
+    },
+    {
+      id: 'MTL-005',
+      name: { en: 'Stainless Steel 304', zh: '不锈钢 304' },
+      key: 'Stainless Steel',
+      type: { en: 'Steel', zh: '钢铁' },
+      valueRate: 12.5,
+      trend: '-0.5%',
+      status: 'normal'
+    }
+  ];
+
+  return (
+    <div className="p-8 space-y-8 max-w-[1600px] mx-auto animate-fade-in-up pb-20">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-white mb-2">
+            {currentLanguage === 'en' ? 'Smart Inventory' : '智能库存'}
+          </h1>
+          <p className="text-gray-400">
+            {currentLanguage === 'en' ? 'Real-time stock levels synced with Procurement' : '与采购同步的实时库存水平'}
+          </p>
+        </div>
+        <div className="flex items-center space-x-3">
+          <Button className="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white border-0 shadow-lg shadow-purple-500/20">
+            <Plus className="w-4 h-4 mr-2" />
+            {currentLanguage === 'en' ? 'Manual Adjust' : '手动调整'}
+          </Button>
+        </div>
+      </div>
+
+      {/* Overview Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <div className="absolute right-0 top-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-bl-full transform translate-x-8 translate-y-[-8px]"></div>
+          <div className="relative z-10">
+            <div className="flex items-center space-x-3 mb-3">
+              <div className="p-2 rounded-lg bg-purple-500/20">
+                <Scale className="w-5 h-5 text-purple-400" />
+              </div>
+              <h3 className="text-gray-300 font-medium text-sm">
+                {currentLanguage === 'en' ? 'Total Weight' : '总重量'}
+              </h3>
+            </div>
+            <p className="text-2xl font-bold text-white">{formatNumber(totalWeight)} kg</p>
+            <div className="mt-2 text-xs text-green-400 flex items-center">
+              <TrendingUp className="w-3 h-3 mr-1" />
+              +5.2% {currentLanguage === 'en' ? 'vs last month' : '环比上月'}
+            </div>
+          </div>
+        </div>
+
+        <div className="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <div className="absolute right-0 top-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-bl-full transform translate-x-8 translate-y-[-8px]"></div>
+          <div className="relative z-10">
+            <div className="flex items-center space-x-3 mb-3">
+              <div className="p-2 rounded-lg bg-emerald-500/20">
+                <Layers className="w-5 h-5 text-emerald-400" />
+              </div>
+              <h3 className="text-gray-300 font-medium text-sm">
+                {currentLanguage === 'en' ? 'Estimated Value' : '估算价值'}
+              </h3>
+            </div>
+            <p className="text-2xl font-bold text-white">¥ {(totalValue).toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
+            <div className="mt-2 text-xs text-red-400 flex items-center">
+              <TrendingDown className="w-3 h-3 mr-1" />
+              -3.1% {currentLanguage === 'en' ? 'market dip' : '市场下跌'}
+            </div>
+          </div>
+        </div>
+
+        {/* Incoming Stock Card - Connected to Procurement */}
+        <div className="glass-card p-6 rounded-2xl border border-dashed border-amber-500/30 bg-amber-500/5 relative overflow-hidden group">
+          <div className="relative z-10">
+            <div className="flex items-center space-x-3 mb-3">
+              <div className="p-2 rounded-lg bg-amber-500/20">
+                <ArrowDownLeft className="w-5 h-5 text-amber-400" />
+              </div>
+              <h3 className="text-amber-200 font-medium text-sm">
+                {currentLanguage === 'en' ? 'Incoming from Procurement' : '采购入库中'}
+              </h3>
+            </div>
+            <p className="text-2xl font-bold text-white">45,000 kg</p>
+            <div className="mt-2 text-xs text-amber-400 flex items-center">
+              PO-2025-089 (Steel Scrap)
+            </div>
+          </div>
+        </div>
+
+        <div className="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <div className="absolute right-0 top-0 w-32 h-32 bg-gradient-to-br from-red-500/10 to-transparent rounded-bl-full transform translate-x-8 translate-y-[-8px]"></div>
+          <div className="relative z-10">
+            <div className="flex items-center space-x-3 mb-3">
+              <div className="p-2 rounded-lg bg-red-500/20">
+                <AlertTriangle className="w-5 h-5 text-red-400" />
+              </div>
+              <h3 className="text-gray-300 font-medium text-sm">
+                {currentLanguage === 'en' ? 'Low Stock Alerts' : '低库存预警'}
+              </h3>
+            </div>
+            <p className="text-2xl font-bold text-white">1</p>
+            <div className="mt-2 text-xs text-red-400">
+              {currentLanguage === 'en' ? 'Brass Scrap below threshold' : '废黄铜低于阈值'}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Inventory Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {inventoryItems.map((item) => {
+          const currentStock = stockLevels[item.key] || 0;
+          const currentValue = currentStock * item.valueRate;
+          
+          return (
+            <div key={item.id} className="glass-card p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 group">
+              <div className="flex justify-between items-start mb-4">
+                <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                  <Package className="w-6 h-6 text-gray-300" />
+                </div>
+                <span className={`px-2 py-1 rounded-lg text-xs font-medium border ${
+                  item.status === 'low' 
+                    ? 'bg-red-500/10 text-red-400 border-red-500/20' 
+                    : item.status === 'high'
+                      ? 'bg-green-500/10 text-green-400 border-green-500/20'
+                      : 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                }`}>
+                  {item.type[currentLanguage as keyof typeof item.type]}
+                </span>
+              </div>
+              
+              <h3 className="text-lg font-bold text-white mb-1">
+                {item.name[currentLanguage as keyof typeof item.name]}
+              </h3>
+              <p className="text-sm text-gray-400 mb-4">{item.id}</p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="p-3 rounded-xl bg-slate-900/40">
+                  <p className="text-xs text-gray-400 mb-1">
+                    {currentLanguage === 'en' ? 'Current Stock' : '当前库存'}
+                  </p>
+                  <p className="text-sm font-semibold text-white">{formatNumber(currentStock)} kg</p>
+                </div>
+                <div className="p-3 rounded-xl bg-slate-900/40">
+                  <p className="text-xs text-gray-400 mb-1">
+                    {currentLanguage === 'en' ? 'Value (Est.)' : '估值'}
+                  </p>
+                  <p className="text-sm font-semibold text-amber-400">¥ {formatNumber(currentValue)}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between text-sm">
+                <span className={item.trend.startsWith('+') ? 'text-green-400' : 'text-red-400'}>
+                  {item.trend}
+                </span>
+                <Button variant="ghost" size="sm" className="text-gray-400 hover:text-white">
+                  {currentLanguage === 'en' ? 'Details' : '详情'} &rarr;
+                </Button>
+              </div>
+            </div>
+          );
+        })}
+        
+        {/* Add New Card */}
+        <button className="rounded-2xl border-2 border-dashed border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex flex-col items-center justify-center p-6 min-h-[250px] group">
+          <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+            <Plus className="w-8 h-8 text-gray-400 group-hover:text-white" />
+          </div>
+          <span className="text-gray-400 font-medium group-hover:text-white">
+            {currentLanguage === 'en' ? 'Add New Item' : '添加新项目'}
+          </span>
+        </button>
+      </div>
+    </div>
+  );
+}

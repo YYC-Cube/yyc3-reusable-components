@@ -36,12 +36,12 @@ function App() {
   const api = new APIService();
   const auth = new AuthService();
   const db = new DatabaseService();
-  
+
   // 使用服务
   const data = await api.get('/users');
   const user = await auth.login({ username, password });
   const result = await db.query('SELECT * FROM table');
-  
+
   return <div>App</div>;
 }
 ```
@@ -49,16 +49,19 @@ function App() {
 ## 📚 服务列表
 
 ### API服务
+
 - APIService - API调用服务
 - HTTPClient - HTTP客户端
 - RequestInterceptor - 请求拦截器
 
 ### 认证服务
+
 - AuthService - 认证服务
 - TokenManager - Token管理
 - PermissionManager - 权限管理
 
 ### 数据库服务
+
 - DatabaseService - 数据库服务
 - QueryBuilder - 查询构建器
 - ConnectionManager - 连接管理

@@ -131,7 +131,7 @@ describe('useChannelManager', () => {
   it('should load channels from localStorage', () => {
     const savedChannels = [
       { id: 'main', name: 'Main Console', createdAt: new Date().toISOString() },
-      { id: 'chan_1', name: 'Saved Channel', createdAt: new Date().toISOString() }
+      { id: 'chan_1', name: 'Saved Channel', createdAt: new Date().toISOString() },
     ];
     localStorage.setItem('yyc3_channels_meta', JSON.stringify(savedChannels));
 

@@ -41,9 +41,7 @@ describe('useChatPersistence', () => {
   });
 
   it('should initialize with initial chats', () => {
-    const { result } = renderHook(() =>
-      useChatPersistence('main', mockChats)
-    );
+    const { result } = renderHook(() => useChatPersistence('main', mockChats));
 
     expect(result.current.chats).toEqual(mockChats);
   });
@@ -60,9 +58,7 @@ describe('useChatPersistence', () => {
   });
 
   it('should clear all chats', () => {
-    const { result } = renderHook(() =>
-      useChatPersistence('main', mockChats)
-    );
+    const { result } = renderHook(() => useChatPersistence('main', mockChats));
 
     act(() => {
       result.current.setChats([]);
@@ -115,14 +111,12 @@ describe('useChatPersistence', () => {
   });
 
   it('should export data correctly', () => {
-    const { result } = renderHook(() =>
-      useChatPersistence('main', mockChats)
-    );
+    const { result } = renderHook(() => useChatPersistence('main', mockChats));
 
     // Mock DOM methods
     const mockAnchor = document.createElement('a');
     const clickSpy = vi.spyOn(mockAnchor, 'click');
-    
+
     vi.spyOn(document, 'createElement').mockReturnValue(mockAnchor);
 
     act(() => {

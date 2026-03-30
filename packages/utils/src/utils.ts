@@ -17,9 +17,9 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function formatCurrency(amount: number | string, locale: string = 'en'): string {
   const numAmount = typeof amount === 'string' ? parseFloat(amount.replace(/,/g, '')) : amount;
-  
+
   if (isNaN(numAmount)) return '0 ﷼';
-  
+
   return `${numAmount.toLocaleString(locale === 'zh' ? 'zh-CN' : 'en-SA')} ﷼`;
 }
 
@@ -28,11 +28,11 @@ export function formatCurrency(amount: number | string, locale: string = 'en'): 
  */
 export function formatDate(date: string | Date, locale: string = 'en'): string {
   const d = typeof date === 'string' ? new Date(date) : date;
-  
+
   return d.toLocaleDateString(locale === 'zh' ? 'zh-CN' : 'en-SA', {
     year: 'numeric',
     month: 'short',
-    day: 'numeric'
+    day: 'numeric',
   });
 }
 
@@ -55,19 +55,18 @@ export function truncate(text: string, length: number = 50): string {
 /**
  * Debounce function
  */
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
+export function debounce<T extends (...args: never[]) => unknown>(
+  func: (...args: Parameters<T>) => ReturnType<T>,
   wait: number
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout;
-  
-  return function executedFunction(...args: Parameters<T>) {
+
+  return function executedFunction(..._args: Parameters<T>) {
     const later = () => {
       clearTimeout(timeout);
-      func(...args);
+      func(..._args);
     };
-    
-    clearTimeout(timeout);
+
     timeout = setTimeout(later, wait);
   };
 }
@@ -82,7 +81,7 @@ export function generateId(prefix: string = 'id'): string {
 /**
  * Check if value is empty
  */
-export function isEmpty(value: any): boolean {
+export function isEmpty(value: unknown): boolean {
   if (value == null) return true;
   if (typeof value === 'string') return value.trim().length === 0;
   if (Array.isArray(value)) return value.length === 0;
@@ -125,7 +124,7 @@ export function getStatusColor(status: string): string {
     compliant: 'bg-green-500/20 text-green-400 border-green-500/30',
     'non-compliant': 'bg-red-500/20 text-red-400 border-red-500/30',
   };
-  
+
   return statusColors[status.toLowerCase()] || 'bg-gray-500/20 text-gray-400 border-gray-500/30';
 }
 
@@ -150,12 +149,12 @@ export function isValidSaudiPhone(phone: string): boolean {
  */
 export function formatFileSize(bytes: number): string {
   if (bytes === 0) return '0 Bytes';
-  
+
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  
-  return `${Math.round(bytes / Math.pow(k, i) * 100) / 100} ${sizes[i]}`;
+
+  return `${Math.round((bytes / Math.pow(k, i)) * 100) / 100} ${sizes[i]}`;
 }
 
 /**
@@ -178,6 +177,6 @@ export function getGradientColor(index: number): string {
     'from-orange-500 to-red-500',
     'from-slate-500 to-gray-500',
   ];
-  
+
   return gradients[index % gradients.length];
 }

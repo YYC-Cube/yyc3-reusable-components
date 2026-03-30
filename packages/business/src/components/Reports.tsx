@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { 
-  TrendingUp, 
-  Search, 
+import {
+  TrendingUp,
+  Search,
   Download,
   Calendar,
   FileText,
@@ -14,9 +14,9 @@ import {
   Building2,
   ArrowUpRight,
   ArrowDownRight,
-  Filter
+  Filter,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface ReportsProps {
   currentLanguage: string;
@@ -36,8 +36,8 @@ export function Reports({ currentLanguage }: ReportsProps) {
         { name: { en: 'Profit & Loss Statement', zh: '损益表' }, count: 12 },
         { name: { en: 'Balance Sheet', zh: '资产负债表' }, count: 12 },
         { name: { en: 'Cash Flow Statement', zh: '现金流量表' }, count: 12 },
-        { name: { en: 'Financial Ratios', zh: '财务比率分析' }, count: 4 }
-      ]
+        { name: { en: 'Financial Ratios', zh: '财务比率分析' }, count: 4 },
+      ],
     },
     {
       id: 'sales',
@@ -48,8 +48,8 @@ export function Reports({ currentLanguage }: ReportsProps) {
         { name: { en: 'Sales by Customer', zh: '客户销售报表' }, count: 24 },
         { name: { en: 'Sales by Product', zh: '产品销售报表' }, count: 18 },
         { name: { en: 'Monthly Sales Trends', zh: '月度销售趋势' }, count: 12 },
-        { name: { en: 'Sales Forecast', zh: '销售预测' }, count: 6 }
-      ]
+        { name: { en: 'Sales Forecast', zh: '销售预测' }, count: 6 },
+      ],
     },
     {
       id: 'inventory',
@@ -60,8 +60,8 @@ export function Reports({ currentLanguage }: ReportsProps) {
         { name: { en: 'Stock Levels', zh: '库存水平' }, count: 30 },
         { name: { en: 'Inventory Turnover', zh: '库存周转率' }, count: 12 },
         { name: { en: 'Material Valuation', zh: '材料估值' }, count: 12 },
-        { name: { en: 'Low Stock Alert', zh: '低库存预警' }, count: 8 }
-      ]
+        { name: { en: 'Low Stock Alert', zh: '低库存预警' }, count: 8 },
+      ],
     },
     {
       id: 'customer',
@@ -72,8 +72,8 @@ export function Reports({ currentLanguage }: ReportsProps) {
         { name: { en: 'Customer Analysis', zh: '客户分析' }, count: 15 },
         { name: { en: 'Top Customers', zh: '重点客户' }, count: 10 },
         { name: { en: 'Customer Retention', zh: '客户保留率' }, count: 12 },
-        { name: { en: 'Payment History', zh: '付款历史' }, count: 20 }
-      ]
+        { name: { en: 'Payment History', zh: '付款历史' }, count: 20 },
+      ],
     },
     {
       id: 'supplier',
@@ -84,8 +84,8 @@ export function Reports({ currentLanguage }: ReportsProps) {
         { name: { en: 'Supplier Performance', zh: '供应商绩效' }, count: 12 },
         { name: { en: 'Purchase Analysis', zh: '采购分析' }, count: 18 },
         { name: { en: 'Supplier Compliance', zh: '供应商合规' }, count: 8 },
-        { name: { en: 'Cost Comparison', zh: '成本比较' }, count: 6 }
-      ]
+        { name: { en: 'Cost Comparison', zh: '成本比较' }, count: 6 },
+      ],
     },
     {
       id: 'zatca',
@@ -96,9 +96,9 @@ export function Reports({ currentLanguage }: ReportsProps) {
         { name: { en: 'VAT Returns', zh: '增值税申报' }, count: 4 },
         { name: { en: 'E-Invoice Summary', zh: '电子发票汇总' }, count: 12 },
         { name: { en: 'Tax Compliance', zh: '税务合规报告' }, count: 4 },
-        { name: { en: 'Audit Trail', zh: '审计跟踪' }, count: 12 }
-      ]
-    }
+        { name: { en: 'Audit Trail', zh: '审计跟踪' }, count: 12 },
+      ],
+    },
   ];
 
   const quickStats = [
@@ -107,29 +107,29 @@ export function Reports({ currentLanguage }: ReportsProps) {
       value: '284',
       change: '+12',
       trend: 'up',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
     },
     {
       title: { en: 'Generated This Month', zh: '本月生成' },
       value: '45',
       change: '+8',
       trend: 'up',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-green-500 to-emerald-500',
     },
     {
       title: { en: 'Scheduled Reports', zh: '定时报表' },
       value: '18',
       change: '+2',
       trend: 'up',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-purple-500 to-pink-500',
     },
     {
       title: { en: 'Exported This Week', zh: '本周导出' },
       value: '32',
       change: '-5',
       trend: 'down',
-      color: 'from-amber-500 to-orange-500'
-    }
+      color: 'from-amber-500 to-orange-500',
+    },
   ];
 
   const recentReports = [
@@ -138,29 +138,29 @@ export function Reports({ currentLanguage }: ReportsProps) {
       type: { en: 'Financial', zh: '财务' },
       generated: '2025-02-01',
       size: '2.4 MB',
-      format: 'PDF'
+      format: 'PDF',
     },
     {
       name: { en: 'Sales Performance Report - Q4 2024', zh: '2024年第四季度销售业绩' },
       type: { en: 'Sales', zh: '销售' },
       generated: '2025-01-15',
       size: '1.8 MB',
-      format: 'Excel'
+      format: 'Excel',
     },
     {
       name: { en: 'Inventory Valuation - January', zh: '1月库存估值' },
       type: { en: 'Inventory', zh: '库存' },
       generated: '2025-02-01',
       size: '1.2 MB',
-      format: 'PDF'
+      format: 'PDF',
     },
     {
       name: { en: 'VAT Return - January 2025', zh: '2025年1月增值税申报' },
       type: { en: 'ZATCA', zh: 'ZATCA' },
       generated: '2025-02-03',
       size: '856 KB',
-      format: 'PDF'
-    }
+      format: 'PDF',
+    },
   ];
 
   return (
@@ -176,12 +176,14 @@ export function Reports({ currentLanguage }: ReportsProps) {
               {currentLanguage === 'en' ? 'Reports Center' : '报表中心'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Generate and manage business intelligence reports' : '生成和管理商业智能报表'}
+              {currentLanguage === 'en'
+                ? 'Generate and manage business intelligence reports'
+                : '生成和管理商业智能报表'}
             </p>
           </div>
         </div>
         <div className="flex items-center space-x-3">
-          <select 
+          <select
             value={dateRange}
             onChange={(e) => setDateRange(e.target.value)}
             className="px-4 py-2 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all duration-300"
@@ -218,13 +220,17 @@ export function Reports({ currentLanguage }: ReportsProps) {
             <div className="flex items-end justify-between">
               <div>
                 <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
-                <span className={`text-sm font-medium ${
-                  stat.trend === 'up' ? 'text-green-400' : 'text-red-400'
-                }`}>
+                <span
+                  className={`text-sm font-medium ${
+                    stat.trend === 'up' ? 'text-green-400' : 'text-red-400'
+                  }`}
+                >
                   {stat.change}
                 </span>
               </div>
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+              <div
+                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+              ></div>
             </div>
           </div>
         ))}
@@ -240,7 +246,9 @@ export function Reports({ currentLanguage }: ReportsProps) {
               className="glass-card rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 group cursor-pointer"
             >
               <div className="flex items-center space-x-3 mb-4">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} opacity-20 group-hover:opacity-30 flex items-center justify-center transition-all duration-300`}>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} opacity-20 group-hover:opacity-30 flex items-center justify-center transition-all duration-300`}
+                >
                   <Icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-white">
@@ -310,7 +318,7 @@ export function Reports({ currentLanguage }: ReportsProps) {
             </thead>
             <tbody className="divide-y divide-slate-700/30">
               {recentReports.map((report, index) => (
-                <tr 
+                <tr
                   key={index}
                   className="hover:bg-slate-800/30 transition-colors duration-200 group"
                 >

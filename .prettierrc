@@ -9,10 +9,10 @@
   "endOfLine": "lf",
   "bracketSpacing": true,
   "jsxSingleQuote": false,
-  "jsxBracketSameLine": false,
+  "bracketSameLine": false,
   "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "css",
-  "insertPragma": "@format",
+  "insertPragma": false,
   "requirePragma": false,
   "overrides": [
     {

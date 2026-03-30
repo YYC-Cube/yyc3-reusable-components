@@ -167,7 +167,9 @@ describe('CyberpunkWidget', () => {
         { label: '历史', icon: '📜', color: '#00d4ff' },
       ];
 
-      render(<CyberpunkWidget tabs={defaultTabs} showQuickActions={true} quickActions={quickActions} />);
+      render(
+        <CyberpunkWidget tabs={defaultTabs} showQuickActions={true} quickActions={quickActions} />
+      );
       expect(screen.getByText('新建')).toBeInTheDocument();
       expect(screen.getByText('历史')).toBeInTheDocument();
     });
@@ -192,9 +194,7 @@ describe('CyberpunkWidget', () => {
 
   describe('主题测试', () => {
     it('应支持自定义主题颜色', () => {
-      const { container } = render(
-        <CyberpunkWidget tabs={defaultTabs} themeColor="#ff0000" />
-      );
+      const { container } = render(<CyberpunkWidget tabs={defaultTabs} themeColor="#ff0000" />);
       expect(container.firstChild).toBeInTheDocument();
     });
   });

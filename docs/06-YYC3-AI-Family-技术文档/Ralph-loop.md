@@ -1,10 +1,8 @@
 # YYC³ 文档智能闭环工作流系统
 
-> ***YanYuCloudCube***
-> 言启象限 | 语枢未来
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> 万象归元于云枢 | 深栈智启新纪元
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** 言启象限 | 语枢未来 **_Words Initiate Quadrants, Language
+> Serves as Core for Future_** 万象归元于云枢 | 深栈智启新纪元 **_All things
+> converge in cloud pivot; Deep stacks ignite a new era of intelligence_**
 
 ---
 
@@ -70,15 +68,15 @@ docker-compose exec api python -m YYC3-DOC-MANAGEMENT-SYSTEM
 
 ### 技术栈
 
-| 组件 | 技术选型 | 版本 |
-|------|----------|------|
-| 后端框架 | FastAPI | 0.104.1 |
-| 数据库 | MySQL | 8.0 |
-| 缓存 | Redis | 7.0 |
-| 搜索 | Elasticsearch | 8.0 |
-| 反向代理 | Nginx | alpine |
-| 监控 | Prometheus + Grafana | latest |
-| 容器化 | Docker + Docker Compose | latest |
+| 组件     | 技术选型                | 版本    |
+| -------- | ----------------------- | ------- |
+| 后端框架 | FastAPI                 | 0.104.1 |
+| 数据库   | MySQL                   | 8.0     |
+| 缓存     | Redis                   | 7.0     |
+| 搜索     | Elasticsearch           | 8.0     |
+| 反向代理 | Nginx                   | alpine  |
+| 监控     | Prometheus + Grafana    | latest  |
+| 容器化   | Docker + Docker Compose | latest  |
 
 ### 系统分层
 
@@ -144,17 +142,17 @@ python YYC3-DOC-GEN-ENHANCED.py --mode update --root ./docs --version v2.1.0
 
 #### API接口
 
-| 接口 | 方法 | 描述 |
-|------|------|------|
-| /api/auth/register | POST | 用户注册 |
-| /api/auth/login | POST | 用户登录 |
-| /api/documents | POST | 创建文档 |
-| /api/documents/{id} | PUT | 更新文档 |
-| /api/documents/{id} | GET | 获取文档 |
-| /api/documents | GET | 列出文档 |
+| 接口                  | 方法 | 描述     |
+| --------------------- | ---- | -------- |
+| /api/auth/register    | POST | 用户注册 |
+| /api/auth/login       | POST | 用户登录 |
+| /api/documents        | POST | 创建文档 |
+| /api/documents/{id}   | PUT  | 更新文档 |
+| /api/documents/{id}   | GET  | 获取文档 |
+| /api/documents        | GET  | 列出文档 |
 | /api/documents/search | POST | 搜索文档 |
-| /api/categories | GET | 获取分类 |
-| /api/categories | POST | 创建分类 |
+| /api/categories       | GET  | 获取分类 |
+| /api/categories       | POST | 创建分类 |
 
 #### 数据库模型
 
@@ -285,12 +283,12 @@ engine.advance_node(instance.id, node_id, result={})
 
 #### API接口
 
-| 接口 | 方法 | 描述 |
-|------|------|------|
-| /api/documents/{id}/versions | GET | 获取所有版本 |
-| /api/documents/{id}/versions/{version} | GET | 获取指定版本 |
-| /api/documents/{id}/versions/{version}/compare | GET | 版本对比 |
-| /api/documents/{id}/versions/{version}/restore | POST | 恢复版本 |
+| 接口                                           | 方法 | 描述         |
+| ---------------------------------------------- | ---- | ------------ |
+| /api/documents/{id}/versions                   | GET  | 获取所有版本 |
+| /api/documents/{id}/versions/{version}         | GET  | 获取指定版本 |
+| /api/documents/{id}/versions/{version}/compare | GET  | 版本对比     |
+| /api/documents/{id}/versions/{version}/restore | POST | 恢复版本     |
 
 ### 5. 任务追踪系统
 
@@ -303,11 +301,11 @@ engine.advance_node(instance.id, node_id, result={})
 
 #### API接口
 
-| 接口 | 方法 | 描述 |
-|------|------|------|
-| /api/tasks | POST | 创建任务 |
+| 接口                     | 方法 | 描述     |
+| ------------------------ | ---- | -------- |
+| /api/tasks               | POST | 创建任务 |
 | /api/tasks/{id}/complete | POST | 完成任务 |
-| /api/tasks/{id}/confirm | POST | 确认任务 |
+| /api/tasks/{id}/confirm  | POST | 确认任务 |
 
 ### 6. 审批流程系统
 
@@ -321,12 +319,12 @@ engine.advance_node(instance.id, node_id, result={})
 
 #### API接口
 
-| 接口 | 方法 | 描述 |
-|------|------|------|
-| /api/workflows/start | POST | 启动工作流 |
-| /api/approvals/{id}/action | POST | 审批操作 |
-| /api/documents/{id}/annotations | POST | 创建批注 |
-| /api/documents/{id}/annotations/{version} | GET | 获取批注 |
+| 接口                                      | 方法 | 描述       |
+| ----------------------------------------- | ---- | ---------- |
+| /api/workflows/start                      | POST | 启动工作流 |
+| /api/approvals/{id}/action                | POST | 审批操作   |
+| /api/documents/{id}/annotations           | POST | 创建批注   |
+| /api/documents/{id}/annotations/{version} | GET  | 获取批注   |
 
 ### 7. 归档与检索系统
 
@@ -339,11 +337,11 @@ engine.advance_node(instance.id, node_id, result={})
 
 #### API接口
 
-| 接口 | 方法 | 描述 |
-|------|------|------|
-| /api/documents/{id}/archive | POST | 归档文档 |
-| /api/documents/{id}/permissions | POST | 设置权限 |
-| /api/audit-logs | GET | 获取审计日志 |
+| 接口                            | 方法 | 描述         |
+| ------------------------------- | ---- | ------------ |
+| /api/documents/{id}/archive     | POST | 归档文档     |
+| /api/documents/{id}/permissions | POST | 设置权限     |
+| /api/audit-logs                 | GET  | 获取审计日志 |
 
 ### 8. 监控与报告系统
 
@@ -613,9 +611,8 @@ MIT License
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

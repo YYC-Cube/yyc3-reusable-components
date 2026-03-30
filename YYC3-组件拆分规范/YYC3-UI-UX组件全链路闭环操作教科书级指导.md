@@ -1,10 +1,9 @@
 # YYC³ UI/UX组件全链路闭环操作教科书级指导
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -45,12 +44,12 @@
 
 ### 核心价值主张
 
-| 维度 | 价值 | 指标 |
-|------|------|------|
-| **开发效率** | 组件复用，减少重复开发 | 开发时间减少 60%+ |
-| **代码质量** | 统一标准，降低维护成本 | Bug率降低 40%+ |
+| 维度         | 价值                   | 指标                |
+| ------------ | ---------------------- | ------------------- |
+| **开发效率** | 组件复用，减少重复开发 | 开发时间减少 60%+   |
+| **代码质量** | 统一标准，降低维护成本 | Bug率降低 40%+      |
 | **用户体验** | 一致性设计，提升满意度 | 用户满意度提升 30%+ |
-| **团队协作** | 清晰规范，提高协作效率 | 团队效率提升 50%+ |
+| **团队协作** | 清晰规范，提高协作效率 | 团队效率提升 50%+   |
 
 ---
 
@@ -64,18 +63,21 @@
 ## 需求分析检查清单
 
 ### 功能需求
+
 - [ ] 组件的核心功能是什么？
 - [ ] 组件需要支持哪些交互？
 - [ ] 组件的数据流是怎样的？
 - [ ] 组件的状态管理需求？
 
 ### 非功能需求
+
 - [ ] 性能要求（加载时间、响应速度）
 - [ ] 可访问性要求（WCAG等级）
 - [ ] 兼容性要求（浏览器、设备）
 - [ ] 国际化要求（多语言支持）
 
 ### 设计需求
+
 - [ ] 视觉设计规范（颜色、字体、间距）
 - [ ] 交互设计规范（动画、过渡）
 - [ ] 响应式设计要求（断点、布局）
@@ -250,7 +252,7 @@ describe('ComponentName', () => {
     it('应该在点击时调用onClick', async () => {
       const handleClick = jest.fn();
       const user = userEvent.setup();
-      
+
       render(<ComponentName label="测试" onClick={handleClick} />);
       await user.click(screen.getByRole('button'));
       expect(handleClick).toHaveBeenCalledTimes(1);
@@ -392,23 +394,27 @@ function Dashboard() {
 ## 发布前检查清单
 
 ### 代码质量
+
 - [ ] 所有测试通过
 - [ ] 代码覆盖率 >= 80%
 - [ ] ESLint检查通过
 - [ ] TypeScript类型检查通过
 
 ### 文档完整性
+
 - [ ] README.md完整
 - [ ] API文档完整
 - [ ] 使用示例完整
 - [ ] CHANGELOG.md更新
 
 ### 版本管理
+
 - [ ] 版本号正确（遵循SemVer）
 - [ ] Changeset创建
 - [ ] 变更描述清晰
 
 ### 安全检查
+
 - [ ] 无安全漏洞
 - [ ] 无硬编码密钥
 - [ ] 无敏感信息
@@ -461,11 +467,11 @@ pnpm changeset publish
 
 #### 测试覆盖率目标
 
-| 测试类型 | 覆盖率目标 | 说明 |
-|----------|-----------|------|
-| 单元测试 | >= 80% | 组件核心逻辑 |
-| 集成测试 | >= 60% | 组件间交互 |
-| E2E测试 | >= 40% | 用户关键路径 |
+| 测试类型 | 覆盖率目标 | 说明         |
+| -------- | ---------- | ------------ |
+| 单元测试 | >= 80%     | 组件核心逻辑 |
+| 集成测试 | >= 60%     | 组件间交互   |
+| E2E测试  | >= 40%     | 用户关键路径 |
 
 ---
 
@@ -627,7 +633,7 @@ setCount(count + 1);
 
 // ✅ 正确
 const [count, setCount] = useState(0);
-setCount(prev => prev + 1);
+setCount((prev) => prev + 1);
 ```
 
 #### 2. 性能问题
@@ -658,60 +664,60 @@ const ExpensiveComponent = React.memo(({ data }) => {
 
 #### 原子组件清单
 
-| 组件名称 | 描述 | 状态 |
-|----------|------|------|
-| Button | 按钮组件 | ✅ 已完成 |
-| Input | 输入框组件 | ✅ 已完成 |
-| Text | 文本组件 | ✅ 已完成 |
-| Icon | 图标组件 | ✅ 已完成 |
-| Image | 图片组件 | ✅ 已完成 |
-| Link | 链接组件 | ✅ 已完成 |
-| Checkbox | 复选框组件 | ✅ 已完成 |
-| Radio | 单选框组件 | ✅ 已完成 |
-| Select | 下拉选择组件 | ✅ 已完成 |
+| 组件名称 | 描述         | 状态      |
+| -------- | ------------ | --------- |
+| Button   | 按钮组件     | ✅ 已完成 |
+| Input    | 输入框组件   | ✅ 已完成 |
+| Text     | 文本组件     | ✅ 已完成 |
+| Icon     | 图标组件     | ✅ 已完成 |
+| Image    | 图片组件     | ✅ 已完成 |
+| Link     | 链接组件     | ✅ 已完成 |
+| Checkbox | 复选框组件   | ✅ 已完成 |
+| Radio    | 单选框组件   | ✅ 已完成 |
+| Select   | 下拉选择组件 | ✅ 已完成 |
 | Textarea | 多行文本组件 | ✅ 已完成 |
-| Switch | 开关组件 | ✅ 已完成 |
-| Slider | 滑块组件 | ✅ 已完成 |
-| Badge | 徽章组件 | ✅ 已完成 |
-| Tag | 标签组件 | ✅ 已完成 |
-| Tooltip | 提示框组件 | ✅ 已完成 |
-| Spinner | 加载指示器 | ✅ 已完成 |
-| Progress | 进度条组件 | ✅ 已完成 |
+| Switch   | 开关组件     | ✅ 已完成 |
+| Slider   | 滑块组件     | ✅ 已完成 |
+| Badge    | 徽章组件     | ✅ 已完成 |
+| Tag      | 标签组件     | ✅ 已完成 |
+| Tooltip  | 提示框组件   | ✅ 已完成 |
+| Spinner  | 加载指示器   | ✅ 已完成 |
+| Progress | 进度条组件   | ✅ 已完成 |
 
 #### 分子组件清单
 
-| 组件名称 | 描述 | 状态 |
-|----------|------|------|
-| SearchBox | 搜索框 | ✅ 已完成 |
-| FormField | 表单字段 | ✅ 已完成 |
-| Avatar | 头像 | ✅ 已完成 |
-| Breadcrumb | 面包屑 | ✅ 已完成 |
-| Pagination | 分页器 | ✅ 已完成 |
-| TabItem | 标签页项 | ✅ 已完成 |
-| MenuItem | 菜单项 | ✅ 已完成 |
-| UserCard | 用户卡片 | ✅ 已完成 |
-| StatusItem | 状态项 | ✅ 已完成 |
+| 组件名称     | 描述     | 状态      |
+| ------------ | -------- | --------- |
+| SearchBox    | 搜索框   | ✅ 已完成 |
+| FormField    | 表单字段 | ✅ 已完成 |
+| Avatar       | 头像     | ✅ 已完成 |
+| Breadcrumb   | 面包屑   | ✅ 已完成 |
+| Pagination   | 分页器   | ✅ 已完成 |
+| TabItem      | 标签页项 | ✅ 已完成 |
+| MenuItem     | 菜单项   | ✅ 已完成 |
+| UserCard     | 用户卡片 | ✅ 已完成 |
+| StatusItem   | 状态项   | ✅ 已完成 |
 | Notification | 通知卡片 | ✅ 已完成 |
 
 #### 有机体组件清单
 
-| 组件名称 | 描述 | 状态 |
-|----------|------|------|
-| Header | 页头导航 | ✅ 已完成 |
-| Sidebar | 侧边栏 | ✅ 已完成 |
-| TabBar | 标签栏 | ✅ 已完成 |
+| 组件名称      | 描述     | 状态      |
+| ------------- | -------- | --------- |
+| Header        | 页头导航 | ✅ 已完成 |
+| Sidebar       | 侧边栏   | ✅ 已完成 |
+| TabBar        | 标签栏   | ✅ 已完成 |
 | BreadcrumbBar | 面包屑栏 | ✅ 已完成 |
-| Card | 卡片 | ✅ 已完成 |
-| List | 列表 | ✅ 已完成 |
-| Table | 表格 | ✅ 已完成 |
-| Gallery | 图库 | ✅ 已完成 |
-| Form | 表单 | ✅ 已完成 |
-| FilterPanel | 筛选面板 | ✅ 已完成 |
-| Wizard | 向导 | ✅ 已完成 |
-| Modal | 模态框 | ✅ 已完成 |
-| Toast | 通知提示 | ✅ 已完成 |
-| Alert | 警告框 | ✅ 已完成 |
-| Drawer | 抽屉 | ✅ 已完成 |
+| Card          | 卡片     | ✅ 已完成 |
+| List          | 列表     | ✅ 已完成 |
+| Table         | 表格     | ✅ 已完成 |
+| Gallery       | 图库     | ✅ 已完成 |
+| Form          | 表单     | ✅ 已完成 |
+| FilterPanel   | 筛选面板 | ✅ 已完成 |
+| Wizard        | 向导     | ✅ 已完成 |
+| Modal         | 模态框   | ✅ 已完成 |
+| Toast         | 通知提示 | ✅ 已完成 |
+| Alert         | 警告框   | ✅ 已完成 |
+| Drawer        | 抽屉     | ✅ 已完成 |
 
 ### B. 参考资源
 
@@ -734,9 +740,8 @@ const ExpensiveComponent = React.memo(({ data }) => {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

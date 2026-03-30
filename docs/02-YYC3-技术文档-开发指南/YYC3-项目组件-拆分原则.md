@@ -1,10 +1,9 @@
-# YYC³  组件独立完善和拆分原则
+# YYC³ 组件独立完善和拆分原则
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -30,8 +29,8 @@
 ### 📊 质量检查清单
 
 - 单一职责、可复用性、依赖管理
-- 文档完整性、性能优化、可访问性
-这个指南提供了完整的提示词模板和最佳实践，您可以直接在 Figma AI 中使用这些提示词来指导组件的拆分和完善工作！
+- 文档完整性、性能优化、可访问性这个指南提供了完整的提示词模板和最佳实践，您可以直接在 Figma
+  AI 中使用这些提示词来指导组件的拆分和完善工作！
 
 ## 📋 文档内容概览
 
@@ -55,11 +54,7 @@
 
 ### 🌳 组件分类决策树
 
-是否是最基础的UI元素？ → 原子组件
-是否由2-3个原子组件简单组合？ → 分子组件
-是否是复杂的UI区块？ → 有机体组件
-是否是页面布局结构？ → 模板组件
-其他 → 页面组件
+是否是最基础的UI元素？ → 原子组件是否由2-3个原子组件简单组合？ → 分子组件是否是复杂的UI区块？ → 有机体组件是否是页面布局结构？ → 模板组件其他 → 页面组件
 
 ### 📚 每个层次包含
 
@@ -81,9 +76,8 @@
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

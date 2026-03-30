@@ -152,11 +152,7 @@ interface StackedCardsProps {
   spacing?: number;
 }
 
-export function StackedCards({
-  cards,
-  className = '',
-  spacing = 20,
-}: StackedCardsProps) {
+export function StackedCards({ cards, className = '', spacing = 20 }: StackedCardsProps) {
   return (
     <div className={`relative perspective-1000 ${className}`}>
       {cards.map((card, index) => (
@@ -315,10 +311,7 @@ interface GlassRefractionCardProps {
   className?: string;
 }
 
-export function GlassRefractionCard({
-  children,
-  className = '',
-}: GlassRefractionCardProps) {
+export function GlassRefractionCard({ children, className = '' }: GlassRefractionCardProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -423,3 +416,15 @@ export function BookPage({ pages, className = '' }: BookPageProps) {
     </div>
   );
 }
+
+// Default export for convenience
+export default {
+  TiltCard,
+  FlipCard,
+  StackedCards,
+  PerspectiveContainer,
+  RotatingShowcase,
+  FloatingCard,
+  GlassRefractionCard,
+  BookPage,
+};

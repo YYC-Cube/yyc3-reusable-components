@@ -1,6 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../dialog';
 
 describe('Dialog', () => {
   it('renders DialogTrigger correctly', () => {
@@ -30,12 +38,24 @@ describe('Dialog', () => {
   });
 
   it('renders DialogTitle correctly', () => {
-    render(<DialogTitle>Test Title</DialogTitle>);
+    render(
+      <Dialog open>
+        <DialogContent>
+          <DialogTitle>Test Title</DialogTitle>
+        </DialogContent>
+      </Dialog>
+    );
     expect(screen.getByText('Test Title')).toBeInTheDocument();
   });
 
   it('renders DialogDescription correctly', () => {
-    render(<DialogDescription>Test Description</DialogDescription>);
+    render(
+      <Dialog open>
+        <DialogContent>
+          <DialogDescription>Test Description</DialogDescription>
+        </DialogContent>
+      </Dialog>
+    );
     expect(screen.getByText('Test Description')).toBeInTheDocument();
   });
 
@@ -48,10 +68,14 @@ describe('Dialog', () => {
   it('applies custom className to DialogContent', () => {
     const { container } = render(
       <Dialog open>
-        <DialogContent className="custom-class">Content</DialogContent>
+        <DialogContent className="custom-class">
+          <DialogTitle>Title</DialogTitle>
+          Content
+        </DialogContent>
       </Dialog>
     );
-    const content = container.querySelector('.custom-class');
+    // DialogContent 渲染在 portal 中，需要在整个文档中查找
+    const content = document.querySelector('.custom-class');
     expect(content).toBeInTheDocument();
   });
 });

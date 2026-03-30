@@ -10,7 +10,7 @@ export const ThemeType = {
   LIGHT: 'light',
 } as const;
 
-export type ThemeTypeValue = typeof ThemeType[keyof typeof ThemeType];
+export type ThemeTypeValue = (typeof ThemeType)[keyof typeof ThemeType];
 
 export interface ThemeConfig {
   name: string;

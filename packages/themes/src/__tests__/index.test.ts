@@ -92,10 +92,7 @@ describe('@yyc3/themes Package', () => {
 
     it('should apply theme to document', () => {
       applyTheme('cyberpunk');
-      expect(document.documentElement.setAttribute).toHaveBeenCalledWith(
-        'data-theme',
-        'cyberpunk'
-      );
+      expect(document.documentElement.setAttribute).toHaveBeenCalledWith('data-theme', 'cyberpunk');
       expect(document.documentElement.className).toBe('theme-cyberpunk');
     });
 

@@ -1,42 +1,42 @@
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
 
 const COLORS = [
-  "text-green-500",
-  "text-green-400",
-  "text-green-500",
-  "text-green-400",
-  "text-green-500",
-  "text-green-400"
+  'text-green-500',
+  'text-green-400',
+  'text-green-500',
+  'text-green-400',
+  'text-green-500',
+  'text-green-400',
 ];
 
 export const ASCII_CODE = [
-  "    █████╗  ██████╗ ██████╗ ███████╗",
-  "   ██╔════╝██╔═══██╗██╔══██╗██╔════╝",
-  "   ██║     ██║   ██║██║  ██║█████╗  ",
-  "   ██║     ██║   ██║██║  ██║██╔══╝  ",
-  "   ╚██████╗╚██████╔╝██████╔╝███████╗",
-  "    ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝"
+  '    █████╗  ██████╗ ██████╗ ███████╗',
+  '   ██╔════╝██╔═══██╗██╔══██╗██╔════╝',
+  '   ██║     ██║   ██║██║  ██║█████╗  ',
+  '   ██║     ██║   ██║██║  ██║██╔══╝  ',
+  '   ╚██████╗╚██████╔╝██████╔╝███████╗',
+  '    ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝',
 ];
 
 // Reconstructed "AI" based on the style
 export const ASCII_AI = [
-  " █████╗  ██╗",
-  "██╔══██╗ ██║",
-  "███████║ ██║",
-  "██╔══██║ ██║",
-  "██║  ██║ ██║",
-  "╚═╝  ╚═╝ ╚═╝"
+  ' █████╗  ██╗',
+  '██╔══██╗ ██║',
+  '███████║ ██║',
+  '██╔══██║ ██║',
+  '██║  ██║ ██║',
+  '╚═╝  ╚═╝ ╚═╝',
 ];
 
 // Reconstructed "FAMILY" based on the style
 export const ASCII_FAMILY = [
-  "███████╗ █████╗ ███╗   ███╗██╗██╗   ██╗   ██╗",
-  "██╔════╝██╔══██╗████╗ ████║██║██║   ╚██╗ ██╔╝",
-  "█████╗  ███████║██╔████╔██║██║██║    ╚████╔╝",
-  "██╔══╝  ██╔══██║██║╚██╔╝██║██║██║     ╚██╔╝",
-  "██║     ██║  ██║██║ ╚═╝ ██║██║███████╗ ██║",
-  "╚═╝     ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝ ╚═╝"
+  '███████╗ █████╗ ███╗   ███╗██╗██╗   ██╗   ██╗',
+  '██╔════╝██╔══██╗████╗ ████║██║██║   ╚██╗ ██╔╝',
+  '█████╗  ███████║██╔████╔██║██║██║    ╚████╔╝',
+  '██╔══╝  ██╔══██║██║╚██╔╝██║██║██║     ╚██╔╝',
+  '██║     ██║  ██║██║ ╚═╝ ██║██║███████╗ ██║',
+  '╚═╝     ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝ ╚═╝',
 ];
 
 interface AsciiTextProps {
@@ -45,7 +45,7 @@ interface AsciiTextProps {
   animate?: boolean;
 }
 
-export function AsciiText({ lines, className = "", animate = false }: AsciiTextProps) {
+export function AsciiText({ lines, className = '', animate = false }: AsciiTextProps) {
   return (
     <div className={`font-mono leading-[1.1] whitespace-pre select-none ${className}`}>
       {lines.map((line, i) => (

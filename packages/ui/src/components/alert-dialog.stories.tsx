@@ -66,9 +66,7 @@ export const Confirmation: Story = {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>确认提交</AlertDialogTitle>
-          <AlertDialogDescription>
-            您确定要提交此表单吗？提交后将立即生效。
-          </AlertDialogDescription>
+          <AlertDialogDescription>您确定要提交此表单吗？提交后将立即生效。</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>再想想</AlertDialogCancel>
@@ -94,9 +92,7 @@ export const Warning: Story = {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>取消</AlertDialogCancel>
-          <AlertDialogAction className="bg-red-600 hover:bg-red-700">
-            确认清空
-          </AlertDialogAction>
+          <AlertDialogAction className="bg-red-600 hover:bg-red-700">确认清空</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

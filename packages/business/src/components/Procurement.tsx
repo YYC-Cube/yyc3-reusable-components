@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Warehouse, 
-  Search, 
-  Plus, 
-  Filter, 
+import {
+  Warehouse,
+  Search,
+  Plus,
+  Filter,
   Download,
   Package,
   Clock,
@@ -17,10 +17,20 @@ import {
   Brain,
   TrendingUp,
   AlertTriangle,
-  ArrowRight
+  ArrowRight,
 } from 'lucide-react';
-import { Button } from './ui/button';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { Button } from '@yyc3/ui';
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+} from 'recharts';
 
 interface ProcurementProps {
   currentLanguage: string;
@@ -50,7 +60,7 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
       expectedDelivery: '2025-02-15',
       status: 'approved',
       priority: 'high',
-      aiRisk: 'low'
+      aiRisk: 'low',
     },
     {
       id: 'PO-2025-088',
@@ -63,7 +73,7 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
       expectedDelivery: '2025-02-10',
       status: 'delivered',
       priority: 'medium',
-      aiRisk: 'low'
+      aiRisk: 'low',
     },
     {
       id: 'PO-2025-087',
@@ -76,7 +86,7 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
       expectedDelivery: '2025-02-12',
       status: 'in-transit',
       priority: 'high',
-      aiRisk: 'medium'
+      aiRisk: 'medium',
     },
     {
       id: 'PO-2025-086',
@@ -89,7 +99,7 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
       expectedDelivery: '2025-02-08',
       status: 'pending',
       priority: 'low',
-      aiRisk: 'low'
+      aiRisk: 'low',
     },
     {
       id: 'PO-2025-085',
@@ -102,8 +112,8 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
       expectedDelivery: '2025-02-05',
       status: 'cancelled',
       priority: 'medium',
-      aiRisk: 'high'
-    }
+      aiRisk: 'high',
+    },
   ];
 
   const getStatusConfig = (status: string) => {
@@ -111,28 +121,28 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
       approved: {
         color: 'bg-green-500/20 text-green-400 border-green-500/30',
         icon: CheckCircle2,
-        label: { en: 'Approved', zh: '已批准' }
+        label: { en: 'Approved', zh: '已批准' },
       },
       pending: {
         color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
         icon: Clock,
-        label: { en: 'Pending', zh: '待审批' }
+        label: { en: 'Pending', zh: '待审批' },
       },
       'in-transit': {
         color: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
         icon: Truck,
-        label: { en: 'In Transit', zh: '运输中' }
+        label: { en: 'In Transit', zh: '运输中' },
       },
       delivered: {
         color: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
         icon: CheckCircle2,
-        label: { en: 'Delivered', zh: '已送达' }
+        label: { en: 'Delivered', zh: '已送达' },
       },
       cancelled: {
         color: 'bg-red-500/20 text-red-400 border-red-500/30',
         icon: XCircle,
-        label: { en: 'Cancelled', zh: '已取消' }
-      }
+        label: { en: 'Cancelled', zh: '已取消' },
+      },
     };
     return configs[status as keyof typeof configs];
   };
@@ -154,7 +164,9 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
               </span>
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'AI-driven supply chain management & optimization' : 'AI驱动的供应链管理与优化'}
+              {currentLanguage === 'en'
+                ? 'AI-driven supply chain management & optimization'
+                : 'AI驱动的供应链管理与优化'}
             </p>
           </div>
         </div>
@@ -187,24 +199,28 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
               <AreaChart data={PROCUREMENT_TRENDS}>
                 <defs>
                   <linearGradient id="colorProcurement" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#f59e0b" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#f59e0b" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
                 <XAxis dataKey="month" stroke="#94a3b8" axisLine={false} tickLine={false} />
                 <YAxis stroke="#94a3b8" axisLine={false} tickLine={false} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: '#1e293b', borderColor: '#334155', color: '#fff' }}
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#1e293b',
+                    borderColor: '#334155',
+                    color: '#fff',
+                  }}
                   itemStyle={{ color: '#f59e0b' }}
                 />
-                <Area 
-                  type="monotone" 
-                  dataKey="amount" 
-                  stroke="#f59e0b" 
+                <Area
+                  type="monotone"
+                  dataKey="amount"
+                  stroke="#f59e0b"
                   strokeWidth={3}
-                  fillOpacity={1} 
-                  fill="url(#colorProcurement)" 
+                  fillOpacity={1}
+                  fill="url(#colorProcurement)"
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -214,41 +230,45 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
         {/* AI Recommendations */}
         <div className="space-y-6">
           <div className="glass-card rounded-2xl p-6 border border-white/10 bg-gradient-to-br from-amber-900/10 to-transparent">
-             <div className="flex items-center mb-4">
-                <Brain className="w-6 h-6 text-amber-400 mr-2" />
-                <h3 className="text-lg font-semibold text-white">
-                  {currentLanguage === 'en' ? 'AI Smart Restock' : 'AI 智能补货建议'}
-                </h3>
-             </div>
-             
-             <div className="space-y-4">
-                <div className="bg-slate-800/50 rounded-xl p-4 border border-amber-500/20">
-                   <div className="flex justify-between items-start mb-2">
-                      <span className="text-sm font-medium text-white">Copper Wire</span>
-                      <span className="text-xs font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">Low Stock</span>
-                   </div>
-                   <p className="text-xs text-gray-400 mb-3">
-                      {currentLanguage === 'en' 
-                        ? 'Inventory below 15%. Projected demand increase +20% next week.' 
-                        : '库存低于 15%。预计下周需求增加 20%。'}
-                   </p>
-                   <Button className="w-full h-8 text-xs bg-amber-600 hover:bg-amber-500 text-white">
-                      {currentLanguage === 'en' ? 'Auto-Order (+5000kg)' : '自动下单 (+5000kg)'}
-                   </Button>
+            <div className="flex items-center mb-4">
+              <Brain className="w-6 h-6 text-amber-400 mr-2" />
+              <h3 className="text-lg font-semibold text-white">
+                {currentLanguage === 'en' ? 'AI Smart Restock' : 'AI 智能补货建议'}
+              </h3>
+            </div>
+
+            <div className="space-y-4">
+              <div className="bg-slate-800/50 rounded-xl p-4 border border-amber-500/20">
+                <div className="flex justify-between items-start mb-2">
+                  <span className="text-sm font-medium text-white">Copper Wire</span>
+                  <span className="text-xs font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded">
+                    Low Stock
+                  </span>
                 </div>
-                
-                <div className="bg-slate-800/50 rounded-xl p-4 border border-white/5">
-                   <div className="flex justify-between items-start mb-2">
-                      <span className="text-sm font-medium text-white">Steel Scrap</span>
-                      <span className="text-xs font-bold text-green-400 bg-green-500/10 px-2 py-0.5 rounded">Optimal</span>
-                   </div>
-                   <p className="text-xs text-gray-400">
-                      {currentLanguage === 'en' 
-                        ? 'Price drop expected in 3 days. Hold purchase.' 
-                        : '预计3天后价格下跌。建议暂停采购。'}
-                   </p>
+                <p className="text-xs text-gray-400 mb-3">
+                  {currentLanguage === 'en'
+                    ? 'Inventory below 15%. Projected demand increase +20% next week.'
+                    : '库存低于 15%。预计下周需求增加 20%。'}
+                </p>
+                <Button className="w-full h-8 text-xs bg-amber-600 hover:bg-amber-500 text-white">
+                  {currentLanguage === 'en' ? 'Auto-Order (+5000kg)' : '自动下单 (+5000kg)'}
+                </Button>
+              </div>
+
+              <div className="bg-slate-800/50 rounded-xl p-4 border border-white/5">
+                <div className="flex justify-between items-start mb-2">
+                  <span className="text-sm font-medium text-white">Steel Scrap</span>
+                  <span className="text-xs font-bold text-green-400 bg-green-500/10 px-2 py-0.5 rounded">
+                    Optimal
+                  </span>
                 </div>
-             </div>
+                <p className="text-xs text-gray-400">
+                  {currentLanguage === 'en'
+                    ? 'Price drop expected in 3 days. Hold purchase.'
+                    : '预计3天后价格下跌。建议暂停采购。'}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -261,7 +281,9 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
-                placeholder={currentLanguage === 'en' ? 'Search purchase orders...' : '搜索采购订单...'}
+                placeholder={
+                  currentLanguage === 'en' ? 'Search purchase orders...' : '搜索采购订单...'
+                }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/30 transition-all duration-300"
@@ -269,7 +291,7 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
             </div>
           </div>
           <div className="flex items-center space-x-3">
-             <Button className="bg-slate-800/50 hover:bg-slate-700/50 text-white px-4 py-3 rounded-xl transition-all duration-300">
+            <Button className="bg-slate-800/50 hover:bg-slate-700/50 text-white px-4 py-3 rounded-xl transition-all duration-300">
               <Filter className="w-4 h-4 mr-2" />
               {currentLanguage === 'en' ? 'Filter' : '筛选'}
             </Button>
@@ -311,9 +333,9 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
               {purchaseOrders.map((order, index) => {
                 const statusConfig = getStatusConfig(order.status);
                 const StatusIcon = statusConfig.icon;
-                
+
                 return (
-                  <tr 
+                  <tr
                     key={order.id}
                     className="hover:bg-slate-800/30 transition-colors duration-200 group"
                   >
@@ -321,8 +343,9 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
                       <div>
                         <span className="block text-white font-medium">{order.id}</span>
                         <span className="text-xs text-gray-400 flex items-center mt-1">
-                           <Package className="w-3 h-3 mr-1" />
-                           {order.material[currentLanguage as keyof typeof order.material]} ({order.quantity})
+                          <Package className="w-3 h-3 mr-1" />
+                          {order.material[currentLanguage as keyof typeof order.material]} (
+                          {order.quantity})
                         </span>
                       </div>
                     </td>
@@ -335,13 +358,19 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-amber-400 font-semibold font-mono">¥ {order.totalAmount}</span>
+                      <span className="text-amber-400 font-semibold font-mono">
+                        ¥ {order.totalAmount}
+                      </span>
                       <div className="text-xs text-gray-500 mt-0.5">@ ¥ {order.unitPrice} /kg</div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}>
+                      <span
+                        className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}
+                      >
                         <StatusIcon className="w-3 h-3" />
-                        <span>{statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}</span>
+                        <span>
+                          {statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}
+                        </span>
                       </span>
                     </td>
                     <td className="px-6 py-4">
@@ -365,9 +394,9 @@ export function Procurement({ currentLanguage }: ProcurementProps) {
                       )}
                     </td>
                     <td className="px-6 py-4 text-right">
-                       <button className="text-gray-400 hover:text-white transition-colors">
-                          <ArrowRight className="w-5 h-5" />
-                       </button>
+                      <button className="text-gray-400 hover:text-white transition-colors">
+                        <ArrowRight className="w-5 h-5" />
+                      </button>
                     </td>
                   </tr>
                 );

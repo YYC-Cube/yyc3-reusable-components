@@ -25,7 +25,7 @@ import type {
   DatabaseResult,
   ConnectionHealth,
   ConnectionStatus,
-} from "./types/database";
+} from './types/database';
 
 /* ──────────────────── 自动重连配置 / Auto-Reconnect Config ──────────────────── */
 
@@ -53,9 +53,9 @@ const RECONNECT_CONFIG = {
  * Mock health check response (used when proxy service is not running)
  */
 const MOCK_HEALTH: ConnectionHealth = {
-  status: "connected",
+  status: 'connected',
   latency: 8,
-  serverVersion: "PostgreSQL 15.8 (Mock Mode / 模拟模式)",
+  serverVersion: 'PostgreSQL 15.8 (Mock Mode / 模拟模式)',
   activeConnections: 3,
   maxConnections: 100,
   databaseSize: 28672000,
@@ -69,27 +69,53 @@ const MOCK_HEALTH: ConnectionHealth = {
  */
 const MOCK_TABLE_DATA: Record<string, Array<Record<string, string | number | boolean | null>>> = {
   agents: [
-    { id: 1, agent_id: "ARCHITECT_PRIME", name: "ARCHITECT_PRIME", version: "v4.2.0", role: "System Architecture & Patterns", status: "active" },
-    { id: 2, agent_id: "CODE_WEAVER", name: "CODE_WEAVER", version: "v3.1.5", role: "Frontend Implementation Specialist", status: "active" },
-    { id: 3, agent_id: "DATA_NEXUS", name: "DATA_NEXUS", version: "v2.8.0", role: "Database Optimization & Schema", status: "standby" },
-    { id: 4, agent_id: "SECURE_SENTINEL", name: "SECURE_SENTINEL", version: "v5.0.1", role: "Vulnerability Scanning & Auth", status: "active" },
+    {
+      id: 1,
+      agent_id: 'ARCHITECT_PRIME',
+      name: 'ARCHITECT_PRIME',
+      version: 'v4.2.0',
+      role: 'System Architecture & Patterns',
+      status: 'active',
+    },
+    {
+      id: 2,
+      agent_id: 'CODE_WEAVER',
+      name: 'CODE_WEAVER',
+      version: 'v3.1.5',
+      role: 'Frontend Implementation Specialist',
+      status: 'active',
+    },
+    {
+      id: 3,
+      agent_id: 'DATA_NEXUS',
+      name: 'DATA_NEXUS',
+      version: 'v2.8.0',
+      role: 'Database Optimization & Schema',
+      status: 'standby',
+    },
+    {
+      id: 4,
+      agent_id: 'SECURE_SENTINEL',
+      name: 'SECURE_SENTINEL',
+      version: 'v5.0.1',
+      role: 'Vulnerability Scanning & Auth',
+      status: 'active',
+    },
   ],
-  channels: [
-    { id: "main", name: "Main Console", preset: "General", is_encrypted: false },
-  ],
+  channels: [{ id: 'main', name: 'Main Console', preset: 'General', is_encrypted: false }],
   system_configs: [
-    { key: "ui_settings", value: "{}", description: "UI/UX 偏好设置" },
-    { key: "system_version", value: '"0.9.4"', description: "当前系统版本" },
-    { key: "codename", value: '"Personalize"', description: "版本代号" },
+    { key: 'ui_settings', value: '{}', description: 'UI/UX 偏好设置' },
+    { key: 'system_version', value: '"0.9.4"', description: '当前系统版本' },
+    { key: 'codename', value: '"Personalize"', description: '版本代号' },
   ],
 };
 
 /* ──────────────────── 配置存储键 / Config Storage Keys ──────────────────── */
 
 const STORAGE_KEYS = {
-  DB_CONFIG: "yyc3_db_config",
-  PROXY_CONFIG: "yyc3_db_proxy_config",
-  CONNECTION_HISTORY: "yyc3_db_conn_history",
+  DB_CONFIG: 'yyc3_db_config',
+  PROXY_CONFIG: 'yyc3_db_proxy_config',
+  CONNECTION_HISTORY: 'yyc3_db_conn_history',
 } as const;
 
 /* ──────────────────── 连接历史记录 / Connection History ──────────────────── */
@@ -161,7 +187,7 @@ class DatabaseRepositoryImpl {
   private proxyConfig: LocalAPIProxyConfig;
 
   /** 当前连接状态 / Current connection status */
-  private currentStatus: ConnectionStatus = "disconnected";
+  private currentStatus: ConnectionStatus = 'disconnected';
 
   /** 心跳定时器 / Heartbeat timer */
   private heartbeatTimer: ReturnType<typeof setInterval> | null = null;
@@ -206,7 +232,7 @@ class DatabaseRepositoryImpl {
   onStatusChange(listener: StatusChangeListener): () => void {
     this.statusListeners.push(listener);
     return () => {
-      this.statusListeners = this.statusListeners.filter(l => l !== listener);
+      this.statusListeners = this.statusListeners.filter((l) => l !== listener);
     };
   }
 
@@ -263,8 +289,8 @@ class DatabaseRepositoryImpl {
     try {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 2000);
-      const response = await fetch(this.buildUrl("/health"), {
-        method: "GET",
+      const response = await fetch(this.buildUrl('/health'), {
+        method: 'GET',
         signal: controller.signal,
       });
       clearTimeout(timeoutId);
@@ -296,8 +322,8 @@ class DatabaseRepositoryImpl {
 
     this.mockMode = true;
     this.mockDetected = true;
-    this.setStatus("error");
-    this.recordConnectionHistory("error", 0, "PROXY_DISCONNECTED / 代理断线，进入模拟模式");
+    this.setStatus('error');
+    this.recordConnectionHistory('error', 0, 'PROXY_DISCONNECTED / 代理断线，进入模拟模式');
 
     // 仅在曾经成功连接过时才启动自动重连 / Only auto-reconnect if was ever connected
     if (this.wasEverConnected) {
@@ -315,8 +341,8 @@ class DatabaseRepositoryImpl {
     this.reconnectAttempts = 0;
     this.currentProbeInterval = RECONNECT_CONFIG.INITIAL_PROBE_INTERVAL;
     this.stopReconnectProbe();
-    this.setStatus("connected");
-    this.recordConnectionHistory("connected", 0, null);
+    this.setStatus('connected');
+    this.recordConnectionHistory('connected', 0, null);
   }
 
   /**
@@ -348,13 +374,10 @@ class DatabaseRepositoryImpl {
 
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(
-          () => controller.abort(),
-          RECONNECT_CONFIG.PROBE_TIMEOUT
-        );
+        const timeoutId = setTimeout(() => controller.abort(), RECONNECT_CONFIG.PROBE_TIMEOUT);
 
-        const response = await fetch(this.buildUrl("/health"), {
-          method: "GET",
+        const response = await fetch(this.buildUrl('/health'), {
+          method: 'GET',
           signal: controller.signal,
         });
 
@@ -431,9 +454,9 @@ class DatabaseRepositoryImpl {
       // 使用默认配置 / Use default config
     }
     return {
-      baseUrl: "http://localhost:3721",
-      apiVersion: "v1",
-      authToken: "",
+      baseUrl: 'http://localhost:3721',
+      apiVersion: 'v1',
+      authToken: '',
       timeout: 10000,
       enableRetry: true,
       maxRetries: 3,
@@ -516,7 +539,7 @@ class DatabaseRepositoryImpl {
    */
   private async apiRequest<T>(path: string, options?: RequestInit): Promise<DatabaseResult<T>> {
     // 模拟模式下返回 Mock 数据 / Return mock data in mock mode
-    if (this.mockMode && path !== "/health") {
+    if (this.mockMode && path !== '/health') {
       return this.mockResponse<T>(path);
     }
 
@@ -532,7 +555,7 @@ class DatabaseRepositoryImpl {
         const response = await fetch(this.buildUrl(path), {
           ...options,
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             ...(this.proxyConfig.authToken
               ? { Authorization: `Bearer ${this.proxyConfig.authToken}` }
               : {}),
@@ -551,7 +574,7 @@ class DatabaseRepositoryImpl {
         const data = await response.json();
 
         // 成功请求：如果之前断线过，确认恢复 / Successful: confirm recovery if was disconnected
-        if (this.currentStatus === "error") {
+        if (this.currentStatus === 'error') {
           this.exitMockMode();
         }
 
@@ -564,10 +587,10 @@ class DatabaseRepositoryImpl {
           timestamp: new Date().toISOString(),
         };
       } catch (err) {
-        lastError = err instanceof Error ? err.message : "UNKNOWN_ERROR / 未知错误";
+        lastError = err instanceof Error ? err.message : 'UNKNOWN_ERROR / 未知错误';
 
-        if (lastError.includes("abort")) {
-          lastError = "REQUEST_TIMEOUT / 请求超时";
+        if (lastError.includes('abort')) {
+          lastError = 'REQUEST_TIMEOUT / 请求超时';
         }
 
         // 等待后重试 / Wait before retry
@@ -603,7 +626,7 @@ class DatabaseRepositoryImpl {
   private mockResponse<T>(path: string): DatabaseResult<T> {
     // 从 path 提取表名 / Extract table name from path
     const tableMatch = path.match(/\/data\/(\w+)/);
-    const table = tableMatch?.[1] ?? "";
+    const table = tableMatch?.[1] ?? '';
 
     const mockData = MOCK_TABLE_DATA[table] ?? [];
 
@@ -628,8 +651,8 @@ class DatabaseRepositoryImpl {
    * @returns {Promise<DatabaseResult<T[]>>} 查询结果 / Query result
    */
   async executeQuery<T>(query: DatabaseQuery): Promise<DatabaseResult<T[]>> {
-    return this.apiRequest<T[]>("/query", {
-      method: "POST",
+    return this.apiRequest<T[]>('/query', {
+      method: 'POST',
       body: JSON.stringify(query),
     });
   }
@@ -647,7 +670,7 @@ class DatabaseRepositoryImpl {
     data: Record<string, string | number | boolean | null>
   ): Promise<DatabaseResult<Record<string, string | number | boolean | null>>> {
     return this.apiRequest(`/data/${table}`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(data),
     });
   }
@@ -667,7 +690,7 @@ class DatabaseRepositoryImpl {
     data: Record<string, string | number | boolean | null>
   ): Promise<DatabaseResult<Record<string, string | number | boolean | null>>> {
     return this.apiRequest(`/data/${table}/${id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(data),
     });
   }
@@ -682,7 +705,7 @@ class DatabaseRepositoryImpl {
    */
   async deleteRecord(table: string, id: string): Promise<DatabaseResult<null>> {
     return this.apiRequest(`/data/${table}/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
   }
 
@@ -695,7 +718,7 @@ class DatabaseRepositoryImpl {
    * @returns {Promise<DatabaseResult<ConnectionHealth>>} 健康状态 / Health status
    */
   async checkHealth(): Promise<DatabaseResult<ConnectionHealth>> {
-    this.setStatus("connecting");
+    this.setStatus('connecting');
 
     // 模拟模式下返回 Mock 健康信息 / Return mock health in mock mode
     if (this.mockMode) {
@@ -707,22 +730,22 @@ class DatabaseRepositoryImpl {
         executionTime: 1,
         timestamp: new Date().toISOString(),
       };
-      this.setStatus("error"); // 仍然标记为 error / Still mark as error
+      this.setStatus('error'); // 仍然标记为 error / Still mark as error
       return mockResult;
     }
 
-    const result = await this.apiRequest<ConnectionHealth>("/health", {
-      method: "GET",
+    const result = await this.apiRequest<ConnectionHealth>('/health', {
+      method: 'GET',
     });
 
     if (result.success) {
       this.wasEverConnected = true;
-      this.setStatus("connected");
-      this.recordConnectionHistory("connected", result.executionTime ?? 0, null);
+      this.setStatus('connected');
+      this.recordConnectionHistory('connected', result.executionTime ?? 0, null);
     } else {
       // 心跳失败：进入模拟模式 / Heartbeat failed: enter mock mode
       this.enterMockMode();
-      this.recordConnectionHistory("error", result.executionTime ?? 0, result.error ?? null);
+      this.recordConnectionHistory('error', result.executionTime ?? 0, result.error ?? null);
     }
 
     return result;
@@ -754,8 +777,8 @@ class DatabaseRepositoryImpl {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), RECONNECT_CONFIG.PROBE_TIMEOUT);
 
-        const response = await fetch(this.buildUrl("/health"), {
-          method: "GET",
+        const response = await fetch(this.buildUrl('/health'), {
+          method: 'GET',
           signal: controller.signal,
         });
 
@@ -849,13 +872,13 @@ class DatabaseRepositoryImpl {
   async runMigrations(): Promise<
     DatabaseResult<{ migrationsRun: number; currentVersion: string }>
   > {
-    this.setStatus("migrating");
+    this.setStatus('migrating');
     const result = await this.apiRequest<{ migrationsRun: number; currentVersion: string }>(
-      "/migrations/run",
-      { method: "POST" }
+      '/migrations/run',
+      { method: 'POST' }
     );
 
-    this.setStatus(result.success ? "connected" : "error");
+    this.setStatus(result.success ? 'connected' : 'error');
     return result;
   }
 
@@ -868,7 +891,7 @@ class DatabaseRepositoryImpl {
   async getMigrationStatus(): Promise<
     DatabaseResult<{ pending: number; completed: number; currentVersion: string }>
   > {
-    return this.apiRequest("/migrations/status", { method: "GET" });
+    return this.apiRequest('/migrations/status', { method: 'GET' });
   }
 }
 

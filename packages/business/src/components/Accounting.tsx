@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { 
-  Calculator, 
-  Search, 
+import {
+  Calculator,
+  Search,
   Download,
   TrendingUp,
   TrendingDown,
@@ -13,9 +13,9 @@ import {
   Calendar,
   ArrowUpRight,
   ArrowDownLeft,
-  Building2
+  Building2,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface AccountingProps {
   currentLanguage: string;
@@ -31,11 +31,19 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       color: 'from-green-500 to-emerald-500',
       icon: Wallet,
       accounts: [
-        { name: { en: 'Cash & Bank', zh: '现金及银行存款' }, balance: '2,456,789', change: '+12.5%' },
-        { name: { en: 'Accounts Receivable', zh: '应收账款' }, balance: '1,876,543', change: '+8.3%' },
+        {
+          name: { en: 'Cash & Bank', zh: '现金及银行存款' },
+          balance: '2,456,789',
+          change: '+12.5%',
+        },
+        {
+          name: { en: 'Accounts Receivable', zh: '应收账款' },
+          balance: '1,876,543',
+          change: '+8.3%',
+        },
         { name: { en: 'Inventory', zh: '存货' }, balance: '3,234,567', change: '+15.2%' },
-        { name: { en: 'Fixed Assets', zh: '固定资产' }, balance: '8,765,432', change: '+2.1%' }
-      ]
+        { name: { en: 'Fixed Assets', zh: '固定资产' }, balance: '8,765,432', change: '+2.1%' },
+      ],
     },
     {
       category: { en: 'Liabilities', zh: '负债' },
@@ -45,18 +53,26 @@ export function Accounting({ currentLanguage }: AccountingProps) {
         { name: { en: 'Accounts Payable', zh: '应付账款' }, balance: '1,234,567', change: '-5.4%' },
         { name: { en: 'Loans Payable', zh: '应付贷款' }, balance: '1,690,000', change: '-8.7%' },
         { name: { en: 'Accrued Expenses', zh: '应计费用' }, balance: '345,678', change: '+3.2%' },
-        { name: { en: 'Other Liabilities', zh: '其他负债' }, balance: '123,456', change: '+1.5%' }
-      ]
+        { name: { en: 'Other Liabilities', zh: '其他负债' }, balance: '123,456', change: '+1.5%' },
+      ],
     },
     {
       category: { en: 'Equity', zh: '权益' },
       color: 'from-blue-500 to-cyan-500',
       icon: Building2,
       accounts: [
-        { name: { en: 'Owner\'s Equity', zh: '所有者权益' }, balance: '12,000,000', change: '+0%' },
-        { name: { en: 'Retained Earnings', zh: '留存收益' }, balance: '2,876,543', change: '+18.5%' },
-        { name: { en: 'Current Year Profit', zh: '本年利润' }, balance: '987,654', change: '+25.3%' }
-      ]
+        { name: { en: "Owner's Equity", zh: '所有者权益' }, balance: '12,000,000', change: '+0%' },
+        {
+          name: { en: 'Retained Earnings', zh: '留存收益' },
+          balance: '2,876,543',
+          change: '+18.5%',
+        },
+        {
+          name: { en: 'Current Year Profit', zh: '本年利润' },
+          balance: '987,654',
+          change: '+25.3%',
+        },
+      ],
     },
     {
       category: { en: 'Revenue', zh: '收入' },
@@ -65,20 +81,28 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       accounts: [
         { name: { en: 'Sales Revenue', zh: '销售收入' }, balance: '8,765,432', change: '+22.4%' },
         { name: { en: 'Service Revenue', zh: '服务收入' }, balance: '1,234,567', change: '+15.8%' },
-        { name: { en: 'Other Revenue', zh: '其他收入' }, balance: '234,567', change: '+8.9%' }
-      ]
+        { name: { en: 'Other Revenue', zh: '其他收入' }, balance: '234,567', change: '+8.9%' },
+      ],
     },
     {
       category: { en: 'Expenses', zh: '费用' },
       color: 'from-orange-500 to-red-500',
       icon: TrendingDown,
       accounts: [
-        { name: { en: 'Cost of Goods Sold', zh: '销售成本' }, balance: '4,567,890', change: '+12.3%' },
-        { name: { en: 'Operating Expenses', zh: '运营费用' }, balance: '1,876,543', change: '+8.7%' },
+        {
+          name: { en: 'Cost of Goods Sold', zh: '销售成本' },
+          balance: '4,567,890',
+          change: '+12.3%',
+        },
+        {
+          name: { en: 'Operating Expenses', zh: '运营费用' },
+          balance: '1,876,543',
+          change: '+8.7%',
+        },
         { name: { en: 'Salaries & Wages', zh: '工资薪酬' }, balance: '1,234,567', change: '+5.2%' },
-        { name: { en: 'Depreciation', zh: '折旧费用' }, balance: '345,678', change: '+2.1%' }
-      ]
-    }
+        { name: { en: 'Depreciation', zh: '折旧费用' }, balance: '345,678', change: '+2.1%' },
+      ],
+    },
   ];
 
   const financialRatios = [
@@ -87,43 +111,43 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       value: '2.85',
       target: '2.00',
       status: 'good',
-      description: { en: 'Liquidity measure', zh: '流动性指标' }
+      description: { en: 'Liquidity measure', zh: '流动性指标' },
     },
     {
       name: { en: 'Quick Ratio', zh: '速动比率' },
       value: '1.92',
       target: '1.50',
       status: 'good',
-      description: { en: 'Immediate liquidity', zh: '即时流动性' }
+      description: { en: 'Immediate liquidity', zh: '即时流动性' },
     },
     {
       name: { en: 'Debt to Equity', zh: '负债权益比' },
       value: '0.28',
       target: '0.50',
       status: 'good',
-      description: { en: 'Financial leverage', zh: '财务杠杆' }
+      description: { en: 'Financial leverage', zh: '财务杠杆' },
     },
     {
       name: { en: 'Gross Profit Margin', zh: '毛利率' },
       value: '48.5%',
       target: '45.0%',
       status: 'good',
-      description: { en: 'Profitability', zh: '盈利能力' }
+      description: { en: 'Profitability', zh: '盈利能力' },
     },
     {
       name: { en: 'Net Profit Margin', zh: '净利率' },
       value: '12.3%',
       target: '10.0%',
       status: 'good',
-      description: { en: 'Bottom line', zh: '净收益' }
+      description: { en: 'Bottom line', zh: '净收益' },
     },
     {
       name: { en: 'ROE', zh: '净资产收益率' },
       value: '15.8%',
       target: '12.0%',
       status: 'good',
-      description: { en: 'Return on equity', zh: '权益回报' }
-    }
+      description: { en: 'Return on equity', zh: '权益回报' },
+    },
   ];
 
   const stats = [
@@ -133,7 +157,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       change: '+12.5%',
       trend: 'up',
       color: 'from-green-500 to-emerald-500',
-      icon: Wallet
+      icon: Wallet,
     },
     {
       title: { en: 'Total Liabilities', zh: '总负债' },
@@ -141,7 +165,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       change: '-5.2%',
       trend: 'down',
       color: 'from-red-500 to-pink-500',
-      icon: CreditCard
+      icon: CreditCard,
     },
     {
       title: { en: 'Total Equity', zh: '总权益' },
@@ -149,7 +173,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       change: '+15.8%',
       trend: 'up',
       color: 'from-blue-500 to-cyan-500',
-      icon: Building2
+      icon: Building2,
     },
     {
       title: { en: 'Net Income', zh: '净利润' },
@@ -157,8 +181,8 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       change: '+25.3%',
       trend: 'up',
       color: 'from-purple-500 to-pink-500',
-      icon: TrendingUp
-    }
+      icon: TrendingUp,
+    },
   ];
 
   const recentTransactions = [
@@ -168,7 +192,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       account: { en: 'Accounts Receivable', zh: '应收账款' },
       debit: '145,890',
       credit: '0',
-      type: 'income'
+      type: 'income',
     },
     {
       date: '2025-02-02',
@@ -176,7 +200,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       account: { en: 'Accounts Payable', zh: '应付账款' },
       debit: '0',
       credit: '89,450',
-      type: 'expense'
+      type: 'expense',
     },
     {
       date: '2025-02-01',
@@ -184,7 +208,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       account: { en: 'Salaries & Wages', zh: '工资薪酬' },
       debit: '0',
       credit: '102,500',
-      type: 'expense'
+      type: 'expense',
     },
     {
       date: '2025-02-01',
@@ -192,8 +216,8 @@ export function Accounting({ currentLanguage }: AccountingProps) {
       account: { en: 'Sales Revenue', zh: '销售收入' },
       debit: '234,567',
       credit: '0',
-      type: 'income'
-    }
+      type: 'income',
+    },
   ];
 
   return (
@@ -209,12 +233,14 @@ export function Accounting({ currentLanguage }: AccountingProps) {
               {currentLanguage === 'en' ? 'Accounting & Finance' : '财务核算'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Manage accounts, ledgers, and financial statements' : '管理账户、分类账和财务报表'}
+              {currentLanguage === 'en'
+                ? 'Manage accounts, ledgers, and financial statements'
+                : '管理账户、分类账和财务报表'}
             </p>
           </div>
         </div>
         <div className="flex items-center space-x-3">
-          <select 
+          <select
             value={period}
             onChange={(e) => setPeriod(e.target.value)}
             className="px-4 py-2 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-fuchsia-500/50 transition-all duration-300"
@@ -248,9 +274,11 @@ export function Accounting({ currentLanguage }: AccountingProps) {
               <div className="flex items-end justify-between">
                 <div>
                   <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
-                  <span className={`text-sm font-medium flex items-center space-x-1 ${
-                    stat.trend === 'up' ? 'text-green-400' : 'text-red-400'
-                  }`}>
+                  <span
+                    className={`text-sm font-medium flex items-center space-x-1 ${
+                      stat.trend === 'up' ? 'text-green-400' : 'text-red-400'
+                    }`}
+                  >
                     {stat.trend === 'up' ? (
                       <ArrowUpRight className="w-3 h-3" />
                     ) : (
@@ -259,7 +287,9 @@ export function Accounting({ currentLanguage }: AccountingProps) {
                     <span>{stat.change}</span>
                   </span>
                 </div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+                ></div>
               </div>
             </div>
           );
@@ -280,7 +310,9 @@ export function Accounting({ currentLanguage }: AccountingProps) {
                 className="p-5 rounded-xl bg-slate-800/30 border border-slate-700/30 hover:border-slate-600/50 transition-all duration-300"
               >
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${category.color} opacity-20 flex items-center justify-center`}>
+                  <div
+                    className={`w-10 h-10 rounded-lg bg-gradient-to-br ${category.color} opacity-20 flex items-center justify-center`}
+                  >
                     <Icon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-white">
@@ -289,14 +321,19 @@ export function Accounting({ currentLanguage }: AccountingProps) {
                 </div>
                 <div className="space-y-2">
                   {category.accounts.map((account, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-700/30 transition-colors duration-200">
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-700/30 transition-colors duration-200"
+                    >
                       <div>
                         <p className="text-gray-300 text-sm">
                           {account.name[currentLanguage as keyof typeof account.name]}
                         </p>
-                        <p className={`text-xs ${
-                          account.change.startsWith('+') ? 'text-green-400' : 'text-red-400'
-                        }`}>
+                        <p
+                          className={`text-xs ${
+                            account.change.startsWith('+') ? 'text-green-400' : 'text-red-400'
+                          }`}
+                        >
                           {account.change}
                         </p>
                       </div>
@@ -338,7 +375,9 @@ export function Accounting({ currentLanguage }: AccountingProps) {
                   <span className="text-gray-500">
                     {currentLanguage === 'en' ? 'Target' : '目标'}: {ratio.target}
                   </span>
-                  <span className="text-green-400">✓ {currentLanguage === 'en' ? 'Good' : '良好'}</span>
+                  <span className="text-green-400">
+                    ✓ {currentLanguage === 'en' ? 'Good' : '良好'}
+                  </span>
                 </div>
               </div>
             ))}
@@ -375,10 +414,7 @@ export function Accounting({ currentLanguage }: AccountingProps) {
               </thead>
               <tbody className="divide-y divide-slate-700/30">
                 {recentTransactions.map((transaction, index) => (
-                  <tr 
-                    key={index}
-                    className="hover:bg-slate-800/30 transition-colors duration-200"
-                  >
+                  <tr key={index} className="hover:bg-slate-800/30 transition-colors duration-200">
                     <td className="px-6 py-4">
                       <div className="flex items-center space-x-2 text-gray-400">
                         <Calendar className="w-4 h-4" />
@@ -387,7 +423,11 @@ export function Accounting({ currentLanguage }: AccountingProps) {
                     </td>
                     <td className="px-6 py-4">
                       <span className="text-white text-sm">
-                        {transaction.description[currentLanguage as keyof typeof transaction.description]}
+                        {
+                          transaction.description[
+                            currentLanguage as keyof typeof transaction.description
+                          ]
+                        }
                       </span>
                     </td>
                     <td className="px-6 py-4">

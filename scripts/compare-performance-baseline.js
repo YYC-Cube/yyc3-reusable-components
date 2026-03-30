@@ -20,7 +20,7 @@ try {
 
   const comparisons = [];
 
-  results.forEach(result => {
+  results.forEach((result) => {
     const key = `${result.componentName}-${result.metric}`;
     const baselineValue = baseline[key];
 
@@ -57,15 +57,15 @@ try {
   const summary = {
     timestamp: new Date().toISOString(),
     totalComparisons: comparisons.length,
-    withinBaseline: comparisons.filter(c => c.isWithinBaseline).length,
-    outsideBaseline: comparisons.filter(c => !c.isWithinBaseline).length,
-    improvements: comparisons.filter(c => c.percentageDifference < -10).length,
-    regressions: comparisons.filter(c => c.percentageDifference > 10).length,
+    withinBaseline: comparisons.filter((c) => c.isWithinBaseline).length,
+    outsideBaseline: comparisons.filter((c) => !c.isWithinBaseline).length,
+    improvements: comparisons.filter((c) => c.percentageDifference < -10).length,
+    regressions: comparisons.filter((c) => c.percentageDifference > 10).length,
     comparisons,
     byComponent: {},
   };
 
-  comparisons.forEach(comparison => {
+  comparisons.forEach((comparison) => {
     if (!summary.byComponent[comparison.componentName]) {
       summary.byComponent[comparison.componentName] = {
         total: 0,
@@ -103,11 +103,11 @@ try {
   console.log(`Regressions (>10% worse): ${summary.regressions}`);
 
   console.log('\n=== Comparison by Component ===');
-  Object.keys(summary.byComponent).forEach(componentName => {
+  Object.keys(summary.byComponent).forEach((componentName) => {
     const component = summary.byComponent[componentName];
     console.log(
       `${componentName}: ${component.withinBaseline}/${component.total} within baseline ` +
-      `(${((component.withinBaseline / component.total) * 100).toFixed(1)}%)`
+        `(${((component.withinBaseline / component.total) * 100).toFixed(1)}%)`
     );
     if (component.regressions > 0) {
       console.log(`  ⚠️ ${component.regressions} regression(s) detected`);
@@ -120,12 +120,12 @@ try {
   if (summary.regressions > 0) {
     console.log('\n⚠️ Regressions detected:');
     comparisons
-      .filter(c => !c.isWithinBaseline && c.percentageDifference > 10)
-      .forEach(regression => {
+      .filter((c) => !c.isWithinBaseline && c.percentageDifference > 10)
+      .forEach((regression) => {
         console.log(
           `  - ${regression.componentName}.${regression.metric}: ` +
-          `${regression.currentValue}ms vs ${regression.baselineValue}ms ` +
-          `(+${regression.percentageDifference.toFixed(1)}%)`
+            `${regression.currentValue}ms vs ${regression.baselineValue}ms ` +
+            `(+${regression.percentageDifference.toFixed(1)}%)`
         );
       });
   }
@@ -133,12 +133,12 @@ try {
   if (summary.improvements > 0) {
     console.log('\n✅ Improvements detected:');
     comparisons
-      .filter(c => c.percentageDifference < -10)
-      .forEach(improvement => {
+      .filter((c) => c.percentageDifference < -10)
+      .forEach((improvement) => {
         console.log(
           `  - ${improvement.componentName}.${improvement.metric}: ` +
-          `${improvement.currentValue}ms vs ${improvement.baselineValue}ms ` +
-          `(${improvement.percentageDifference.toFixed(1)}%)`
+            `${improvement.currentValue}ms vs ${improvement.baselineValue}ms ` +
+            `(${improvement.percentageDifference.toFixed(1)}%)`
         );
       });
   }

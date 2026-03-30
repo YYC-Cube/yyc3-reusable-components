@@ -11,7 +11,7 @@ type Story = StoryObj;
 
 function PersistedStateDemo() {
   const [value, setValue] = usePersistedState('demo-key', 'default value');
-  
+
   return (
     <div className="p-4 space-y-4">
       <div className="text-lg font-semibold">Current Value: {value}</div>
@@ -22,10 +22,7 @@ function PersistedStateDemo() {
         className="border rounded px-3 py-2 w-full"
         placeholder="Type something..."
       />
-      <button
-        onClick={() => setValue('')}
-        className="bg-red-500 text-white px-4 py-2 rounded"
-      >
+      <button onClick={() => setValue('')} className="bg-red-500 text-white px-4 py-2 rounded">
         Clear
       </button>
       <button
@@ -44,7 +41,7 @@ export const Default: Story = {
 
 function ObjectStateDemo() {
   const [user, setUser] = usePersistedState('user-key', { name: '', age: 0 });
-  
+
   return (
     <div className="p-4 space-y-4">
       <div className="text-lg font-semibold">User Object State</div>
@@ -74,16 +71,16 @@ export const WithObject: Story = {
 
 function ArrayStateDemo() {
   const [items, setItems] = usePersistedState('items-key', [] as string[]);
-  
+
   const addItem = () => {
     const newItem = `Item ${items.length + 1}`;
     setItems([...items, newItem]);
   };
-  
+
   const removeItem = (index: number) => {
     setItems(items.filter((_, i) => i !== index));
   };
-  
+
   return (
     <div className="p-4 space-y-4">
       <div className="text-lg font-semibold">Array State</div>

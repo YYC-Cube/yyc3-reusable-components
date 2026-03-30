@@ -87,11 +87,7 @@ function LoginForm() {
         onChange={setPassword}
         required
       />
-      <Checkbox
-        checked={remember}
-        onChange={setRemember}
-        label="记住我"
-      />
+      <Checkbox checked={remember} onChange={setRemember} label="记住我" />
       <Button type="submit" variant="primary">
         登录
       </Button>
@@ -200,7 +196,7 @@ function CustomerManagement() {
   };
 
   const handleDeleteCustomer = (customerId: string) => {
-    setCustomers(customers.filter(c => c.id !== customerId));
+    setCustomers(customers.filter((c) => c.id !== customerId));
   };
 
   return (
@@ -315,8 +311,12 @@ function NotificationDemo() {
   return (
     <div>
       <Button onClick={showSuccess}>成功通知</Button>
-      <Button onClick={showError} variant="danger">错误通知</Button>
-      <Button onClick={showWarning} variant="outline">警告通知</Button>
+      <Button onClick={showError} variant="danger">
+        错误通知
+      </Button>
+      <Button onClick={showWarning} variant="outline">
+        警告通知
+      </Button>
     </div>
   );
 }
@@ -347,7 +347,13 @@ function ResponsiveComponent() {
 ```tsx
 import { cn } from '@yyc3/utils';
 
-function MyComponent({ isActive, isDisabled }: { isActive: boolean; isDisabled: boolean }) {
+function MyComponent({
+  isActive,
+  isDisabled,
+}: {
+  isActive: boolean;
+  isDisabled: boolean;
+}) {
   const className = cn(
     'base-class',
     isActive && 'active-class',
@@ -389,13 +395,7 @@ function SearchComponent() {
     handleSearch(value);
   };
 
-  return (
-    <Input
-      placeholder="搜索..."
-      value={query}
-      onChange={handleChange}
-    />
-  );
+  return <Input placeholder="搜索..." value={query} onChange={handleChange} />;
 }
 ```
 
@@ -451,7 +451,7 @@ function CRMApp() {
               { key: 'email', title: '邮箱' },
               { key: 'createdAt', title: '创建时间' },
             ]}
-            data={customers.map(c => ({
+            data={customers.map((c) => ({
               ...c,
               createdAt: formatDate(c.createdAt),
             }))}
@@ -539,8 +539,7 @@ function DashboardApp() {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」
 
 </div>

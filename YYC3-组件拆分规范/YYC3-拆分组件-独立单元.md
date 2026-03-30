@@ -1,10 +1,9 @@
 # 组件设计核心概念：独立单元可自治 vs 可复用
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -17,6 +16,7 @@
 **定义**：组件能够独立运行和管理，不依赖外部状态或上下文，自包含完整的功能。
 
 **核心特征**：
+
 - ✅ **自包含性**：组件内部包含所有需要的逻辑和状态
 - ✅ **独立性**：不依赖外部全局状态或上下文
 - ✅ **可测试性**：可以独立进行单元测试
@@ -32,6 +32,7 @@
 **定义**：组件可以在多个场景、多个页面、多个模块中使用，避免重复代码。
 
 **核心特征**：
+
 - ✅ **通用性**：适用于多种使用场景
 - ✅ **灵活性**：支持不同的配置和变体
 - ✅ **适配性**：能够适应不同的上下文环境
@@ -66,12 +67,12 @@
 
 ### 关系矩阵
 
-| 组件类型 | 独立单元可自治 | 可复用 | 说明 |
-|----------|----------------|--------|------|
-| **通用基础组件** | ✅ 是 | ✅ 是 | Button、Input、Icon |
-| **业务特定组件** | ✅ 是 | ❌ 否 | 某个特定页面的复杂业务逻辑 |
-| **依赖型组件** | ❌ 否 | ❌ 否 | 依赖全局状态的组件 |
-| **工具函数** | ✅ 是 | ✅ 是 | 纯函数、工具类 |
+| 组件类型         | 独立单元可自治 | 可复用 | 说明                       |
+| ---------------- | -------------- | ------ | -------------------------- |
+| **通用基础组件** | ✅ 是          | ✅ 是  | Button、Input、Icon        |
+| **业务特定组件** | ✅ 是          | ❌ 否  | 某个特定页面的复杂业务逻辑 |
+| **依赖型组件**   | ❌ 否          | ❌ 否  | 依赖全局状态的组件         |
+| **工具函数**     | ✅ 是          | ✅ 是  | 纯函数、工具类             |
 
 ---
 
@@ -108,6 +109,7 @@ const Button = ({ label, onClick, variant = 'primary' }) => {
 ```
 
 **分析**：
+
 - ✅ **独立单元可自治**：不依赖外部状态，逻辑自包含
 - ✅ **可复用**：可以在多个页面、多个场景中使用
 
@@ -153,6 +155,7 @@ const RegisterPage = () => {
 ```
 
 **分析**：
+
 - ✅ **独立单元可自治**：不依赖外部状态，逻辑自包含
 - ❌ **不可复用**：业务逻辑特定，只在注册页面使用一次
 
@@ -182,6 +185,7 @@ const UserProfile = () => {
 ```
 
 **分析**：
+
 - ❌ **不独立**：依赖全局状态和上下文
 - ❌ **不可复用**：无法在其他地方使用，因为依赖过多
 
@@ -240,6 +244,7 @@ const UserListPage = () => {
 ```
 
 **分析**：
+
 - ✅ **独立单元可自治**：通过 props 接收依赖，不依赖外部状态
 - ✅ **可复用**：可以在多个页面、多个场景中使用
 
@@ -250,11 +255,13 @@ const UserListPage = () => {
 ### 原则1：优先保证独立性
 
 **为什么？**
+
 - 独立性是可复用的前提
 - 独立的组件更容易测试和维护
 - 独立的组件可以避免副作用
 
 **如何做？**
+
 ```typescript
 // ❌ 错误：依赖外部状态
 const Counter = () => {
@@ -285,11 +292,13 @@ const Counter = ({ count, onIncrement }) => {
 ### 原则2：根据需求决定是否复用
 
 **为什么？**
+
 - 不是所有组件都需要复用
 - 过度追求复用会增加复杂度
 - 业务特定组件可以保持简单
 
 **如何做？**
+
 ```typescript
 // ✅ 通用组件：设计为可复用
 const Button = ({ label, onClick, variant }) => {
@@ -317,11 +326,13 @@ const RegistrationForm = () => {
 ### 原则3：通过 Props 控制行为
 
 **为什么？**
+
 - Props 是组件与外部通信的标准方式
 - 通过 Props 可以让组件适应不同场景
 - Props 使组件更加灵活和可配置
 
 **如何做？**
+
 ```typescript
 // ✅ 通过 Props 控制组件行为
 const Modal = ({
@@ -361,11 +372,13 @@ const Modal = ({
 ### 原则4：保持组件职责单一
 
 **为什么？**
+
 - 单一职责的组件更容易独立
 - 单一职责的组件更容易复用
 - 单一职责的组件更容易维护
 
 **如何做？**
+
 ```typescript
 // ❌ 错误：职责过多
 const UserCard = ({ user }) => {
@@ -450,22 +463,22 @@ const UserCard = ({ user }) => {
 
 ### 按复用性分类
 
-| 分类 | 独立性 | 复用性 | 示例 | 设计策略 |
-|------|--------|--------|------|----------|
-| **原子组件** | ✅ 高 | ✅ 高 | Button, Input, Icon | 优先保证独立性和可复用性 |
-| **分子组件** | ✅ 高 | ✅ 中 | SearchBox, FormField | 保证独立性，适度复用 |
-| **有机体组件** | ✅ 中 | ✅ 低 | Header, Modal | 保证独立性，根据需求复用 |
-| **业务组件** | ✅ 中 | ❌ 无 | UserRegistrationForm | 保证独立性，不强求复用 |
-| **页面组件** | ❌ 低 | ❌ 无 | HomePage, LoginPage | 不需要独立性和复用性 |
+| 分类           | 独立性 | 复用性 | 示例                 | 设计策略                 |
+| -------------- | ------ | ------ | -------------------- | ------------------------ |
+| **原子组件**   | ✅ 高  | ✅ 高  | Button, Input, Icon  | 优先保证独立性和可复用性 |
+| **分子组件**   | ✅ 高  | ✅ 中  | SearchBox, FormField | 保证独立性，适度复用     |
+| **有机体组件** | ✅ 中  | ✅ 低  | Header, Modal        | 保证独立性，根据需求复用 |
+| **业务组件**   | ✅ 中  | ❌ 无  | UserRegistrationForm | 保证独立性，不强求复用   |
+| **页面组件**   | ❌ 低  | ❌ 无  | HomePage, LoginPage  | 不需要独立性和复用性     |
 
 ### 按依赖性分类
 
-| 分类 | 依赖方式 | 独立性 | 复用性 | 建议 |
-|------|----------|--------|--------|------|
-| **纯组件** | 无依赖 | ✅ 高 | ✅ 高 | 优先设计为纯组件 |
-| **Props 依赖** | 通过 Props | ✅ 高 | ✅ 高 | 标准的组件设计方式 |
-| **Context 依赖** | 通过 Context | ⚠️ 中 | ⚠️ 中 | 谨慎使用，考虑 Props 替代 |
-| **全局状态依赖** | 全局 Store | ❌ 低 | ❌ 低 | 避免使用，改用 Props |
+| 分类             | 依赖方式     | 独立性 | 复用性 | 建议                      |
+| ---------------- | ------------ | ------ | ------ | ------------------------- |
+| **纯组件**       | 无依赖       | ✅ 高  | ✅ 高  | 优先设计为纯组件          |
+| **Props 依赖**   | 通过 Props   | ✅ 高  | ✅ 高  | 标准的组件设计方式        |
+| **Context 依赖** | 通过 Context | ⚠️ 中  | ⚠️ 中  | 谨慎使用，考虑 Props 替代 |
+| **全局状态依赖** | 全局 Store   | ❌ 低  | ❌ 低  | 避免使用，改用 Props      |
 
 ---
 
@@ -490,15 +503,16 @@ const checkComponentIndependence = (component) => {
     independentlyTestable: component.canBeTestedAlone,
 
     // 检查5：是否通过 Props 接收依赖
-    propsBasedDependencies: component.usesPropsForDependencies
+    propsBasedDependencies: component.usesPropsForDependencies,
   };
 
-  const score = Object.values(checks).filter(Boolean).length / Object.keys(checks).length;
+  const score =
+    Object.values(checks).filter(Boolean).length / Object.keys(checks).length;
 
   return {
     checks,
     score,
-    isIndependent: score >= 0.8
+    isIndependent: score >= 0.8,
   };
 };
 ```
@@ -522,15 +536,16 @@ const checkComponentReusability = (component) => {
     followsDesignSystem: component.isStandardized,
 
     // 检查5：是否被多次使用
-    usedMultipleTimes: component.usageCount >= 2
+    usedMultipleTimes: component.usageCount >= 2,
   };
 
-  const score = Object.values(checks).filter(Boolean).length / Object.keys(checks).length;
+  const score =
+    Object.values(checks).filter(Boolean).length / Object.keys(checks).length;
 
   return {
     checks,
     score,
-    isReusable: score >= 0.6
+    isReusable: score >= 0.6,
   };
 };
 ```
@@ -604,9 +619,8 @@ const checkComponentReusability = (component) => {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

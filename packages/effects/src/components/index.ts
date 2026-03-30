@@ -18,7 +18,16 @@ export { default as MicroInteractions } from './MicroInteractions';
 export { default as ParallaxScroll } from './ParallaxScroll';
 
 // 赛博朋克特效组件
-export { ParticleCanvas, type ParticleCanvasProps, type ParticleCanvasConfig } from './ParticleCanvas';
+export {
+  ParticleCanvas,
+  type ParticleCanvasProps,
+  type ParticleCanvasConfig,
+} from './ParticleCanvas';
 export { GlitchText, type GlitchTextProps } from './GlitchText';
 export { NeonCard, type NeonCardProps, type NeonCardThemeMode } from './NeonCard';
-export { CyberpunkWidget, type CyberpunkWidgetProps, type WidgetTab, type WidgetTabConfig } from './CyberpunkWidget';
+export {
+  CyberpunkWidget,
+  type CyberpunkWidgetProps,
+  type WidgetTab,
+  type WidgetTabConfig,
+} from './CyberpunkWidget';

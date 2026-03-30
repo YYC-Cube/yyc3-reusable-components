@@ -4,7 +4,8 @@
 
 ## 📦 简介
 
-`@yyc3/smart` 提供了20个智能AI组件，专注于AI辅助决策、智能推荐、自动化流程等高级功能。
+`@yyc3/smart`
+提供了20个智能AI组件，专注于AI辅助决策、智能推荐、自动化流程等高级功能。
 
 ## 🎯 特性
 
@@ -47,30 +48,36 @@ function App() {
 ## 📚 组件列表
 
 ### AI分析
+
 - AIAnalytics - AI数据分析
 - PredictiveModels - 预测模型
 - AnomalyDetection - 异常检测
 
 ### 智能助手
+
 - SmartAssistant - 智能助手
 - AIChat - AI聊天
 - VoiceAssistant - 语音助手
 
 ### 自动化
+
 - AutoWorkflow - 自动化工作流
 - SmartScheduler - 智能调度
 - AutoOptimizer - 自动优化器
 
 ### 推荐系统
+
 - SmartRecommendations - 智能推荐
 - PersonalizedContent - 个性化内容
 
 ### 决策支持
+
 - DecisionSupport - 决策支持
 - RiskAssessment - 风险评估
 - ScenarioAnalysis - 场景分析
 
 ### 其他
+
 - SmartDashboard - 智能仪表盘
 - IntelligentSearch - 智能搜索
 - AutoTagging - 自动标签

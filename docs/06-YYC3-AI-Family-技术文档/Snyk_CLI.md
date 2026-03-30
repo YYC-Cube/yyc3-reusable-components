@@ -1,17 +1,15 @@
 # Snyk CLI 终端命令使用操作技巧全文档
 
-> ***YanYuCloudCube***
-> 言启象限 | 语枢未来
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> 万象归元于云枢 | 深栈智启新纪元
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** 言启象限 | 语枢未来 **_Words Initiate Quadrants, Language
+> Serves as Core for Future_** 万象归元于云枢 | 深栈智启新纪元 **_All things
+> converge in cloud pivot; Deep stacks ignite a new era of intelligence_**
 
 ---
+
 > **Snyk CLI 终端命令使用操作技巧全文档** | **Created**: 2026-01-29
 
 **适用场景**：本地开发、容器镜像扫描、云配置安全检测、CI/CD 集成
-**适配环境**：macOS/Linux/Windows
-**文档版本**：v1.0（基于 Snyk CLI v1.1301.2）
+**适配环境**：macOS/Linux/Windows **文档版本**：v1.0（基于 Snyk CLI v1.1301.2）
 
 ## 一、基础准备：安装与账号授权
 
@@ -78,15 +76,16 @@ snyk auth
 
 ### 1. 全场景扫描命令
 
-扫描是 Snyk CLI 的核心功能，支持代码、依赖、容器、云配置等场景，**需进入目标项目目录执行**。
+扫描是 Snyk
+CLI 的核心功能，支持代码、依赖、容器、云配置等场景，**需进入目标项目目录执行**。
 
-| 扫描类型 | 命令 | 功能说明 |
-|----------|------|----------|
-| 全量项目扫描 | `snyk test` | 扫描当前项目的代码缺陷 + 开源依赖漏洞 |
-| 仅依赖扫描 | `snyk test --dependencies` | 只检测 npm/maven/pypi 等开源依赖的漏洞 |
-| 仅代码扫描 | `snyk test --code` | 仅检测代码中的安全缺陷（如 SQL 注入、XSS） |
-| Docker 镜像扫描 | `snyk container test <镜像名:标签>` | 扫描本地/远程 Docker 镜像的底层漏洞 |
-| 云配置扫描 | `snyk iac test <配置文件路径>` | 扫描 Terraform/K8s YAML 等云配置的安全风险 |
+| 扫描类型        | 命令                                | 功能说明                                   |
+| --------------- | ----------------------------------- | ------------------------------------------ |
+| 全量项目扫描    | `snyk test`                         | 扫描当前项目的代码缺陷 + 开源依赖漏洞      |
+| 仅依赖扫描      | `snyk test --dependencies`          | 只检测 npm/maven/pypi 等开源依赖的漏洞     |
+| 仅代码扫描      | `snyk test --code`                  | 仅检测代码中的安全缺陷（如 SQL 注入、XSS） |
+| Docker 镜像扫描 | `snyk container test <镜像名:标签>` | 扫描本地/远程 Docker 镜像的底层漏洞        |
+| 云配置扫描      | `snyk iac test <配置文件路径>`      | 扫描 Terraform/K8s YAML 等云配置的安全风险 |
 
 ## 二、实操示例
 
@@ -106,10 +105,10 @@ snyk iac test ./terraform/main.tf
 
 自动修复开源依赖漏洞，避免手动升级引发兼容性问题。
 
-| 修复动作 | 命令 | 功能说明 |
-|----------|------|----------|
-| 自动修复 | `snyk fix` | 直接修改项目依赖文件（package.json/yarn.lock 等），升级到安全版本 |
-| 预览修复方案 | `snyk fix --dry-run` | 输出修复建议但不修改文件，适合评估风险 |
+| 修复动作     | 命令                 | 功能说明                                                          |
+| ------------ | -------------------- | ----------------------------------------------------------------- |
+| 自动修复     | `snyk fix`           | 直接修改项目依赖文件（package.json/yarn.lock 等），升级到安全版本 |
+| 预览修复方案 | `snyk fix --dry-run` | 输出修复建议但不修改文件，适合评估风险                            |
 
 ## 三、实操示例：修复依赖漏洞
 
@@ -230,12 +229,12 @@ snyk iac test ./k8s/deployment.yaml --severity-threshold=critical
 
 ## 五、常见问题与终端调试
 
-| 问题现象 | 解决命令 | 说明 |
-|----------|----------|------|
-| 授权失败/失效 | `snyk auth --logout && snyk auth` | 先登出旧账号，再重新授权 |
-| 扫描超时 | `snyk test --timeout=30000` | 延长超时时间（单位：毫秒） |
-| 查看 CLI 版本 | `snyk --version` | 确认安装版本是否为最新 |
-| 查看命令帮助 | `snyk help <命令>` | 查看指定命令的详细用法 |
+| 问题现象      | 解决命令                          | 说明                       |
+| ------------- | --------------------------------- | -------------------------- |
+| 授权失败/失效 | `snyk auth --logout && snyk auth` | 先登出旧账号，再重新授权   |
+| 扫描超时      | `snyk test --timeout=30000`       | 延长超时时间（单位：毫秒） |
+| 查看 CLI 版本 | `snyk --version`                  | 确认安装版本是否为最新     |
+| 查看命令帮助  | `snyk help <命令>`                | 查看指定命令的详细用法     |
 
 ### 示例
 
@@ -249,17 +248,16 @@ snyk test --timeout=30000
 
 ## 六、附录：命令速查表
 
-| 功能分类 | 常用命令 |
-|----------|----------|
-| 基础操作 | `snyk auth` / `snyk --version` / `snyk help` |
-| 扫描 | `snyk test` / `snyk container test` / `snyk iac test` |
-| 修复 | `snyk fix` / `snyk fix --dry-run` |
-| 监控 | `snyk monitor` |
+| 功能分类 | 常用命令                                                                        |
+| -------- | ------------------------------------------------------------------------------- |
+| 基础操作 | `snyk auth` / `snyk --version` / `snyk help`                                    |
+| 扫描     | `snyk test` / `snyk container test` / `snyk iac test`                           |
+| 修复     | `snyk fix` / `snyk fix --dry-run`                                               |
+| 监控     | `snyk monitor`                                                                  |
 | 输出定制 | `snyk test --json` / `snyk test --html` / `snyk test --severity-threshold=high` |
 
 ---
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for the Future***」
-> 「***All things converge in the cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for the Future_**」「**_All things converge
+> in the cloud pivot; Deep stacks ignite a new era of intelligence_**」

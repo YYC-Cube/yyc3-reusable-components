@@ -40,14 +40,14 @@
  * └─────────────────────────────────────────────────────────────────────┘
  */
 
-import { databaseRepository } from "@yyc3/repositories";
+import { databaseRepository } from '@yyc3/repositories';
 import type {
   DatabaseConfig,
   LocalAPIProxyConfig,
   DatabaseResult,
   ConnectionHealth,
   ConnectionStatus,
-} from "./types/database";
+} from './types/database';
 
 /* ──────────────────── 数据同步策略 / Data Sync Strategy ──────────────────── */
 
@@ -57,9 +57,9 @@ import type {
  */
 export interface SyncStrategy {
   /** 同步方向 / Sync direction */
-  direction: "local-to-pg" | "pg-to-local" | "bidirectional";
+  direction: 'local-to-pg' | 'pg-to-local' | 'bidirectional';
   /** 冲突解决策略 / Conflict resolution strategy */
-  conflictResolution: "local-wins" | "remote-wins" | "latest-wins";
+  conflictResolution: 'local-wins' | 'remote-wins' | 'latest-wins';
   /** 同步间隔 (毫秒) / Sync interval (ms) */
   interval: number;
   /** 是否启用自动同步 / Auto sync enabled */
@@ -73,11 +73,11 @@ export interface SyncStrategy {
  * Default sync strategy
  */
 const DEFAULT_SYNC_STRATEGY: SyncStrategy = {
-  direction: "bidirectional",
-  conflictResolution: "latest-wins",
+  direction: 'bidirectional',
+  conflictResolution: 'latest-wins',
   interval: 60000,
   autoSync: false,
-  tables: ["chats", "configs", "agents"],
+  tables: ['chats', 'configs', 'agents'],
 };
 
 /* ──────────────────── 数据库统计 / Database Statistics ──────────────────── */
@@ -140,13 +140,15 @@ class DatabaseServiceImpl {
    * @param {(event: { previousStatus: ConnectionStatus; currentStatus: ConnectionStatus; isMockMode: boolean; reconnectAttempts: number; timestamp: string }) => void} listener - 监听器
    * @returns {() => void} 取消注册函数 / Unregister function
    */
-  onStatusChange(listener: (event: {
-    previousStatus: ConnectionStatus;
-    currentStatus: ConnectionStatus;
-    isMockMode: boolean;
-    reconnectAttempts: number;
-    timestamp: string;
-  }) => void): () => void {
+  onStatusChange(
+    listener: (event: {
+      previousStatus: ConnectionStatus;
+      currentStatus: ConnectionStatus;
+      isMockMode: boolean;
+      reconnectAttempts: number;
+      timestamp: string;
+    }) => void
+  ): () => void {
     return databaseRepository.onStatusChange(listener);
   }
 
@@ -183,9 +185,7 @@ class DatabaseServiceImpl {
    * @param {DatabaseConfig} [config] - 可选的配置覆盖 / Optional config override
    * @returns {Promise<DatabaseResult<ConnectionHealth>>} 连接结果 / Connection result
    */
-  async initializeConnection(
-    config?: DatabaseConfig
-  ): Promise<DatabaseResult<ConnectionHealth>> {
+  async initializeConnection(config?: DatabaseConfig): Promise<DatabaseResult<ConnectionHealth>> {
     // 保存配置 / Save config
     if (config) {
       databaseRepository.saveDatabaseConfig(config);
@@ -325,9 +325,7 @@ class DatabaseServiceImpl {
    *
    * @returns {Promise<DatabaseResult<{ syncedTables: string[]; totalRecords: number }>>} 同步结果
    */
-  async syncNow(): Promise<
-    DatabaseResult<{ syncedTables: string[]; totalRecords: number }>
-  > {
+  async syncNow(): Promise<DatabaseResult<{ syncedTables: string[]; totalRecords: number }>> {
     const startTime = Date.now();
     const syncedTables: string[] = [];
     let totalRecords = 0;
@@ -344,7 +342,7 @@ class DatabaseServiceImpl {
           // 通过 API 代理批量插入/更新 / Batch upsert via API proxy
           const result = await databaseRepository.executeQuery({
             table,
-            action: "UPSERT",
+            action: 'UPSERT',
             data: records[0] ?? null,
           });
 
@@ -368,7 +366,7 @@ class DatabaseServiceImpl {
         success: false,
         data: null,
         affectedRows: 0,
-        error: err instanceof Error ? err.message : "SYNC_FAILED / 同步失败",
+        error: err instanceof Error ? err.message : 'SYNC_FAILED / 同步失败',
         executionTime: Date.now() - startTime,
         timestamp: new Date().toISOString(),
       };
@@ -406,11 +404,11 @@ class DatabaseServiceImpl {
    */
   private getStorageKeyForTable(table: string): string {
     const mapping: Record<string, string> = {
-      chats: "yyc3_chat_history",
-      configs: "yyc3_ai_config",
-      agents: "yyc3_agents",
-      channels: "yyc3_channels_meta",
-      ui_settings: "yyc3_ui_settings",
+      chats: 'yyc3_chat_history',
+      configs: 'yyc3_ai_config',
+      agents: 'yyc3_agents',
+      channels: 'yyc3_channels_meta',
+      ui_settings: 'yyc3_ui_settings',
     };
     return mapping[table] ?? `yyc3_${table}`;
   }
@@ -432,11 +430,11 @@ class DatabaseServiceImpl {
     return {
       tableCount: 6,
       totalRecords: 0,
-      databaseSize: health ? this.formatBytes(health.databaseSize) : "N/A",
+      databaseSize: health && health.databaseSize ? this.formatBytes(health.databaseSize) : 'N/A',
       activeConnections: health?.activeConnections ?? 0,
       maxConnections: health?.maxConnections ?? 0,
-      version: health?.serverVersion ?? "PostgreSQL 15.x",
-      uptime: health ? this.formatUptime(health.uptime) : "N/A",
+      version: health?.serverVersion ?? 'PostgreSQL 15.x',
+      uptime: health && health.uptime ? this.formatUptime(health.uptime) : 'N/A',
     };
   }
 
@@ -450,9 +448,9 @@ class DatabaseServiceImpl {
    * @returns {string} 格式化字符串 / Formatted string
    */
   private formatBytes(bytes: number): string {
-    if (bytes === 0) return "0 B";
+    if (bytes === 0) return '0 B';
     const k = 1024;
-    const sizes = ["B", "KB", "MB", "GB"];
+    const sizes = ['B', 'KB', 'MB', 'GB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
   }
@@ -482,7 +480,7 @@ class DatabaseServiceImpl {
    * @returns {string} 连接字符串 / Connection string
    */
   formatConnectionString(config: DatabaseConfig): string {
-    const maskedPassword = config.password ? "****" : "";
+    const maskedPassword = config.password ? '****' : '';
     return `postgresql://${config.username}:${maskedPassword}@${config.host}:${config.port}/${config.database}?schema=${config.schema}&sslmode=${config.sslMode}`;
   }
 }

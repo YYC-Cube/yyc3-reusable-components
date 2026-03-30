@@ -36,18 +36,10 @@ export const MultipleTabs: Story = {
         <TabsTrigger value="reports">Reports</TabsTrigger>
         <TabsTrigger value="notifications">Notifications</TabsTrigger>
       </TabsList>
-      <TabsContent value="overview">
-        Overview content goes here
-      </TabsContent>
-      <TabsContent value="analytics">
-        Analytics content goes here
-      </TabsContent>
-      <TabsContent value="reports">
-        Reports content goes here
-      </TabsContent>
-      <TabsContent value="notifications">
-        Notifications content goes here
-      </TabsContent>
+      <TabsContent value="overview">Overview content goes here</TabsContent>
+      <TabsContent value="analytics">Analytics content goes here</TabsContent>
+      <TabsContent value="reports">Reports content goes here</TabsContent>
+      <TabsContent value="notifications">Notifications content goes here</TabsContent>
     </Tabs>
   ),
 };
@@ -103,7 +95,7 @@ export const WithForms: Story = {
 export const Controlled: Story = {
   render: () => {
     const [value, setValue] = useState('tab1');
-    
+
     return (
       <Tabs value={value} onValueChange={setValue}>
         <TabsList>

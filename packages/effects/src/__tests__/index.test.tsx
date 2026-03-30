@@ -24,10 +24,8 @@ describe('@yyc3/effects Package Exports', () => {
   it('should export component types', () => {
     // Types are exported but can't be tested as runtime values
     // We can only verify they exist in the type system
-    expect(Effects.ParticleCanvasProps).toBeDefined();
-    expect(Effects.GlitchTextProps).toBeDefined();
-    expect(Effects.NeonCardProps).toBeDefined();
-    expect(Effects.CyberpunkWidgetProps).toBeDefined();
+    // Type-only exports are erased at runtime, so we skip runtime checks
+    // TypeScript compiler will ensure type safety
   });
 
   it('should export all 7 effect components', () => {

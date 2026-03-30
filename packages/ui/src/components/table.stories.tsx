@@ -165,10 +165,10 @@ export const WithBadges: Story = {
                   order.status === 'Completed'
                     ? 'default'
                     : order.status === 'Processing'
-                    ? 'secondary'
-                    : order.status === 'Pending'
-                    ? 'outline'
-                    : 'destructive'
+                      ? 'secondary'
+                      : order.status === 'Pending'
+                        ? 'outline'
+                        : 'destructive'
                 }
               >
                 {order.status}

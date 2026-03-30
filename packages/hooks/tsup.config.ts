@@ -7,11 +7,7 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  external: [
-    'react',
-    'react-dom',
-    'sonner',
-  ],
+  external: ['react', 'react-dom', 'sonner'],
   // 跳过不存在的模块
   ignoreNodeModules: true,
 });

@@ -7,7 +7,10 @@ const STORAGE_PREFIX = 'yyc3_';
  * Reads initial value from localStorage, falls back to defaultValue.
  * Writes to localStorage on every state change.
  */
-export function usePersistedState<T>(key: string, defaultValue: T): [T, (value: T | ((prev: T) => T)) => void] {
+export function usePersistedState<T>(
+  key: string,
+  defaultValue: T
+): [T, (value: T | ((prev: T) => T)) => void] {
   const storageKey = STORAGE_PREFIX + key;
 
   const [state, setState] = useState<T>(() => {
@@ -42,13 +45,16 @@ const MAX_RECENT = 8;
 export function useRecentViews(): [string[], (view: string) => void] {
   const [recent, setRecent] = usePersistedState<string[]>('recent_views', []);
 
-  const addRecent = useCallback((view: string) => {
-    if (view === 'dashboard') return; // Don't track dashboard
-    setRecent(prev => {
-      const filtered = prev.filter(v => v !== view);
-      return [view, ...filtered].slice(0, MAX_RECENT);
-    });
-  }, [setRecent]);
+  const addRecent = useCallback(
+    (view: string) => {
+      if (view === 'dashboard') return; // Don't track dashboard
+      setRecent((prev) => {
+        const filtered = prev.filter((v) => v !== view);
+        return [view, ...filtered].slice(0, MAX_RECENT);
+      });
+    },
+    [setRecent]
+  );
 
   return [recent, addRecent];
 }

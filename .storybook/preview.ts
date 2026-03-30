@@ -51,7 +51,7 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const { theme } = context.globals;
-      
+
       return React.createElement(
         'div',
         { className: theme === 'dark' ? 'dark' : 'light' },

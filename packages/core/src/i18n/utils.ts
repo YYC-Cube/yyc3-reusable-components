@@ -15,7 +15,7 @@ export class I18nManager {
 
   async loadTranslations(): Promise<void> {
     const locales = ['zh', 'en', 'ar'] as Locale[];
-    
+
     for (const locale of locales) {
       try {
         const translation = await import(`./locales/${locale}.json`);
@@ -43,9 +43,9 @@ export class I18nManager {
   t(key: string, params?: Record<string, any>): string {
     const translation = this.translations.get(this.currentLocale);
     const fallbackTranslation = this.translations.get(this.fallbackLocale);
-    
+
     let value = this.getNestedValue(translation, key);
-    
+
     if (!value) {
       value = this.getNestedValue(fallbackTranslation, key);
     }
@@ -60,11 +60,11 @@ export class I18nManager {
   private getNestedValue(obj: Translation | undefined, key: string): string | undefined {
     const keys = key.split('.');
     let value: any = obj;
-    
+
     for (const k of keys) {
       value = value?.[k];
     }
-    
+
     return value;
   }
 

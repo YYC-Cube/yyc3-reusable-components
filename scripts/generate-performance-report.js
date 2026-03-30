@@ -17,15 +17,15 @@ try {
   const summary = {
     timestamp: new Date().toISOString(),
     totalTests: results.length,
-    passedTests: results.filter(r => r.passed).length,
-    failedTests: results.filter(r => !r.passed).length,
-    passRate: ((results.filter(r => r.passed).length / results.length) * 100).toFixed(2),
+    passedTests: results.filter((r) => r.passed).length,
+    failedTests: results.filter((r) => !r.passed).length,
+    passRate: ((results.filter((r) => r.passed).length / results.length) * 100).toFixed(2),
     metrics: results,
     byComponent: {},
     byMetric: {},
   };
 
-  results.forEach(result => {
+  results.forEach((result) => {
     if (!summary.byComponent[result.componentName]) {
       summary.byComponent[result.componentName] = {
         total: 0,
@@ -69,7 +69,7 @@ try {
     }
   });
 
-  Object.keys(summary.byMetric).forEach(metric => {
+  Object.keys(summary.byMetric).forEach((metric) => {
     summary.byMetric[metric].averageValue =
       summary.byMetric[metric].averageValue / summary.byMetric[metric].total;
   });
@@ -87,33 +87,35 @@ try {
   console.log(`Pass rate: ${summary.passRate}%`);
 
   console.log('\n=== Results by Component ===');
-  Object.keys(summary.byComponent).forEach(componentName => {
+  Object.keys(summary.byComponent).forEach((componentName) => {
     const component = summary.byComponent[componentName];
     console.log(
       `${componentName}: ${component.passed}/${component.total} passed ` +
-      `(${((component.passed / component.total) * 100).toFixed(1)}%)`
+        `(${((component.passed / component.total) * 100).toFixed(1)}%)`
     );
   });
 
   console.log('\n=== Results by Metric ===');
-  Object.keys(summary.byMetric).forEach(metric => {
+  Object.keys(summary.byMetric).forEach((metric) => {
     const metricData = summary.byMetric[metric];
     console.log(
       `${metric}: ${metricData.passed}/${metricData.total} passed ` +
-      `(avg: ${metricData.averageValue.toFixed(2)}ms, ` +
-      `min: ${metricData.minValue.toFixed(2)}ms, ` +
-      `max: ${metricData.maxValue.toFixed(2)}ms)`
+        `(avg: ${metricData.averageValue.toFixed(2)}ms, ` +
+        `min: ${metricData.minValue.toFixed(2)}ms, ` +
+        `max: ${metricData.maxValue.toFixed(2)}ms)`
     );
   });
 
   if (summary.failedTests > 0) {
     console.log('\n⚠️ Failed tests:');
-    results.filter(r => !r.passed).forEach(failed => {
-      console.log(
-        `  - ${failed.componentName}.${failed.metric}: ` +
-        `${failed.value}ms > ${failed.threshold}ms`
-      );
-    });
+    results
+      .filter((r) => !r.passed)
+      .forEach((failed) => {
+        console.log(
+          `  - ${failed.componentName}.${failed.metric}: ` +
+            `${failed.value}ms > ${failed.threshold}ms`
+        );
+      });
   }
 
   console.log(`\nReport saved to: ${outputPath}`);

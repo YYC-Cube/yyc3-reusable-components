@@ -46,17 +46,20 @@ function App() {
 ## 📚 组件列表
 
 ### 聊天界面
+
 - ChatInterface - 聊天界面容器
 - MessageList - 消息列表
 - MessageItem - 消息项
 - AIInput - AI输入框
 
 ### AI集成
+
 - AIProvider - AI服务提供者
 - ModelSelector - 模型选择器
 - ProviderConfig - 服务配置
 
 ### 辅助组件
+
 - MarkdownRenderer - Markdown渲染器
 - CodeHighlight - 代码高亮
 - TypingIndicator - 输入指示器

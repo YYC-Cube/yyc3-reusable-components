@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  HandCoins, 
-  Search, 
-  Plus, 
-  Filter, 
+import {
+  HandIcon,
+  Search,
+  Plus,
+  Filter,
   Download,
   TrendingUp,
   DollarSign,
@@ -14,9 +14,9 @@ import {
   Building2,
   User,
   TrendingDown,
-  Percent
+  Percent,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface LoansProps {
   currentLanguage: string;
@@ -38,7 +38,7 @@ export function Loans({ currentLanguage }: LoansProps) {
       nextPayment: '2025-03-01',
       monthlyPayment: '22,500',
       status: 'active',
-      completion: 35
+      completion: 35,
     },
     {
       id: 'LOAN-2025-002',
@@ -52,7 +52,7 @@ export function Loans({ currentLanguage }: LoansProps) {
       nextPayment: '2025-03-15',
       monthlyPayment: '28,500',
       status: 'active',
-      completion: 20
+      completion: 20,
     },
     {
       id: 'LOAN-2024-015',
@@ -66,7 +66,7 @@ export function Loans({ currentLanguage }: LoansProps) {
       nextPayment: '2025-03-01',
       monthlyPayment: '15,000',
       status: 'active',
-      completion: 75
+      completion: 75,
     },
     {
       id: 'LOAN-2024-008',
@@ -80,7 +80,7 @@ export function Loans({ currentLanguage }: LoansProps) {
       nextPayment: '-',
       monthlyPayment: '0',
       status: 'completed',
-      completion: 100
+      completion: 100,
     },
     {
       id: 'LOAN-2024-012',
@@ -94,8 +94,8 @@ export function Loans({ currentLanguage }: LoansProps) {
       nextPayment: '2025-03-05',
       monthlyPayment: '26,000',
       status: 'overdue',
-      completion: 6
-    }
+      completion: 6,
+    },
   ];
 
   const stats = [
@@ -104,29 +104,29 @@ export function Loans({ currentLanguage }: LoansProps) {
       value: '3.5M ﷼',
       change: '+18.5%',
       color: 'from-rose-500 to-pink-500',
-      icon: HandCoins
+      icon: HandIcon,
     },
     {
       title: { en: 'Outstanding Balance', zh: '未偿余额' },
       value: '1.69M ﷼',
       change: '-12.3%',
       color: 'from-yellow-500 to-orange-500',
-      icon: TrendingDown
+      icon: TrendingDown,
     },
     {
       title: { en: 'Active Loans', zh: '活跃贷款' },
       value: '28',
       change: '+5.2%',
       color: 'from-blue-500 to-cyan-500',
-      icon: CheckCircle2
+      icon: CheckCircle2,
     },
     {
       title: { en: 'Avg Interest Rate', zh: '平均利率' },
       value: '5.36%',
       change: '-0.3%',
       color: 'from-purple-500 to-pink-500',
-      icon: Percent
-    }
+      icon: Percent,
+    },
   ];
 
   const getStatusConfig = (status: string) => {
@@ -134,23 +134,23 @@ export function Loans({ currentLanguage }: LoansProps) {
       active: {
         color: 'bg-green-500/20 text-green-400 border-green-500/30',
         icon: CheckCircle2,
-        label: { en: 'Active', zh: '正常' }
+        label: { en: 'Active', zh: '正常' },
       },
       overdue: {
         color: 'bg-red-500/20 text-red-400 border-red-500/30',
         icon: AlertCircle,
-        label: { en: 'Overdue', zh: '逾期' }
+        label: { en: 'Overdue', zh: '逾期' },
       },
       completed: {
         color: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
         icon: CheckCircle2,
-        label: { en: 'Completed', zh: '已完成' }
+        label: { en: 'Completed', zh: '已完成' },
       },
       pending: {
         color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
         icon: Clock,
-        label: { en: 'Pending', zh: '待批' }
-      }
+        label: { en: 'Pending', zh: '待批' },
+      },
     };
     return configs[status as keyof typeof configs];
   };
@@ -161,14 +161,16 @@ export function Loans({ currentLanguage }: LoansProps) {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500/20 to-pink-500/10 flex items-center justify-center border border-rose-500/30">
-            <HandCoins className="w-7 h-7 text-rose-400" />
+            <HandIcon className="w-7 h-7 text-rose-400" />
           </div>
           <div>
             <h1 className="text-3xl font-bold text-white">
               {currentLanguage === 'en' ? 'Loan Management' : '贷款管理'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Track and manage all business loans and financing' : '跟踪和管理所有商业贷款和融资'}
+              {currentLanguage === 'en'
+                ? 'Track and manage all business loans and financing'
+                : '跟踪和管理所有商业贷款和融资'}
             </p>
           </div>
         </div>
@@ -198,11 +200,17 @@ export function Loans({ currentLanguage }: LoansProps) {
               <div className="flex items-end justify-between">
                 <div>
                   <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
-                  <span className={`text-sm font-medium ${
-                    stat.change.startsWith('+') ? 'text-green-400' : 'text-rose-400'
-                  }`}>{stat.change}</span>
+                  <span
+                    className={`text-sm font-medium ${
+                      stat.change.startsWith('+') ? 'text-green-400' : 'text-rose-400'
+                    }`}
+                  >
+                    {stat.change}
+                  </span>
                 </div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+                ></div>
               </div>
             </div>
           );
@@ -260,7 +268,7 @@ export function Loans({ currentLanguage }: LoansProps) {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/20 to-pink-500/10 flex items-center justify-center border border-rose-500/30">
-                    <HandCoins className="w-6 h-6 text-rose-400" />
+                    <HandIcon className="w-6 h-6 text-rose-400" />
                   </div>
                   <div>
                     <p className="text-white font-semibold">{loan.id}</p>
@@ -269,9 +277,13 @@ export function Loans({ currentLanguage }: LoansProps) {
                     </p>
                   </div>
                 </div>
-                <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}>
+                <span
+                  className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}
+                >
                   <StatusIcon className="w-3 h-3" />
-                  <span>{statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}</span>
+                  <span>
+                    {statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}
+                  </span>
                 </span>
               </div>
 
@@ -323,13 +335,13 @@ export function Loans({ currentLanguage }: LoansProps) {
                   <span className="text-rose-400 text-sm font-medium">{repaymentProgress}%</span>
                 </div>
                 <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       repaymentProgress === 100
                         ? 'bg-gradient-to-r from-purple-500 to-pink-500'
                         : repaymentProgress >= 50
-                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500'
-                        : 'bg-gradient-to-r from-rose-500 to-pink-500'
+                          ? 'bg-gradient-to-r from-blue-500 to-cyan-500'
+                          : 'bg-gradient-to-r from-rose-500 to-pink-500'
                     }`}
                     style={{ width: `${repaymentProgress}%` }}
                   ></div>
@@ -340,7 +352,9 @@ export function Loans({ currentLanguage }: LoansProps) {
               <div className="flex items-center justify-between text-sm text-gray-400 pt-4 border-t border-slate-700/30">
                 <div className="flex items-center space-x-2">
                   <Calendar className="w-4 h-4" />
-                  <span>{loan.startDate} → {loan.endDate}</span>
+                  <span>
+                    {loan.startDate} → {loan.endDate}
+                  </span>
                 </div>
                 {loan.nextPayment !== '-' && (
                   <div className="text-amber-400 font-medium">

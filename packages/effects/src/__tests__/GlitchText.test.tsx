@@ -93,16 +93,12 @@ describe('GlitchText', () => {
     });
 
     it('应支持自定义间隔', () => {
-      const { container } = render(
-        <GlitchText interval={[1000, 2000]}>测试</GlitchText>
-      );
+      const { container } = render(<GlitchText interval={[1000, 2000]}>测试</GlitchText>);
       expect(container.firstChild).toBeInTheDocument();
     });
 
     it('应支持禁用间隔触发', () => {
-      const { container } = render(
-        <GlitchText interval={null}>测试</GlitchText>
-      );
+      const { container } = render(<GlitchText interval={null}>测试</GlitchText>);
       expect(container.firstChild).toBeInTheDocument();
     });
   });

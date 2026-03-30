@@ -1,0 +1,3344 @@
+{
+  "numTotalTestSuites": 206,
+  "numPassedTestSuites": 181,
+  "numFailedTestSuites": 25,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 345,
+  "numPassedTests": 335,
+  "numFailedTests": 10,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1774898725407,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "i18n", "i18nConfig"],
+          "fullName": " i18n i18nConfig should define i18n configuration",
+          "status": "passed",
+          "title": "should define i18n configuration",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "i18n", "i18nManager"],
+          "fullName": " i18n i18nManager should define i18n manager instance",
+          "status": "passed",
+          "title": "should define i18n manager instance",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "i18n", "i18nManager"],
+          "fullName": " i18n i18nManager should have setLocale method",
+          "status": "passed",
+          "title": "should have setLocale method",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "i18n", "i18nManager"],
+          "fullName": " i18n i18nManager should have getLocale method",
+          "status": "passed",
+          "title": "should have getLocale method",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "i18n", "t"],
+          "fullName": " i18n t should define translation function",
+          "status": "passed",
+          "title": "should define translation function",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "i18n", "t"],
+          "fullName": " i18n t should return translation key if no match found",
+          "status": "passed",
+          "title": "should return translation key if no match found",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728493,
+      "endTime": 1774898728494,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/core/src/__tests__/i18n.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "monitoring", "exports"],
+          "fullName": " monitoring exports should export monitoring utilities",
+          "status": "passed",
+          "title": "should export monitoring utilities",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728555,
+      "endTime": 1774898728556,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/core/src/__tests__/monitoring.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/ai Package (Simplified)"],
+          "fullName": " @yyc3/ai Package (Simplified) should export empty object (temporary)",
+          "status": "passed",
+          "title": "should export empty object (temporary)",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728517,
+      "endTime": 1774898728518,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ai/src/__tests__/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/business Package (Simplified)"],
+          "fullName": " @yyc3/business Package (Simplified) package exists and can be imported",
+          "status": "passed",
+          "title": "package exists and can be imported",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728450,
+      "endTime": 1774898728450,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/__tests__/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "渲染测试"],
+          "fullName": " CyberpunkWidget 渲染测试 应正确渲染组件",
+          "status": "passed",
+          "title": "应正确渲染组件",
+          "duration": 96,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "渲染测试"],
+          "fullName": " CyberpunkWidget 渲染测试 应显示标题",
+          "status": "passed",
+          "title": "应显示标题",
+          "duration": 23,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "渲染测试"],
+          "fullName": " CyberpunkWidget 渲染测试 应显示副标题",
+          "status": "passed",
+          "title": "应显示副标题",
+          "duration": 38,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "渲染测试"],
+          "fullName": " CyberpunkWidget 渲染测试 应渲染所有标签页",
+          "status": "passed",
+          "title": "应渲染所有标签页",
+          "duration": 22,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "渲染测试"],
+          "fullName": " CyberpunkWidget 渲染测试 应显示默认标签页内容",
+          "status": "passed",
+          "title": "应显示默认标签页内容",
+          "duration": 7,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "最小化测试"],
+          "fullName": " CyberpunkWidget 最小化测试 应支持最小化",
+          "status": "passed",
+          "title": "应支持最小化",
+          "duration": 23,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "最小化测试"],
+          "fullName": " CyberpunkWidget 最小化测试 应支持从最小化恢复",
+          "status": "passed",
+          "title": "应支持从最小化恢复",
+          "duration": 16,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "最大化测试"],
+          "fullName": " CyberpunkWidget 最大化测试 应支持最大化切换",
+          "status": "passed",
+          "title": "应支持最大化切换",
+          "duration": 20,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "标签页切换测试"],
+          "fullName": " CyberpunkWidget 标签页切换测试 应切换到不同标签页",
+          "status": "passed",
+          "title": "应切换到不同标签页",
+          "duration": 10,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "拖拽测试"],
+          "fullName": " CyberpunkWidget 拖拽测试 应支持拖拽开始",
+          "status": "passed",
+          "title": "应支持拖拽开始",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "缩放测试"],
+          "fullName": " CyberpunkWidget 缩放测试 应支持缩放",
+          "status": "passed",
+          "title": "应支持缩放",
+          "duration": 27,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "快速操作测试"],
+          "fullName": " CyberpunkWidget 快速操作测试 应显示快速操作栏",
+          "status": "passed",
+          "title": "应显示快速操作栏",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "快速操作测试"],
+          "fullName": " CyberpunkWidget 快速操作测试 应隐藏快速操作栏",
+          "status": "passed",
+          "title": "应隐藏快速操作栏",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "快速操作测试"],
+          "fullName": " CyberpunkWidget 快速操作测试 应响应快速操作点击",
+          "status": "passed",
+          "title": "应响应快速操作点击",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "主题测试"],
+          "fullName": " CyberpunkWidget 主题测试 应支持自定义主题颜色",
+          "status": "passed",
+          "title": "应支持自定义主题颜色",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "回调测试"],
+          "fullName": " CyberpunkWidget 回调测试 应触发切换模式回调",
+          "status": "passed",
+          "title": "应触发切换模式回调",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "无障碍测试"],
+          "fullName": " CyberpunkWidget 无障碍测试 应有正确的角色",
+          "status": "passed",
+          "title": "应有正确的角色",
+          "duration": 7,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "CyberpunkWidget", "无障碍测试"],
+          "fullName": " CyberpunkWidget 无障碍测试 应有aria-label",
+          "status": "passed",
+          "title": "应有aria-label",
+          "duration": 3,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726215,
+      "endTime": 1774898726532,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/effects/src/__tests__/CyberpunkWidget.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "GlitchText", "渲染测试"],
+          "fullName": " GlitchText 渲染测试 应正确渲染文本内容",
+          "status": "passed",
+          "title": "应正确渲染文本内容",
+          "duration": 18,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "渲染测试"],
+          "fullName": " GlitchText 渲染测试 应使用默认颜色",
+          "status": "passed",
+          "title": "应使用默认颜色",
+          "duration": 37,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "渲染测试"],
+          "fullName": " GlitchText 渲染测试 应接受自定义颜色",
+          "status": "passed",
+          "title": "应接受自定义颜色",
+          "duration": 15,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "渲染测试"],
+          "fullName": " GlitchText 渲染测试 应支持不同的HTML标签",
+          "status": "passed",
+          "title": "应支持不同的HTML标签",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "渲染测试"],
+          "fullName": " GlitchText 渲染测试 应应用自定义类名",
+          "status": "passed",
+          "title": "应应用自定义类名",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "内联/块级测试"],
+          "fullName": " GlitchText 内联/块级测试 默认应为行内元素",
+          "status": "passed",
+          "title": "默认应为行内元素",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "内联/块级测试"],
+          "fullName": " GlitchText 内联/块级测试 应支持块级显示",
+          "status": "passed",
+          "title": "应支持块级显示",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "故障效果测试"],
+          "fullName": " GlitchText 故障效果测试 应在启用时触发故障动画",
+          "status": "passed",
+          "title": "应在启用时触发故障动画",
+          "duration": 24,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "故障效果测试"],
+          "fullName": " GlitchText 故障效果测试 应在禁用时不触发故障动画",
+          "status": "passed",
+          "title": "应在禁用时不触发故障动画",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "故障效果测试"],
+          "fullName": " GlitchText 故障效果测试 应支持自定义强度",
+          "status": "passed",
+          "title": "应支持自定义强度",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "故障效果测试"],
+          "fullName": " GlitchText 故障效果测试 应支持自定义间隔",
+          "status": "passed",
+          "title": "应支持自定义间隔",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "故障效果测试"],
+          "fullName": " GlitchText 故障效果测试 应支持禁用间隔触发",
+          "status": "passed",
+          "title": "应支持禁用间隔触发",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "交互测试"],
+          "fullName": " GlitchText 交互测试 应在hover时触发故障效果",
+          "status": "passed",
+          "title": "应在hover时触发故障效果",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "交互测试"],
+          "fullName": " GlitchText 交互测试 应在禁用时不响应hover",
+          "status": "passed",
+          "title": "应在禁用时不响应hover",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "无障碍测试"],
+          "fullName": " GlitchText 无障碍测试 应有aria-label属性",
+          "status": "passed",
+          "title": "应有aria-label属性",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "GlitchText", "动画偏好测试"],
+          "fullName": " GlitchText 动画偏好测试 应尊重prefers-reduced-motion设置",
+          "status": "passed",
+          "title": "应尊重prefers-reduced-motion设置",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726215,
+      "endTime": 1774898726325,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/effects/src/__tests__/GlitchText.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "NeonCard", "渲染测试"],
+          "fullName": " NeonCard 渲染测试 应正确渲染子元素",
+          "status": "passed",
+          "title": "应正确渲染子元素",
+          "duration": 61,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "渲染测试"],
+          "fullName": " NeonCard 渲染测试 应使用默认颜色",
+          "status": "passed",
+          "title": "应使用默认颜色",
+          "duration": 5,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "渲染测试"],
+          "fullName": " NeonCard 渲染测试 应接受自定义颜色",
+          "status": "passed",
+          "title": "应接受自定义颜色",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "渲染测试"],
+          "fullName": " NeonCard 渲染测试 应应用自定义类名",
+          "status": "passed",
+          "title": "应应用自定义类名",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "主题测试"],
+          "fullName": " NeonCard 主题测试 应支持赛博朋克主题",
+          "status": "passed",
+          "title": "应支持赛博朋克主题",
+          "duration": 23,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "主题测试"],
+          "fullName": " NeonCard 主题测试 应支持液态玻璃主题",
+          "status": "passed",
+          "title": "应支持液态玻璃主题",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "交互测试"],
+          "fullName": " NeonCard 交互测试 应支持hover效果",
+          "status": "passed",
+          "title": "应支持hover效果",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "交互测试"],
+          "fullName": " NeonCard 交互测试 应禁用hover效果",
+          "status": "passed",
+          "title": "应禁用hover效果",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "交互测试"],
+          "fullName": " NeonCard 交互测试 应支持点击事件",
+          "status": "passed",
+          "title": "应支持点击事件",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "交互测试"],
+          "fullName": " NeonCard 交互测试 应支持键盘点击",
+          "status": "passed",
+          "title": "应支持键盘点击",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "滚动显示测试"],
+          "fullName": " NeonCard 滚动显示测试 应在noReveal时立即显示",
+          "status": "passed",
+          "title": "应在noReveal时立即显示",
+          "duration": 37,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "滚动显示测试"],
+          "fullName": " NeonCard 滚动显示测试 应在启用滚动显示时使用IntersectionObserver",
+          "status": "passed",
+          "title": "应在启用滚动显示时使用IntersectionObserver",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "无障碍测试"],
+          "fullName": " NeonCard 无障碍测试 应有data-neon-card属性",
+          "status": "passed",
+          "title": "应有data-neon-card属性",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "无障碍测试"],
+          "fullName": " NeonCard 无障碍测试 应支持aria-label",
+          "status": "passed",
+          "title": "应支持aria-label",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "无障碍测试"],
+          "fullName": " NeonCard 无障碍测试 可点击卡片应有button角色",
+          "status": "passed",
+          "title": "可点击卡片应有button角色",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "无障碍测试"],
+          "fullName": " NeonCard 无障碍测试 可点击卡片应有tabIndex",
+          "status": "passed",
+          "title": "可点击卡片应有tabIndex",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "NeonCard", "样式测试"],
+          "fullName": " NeonCard 样式测试 应应用自定义样式",
+          "status": "passed",
+          "title": "应应用自定义样式",
+          "duration": 22,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726213,
+      "endTime": 1774898726391,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/effects/src/__tests__/NeonCard.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "渲染测试"],
+          "fullName": " ParticleCanvas 渲染测试 应在启用时渲染canvas元素",
+          "status": "passed",
+          "title": "应在启用时渲染canvas元素",
+          "duration": 14,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "渲染测试"],
+          "fullName": " ParticleCanvas 渲染测试 应在禁用时不渲染任何内容",
+          "status": "passed",
+          "title": "应在禁用时不渲染任何内容",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "渲染测试"],
+          "fullName": " ParticleCanvas 渲染测试 应应用自定义类名",
+          "status": "passed",
+          "title": "应应用自定义类名",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "渲染测试"],
+          "fullName": " ParticleCanvas 渲染测试 应应用自定义样式",
+          "status": "passed",
+          "title": "应应用自定义样式",
+          "duration": 55,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "配置测试"],
+          "fullName": " ParticleCanvas 配置测试 应使用默认配置",
+          "status": "passed",
+          "title": "应使用默认配置",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "配置测试"],
+          "fullName": " ParticleCanvas 配置测试 应接受自定义粒子颜色",
+          "status": "passed",
+          "title": "应接受自定义粒子颜色",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "配置测试"],
+          "fullName": " ParticleCanvas 配置测试 应接受自定义霓虹强度",
+          "status": "passed",
+          "title": "应接受自定义霓虹强度",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "配置测试"],
+          "fullName": " ParticleCanvas 配置测试 应接受自定义透明度",
+          "status": "passed",
+          "title": "应接受自定义透明度",
+          "duration": 43,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "props测试"],
+          "fullName": " ParticleCanvas props测试 应禁用鼠标交互",
+          "status": "passed",
+          "title": "应禁用鼠标交互",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "props测试"],
+          "fullName": " ParticleCanvas props测试 应禁用自动调整大小",
+          "status": "passed",
+          "title": "应禁用自动调整大小",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "ParticleCanvas", "无障碍测试"],
+          "fullName": " ParticleCanvas 无障碍测试 应有aria-hidden属性",
+          "status": "passed",
+          "title": "应有aria-hidden属性",
+          "duration": 3,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726213,
+      "endTime": 1774898726339,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/effects/src/__tests__/ParticleCanvas.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/effects Package Exports"],
+          "fullName": " @yyc3/effects Package Exports should export 3D effects components",
+          "status": "passed",
+          "title": "should export 3D effects components",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/effects Package Exports"],
+          "fullName": " @yyc3/effects Package Exports should export cyberpunk effects components",
+          "status": "passed",
+          "title": "should export cyberpunk effects components",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/effects Package Exports"],
+          "fullName": " @yyc3/effects Package Exports should export component types",
+          "status": "passed",
+          "title": "should export component types",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/effects Package Exports"],
+          "fullName": " @yyc3/effects Package Exports should export all 7 effect components",
+          "status": "passed",
+          "title": "should export all 7 effect components",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728337,
+      "endTime": 1774898728337,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/effects/src/__tests__/index.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "NeonCard + GlitchText 组合"],
+          "fullName": " 特效组件集成测试 NeonCard + GlitchText 组合 应在NeonCard内正确渲染GlitchText",
+          "status": "passed",
+          "title": "应在NeonCard内正确渲染GlitchText",
+          "duration": 52,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "NeonCard + GlitchText 组合"],
+          "fullName": " 特效组件集成测试 NeonCard + GlitchText 组合 应支持组合交互",
+          "status": "passed",
+          "title": "应支持组合交互",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "NeonCard + GlitchText 组合"],
+          "fullName": " 特效组件集成测试 NeonCard + GlitchText 组合 应支持主题一致性",
+          "status": "passed",
+          "title": "应支持主题一致性",
+          "duration": 23,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "ParticleCanvas + NeonCard 层叠"],
+          "fullName": " 特效组件集成测试 ParticleCanvas + NeonCard 层叠 应支持ParticleCanvas作为NeonCard背景",
+          "status": "passed",
+          "title": "应支持ParticleCanvas作为NeonCard背景",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "多组件协同"],
+          "fullName": " 特效组件集成测试 多组件协同 应支持多个GlitchText同时存在",
+          "status": "passed",
+          "title": "应支持多个GlitchText同时存在",
+          "duration": 5,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "多组件协同"],
+          "fullName": " 特效组件集成测试 多组件协同 应支持多个NeonCard网格布局",
+          "status": "passed",
+          "title": "应支持多个NeonCard网格布局",
+          "duration": 72,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "性能测试"],
+          "fullName": " 特效组件集成测试 性能测试 应支持快速渲染多个组件",
+          "status": "passed",
+          "title": "应支持快速渲染多个组件",
+          "duration": 7,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "主题切换集成"],
+          "fullName": " 特效组件集成测试 主题切换集成 应支持赛博朋克主题组件协同",
+          "status": "passed",
+          "title": "应支持赛博朋克主题组件协同",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "主题切换集成"],
+          "fullName": " 特效组件集成测试 主题切换集成 应支持液态玻璃主题组件协同",
+          "status": "passed",
+          "title": "应支持液态玻璃主题组件协同",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "响应式测试"],
+          "fullName": " 特效组件集成测试 响应式测试 应支持小屏幕布局",
+          "status": "passed",
+          "title": "应支持小屏幕布局",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "特效组件集成测试", "响应式测试"],
+          "fullName": " 特效组件集成测试 响应式测试 应支持大屏幕布局",
+          "status": "passed",
+          "title": "应支持大屏幕布局",
+          "duration": 5,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726218,
+      "endTime": 1774898726402,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/effects/src/__tests__/integration.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/repositories Package Exports"],
+          "fullName": " @yyc3/repositories Package Exports should export databaseRepository",
+          "status": "passed",
+          "title": "should export databaseRepository",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/repositories Package Exports"],
+          "fullName": " @yyc3/repositories Package Exports should export gitHubRepository",
+          "status": "passed",
+          "title": "should export gitHubRepository",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/repositories Package Exports"],
+          "fullName": " @yyc3/repositories Package Exports should have databaseRepository with expected methods",
+          "status": "passed",
+          "title": "should have databaseRepository with expected methods",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/repositories Package Exports"],
+          "fullName": " @yyc3/repositories Package Exports should have gitHubRepository with expected methods",
+          "status": "passed",
+          "title": "should have gitHubRepository with expected methods",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728091,
+      "endTime": 1774898728093,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/repositories/src/__tests__/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should initialize with default config",
+          "status": "passed",
+          "title": "should initialize with default config",
+          "duration": 34,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should provide chat function",
+          "status": "passed",
+          "title": "should provide chat function",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should provide saveConfig function",
+          "status": "passed",
+          "title": "should provide saveConfig function",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should save config correctly",
+          "status": "passed",
+          "title": "should save config correctly",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should load config from localStorage",
+          "status": "failed",
+          "title": "should load config from localStorage",
+          "duration": 5,
+          "failureMessages": ["expected 'llama3' to be 'llama3:8b' // Object.is equality"],
+          "location": { "line": 67, "column": 41 }
+        },
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should handle streaming state",
+          "status": "passed",
+          "title": "should handle streaming state",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useAI"],
+          "fullName": " useAI should handle network errors gracefully",
+          "status": "passed",
+          "title": "should handle network errors gracefully",
+          "duration": 2122,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727358,
+      "endTime": 1774898729524,
+      "status": "failed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/useAI.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "useChannelConfig"],
+          "fullName": " useChannelConfig should initialize with default config",
+          "status": "passed",
+          "title": "should initialize with default config",
+          "duration": 14,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelConfig"],
+          "fullName": " useChannelConfig should load config from localStorage",
+          "status": "failed",
+          "title": "should load config from localStorage",
+          "duration": 3,
+          "failureMessages": ["expected 'ollama' to be 'anthropic' // Object.is equality"],
+          "location": { "line": 36, "column": 44 }
+        },
+        {
+          "ancestorTitles": ["", "useChannelConfig"],
+          "fullName": " useChannelConfig should save config correctly",
+          "status": "failed",
+          "title": "should save config correctly",
+          "duration": 2,
+          "failureMessages": ["\"undefined\" is not valid JSON"],
+          "location": { "line": 58, "column": 25 }
+        },
+        {
+          "ancestorTitles": ["", "useChannelConfig"],
+          "fullName": " useChannelConfig should apply preset correctly",
+          "status": "passed",
+          "title": "should apply preset correctly",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelConfig"],
+          "fullName": " useChannelConfig should have presets available",
+          "status": "passed",
+          "title": "should have presets available",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelConfig"],
+          "fullName": " useChannelConfig should handle different channel IDs",
+          "status": "passed",
+          "title": "should handle different channel IDs",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727375,
+      "endTime": 1774898727396,
+      "status": "failed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/useChannelConfig.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should initialize with default channel",
+          "status": "passed",
+          "title": "should initialize with default channel",
+          "duration": 9,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should create a new channel",
+          "status": "passed",
+          "title": "should create a new channel",
+          "duration": 12,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should delete a channel",
+          "status": "passed",
+          "title": "should delete a channel",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should not delete main channel",
+          "status": "passed",
+          "title": "should not delete main channel",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should update channel name",
+          "status": "passed",
+          "title": "should update channel name",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should set active channel",
+          "status": "passed",
+          "title": "should set active channel",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should switch to main when active channel is deleted",
+          "status": "passed",
+          "title": "should switch to main when active channel is deleted",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should persist channels to localStorage",
+          "status": "failed",
+          "title": "should persist channels to localStorage",
+          "duration": 2,
+          "failureMessages": ["expected undefined not to be undefined"],
+          "location": { "line": 126, "column": 20 }
+        },
+        {
+          "ancestorTitles": ["", "useChannelManager"],
+          "fullName": " useChannelManager should load channels from localStorage",
+          "status": "failed",
+          "title": "should load channels from localStorage",
+          "duration": 1,
+          "failureMessages": ["expected [ { id: 'main', …(3) } ] to have a length of 2 but got 1"],
+          "location": { "line": 140, "column": 37 }
+        }
+      ],
+      "startTime": 1774898727269,
+      "endTime": 1774898727298,
+      "status": "failed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/useChannelManager.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should initialize with empty chats",
+          "status": "pending",
+          "title": "should initialize with empty chats",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should initialize with initial chats",
+          "status": "pending",
+          "title": "should initialize with initial chats",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should add a new chat",
+          "status": "pending",
+          "title": "should add a new chat",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should clear all chats",
+          "status": "pending",
+          "title": "should clear all chats",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should persist chats to localStorage",
+          "status": "pending",
+          "title": "should persist chats to localStorage",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should load chats from localStorage on mount",
+          "status": "pending",
+          "title": "should load chats from localStorage on mount",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should use main storage key for main channel",
+          "status": "pending",
+          "title": "should use main storage key for main channel",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should use custom storage key for other channels",
+          "status": "pending",
+          "title": "should use custom storage key for other channels",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should export data correctly",
+          "status": "pending",
+          "title": "should export data correctly",
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useChatPersistence"],
+          "fullName": " useChatPersistence should import data correctly",
+          "status": "pending",
+          "title": "should import data correctly",
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/useChatPersistence.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should initialize with empty context",
+          "status": "passed",
+          "title": "should initialize with empty context",
+          "duration": 8,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should detect context presence",
+          "status": "passed",
+          "title": "should detect context presence",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should extract context data correctly",
+          "status": "passed",
+          "title": "should extract context data correctly",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should highlight items correctly",
+          "status": "passed",
+          "title": "should highlight items correctly",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should return filter criteria based on module type",
+          "status": "passed",
+          "title": "should return filter criteria based on module type",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should return recommendations from context",
+          "status": "passed",
+          "title": "should return recommendations from context",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should handle different module types",
+          "status": "passed",
+          "title": "should handle different module types",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useNavigationContext"],
+          "fullName": " useNavigationContext should return empty recommendations when no context",
+          "status": "passed",
+          "title": "should return empty recommendations when no context",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727459,
+      "endTime": 1774898727473,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/useNavigationContext.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should initialize with default value",
+          "status": "passed",
+          "title": "should initialize with default value",
+          "duration": 11,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should load value from localStorage",
+          "status": "failed",
+          "title": "should load value from localStorage",
+          "duration": 3,
+          "failureMessages": ["expected 'default' to be 'stored-value' // Object.is equality"],
+          "location": { "line": 27, "column": 31 }
+        },
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should update state and localStorage",
+          "status": "failed",
+          "title": "should update state and localStorage",
+          "duration": 2,
+          "failureMessages": ["expected undefined to be '\"new-value\"' // Object.is equality"],
+          "location": { "line": 38, "column": 51 }
+        },
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should handle complex objects",
+          "status": "failed",
+          "title": "should handle complex objects",
+          "duration": 1,
+          "failureMessages": ["\"undefined\" is not valid JSON"],
+          "location": { "line": 50, "column": 17 }
+        },
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should handle arrays",
+          "status": "failed",
+          "title": "should handle arrays",
+          "duration": 1,
+          "failureMessages": ["\"undefined\" is not valid JSON"],
+          "location": { "line": 64, "column": 17 }
+        },
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should handle functional updates",
+          "status": "passed",
+          "title": "should handle functional updates",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "usePersistedState"],
+          "fullName": " usePersistedState should use storage prefix",
+          "status": "failed",
+          "title": "should use storage prefix",
+          "duration": 1,
+          "failureMessages": ["expected undefined not to be undefined"],
+          "location": { "line": 90, "column": 49 }
+        },
+        {
+          "ancestorTitles": ["", "useRecentViews"],
+          "fullName": " useRecentViews should initialize with empty array",
+          "status": "passed",
+          "title": "should initialize with empty array",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useRecentViews"],
+          "fullName": " useRecentViews should add views to recent list",
+          "status": "passed",
+          "title": "should add views to recent list",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useRecentViews"],
+          "fullName": " useRecentViews should not track dashboard",
+          "status": "passed",
+          "title": "should not track dashboard",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useRecentViews"],
+          "fullName": " useRecentViews should move existing view to front",
+          "status": "passed",
+          "title": "should move existing view to front",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useRecentViews"],
+          "fullName": " useRecentViews should limit to MAX_RECENT views",
+          "status": "passed",
+          "title": "should limit to MAX_RECENT views",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726840,
+      "endTime": 1774898726862,
+      "status": "failed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/usePersistedState.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return responsive state object",
+          "status": "passed",
+          "title": "should return responsive state object",
+          "duration": 7,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return boolean values for breakpoint flags",
+          "status": "passed",
+          "title": "should return boolean values for breakpoint flags",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return numeric width and height",
+          "status": "passed",
+          "title": "should return numeric width and height",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return device type",
+          "status": "passed",
+          "title": "should return device type",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return orientation",
+          "status": "passed",
+          "title": "should return orientation",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return pixel ratio",
+          "status": "passed",
+          "title": "should return pixel ratio",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "useResponsive"],
+          "fullName": " useResponsive should return touch device flag",
+          "status": "passed",
+          "title": "should return touch device flag",
+          "duration": 17,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727680,
+      "endTime": 1774898727707,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/hooks/src/__tests__/useResponsive.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/navigation Package Exports"],
+          "fullName": " @yyc3/navigation Package Exports should export TabNavigation component",
+          "status": "passed",
+          "title": "should export TabNavigation component",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/navigation Package Exports"],
+          "fullName": " @yyc3/navigation Package Exports should export Tab type",
+          "status": "passed",
+          "title": "should export Tab type",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728526,
+      "endTime": 1774898728527,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/navigation/src/__tests__/index.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Service instances"],
+          "fullName": " @yyc3/services Package Exports Service instances should export databaseService",
+          "status": "passed",
+          "title": "should export databaseService",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Service instances"],
+          "fullName": " @yyc3/services Package Exports Service instances should export devOpsService",
+          "status": "passed",
+          "title": "should export devOpsService",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Service instances"],
+          "fullName": " @yyc3/services Package Exports Service instances should export gitHubService",
+          "status": "passed",
+          "title": "should export gitHubService",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Service instance structure"],
+          "fullName": " @yyc3/services Package Exports Service instance structure should have databaseService as object",
+          "status": "passed",
+          "title": "should have databaseService as object",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Service instance structure"],
+          "fullName": " @yyc3/services Package Exports Service instance structure should have devOpsService as object",
+          "status": "passed",
+          "title": "should have devOpsService as object",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Service instance structure"],
+          "fullName": " @yyc3/services Package Exports Service instance structure should have gitHubService as object",
+          "status": "passed",
+          "title": "should have gitHubService as object",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Type exports"],
+          "fullName": " @yyc3/services Package Exports Type exports should export DatabaseConfig type",
+          "status": "passed",
+          "title": "should export DatabaseConfig type",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Type exports"],
+          "fullName": " @yyc3/services Package Exports Type exports should export DevOpsConfig type",
+          "status": "passed",
+          "title": "should export DevOpsConfig type",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/services Package Exports", "Type exports"],
+          "fullName": " @yyc3/services Package Exports Type exports should export GitHubConfig type",
+          "status": "passed",
+          "title": "should export GitHubConfig type",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727881,
+      "endTime": 1774898727882,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/services/src/__tests__/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/smart Package Exports"],
+          "fullName": " @yyc3/smart Package Exports should export all smart components",
+          "status": "passed",
+          "title": "should export all smart components",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/smart Package Exports"],
+          "fullName": " @yyc3/smart Package Exports should export 21 smart components",
+          "status": "passed",
+          "title": "should export 21 smart components",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728601,
+      "endTime": 1774898728602,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/smart/src/__tests__/index.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "ThemeType"],
+          "fullName": " @yyc3/themes Package ThemeType should export theme types",
+          "status": "passed",
+          "title": "should export theme types",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "themes"],
+          "fullName": " @yyc3/themes Package themes should export all themes",
+          "status": "passed",
+          "title": "should export all themes",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "themes"],
+          "fullName": " @yyc3/themes Package themes should have correct theme structure",
+          "status": "passed",
+          "title": "should have correct theme structure",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "themes"],
+          "fullName": " @yyc3/themes Package themes should have cyberpunk theme with correct values",
+          "status": "passed",
+          "title": "should have cyberpunk theme with correct values",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "themes"],
+          "fullName": " @yyc3/themes Package themes should have liquid-glass theme with correct values",
+          "status": "passed",
+          "title": "should have liquid-glass theme with correct values",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "getTheme"],
+          "fullName": " @yyc3/themes Package getTheme should return theme by name",
+          "status": "passed",
+          "title": "should return theme by name",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "getTheme"],
+          "fullName": " @yyc3/themes Package getTheme should return undefined for non-existent theme",
+          "status": "passed",
+          "title": "should return undefined for non-existent theme",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "applyTheme"],
+          "fullName": " @yyc3/themes Package applyTheme should apply theme to document",
+          "status": "passed",
+          "title": "should apply theme to document",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "applyTheme"],
+          "fullName": " @yyc3/themes Package applyTheme should warn for non-existent theme",
+          "status": "passed",
+          "title": "should warn for non-existent theme",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "Type exports"],
+          "fullName": " @yyc3/themes Package Type exports should export ThemeConfig type",
+          "status": "passed",
+          "title": "should export ThemeConfig type",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/themes Package", "Type exports"],
+          "fullName": " @yyc3/themes Package Type exports should export ThemeTypeValue type",
+          "status": "passed",
+          "title": "should export ThemeTypeValue type",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727240,
+      "endTime": 1774898727242,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/themes/src/__tests__/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "@yyc3/ui Package Exports"],
+          "fullName": " @yyc3/ui Package Exports should export cn utility function",
+          "status": "passed",
+          "title": "should export cn utility function",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/ui Package Exports"],
+          "fullName": " @yyc3/ui Package Exports should export UI components",
+          "status": "passed",
+          "title": "should export UI components",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "@yyc3/ui Package Exports"],
+          "fullName": " @yyc3/ui Package Exports should have cn function work correctly",
+          "status": "passed",
+          "title": "should have cn function work correctly",
+          "duration": 2,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898729047,
+      "endTime": 1774898729050,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/__tests__/index.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "animations", "easing"],
+          "fullName": " animations easing should define standard easing functions",
+          "status": "passed",
+          "title": "should define standard easing functions",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "duration"],
+          "fullName": " animations duration should define standard durations",
+          "status": "passed",
+          "title": "should define standard durations",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "pageTransition"],
+          "fullName": " animations pageTransition should define page transition animation",
+          "status": "passed",
+          "title": "should define page transition animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "cardEnter"],
+          "fullName": " animations cardEnter should define card enter animation",
+          "status": "passed",
+          "title": "should define card enter animation",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "staggerList"],
+          "fullName": " animations staggerList should define stagger list animation",
+          "status": "passed",
+          "title": "should define stagger list animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "modalAnimation"],
+          "fullName": " animations modalAnimation should define modal animation variants",
+          "status": "passed",
+          "title": "should define modal animation variants",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "sidebarAnimation"],
+          "fullName": " animations sidebarAnimation should define sidebar slide animation",
+          "status": "passed",
+          "title": "should define sidebar slide animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "notificationSlide"],
+          "fullName": " animations notificationSlide should define notification slide animation",
+          "status": "passed",
+          "title": "should define notification slide animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "floatAnimation"],
+          "fullName": " animations floatAnimation should define float animation",
+          "status": "passed",
+          "title": "should define float animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "pulseAnimation"],
+          "fullName": " animations pulseAnimation should define pulse animation",
+          "status": "passed",
+          "title": "should define pulse animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "shakeAnimation"],
+          "fullName": " animations shakeAnimation should define shake animation",
+          "status": "passed",
+          "title": "should define shake animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "hoverScale"],
+          "fullName": " animations hoverScale should define hover scale effect",
+          "status": "passed",
+          "title": "should define hover scale effect",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "buttonTap"],
+          "fullName": " animations buttonTap should define button tap effect",
+          "status": "passed",
+          "title": "should define button tap effect",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "expandCollapse"],
+          "fullName": " animations expandCollapse should define expand/collapse animation",
+          "status": "passed",
+          "title": "should define expand/collapse animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "tabSwitch"],
+          "fullName": " animations tabSwitch should define tab switch animation",
+          "status": "passed",
+          "title": "should define tab switch animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "dropdownAnimation"],
+          "fullName": " animations dropdownAnimation should define dropdown animation",
+          "status": "passed",
+          "title": "should define dropdown animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "shimmerAnimation"],
+          "fullName": " animations shimmerAnimation should define shimmer animation",
+          "status": "passed",
+          "title": "should define shimmer animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "liquidFlowAnimation"],
+          "fullName": " animations liquidFlowAnimation should define liquid flow animation",
+          "status": "passed",
+          "title": "should define liquid flow animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "badgeEnter"],
+          "fullName": " animations badgeEnter should define badge enter animation",
+          "status": "passed",
+          "title": "should define badge enter animation",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "animations", "tooltipEnter"],
+          "fullName": " animations tooltipEnter should define tooltip enter animation",
+          "status": "passed",
+          "title": "should define tooltip enter animation",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726188,
+      "endTime": 1774898726190,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/animations.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "colors", "oklchColors"],
+          "fullName": " colors oklchColors should define primary color system",
+          "status": "passed",
+          "title": "should define primary color system",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "oklchColors"],
+          "fullName": " colors oklchColors should define secondary color system",
+          "status": "passed",
+          "title": "should define secondary color system",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "oklchColors"],
+          "fullName": " colors oklchColors should define accent color system",
+          "status": "passed",
+          "title": "should define accent color system",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "oklchColors"],
+          "fullName": " colors oklchColors should define background colors",
+          "status": "passed",
+          "title": "should define background colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "oklchColors"],
+          "fullName": " colors oklchColors should define text colors",
+          "status": "passed",
+          "title": "should define text colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "oklchColors"],
+          "fullName": " colors oklchColors should define functional colors",
+          "status": "passed",
+          "title": "should define functional colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "hexColors"],
+          "fullName": " colors hexColors should define primary hex colors",
+          "status": "passed",
+          "title": "should define primary hex colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "hexColors"],
+          "fullName": " colors hexColors should define secondary hex colors",
+          "status": "passed",
+          "title": "should define secondary hex colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "hexColors"],
+          "fullName": " colors hexColors should define accent hex colors",
+          "status": "passed",
+          "title": "should define accent hex colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "hexColors"],
+          "fullName": " colors hexColors should define functional hex colors",
+          "status": "passed",
+          "title": "should define functional hex colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "hexColors"],
+          "fullName": " colors hexColors should define gray scale",
+          "status": "passed",
+          "title": "should define gray scale",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "glassColors"],
+          "fullName": " colors glassColors should define glass card colors",
+          "status": "passed",
+          "title": "should define glass card colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "glassColors"],
+          "fullName": " colors glassColors should define glass border colors",
+          "status": "passed",
+          "title": "should define glass border colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "glassColors"],
+          "fullName": " colors glassColors should define glass shadow colors",
+          "status": "passed",
+          "title": "should define glass shadow colors",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "gradients"],
+          "fullName": " colors gradients should define primary gradients",
+          "status": "passed",
+          "title": "should define primary gradients",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "gradients"],
+          "fullName": " colors gradients should define background gradients",
+          "status": "passed",
+          "title": "should define background gradients",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "gradients"],
+          "fullName": " colors gradients should define card gradients",
+          "status": "passed",
+          "title": "should define card gradients",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "gradients"],
+          "fullName": " colors gradients should define glow effects",
+          "status": "passed",
+          "title": "should define glow effects",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "blurConfig"],
+          "fullName": " colors blurConfig should define blur configurations",
+          "status": "passed",
+          "title": "should define blur configurations",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "blurConfig"],
+          "fullName": " colors blurConfig should return valid CSS blur values",
+          "status": "passed",
+          "title": "should return valid CSS blur values",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "textGradient"],
+          "fullName": " colors textGradient should generate text gradient styles",
+          "status": "passed",
+          "title": "should generate text gradient styles",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "borderGradient"],
+          "fullName": " colors borderGradient should generate border gradient styles",
+          "status": "passed",
+          "title": "should generate border gradient styles",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "hexToHSL"],
+          "fullName": " colors AIColorGenerator hexToHSL should convert hex to HSL",
+          "status": "passed",
+          "title": "should convert hex to HSL",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "hexToHSL"],
+          "fullName": " colors AIColorGenerator hexToHSL should handle black color",
+          "status": "passed",
+          "title": "should handle black color",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "hexToHSL"],
+          "fullName": " colors AIColorGenerator hexToHSL should handle white color",
+          "status": "passed",
+          "title": "should handle white color",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "hslToHex"],
+          "fullName": " colors AIColorGenerator hslToHex should convert HSL to hex",
+          "status": "passed",
+          "title": "should convert HSL to hex",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "hslToHex"],
+          "fullName": " colors AIColorGenerator hslToHex should handle edge values",
+          "status": "passed",
+          "title": "should handle edge values",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "generateColorScheme"],
+          "fullName": " colors AIColorGenerator generateColorScheme should generate complete color scheme from primary color",
+          "status": "passed",
+          "title": "should generate complete color scheme from primary color",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "colors", "AIColorGenerator", "generateColorScheme"],
+          "fullName": " colors AIColorGenerator generateColorScheme should generate harmonious colors",
+          "status": "passed",
+          "title": "should generate harmonious colors",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726188,
+      "endTime": 1774898726191,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/colors.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "utils index"],
+          "fullName": " utils index should export utility functions",
+          "status": "passed",
+          "title": "should export utility functions",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils index"],
+          "fullName": " utils index should export logger",
+          "status": "passed",
+          "title": "should export logger",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils index"],
+          "fullName": " utils index should export color utilities",
+          "status": "passed",
+          "title": "should export color utilities",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils index"],
+          "fullName": " utils index should export animation utilities",
+          "status": "passed",
+          "title": "should export animation utilities",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils index"],
+          "fullName": " utils index should export task tracker",
+          "status": "passed",
+          "title": "should export task tracker",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728338,
+      "endTime": 1774898728339,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "logger", "Logger"],
+          "fullName": " logger Logger should create logger instance",
+          "status": "passed",
+          "title": "should create logger instance",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "Logger"],
+          "fullName": " logger Logger should log info messages",
+          "status": "passed",
+          "title": "should log info messages",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "Logger"],
+          "fullName": " logger Logger should log warning messages",
+          "status": "passed",
+          "title": "should log warning messages",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "Logger"],
+          "fullName": " logger Logger should log error messages",
+          "status": "passed",
+          "title": "should log error messages",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "Logger"],
+          "fullName": " logger Logger should log debug messages",
+          "status": "passed",
+          "title": "should log debug messages",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "Logger"],
+          "fullName": " logger Logger should handle multiple arguments",
+          "status": "passed",
+          "title": "should handle multiple arguments",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "createLogger"],
+          "fullName": " logger createLogger should create logger with context",
+          "status": "passed",
+          "title": "should create logger with context",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "createLogger"],
+          "fullName": " logger createLogger should create different logger instances",
+          "status": "passed",
+          "title": "should create different logger instances",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "logger", "LogLevel"],
+          "fullName": " logger LogLevel should define log levels",
+          "status": "passed",
+          "title": "should define log levels",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727539,
+      "endTime": 1774898727544,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/logger.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "performanceMonitor", "exports"],
+          "fullName": " performanceMonitor exports should export monitoring utilities",
+          "status": "passed",
+          "title": "should export monitoring utilities",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728544,
+      "endTime": 1774898728544,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/performanceMonitor.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "serviceWorkerRegistration", "register"],
+          "fullName": " serviceWorkerRegistration register should export register function",
+          "status": "passed",
+          "title": "should export register function",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "serviceWorkerRegistration", "unregister"],
+          "fullName": " serviceWorkerRegistration unregister should export unregister function",
+          "status": "passed",
+          "title": "should export unregister function",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "serviceWorkerRegistration", "checkForUpdates"],
+          "fullName": " serviceWorkerRegistration checkForUpdates should export checkForUpdates function",
+          "status": "passed",
+          "title": "should export checkForUpdates function",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "serviceWorkerRegistration", "skipWaiting"],
+          "fullName": " serviceWorkerRegistration skipWaiting should export skipWaiting function",
+          "status": "passed",
+          "title": "should export skipWaiting function",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728324,
+      "endTime": 1774898728324,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/serviceWorkerRegistration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should create task tracker instance",
+          "status": "passed",
+          "title": "should create task tracker instance",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should add task",
+          "status": "passed",
+          "title": "should add task",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should update task",
+          "status": "passed",
+          "title": "should update task",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should complete task",
+          "status": "passed",
+          "title": "should complete task",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should get tasks by status",
+          "status": "passed",
+          "title": "should get tasks by status",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should get tasks by priority",
+          "status": "passed",
+          "title": "should get tasks by priority",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "TaskTracker"],
+          "fullName": " taskTracker TaskTracker should export tasks",
+          "status": "passed",
+          "title": "should export tasks",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "taskTracker", "taskTracker singleton"],
+          "fullName": " taskTracker taskTracker singleton should export task tracker singleton",
+          "status": "passed",
+          "title": "should export task tracker singleton",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726957,
+      "endTime": 1774898726968,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/taskTracker.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "utils", "cn"],
+          "fullName": " utils cn should merge class names",
+          "status": "passed",
+          "title": "should merge class names",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "cn"],
+          "fullName": " utils cn should handle conditional classes",
+          "status": "passed",
+          "title": "should handle conditional classes",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "cn"],
+          "fullName": " utils cn should handle undefined and null",
+          "status": "passed",
+          "title": "should handle undefined and null",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "formatDate"],
+          "fullName": " utils formatDate should format date",
+          "status": "passed",
+          "title": "should format date",
+          "duration": 11,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "formatDate"],
+          "fullName": " utils formatDate should format date with locale",
+          "status": "passed",
+          "title": "should format date with locale",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "formatCurrency"],
+          "fullName": " utils formatCurrency should format currency",
+          "status": "passed",
+          "title": "should format currency",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "formatCurrency"],
+          "fullName": " utils formatCurrency should handle string input",
+          "status": "passed",
+          "title": "should handle string input",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "debounce"],
+          "fullName": " utils debounce should debounce function",
+          "status": "passed",
+          "title": "should debounce function",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "generateId"],
+          "fullName": " utils generateId should generate unique ID",
+          "status": "passed",
+          "title": "should generate unique ID",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "isEmpty"],
+          "fullName": " utils isEmpty should check if value is empty",
+          "status": "passed",
+          "title": "should check if value is empty",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "safeJsonParse"],
+          "fullName": " utils safeJsonParse should parse valid JSON",
+          "status": "passed",
+          "title": "should parse valid JSON",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "safeJsonParse"],
+          "fullName": " utils safeJsonParse should return fallback for invalid JSON",
+          "status": "passed",
+          "title": "should return fallback for invalid JSON",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "getStatusColor"],
+          "fullName": " utils getStatusColor should return color for status",
+          "status": "passed",
+          "title": "should return color for status",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "isValidEmail"],
+          "fullName": " utils isValidEmail should validate email",
+          "status": "passed",
+          "title": "should validate email",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "formatFileSize"],
+          "fullName": " utils formatFileSize should format file size",
+          "status": "passed",
+          "title": "should format file size",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "truncate"],
+          "fullName": " utils truncate should truncate text",
+          "status": "passed",
+          "title": "should truncate text",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "truncate"],
+          "fullName": " utils truncate should not truncate short text",
+          "status": "passed",
+          "title": "should not truncate short text",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "calculatePercentage"],
+          "fullName": " utils calculatePercentage should calculate percentage",
+          "status": "passed",
+          "title": "should calculate percentage",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "calculatePercentage"],
+          "fullName": " utils calculatePercentage should handle division by zero",
+          "status": "passed",
+          "title": "should handle division by zero",
+          "duration": 0,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "utils", "getGradientColor"],
+          "fullName": " utils getGradientColor should return gradient color",
+          "status": "passed",
+          "title": "should return gradient color",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898726770,
+      "endTime": 1774898726789,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/utils/src/__tests__/utils.test.ts"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Accounting\" from \"packages/business/src/components/__tests_disabled__/Accounting.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Accounting.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Approvals\" from \"packages/business/src/components/__tests_disabled__/Approvals.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Approvals.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Assets\" from \"packages/business/src/components/__tests_disabled__/Assets.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Assets.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Attendance\" from \"packages/business/src/components/__tests_disabled__/Attendance.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Attendance.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Contracts\" from \"packages/business/src/components/__tests_disabled__/Contracts.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Contracts.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Customers\" from \"packages/business/src/components/__tests_disabled__/Customers.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Customers.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Dashboard\" from \"packages/business/src/components/__tests_disabled__/Dashboard.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Dashboard.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Documents\" from \"packages/business/src/components/__tests_disabled__/Documents.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Documents.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Employees\" from \"packages/business/src/components/__tests_disabled__/Employees.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Employees.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Inventory\" from \"packages/business/src/components/__tests_disabled__/Inventory.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Inventory.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Invoices\" from \"packages/business/src/components/__tests_disabled__/Invoices.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Invoices.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Leads\" from \"packages/business/src/components/__tests_disabled__/Leads.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Leads.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Loans\" from \"packages/business/src/components/__tests_disabled__/Loans.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Loans.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Logistics\" from \"packages/business/src/components/__tests_disabled__/Logistics.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Logistics.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Orders\" from \"packages/business/src/components/__tests_disabled__/Orders.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Orders.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Payments\" from \"packages/business/src/components/__tests_disabled__/Payments.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Payments.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Payroll\" from \"packages/business/src/components/__tests_disabled__/Payroll.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Payroll.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Performance\" from \"packages/business/src/components/__tests_disabled__/Performance.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Performance.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Procurement\" from \"packages/business/src/components/__tests_disabled__/Procurement.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Procurement.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Projects\" from \"packages/business/src/components/__tests_disabled__/Projects.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Projects.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Reports\" from \"packages/business/src/components/__tests_disabled__/Reports.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Reports.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Suppliers\" from \"packages/business/src/components/__tests_disabled__/Suppliers.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Suppliers.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./VAT\" from \"packages/business/src/components/__tests_disabled__/VAT.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/VAT.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./Warehouse\" from \"packages/business/src/components/__tests_disabled__/Warehouse.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/Warehouse.test.tsx"
+    },
+    {
+      "assertionResults": [],
+      "startTime": 1774898725407,
+      "endTime": 1774898725407,
+      "status": "failed",
+      "message": "Failed to resolve import \"./WorkOrders\" from \"packages/business/src/components/__tests_disabled__/WorkOrders.test.tsx\". Does the file exist?",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/business/src/components/__tests_disabled__/WorkOrders.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge renders correctly",
+          "status": "passed",
+          "title": "renders correctly",
+          "duration": 33,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge applies default variant styles",
+          "status": "passed",
+          "title": "applies default variant styles",
+          "duration": 15,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge applies secondary variant styles",
+          "status": "passed",
+          "title": "applies secondary variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge applies destructive variant styles",
+          "status": "passed",
+          "title": "applies destructive variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge applies outline variant styles",
+          "status": "passed",
+          "title": "applies outline variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge applies custom className",
+          "status": "passed",
+          "title": "applies custom className",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Badge"],
+          "fullName": " Badge renders children correctly",
+          "status": "passed",
+          "title": "renders children correctly",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727939,
+      "endTime": 1774898727992,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/badge.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button renders correctly",
+          "status": "passed",
+          "title": "renders correctly",
+          "duration": 62,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button renders children",
+          "status": "passed",
+          "title": "renders children",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies default variant styles",
+          "status": "passed",
+          "title": "applies default variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies destructive variant styles",
+          "status": "passed",
+          "title": "applies destructive variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies outline variant styles",
+          "status": "passed",
+          "title": "applies outline variant styles",
+          "duration": 7,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies ghost variant styles",
+          "status": "passed",
+          "title": "applies ghost variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies link variant styles",
+          "status": "passed",
+          "title": "applies link variant styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies different sizes",
+          "status": "passed",
+          "title": "applies different sizes",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button applies custom className",
+          "status": "passed",
+          "title": "applies custom className",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button handles click events",
+          "status": "passed",
+          "title": "handles click events",
+          "duration": 13,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button can be disabled",
+          "status": "passed",
+          "title": "can be disabled",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Button"],
+          "fullName": " Button renders as different element when asChild is true",
+          "status": "passed",
+          "title": "renders as different element when asChild is true",
+          "duration": 19,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727500,
+      "endTime": 1774898727610,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/button.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders Card correctly",
+          "status": "passed",
+          "title": "renders Card correctly",
+          "duration": 19,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders CardHeader correctly",
+          "status": "passed",
+          "title": "renders CardHeader correctly",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders CardTitle correctly",
+          "status": "passed",
+          "title": "renders CardTitle correctly",
+          "duration": 9,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders CardDescription correctly",
+          "status": "passed",
+          "title": "renders CardDescription correctly",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders CardContent correctly",
+          "status": "passed",
+          "title": "renders CardContent correctly",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders CardFooter correctly",
+          "status": "passed",
+          "title": "renders CardFooter correctly",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card renders complete Card structure",
+          "status": "passed",
+          "title": "renders complete Card structure",
+          "duration": 11,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Card"],
+          "fullName": " Card applies custom className to Card",
+          "status": "passed",
+          "title": "applies custom className to Card",
+          "duration": 2,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727788,
+      "endTime": 1774898727844,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/card.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox renders correctly",
+          "status": "passed",
+          "title": "renders correctly",
+          "duration": 59,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox can be checked",
+          "status": "passed",
+          "title": "can be checked",
+          "duration": 40,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox can be unchecked",
+          "status": "passed",
+          "title": "can be unchecked",
+          "duration": 22,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox can be disabled",
+          "status": "passed",
+          "title": "can be disabled",
+          "duration": 10,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox applies custom className",
+          "status": "passed",
+          "title": "applies custom className",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox handles onChange events",
+          "status": "passed",
+          "title": "handles onChange events",
+          "duration": 16,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Checkbox"],
+          "fullName": " Checkbox respects checked prop",
+          "status": "passed",
+          "title": "respects checked prop",
+          "duration": 13,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727937,
+      "endTime": 1774898728099,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/checkbox.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Dialog"],
+          "fullName": " Dialog renders DialogTrigger correctly",
+          "status": "passed",
+          "title": "renders DialogTrigger correctly",
+          "duration": 16,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Dialog"],
+          "fullName": " Dialog renders DialogContent when open",
+          "status": "passed",
+          "title": "renders DialogContent when open",
+          "duration": 151,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Dialog"],
+          "fullName": " Dialog renders DialogTitle correctly",
+          "status": "passed",
+          "title": "renders DialogTitle correctly",
+          "duration": 34,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Dialog"],
+          "fullName": " Dialog renders DialogDescription correctly",
+          "status": "passed",
+          "title": "renders DialogDescription correctly",
+          "duration": 25,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Dialog"],
+          "fullName": " Dialog renders DialogFooter correctly",
+          "status": "passed",
+          "title": "renders DialogFooter correctly",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Dialog"],
+          "fullName": " Dialog applies custom className to DialogContent",
+          "status": "passed",
+          "title": "applies custom className to DialogContent",
+          "duration": 51,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727842,
+      "endTime": 1774898728120,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/dialog.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input renders correctly",
+          "status": "passed",
+          "title": "renders correctly",
+          "duration": 81,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input applies default styles",
+          "status": "passed",
+          "title": "applies default styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input accepts placeholder text",
+          "status": "passed",
+          "title": "accepts placeholder text",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input accepts value prop",
+          "status": "passed",
+          "title": "accepts value prop",
+          "duration": 12,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input handles onChange events",
+          "status": "passed",
+          "title": "handles onChange events",
+          "duration": 29,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input can be disabled",
+          "status": "passed",
+          "title": "can be disabled",
+          "duration": 10,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input applies custom className",
+          "status": "passed",
+          "title": "applies custom className",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input accepts type prop",
+          "status": "passed",
+          "title": "accepts type prop",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Input"],
+          "fullName": " Input applies different variants",
+          "status": "passed",
+          "title": "applies different variants",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727794,
+      "endTime": 1774898727930,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/input.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Label"],
+          "fullName": " Label renders correctly",
+          "status": "passed",
+          "title": "renders correctly",
+          "duration": 17,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Label"],
+          "fullName": " Label applies default styles",
+          "status": "passed",
+          "title": "applies default styles",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Label"],
+          "fullName": " Label renders children correctly",
+          "status": "passed",
+          "title": "renders children correctly",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Label"],
+          "fullName": " Label applies custom className",
+          "status": "passed",
+          "title": "applies custom className",
+          "duration": 4,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Label"],
+          "fullName": " Label associates with input via htmlFor",
+          "status": "passed",
+          "title": "associates with input via htmlFor",
+          "duration": 6,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Label"],
+          "fullName": " Label handles disabled state",
+          "status": "passed",
+          "title": "handles disabled state",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898728119,
+      "endTime": 1774898728150,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/label.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Select"],
+          "fullName": " Select renders select trigger correctly",
+          "status": "passed",
+          "title": "renders select trigger correctly",
+          "duration": 90,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Select"],
+          "fullName": " Select renders select items",
+          "status": "passed",
+          "title": "renders select items",
+          "duration": 84,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Select"],
+          "fullName": " Select applies custom className to SelectTrigger",
+          "status": "passed",
+          "title": "applies custom className to SelectTrigger",
+          "duration": 34,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Select"],
+          "fullName": " Select handles disabled state",
+          "status": "passed",
+          "title": "handles disabled state",
+          "duration": 28,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Select"],
+          "fullName": " Select handles controlled value",
+          "status": "passed",
+          "title": "handles controlled value",
+          "duration": 16,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727620,
+      "endTime": 1774898727875,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/select.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch renders correctly",
+          "status": "passed",
+          "title": "renders correctly",
+          "duration": 66,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch can be checked",
+          "status": "passed",
+          "title": "can be checked",
+          "duration": 17,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch can be unchecked",
+          "status": "passed",
+          "title": "can be unchecked",
+          "duration": 21,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch can be disabled",
+          "status": "passed",
+          "title": "can be disabled",
+          "duration": 11,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch applies custom className",
+          "status": "passed",
+          "title": "applies custom className",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch handles onChange events",
+          "status": "passed",
+          "title": "handles onChange events",
+          "duration": 21,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch respects checked prop",
+          "status": "passed",
+          "title": "respects checked prop",
+          "duration": 5,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Switch"],
+          "fullName": " Switch handles controlled state",
+          "status": "passed",
+          "title": "handles controlled state",
+          "duration": 10,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727823,
+      "endTime": 1774898727976,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/switch.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["", "Tabs"],
+          "fullName": " Tabs renders tabs correctly",
+          "status": "passed",
+          "title": "renders tabs correctly",
+          "duration": 78,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Tabs"],
+          "fullName": " Tabs shows correct content based on active tab",
+          "status": "passed",
+          "title": "shows correct content based on active tab",
+          "duration": 16,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Tabs"],
+          "fullName": " Tabs switches tabs on click",
+          "status": "passed",
+          "title": "switches tabs on click",
+          "duration": 49,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Tabs"],
+          "fullName": " Tabs applies custom className to Tabs",
+          "status": "passed",
+          "title": "applies custom className to Tabs",
+          "duration": 14,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": ["", "Tabs"],
+          "fullName": " Tabs handles controlled state",
+          "status": "passed",
+          "title": "handles controlled state",
+          "duration": 30,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1774898727344,
+      "endTime": 1774898727531,
+      "status": "passed",
+      "message": "",
+      "name": "/Volumes/Containers/初始化组件库/YYC3-组件库/packages/ui/src/components/__tests__/tabs.test.tsx"
+    }
+  ]
+}

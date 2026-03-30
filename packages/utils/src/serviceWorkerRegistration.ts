@@ -30,7 +30,7 @@ export function register(config?: Config) {
       navigator.serviceWorker.ready.then(() => {
         console.log(
           '[PWA] This web app is being served cache-first by a service ' +
-          'worker. To learn more, visit https://cra.link/PWA'
+            'worker. To learn more, visit https://cra.link/PWA'
         );
       });
     } else {
@@ -57,14 +57,14 @@ function registerValidSW(swUrl: string, config?: Config) {
             if (navigator.serviceWorker.controller) {
               // 新的Service Worker可用
               console.log('[PWA] New content is available; please refresh.');
-              
+
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
               }
             } else {
               // 首次安装完成
               console.log('[PWA] Content is cached for offline use.');
-              
+
               if (config && config.onSuccess) {
                 config.onSuccess(registration);
               }
@@ -122,11 +122,13 @@ export function unregister() {
 }
 
 // 检查是否在localhost
-const isLocalhost = typeof window !== 'undefined' && Boolean(
-  window.location.hostname === 'localhost' ||
-  window.location.hostname === '[::1]' ||
-  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
-);
+const isLocalhost =
+  typeof window !== 'undefined' &&
+  Boolean(
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '[::1]' ||
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+  );
 
 // 请求更新Service Worker
 export function checkForUpdates() {

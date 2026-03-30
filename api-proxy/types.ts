@@ -19,7 +19,7 @@ export interface QueryRequestBody {
   /** 目标表名 / Target table name */
   table: string;
   /** 查询动作 / Query action */
-  action: "SELECT" | "INSERT" | "UPDATE" | "DELETE" | "UPSERT";
+  action: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'UPSERT';
   /** WHERE 条件列表 / WHERE conditions */
   conditions?: QueryConditionPayload[];
   /** 查询字段列表 / Select columns */
@@ -42,7 +42,18 @@ export interface QueryConditionPayload {
   /** 字段名 / Column name */
   column: string;
   /** 操作符 / Operator */
-  operator: "=" | "!=" | ">" | "<" | ">=" | "<=" | "LIKE" | "ILIKE" | "IN" | "IS NULL" | "IS NOT NULL";
+  operator:
+    | '='
+    | '!='
+    | '>'
+    | '<'
+    | '>='
+    | '<='
+    | 'LIKE'
+    | 'ILIKE'
+    | 'IN'
+    | 'IS NULL'
+    | 'IS NOT NULL';
   /** 比较值 / Comparison value */
   value: string | number | boolean | null | Array<string | number>;
 }
@@ -55,7 +66,7 @@ export interface OrderByPayload {
   /** 字段名 / Column name */
   column: string;
   /** 排序方向 / Sort direction */
-  direction: "ASC" | "DESC";
+  direction: 'ASC' | 'DESC';
 }
 
 /* ──────────────────── 响应类型 / Response Types ──────────────────── */
@@ -85,7 +96,7 @@ export interface ApiResponse<T> {
  */
 export interface HealthData {
   /** 连接状态 / Connection status */
-  status: "connected" | "disconnected" | "error";
+  status: 'connected' | 'disconnected' | 'error';
   /** 延迟 (毫秒) / Latency (ms) */
   latency: number;
   /** PostgreSQL 版本 / PostgreSQL version */
@@ -148,7 +159,7 @@ export interface ServerConfig {
   /** 连接超时 (毫秒) / Connection timeout (ms) */
   pgConnectionTimeout: number;
   /** 日志级别 / Log level */
-  logLevel: "debug" | "info" | "warn" | "error";
+  logLevel: 'debug' | 'info' | 'warn' | 'error';
 }
 
 /**
@@ -159,14 +170,14 @@ export interface ServerConfig {
  * Prevents SQL injection - only allows access to predefined tables
  */
 export const ALLOWED_TABLES: ReadonlyArray<string> = [
-  "chats",
-  "channels",
-  "agents",
-  "workflows",
-  "system_configs",
-  "mcp_connections",
-  "github_repo_cache",
-  "migration_log",
+  'chats',
+  'channels',
+  'agents',
+  'workflows',
+  'system_configs',
+  'mcp_connections',
+  'github_repo_cache',
+  'migration_log',
 ] as const;
 
 /**

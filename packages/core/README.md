@@ -35,7 +35,7 @@ import { config, theme, constants } from '@yyc3/core';
 function App() {
   const appConfig = config.get('app');
   const currentTheme = theme.getCurrent();
-  
+
   return (
     <div>
       <p>App: {appConfig.name}</p>
@@ -48,18 +48,22 @@ function App() {
 ## 📚 核心模块
 
 ### 配置管理
+
 - config - 应用配置管理
 - env - 环境变量管理
 
 ### 主题系统
+
 - theme - 主题配置
 - colors - 颜色系统
 
 ### 常量定义
+
 - constants - 应用常量
 - enums - 枚举定义
 
 ### 工具函数
+
 - helpers - 辅助函数
 - validators - 验证函数
 

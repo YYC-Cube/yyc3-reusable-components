@@ -27,7 +27,7 @@ describe('useChannelConfig', () => {
       model: 'claude-3-opus',
       apiKey: 'test-key',
       baseUrl: 'https://api.anthropic.com',
-      temperature: 0.5
+      temperature: 0.5,
     };
     localStorage.setItem('yyc3_config_test-channel', JSON.stringify(savedConfig));
 
@@ -47,7 +47,7 @@ describe('useChannelConfig', () => {
         model: 'gpt-4',
         apiKey: 'test-api-key',
         baseUrl: 'https://api.openai.com/v1',
-        temperature: 0.8
+        temperature: 0.8,
       });
     });
 
@@ -86,14 +86,14 @@ describe('useChannelConfig', () => {
     act(() => {
       result1.current.saveConfig({
         ...result1.current.config,
-        temperature: 0.1
+        temperature: 0.1,
       });
     });
 
     act(() => {
       result2.current.saveConfig({
         ...result2.current.config,
-        temperature: 0.9
+        temperature: 0.9,
       });
     });
 

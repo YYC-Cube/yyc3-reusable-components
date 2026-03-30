@@ -1,10 +1,9 @@
 # Figma AI 组件分类讲解文档
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -50,13 +49,13 @@
 
 ### 设计优势
 
-| 优势 | 说明 |
-|------|------|
-| **一致性** | 统一的设计语言和交互模式 |
+| 优势         | 说明                     |
+| ------------ | ------------------------ |
+| **一致性**   | 统一的设计语言和交互模式 |
 | **可维护性** | 组件独立，易于修改和更新 |
 | **可扩展性** | 模块化设计，支持快速扩展 |
-| **可复用性** | 组件可在不同场景下复用 |
-| **团队协作** | 清晰的分工和职责划分 |
+| **可复用性** | 组件可在不同场景下复用   |
+| **团队协作** | 清晰的分工和职责划分     |
 
 ---
 
@@ -67,6 +66,7 @@
 **定义**：原子组件是设计系统中最基础的UI元素，不可再分，是最小的构建单元。
 
 **特点**：
+
 - 最基础的UI元素
 - 不可再分
 - 抽象且通用
@@ -77,39 +77,40 @@
 
 #### 1. 基础元素类
 
-| 组件名称 | 描述 | 使用场景 |
-|----------|------|----------|
-| **Button** | 按钮组件 | 表单提交、操作触发 |
-| **Input** | 输入框组件 | 数据输入、信息收集 |
-| **Text** | 文本组件 | 内容展示、信息传达 |
-| **Icon** | 图标组件 | 视觉引导、功能标识 |
-| **Image** | 图片组件 | 内容展示、视觉装饰 |
-| **Link** | 链接组件 | 页面跳转、导航 |
+| 组件名称   | 描述       | 使用场景           |
+| ---------- | ---------- | ------------------ |
+| **Button** | 按钮组件   | 表单提交、操作触发 |
+| **Input**  | 输入框组件 | 数据输入、信息收集 |
+| **Text**   | 文本组件   | 内容展示、信息传达 |
+| **Icon**   | 图标组件   | 视觉引导、功能标识 |
+| **Image**  | 图片组件   | 内容展示、视觉装饰 |
+| **Link**   | 链接组件   | 页面跳转、导航     |
 
 #### 2. 表单元素类
 
-| 组件名称 | 描述 | 使用场景 |
-|----------|------|----------|
-| **Checkbox** | 复选框组件 | 多选、选项勾选 |
-| **Radio** | 单选框组件 | 单选、互斥选择 |
-| **Select** | 下拉选择组件 | 选项选择、数据筛选 |
+| 组件名称     | 描述         | 使用场景             |
+| ------------ | ------------ | -------------------- |
+| **Checkbox** | 复选框组件   | 多选、选项勾选       |
+| **Radio**    | 单选框组件   | 单选、互斥选择       |
+| **Select**   | 下拉选择组件 | 选项选择、数据筛选   |
 | **Textarea** | 多行文本组件 | 长文本输入、内容编辑 |
-| **Switch** | 开关组件 | 状态切换、功能启用 |
-| **Slider** | 滑块组件 | 数值调节、范围选择 |
+| **Switch**   | 开关组件     | 状态切换、功能启用   |
+| **Slider**   | 滑块组件     | 数值调节、范围选择   |
 
 #### 3. 反馈元素类
 
-| 组件名称 | 描述 | 使用场景 |
-|----------|------|----------|
-| **Badge** | 徽章组件 | 状态标识、数量提示 |
-| **Tag** | 标签组件 | 分类标记、属性展示 |
-| **Tooltip** | 提示框组件 | 辅助说明、上下文帮助 |
-| **Spinner** | 加载指示器 | 加载状态、处理中 |
-| **Progress** | 进度条组件 | 进度展示、完成度 |
+| 组件名称     | 描述       | 使用场景             |
+| ------------ | ---------- | -------------------- |
+| **Badge**    | 徽章组件   | 状态标识、数量提示   |
+| **Tag**      | 标签组件   | 分类标记、属性展示   |
+| **Tooltip**  | 提示框组件 | 辅助说明、上下文帮助 |
+| **Spinner**  | 加载指示器 | 加载状态、处理中     |
+| **Progress** | 进度条组件 | 进度展示、完成度     |
 
 ### 原子组件设计原则
 
 #### 1. 单一职责原则
+
 ```typescript
 // ✅ 正确：单一职责
 const Button = ({ label, onClick }) => {
@@ -124,12 +125,13 @@ const Button = ({ label, onClick, icon, dropdown, menu }) => {
 ```
 
 #### 2. 可配置性原则
+
 ```typescript
 interface ButtonProps {
   // 必需属性
   label: string;
   onClick: () => void;
-  
+
   // 可选属性
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'small' | 'medium' | 'large';
@@ -140,6 +142,7 @@ interface ButtonProps {
 ```
 
 #### 3. 无障碍性原则
+
 ```typescript
 const Button = ({ label, onClick, disabled, ...props }) => {
   return (
@@ -159,6 +162,7 @@ const Button = ({ label, onClick, disabled, ...props }) => {
 ### 原子组件代码示例
 
 #### Button 组件
+
 ```typescript
 /**
  * @file Button.tsx
@@ -188,19 +192,19 @@ const Button: React.FC<ButtonProps> = ({
   icon
 }) => {
   const baseStyles = 'rounded font-medium transition-colors';
-  
+
   const variantStyles = {
     primary: 'bg-blue-500 text-white hover:bg-blue-600',
     secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
     ghost: 'bg-transparent text-blue-500 hover:bg-blue-50'
   };
-  
+
   const sizeStyles = {
     small: 'px-3 py-1.5 text-sm',
     medium: 'px-4 py-2 text-base',
     large: 'px-6 py-3 text-lg'
   };
-  
+
   return (
     <button
       onClick={onClick}
@@ -222,6 +226,7 @@ export default Button;
 ```
 
 #### Input 组件
+
 ```typescript
 /**
  * @file Input.tsx
@@ -264,8 +269,8 @@ const Input: React.FC<InputProps> = ({
         onChange={(e) => onChange?.(e.target.value)}
         disabled={disabled}
         className={`px-3 py-2 border rounded-md focus:outline-none focus:ring-2 ${
-          error 
-            ? 'border-red-500 focus:ring-red-500' 
+          error
+            ? 'border-red-500 focus:ring-red-500'
             : 'border-gray-300 focus:ring-blue-500'
         } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
         aria-invalid={!!error}
@@ -292,6 +297,7 @@ export default Input;
 **定义**：分子组件由两个或多个原子组件组合而成，形成相对简单、功能明确的UI单元。
 
 **特点**：
+
 - 由原子组件组成
 - 相对独立
 - 功能明确
@@ -302,50 +308,51 @@ export default Input;
 
 #### 1. 表单组合类
 
-| 组件名称 | 组成原子 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **SearchBox** | Input + Button | 搜索框 | 内容搜索、数据筛选 |
-| **FormField** | Label + Input + Error | 表单字段 | 表单输入、数据收集 |
-| **CheckboxGroup** | Checkbox + Label | 复选框组 | 多选、选项勾选 |
-| **RadioGroup** | Radio + Label | 单选框组 | 单选、互斥选择 |
-| **DatePicker** | Input + Button + Calendar | 日期选择器 | 日期选择、时间设定 |
+| 组件名称          | 组成原子                  | 描述       | 使用场景           |
+| ----------------- | ------------------------- | ---------- | ------------------ |
+| **SearchBox**     | Input + Button            | 搜索框     | 内容搜索、数据筛选 |
+| **FormField**     | Label + Input + Error     | 表单字段   | 表单输入、数据收集 |
+| **CheckboxGroup** | Checkbox + Label          | 复选框组   | 多选、选项勾选     |
+| **RadioGroup**    | Radio + Label             | 单选框组   | 单选、互斥选择     |
+| **DatePicker**    | Input + Button + Calendar | 日期选择器 | 日期选择、时间设定 |
 
 #### 2. 导航组合类
 
-| 组件名称 | 组成原子 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **Breadcrumb** | Link + Separator | 面包屑导航 | 路径导航、层级展示 |
-| **Pagination** | Button + Text | 分页器 | 数据分页、内容导航 |
-| **TabItem** | Button + Icon + Badge | 标签页项 | 标签导航、内容切换 |
-| **MenuItem** | Link + Icon + Badge | 菜单项 | 菜单导航、功能入口 |
+| 组件名称       | 组成原子              | 描述       | 使用场景           |
+| -------------- | --------------------- | ---------- | ------------------ |
+| **Breadcrumb** | Link + Separator      | 面包屑导航 | 路径导航、层级展示 |
+| **Pagination** | Button + Text         | 分页器     | 数据分页、内容导航 |
+| **TabItem**    | Button + Icon + Badge | 标签页项   | 标签导航、内容切换 |
+| **MenuItem**   | Link + Icon + Badge   | 菜单项     | 菜单导航、功能入口 |
 
 #### 3. 信息展示类
 
-| 组件名称 | 组成原子 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **Avatar** | Image + Badge | 头像组件 | 用户头像、状态展示 |
-| **UserCard** | Avatar + Text + Badge | 用户卡片 | 用户信息、个人资料 |
-| **StatusItem** | Badge + Text + Icon | 状态项 | 状态展示、信息提示 |
-| **Notification** | Icon + Text + Button | 通知卡片 | 消息通知、提醒 |
+| 组件名称         | 组成原子              | 描述     | 使用场景           |
+| ---------------- | --------------------- | -------- | ------------------ |
+| **Avatar**       | Image + Badge         | 头像组件 | 用户头像、状态展示 |
+| **UserCard**     | Avatar + Text + Badge | 用户卡片 | 用户信息、个人资料 |
+| **StatusItem**   | Badge + Text + Icon   | 状态项   | 状态展示、信息提示 |
+| **Notification** | Icon + Text + Button  | 通知卡片 | 消息通知、提醒     |
 
 ### 分子组件设计原则
 
 #### 1. 组合性原则
+
 ```typescript
 // ✅ 正确：由原子组件组合
 const SearchBox = ({ onSearch, placeholder }) => {
   const [value, setValue] = useState('');
-  
+
   return (
     <div className="flex">
-      <Input 
+      <Input
         value={value}
         onChange={setValue}
         placeholder={placeholder}
       />
-      <Button 
-        label="搜索" 
-        onClick={() => onSearch(value)} 
+      <Button
+        label="搜索"
+        onClick={() => onSearch(value)}
       />
     </div>
   );
@@ -353,23 +360,24 @@ const SearchBox = ({ onSearch, placeholder }) => {
 ```
 
 #### 2. 状态管理原则
+
 ```typescript
 // ✅ 正确：内部状态管理
 const SearchBox = ({ onSearch }) => {
   const [value, setValue] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const handleSearch = async () => {
     setLoading(true);
     await onSearch(value);
     setLoading(false);
   };
-  
+
   return (
     <div className="flex">
       <Input value={value} onChange={setValue} />
-      <Button 
-        label={loading ? '搜索中...' : '搜索'} 
+      <Button
+        label={loading ? '搜索中...' : '搜索'}
         onClick={handleSearch}
         disabled={loading}
       />
@@ -379,6 +387,7 @@ const SearchBox = ({ onSearch }) => {
 ```
 
 #### 3. 可定制性原则
+
 ```typescript
 interface SearchBoxProps {
   onSearch: (query: string) => void;
@@ -392,6 +401,7 @@ interface SearchBoxProps {
 ### 分子组件代码示例
 
 #### SearchBox 组件
+
 ```typescript
 /**
  * @file SearchBox.tsx
@@ -454,6 +464,7 @@ export default SearchBox;
 ```
 
 #### FormField 组件
+
 ```typescript
 /**
  * @file FormField.tsx
@@ -514,6 +525,7 @@ export default FormField;
 **定义**：有机体组件由分子组件和原子组件组成，形成复杂的、功能完整的UI区块。
 
 **特点**：
+
 - 由分子和原子组成
 - 功能完整
 - 相对独立
@@ -524,42 +536,43 @@ export default FormField;
 
 #### 1. 导航系统类
 
-| 组件名称 | 组成元素 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **Header** | Logo + Navigation + UserMenu | 页头导航 | 顶部导航、全局导航 |
-| **Sidebar** | Menu + Navigation + Collapse | 侧边栏 | 侧边导航、功能菜单 |
-| **TabBar** | TabItem + Badge + Indicator | 标签栏 | 标签导航、内容切换 |
-| **BreadcrumbBar** | Breadcrumb + Separator | 面包屑栏 | 路径导航、层级展示 |
+| 组件名称          | 组成元素                     | 描述     | 使用场景           |
+| ----------------- | ---------------------------- | -------- | ------------------ |
+| **Header**        | Logo + Navigation + UserMenu | 页头导航 | 顶部导航、全局导航 |
+| **Sidebar**       | Menu + Navigation + Collapse | 侧边栏   | 侧边导航、功能菜单 |
+| **TabBar**        | TabItem + Badge + Indicator  | 标签栏   | 标签导航、内容切换 |
+| **BreadcrumbBar** | Breadcrumb + Separator       | 面包屑栏 | 路径导航、层级展示 |
 
 #### 2. 内容展示类
 
-| 组件名称 | 组成元素 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **Card** | Image + Title + Description + Button | 卡片 | 内容展示、信息卡片 |
-| **List** | ListItem + Avatar + Text + Action | 列表 | 数据列表、内容展示 |
-| **Table** | TableHeader + TableRow + Pagination | 表格 | 数据表格、信息展示 |
-| **Gallery** | Image + Caption + Overlay | 图库 | 图片展示、相册 |
+| 组件名称    | 组成元素                             | 描述 | 使用场景           |
+| ----------- | ------------------------------------ | ---- | ------------------ |
+| **Card**    | Image + Title + Description + Button | 卡片 | 内容展示、信息卡片 |
+| **List**    | ListItem + Avatar + Text + Action    | 列表 | 数据列表、内容展示 |
+| **Table**   | TableHeader + TableRow + Pagination  | 表格 | 数据表格、信息展示 |
+| **Gallery** | Image + Caption + Overlay            | 图库 | 图片展示、相册     |
 
 #### 3. 表单系统类
 
-| 组件名称 | 组成元素 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **Form** | FormField + Button + Validation | 表单 | 数据收集、信息提交 |
-| **FilterPanel** | SearchBox + Select + Checkbox | 筛选面板 | 数据筛选、条件查询 |
-| **Wizard** | Steps + Form + Navigation | 向导 | 分步表单、流程引导 |
+| 组件名称        | 组成元素                        | 描述     | 使用场景           |
+| --------------- | ------------------------------- | -------- | ------------------ |
+| **Form**        | FormField + Button + Validation | 表单     | 数据收集、信息提交 |
+| **FilterPanel** | SearchBox + Select + Checkbox   | 筛选面板 | 数据筛选、条件查询 |
+| **Wizard**      | Steps + Form + Navigation       | 向导     | 分步表单、流程引导 |
 
 #### 4. 反馈系统类
 
-| 组件名称 | 组成元素 | 描述 | 使用场景 |
-|----------|----------|------|----------|
-| **Modal** | Header + Content + Footer | 模态框 | 弹窗对话框、确认操作 |
-| **Toast** | Icon + Text + Close | 通知提示 | 消息通知、状态反馈 |
-| **Alert** | Icon + Title + Description + Action | 警告框 | 警告提示、错误提示 |
-| **Drawer** | Header + Content + Close | 抽屉 | 侧边抽屉、详情展示 |
+| 组件名称   | 组成元素                            | 描述     | 使用场景             |
+| ---------- | ----------------------------------- | -------- | -------------------- |
+| **Modal**  | Header + Content + Footer           | 模态框   | 弹窗对话框、确认操作 |
+| **Toast**  | Icon + Text + Close                 | 通知提示 | 消息通知、状态反馈   |
+| **Alert**  | Icon + Title + Description + Action | 警告框   | 警告提示、错误提示   |
+| **Drawer** | Header + Content + Close            | 抽屉     | 侧边抽屉、详情展示   |
 
 ### 有机体组件设计原则
 
 #### 1. 功能完整性原则
+
 ```typescript
 // ✅ 正确：功能完整的导航栏
 const Header = () => {
@@ -574,11 +587,12 @@ const Header = () => {
 ```
 
 #### 2. 状态管理原则
+
 ```typescript
 // ✅ 正确：复杂状态管理
 const Modal = ({ isOpen, onClose, children }) => {
   const [isVisible, setIsVisible] = useState(false);
-  
+
   useEffect(() => {
     if (isOpen) {
       setIsVisible(true);
@@ -586,9 +600,9 @@ const Modal = ({ isOpen, onClose, children }) => {
       setTimeout(() => setIsVisible(false), 300);
     }
   }, [isOpen]);
-  
+
   if (!isVisible) return null;
-  
+
   return (
     <div className={`modal ${isOpen ? 'modal-open' : 'modal-closing'}`}>
       {children}
@@ -598,6 +612,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 ```
 
 #### 3. 可访问性原则
+
 ```typescript
 // ✅ 正确：无障碍支持
 const Modal = ({ isOpen, onClose, title, children }) => {
@@ -611,7 +626,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
       document.body.style.overflow = 'unset';
     }
   }, [isOpen]);
-  
+
   return (
     <div
       id="modal"
@@ -630,6 +645,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 ### 有机体组件代码示例
 
 #### Header 组件
+
 ```typescript
 /**
  * @file Header.tsx
@@ -666,6 +682,7 @@ export default Header;
 ```
 
 #### Modal 组件
+
 ```typescript
 /**
  * @file Modal.tsx
@@ -697,13 +714,13 @@ const Modal: React.FC<ModalProps> = ({
         onClose();
       }
     };
-    
+
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
-  
+
   if (!isOpen) return null;
-  
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* 背景遮罩 */}
@@ -711,7 +728,7 @@ const Modal: React.FC<ModalProps> = ({
         className="absolute inset-0 bg-black bg-opacity-50"
         onClick={onClose}
       />
-      
+
       {/* 模态框内容 */}
       <div
         className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4"
@@ -732,12 +749,12 @@ const Modal: React.FC<ModalProps> = ({
             ✕
           </button>
         </div>
-        
+
         {/* 内容 */}
         <div className="px-6 py-4">
           {children}
         </div>
-        
+
         {/* 底部 */}
         {footer && (
           <div className="flex justify-end gap-2 px-6 py-4 border-t">
@@ -761,6 +778,7 @@ export default Modal;
 **定义**：模板组件是页面的布局结构，展示组件的排列方式，但不包含具体内容。
 
 **特点**：
+
 - 页面布局结构
 - 内容占位符
 - 布局框架
@@ -771,26 +789,27 @@ export default Modal;
 
 #### 1. 页面布局类
 
-| 模板名称 | 描述 | 使用场景 |
-|----------|------|----------|
-| **DefaultLayout** | 默认布局 | 标准页面布局 |
+| 模板名称            | 描述       | 使用场景     |
+| ------------------- | ---------- | ------------ |
+| **DefaultLayout**   | 默认布局   | 标准页面布局 |
 | **DashboardLayout** | 仪表板布局 | 数据展示页面 |
-| **AuthLayout** | 认证布局 | 登录注册页面 |
-| **SettingsLayout** | 设置布局 | 设置页面 |
-| **EmptyLayout** | 空白布局 | 独立页面 |
+| **AuthLayout**      | 认证布局   | 登录注册页面 |
+| **SettingsLayout**  | 设置布局   | 设置页面     |
+| **EmptyLayout**     | 空白布局   | 独立页面     |
 
 #### 2. 内容布局类
 
-| 模板名称 | 描述 | 使用场景 |
-|----------|------|----------|
-| **ArticleLayout** | 文章布局 | 文章详情页 |
-| **ListLayout** | 列表布局 | 列表页面 |
-| **GridLayout** | 网格布局 | 卡片展示页 |
-| **SplitLayout** | 分栏布局 | 左右分栏页面 |
+| 模板名称          | 描述     | 使用场景     |
+| ----------------- | -------- | ------------ |
+| **ArticleLayout** | 文章布局 | 文章详情页   |
+| **ListLayout**    | 列表布局 | 列表页面     |
+| **GridLayout**    | 网格布局 | 卡片展示页   |
+| **SplitLayout**   | 分栏布局 | 左右分栏页面 |
 
 ### 模板组件设计原则
 
 #### 1. 布局灵活性原则
+
 ```typescript
 // ✅ 正确：灵活的布局
 const DashboardLayout = ({ sidebar, header, content }) => {
@@ -807,6 +826,7 @@ const DashboardLayout = ({ sidebar, header, content }) => {
 ```
 
 #### 2. 响应式设计原则
+
 ```typescript
 // ✅ 正确：响应式布局
 const ResponsiveLayout = ({ children }) => {
@@ -819,6 +839,7 @@ const ResponsiveLayout = ({ children }) => {
 ```
 
 #### 3. 内容占位原则
+
 ```typescript
 // ✅ 正确：内容占位
 const ArticleTemplate = () => {
@@ -841,6 +862,7 @@ const ArticleTemplate = () => {
 ### 模板组件代码示例
 
 #### DashboardLayout 组件
+
 ```typescript
 /**
  * @file DashboardLayout.tsx
@@ -869,7 +891,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           {sidebar}
         </aside>
       )}
-      
+
       {/* 主内容区 */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* 顶部导航 */}
@@ -878,7 +900,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             {header}
           </header>
         )}
-        
+
         {/* 内容区域 */}
         <main className="flex-1 overflow-auto p-6">
           {children}
@@ -900,6 +922,7 @@ export default DashboardLayout;
 **定义**：页面组件是高保真的、具体的、具有上下文的完整页面，由模板组件填充实际内容而成。
 
 **特点**：
+
 - 高保真设计
 - 具体内容
 - 上下文完整
@@ -910,27 +933,28 @@ export default DashboardLayout;
 
 #### 1. 核心页面类
 
-| 页面名称 | 描述 | 使用场景 |
-|----------|------|----------|
-| **HomePage** | 首页 | 网站首页、应用首页 |
-| **LoginPage** | 登录页 | 用户登录 |
-| **RegisterPage** | 注册页 | 用户注册 |
-| **DashboardPage** | 仪表板页 | 数据仪表板 |
-| **ProfilePage** | 个人资料页 | 用户资料 |
+| 页面名称          | 描述       | 使用场景           |
+| ----------------- | ---------- | ------------------ |
+| **HomePage**      | 首页       | 网站首页、应用首页 |
+| **LoginPage**     | 登录页     | 用户登录           |
+| **RegisterPage**  | 注册页     | 用户注册           |
+| **DashboardPage** | 仪表板页   | 数据仪表板         |
+| **ProfilePage**   | 个人资料页 | 用户资料           |
 
 #### 2. 功能页面类
 
-| 页面名称 | 描述 | 使用场景 |
-|----------|------|----------|
+| 页面名称         | 描述   | 使用场景 |
+| ---------------- | ------ | -------- |
 | **SettingsPage** | 设置页 | 系统设置 |
-| **ListPage** | 列表页 | 数据列表 |
-| **DetailPage** | 详情页 | 内容详情 |
-| **FormPage** | 表单页 | 数据表单 |
-| **SearchPage** | 搜索页 | 搜索结果 |
+| **ListPage**     | 列表页 | 数据列表 |
+| **DetailPage**   | 详情页 | 内容详情 |
+| **FormPage**     | 表单页 | 数据表单 |
+| **SearchPage**   | 搜索页 | 搜索结果 |
 
 ### 页面组件设计原则
 
 #### 1. 内容完整性原则
+
 ```typescript
 // ✅ 正确：完整的页面内容
 const HomePage = () => {
@@ -947,12 +971,13 @@ const HomePage = () => {
 ```
 
 #### 2. 用户体验原则
+
 ```typescript
 // ✅ 正确：良好的用户体验
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  
+
   const handleSubmit = async (values: LoginFormValues) => {
     setLoading(true);
     setError('');
@@ -966,7 +991,7 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-md w-full">
@@ -980,14 +1005,15 @@ const LoginPage = () => {
 ```
 
 #### 3. 性能优化原则
+
 ```typescript
 // ✅ 正确：性能优化
 const ListPage = () => {
   const { data, loading, error } = useFetchItems();
-  
+
   if (loading) return <Spinner />;
   if (error) return <Error message={error.message} />;
-  
+
   return (
     <div>
       <h1>列表页</h1>
@@ -1001,6 +1027,7 @@ const ListPage = () => {
 ### 页面组件代码示例
 
 #### DashboardPage 组件
+
 ```typescript
 /**
  * @file DashboardPage.tsx
@@ -1050,13 +1077,13 @@ const DashboardPage: React.FC = () => {
             trend="down"
           />
         </div>
-        
+
         {/* 图表区域 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Chart title="用户增长趋势" />
           <Chart title="活跃度分析" />
         </div>
-        
+
         {/* 最近活动 */}
         <RecentActivity />
       </div>
@@ -1117,30 +1144,35 @@ export default DashboardPage;
 ### 分类检查清单
 
 #### 原子组件检查
+
 - [ ] 是否是最基础的UI元素？
 - [ ] 是否不可再分？
 - [ ] 是否功能单一？
 - [ ] 是否高度可复用？
 
 #### 分子组件检查
+
 - [ ] 是否由2-3个原子组件组成？
 - [ ] 是否相对独立？
 - [ ] 是否功能明确？
 - [ ] 是否具备基本交互逻辑？
 
 #### 有机体组件检查
+
 - [ ] 是否是复杂的UI区块？
 - [ ] 是否功能完整？
 - [ ] 是否业务逻辑丰富？
 - [ ] 是否相对独立？
 
 #### 模板组件检查
+
 - [ ] 是否是页面布局结构？
 - [ ] 是否包含内容占位符？
 - [ ] 是否可复用？
 - [ ] 是否响应式设计？
 
 #### 页面组件检查
+
 - [ ] 是否是高保真设计？
 - [ ] 是否包含具体内容？
 - [ ] 是否上下文完整？
@@ -1163,12 +1195,12 @@ export default DashboardPage;
 
 ### 2. 组件复用策略
 
-| 复用级别 | 复用范围 | 示例 |
-|----------|----------|------|
-| 全局复用 | 整个项目 | Button, Input, Icon |
+| 复用级别 | 复用范围 | 示例                 |
+| -------- | -------- | -------------------- |
+| 全局复用 | 整个项目 | Button, Input, Icon  |
 | 模块复用 | 特定模块 | SearchBox, FormField |
-| 页面复用 | 特定页面 | Header, Sidebar |
-| 一次性 | 单次使用 | 特定业务组件 |
+| 页面复用 | 特定页面 | Header, Sidebar      |
+| 一次性   | 单次使用 | 特定业务组件         |
 
 ### 3. 组件命名规范
 
@@ -1225,33 +1257,34 @@ src/
 ### 5. 组件文档规范
 
 每个组件都应该包含：
+
 - 组件描述
 - Props API
 - 使用示例
 - 最佳实践
 - 注意事项
 
-```typescript
+````typescript
 /**
  * @file Button.tsx
  * @description 基础按钮组件
  * @version v1.0.0
- * 
+ *
  * @example
  * ```tsx
  * <Button label="提交" onClick={handleSubmit} variant="primary" />
  * ```
- * 
+ *
  * @best-practices
  * - 使用 primary 样式表示主要操作
  * - 使用 secondary 样式表示次要操作
  * - 为按钮提供清晰的标签文本
- * 
+ *
  * @caveats
  * - 不要在按钮内嵌套复杂组件
  * - 避免使用过长的按钮文本
  */
-```
+````
 
 ---
 
@@ -1286,9 +1319,8 @@ src/
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

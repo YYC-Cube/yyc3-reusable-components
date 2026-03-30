@@ -64,16 +64,16 @@ export class PerformanceMonitor {
   }
 
   getMetricsByComponent(componentName: string): PerformanceMetrics[] {
-    return this.metrics.filter(m => m.componentName === componentName);
+    return this.metrics.filter((m) => m.componentName === componentName);
   }
 
   getMetricsByType(metric: string): PerformanceMetrics[] {
-    return this.metrics.filter(m => m.metric === metric);
+    return this.metrics.filter((m) => m.metric === metric);
   }
 
   getLatestMetric(componentName: string, metric: string): PerformanceMetrics | undefined {
     const componentMetrics = this.getMetricsByComponent(componentName);
-    return componentMetrics.find(m => m.metric === metric);
+    return componentMetrics.find((m) => m.metric === metric);
   }
 
   checkThreshold(componentName: string, metric: string): boolean {
@@ -97,11 +97,12 @@ export class PerformanceMonitor {
     averagePerformance: number;
   } {
     const totalMetrics = this.metrics.length;
-    const passedMetrics = this.metrics.filter(m => m.value <= m.threshold).length;
+    const passedMetrics = this.metrics.filter((m) => m.value <= m.threshold).length;
     const failedMetrics = totalMetrics - passedMetrics;
-    const averagePerformance = this.metrics.length > 0
-      ? this.metrics.reduce((sum, m) => sum + (m.value / m.threshold), 0) / this.metrics.length
-      : 0;
+    const averagePerformance =
+      this.metrics.length > 0
+        ? this.metrics.reduce((sum, m) => sum + m.value / m.threshold, 0) / this.metrics.length
+        : 0;
 
     return {
       totalMetrics,

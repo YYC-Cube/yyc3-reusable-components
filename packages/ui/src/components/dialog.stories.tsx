@@ -62,8 +62,8 @@ export const AlertDialog: Story = {
         <DialogHeader>
           <DialogTitle>Are you sure?</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your account
-            and remove your data from our servers.
+            This action cannot be undone. This will permanently delete your account and remove your
+            data from our servers.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -114,14 +114,12 @@ export const CustomWidth: Story = {
       <DialogContent className="max-w-4xl">
         <DialogHeader>
           <DialogTitle>Large Content Dialog</DialogTitle>
-          <DialogDescription>
-            This dialog has a custom width of max-w-4xl.
-          </DialogDescription>
+          <DialogDescription>This dialog has a custom width of max-w-4xl.</DialogDescription>
         </DialogHeader>
         <div className="py-4">
           <p className="text-muted-foreground">
-            This is a larger dialog that can contain more content. You can use this
-            for displaying detailed information, forms, or complex layouts.
+            This is a larger dialog that can contain more content. You can use this for displaying
+            detailed information, forms, or complex layouts.
           </p>
         </div>
         <DialogFooter>
@@ -141,8 +139,8 @@ export const NoTitle: Story = {
       <DialogContent>
         <div className="py-6">
           <p className="text-center text-muted-foreground">
-            This is a simple dialog without a title or description.
-            It can be used for simple confirmations or messages.
+            This is a simple dialog without a title or description. It can be used for simple
+            confirmations or messages.
           </p>
         </div>
         <DialogFooter className="sm:justify-center">

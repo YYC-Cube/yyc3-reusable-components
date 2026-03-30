@@ -9,11 +9,10 @@ status: published
 tags: [代码规范],[标头规范],[开发标准]
 ---
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -64,53 +63,53 @@ YYC³（YanYuCloudCube） 代码标头规范标准定义了项目中所有代码
 
 #### 1.2 字段说明
 
-| 字段 | 必填 | 说明 | 示例 |
-|------|------|------|------|
-| file | ✅ | 文件名（包含扩展名） | file: useI18n.ts |
-| description | ✅ | 文件描述（一句话概括） | description: 国际化 Hook · 支持中文/English 动态切换 |
-| author | ✅ | 作者名称 | author: YanYuCloudCube Team |
-| version | ✅ | 版本号（遵循语义化版本） | version: v1.0.0 |
-| created | ✅ | 创建日期（YYYY-MM-DD） | created: 2026-03-05 |
-| updated | ✅ | 更新日期（YYYY-MM-DD） | updated: 2026-03-05 |
-| status | ✅ | 文件状态 | status: active |
-| tags | ✅ | 标签列表 | tags: [hook],[i18n],[locale] |
-| copyright | ❌ | 版权信息 | copyright: YanYuCloudCube Team |
-| license | ❌ | 许可证 | license: MIT |
-| brief | ❌ | 简要说明 | brief: 提供国际化功能 |
-| details | ❌ | 详细说明 | details: 支持中英文动态切换 |
-| dependencies | ❌ | 依赖列表 | dependencies: React, Context API |
-| exports | ❌ | 导出内容 | exports: useI18n, I18nProvider |
-| notes | ❌ | 注意事项 | notes: 需要在 App 根组件包裹 |
+| 字段         | 必填 | 说明                     | 示例                                                 |
+| ------------ | ---- | ------------------------ | ---------------------------------------------------- |
+| file         | ✅   | 文件名（包含扩展名）     | file: useI18n.ts                                     |
+| description  | ✅   | 文件描述（一句话概括）   | description: 国际化 Hook · 支持中文/English 动态切换 |
+| author       | ✅   | 作者名称                 | author: YanYuCloudCube Team                          |
+| version      | ✅   | 版本号（遵循语义化版本） | version: v1.0.0                                      |
+| created      | ✅   | 创建日期（YYYY-MM-DD）   | created: 2026-03-05                                  |
+| updated      | ✅   | 更新日期（YYYY-MM-DD）   | updated: 2026-03-05                                  |
+| status       | ✅   | 文件状态                 | status: active                                       |
+| tags         | ✅   | 标签列表                 | tags: [hook],[i18n],[locale]                         |
+| copyright    | ❌   | 版权信息                 | copyright: YanYuCloudCube Team                       |
+| license      | ❌   | 许可证                   | license: MIT                                         |
+| brief        | ❌   | 简要说明                 | brief: 提供国际化功能                                |
+| details      | ❌   | 详细说明                 | details: 支持中英文动态切换                          |
+| dependencies | ❌   | 依赖列表                 | dependencies: React, Context API                     |
+| exports      | ❌   | 导出内容                 | exports: useI18n, I18nProvider                       |
+| notes        | ❌   | 注意事项                 | notes: 需要在 App 根组件包裹                         |
 
 #### 1.3 状态值
 
-| 状态值 | 说明 | 使用场景 |
-|-------|------|---------|
-| active | 活跃状态 | 正在使用的文件 |
-| deprecated | 已弃用 | 即将移除的文件 |
-| experimental | 实验性 | 实验性功能 |
-| stable | 稳定 | 稳定版本 |
-| draft | 草稿 | 正在开发中 |
+| 状态值       | 说明     | 使用场景       |
+| ------------ | -------- | -------------- |
+| active       | 活跃状态 | 正在使用的文件 |
+| deprecated   | 已弃用   | 即将移除的文件 |
+| experimental | 实验性   | 实验性功能     |
+| stable       | 稳定     | 稳定版本       |
+| draft        | 草稿     | 正在开发中     |
 
 #### 1.4 标签示例
 
-| 类别 | 标签 | 说明 |
-|------|------|------|
-| 类型 | [component] | 组件文件 |
-| | [hook] | Hook 文件 |
-| | [util] | 工具函数 |
-| | [type] | 类型定义 |
-| | [config] | 配置文件 |
-| | [test] | 测试文件 |
-| 功能 | [i18n] | 国际化 |
-| | [auth] | 认证 |
-| | [api] | API |
-| | [ui] | UI |
-| | [data] | 数据处理 |
-| 模块 | [dashboard] | 仪表板 |
-| | [cp-im] | CP-IM 模块 |
-| | [learning] | 学习中心 |
-| | [settings] | 设置 |
+| 类别 | 标签        | 说明       |
+| ---- | ----------- | ---------- |
+| 类型 | [component] | 组件文件   |
+|      | [hook]      | Hook 文件  |
+|      | [util]      | 工具函数   |
+|      | [type]      | 类型定义   |
+|      | [config]    | 配置文件   |
+|      | [test]      | 测试文件   |
+| 功能 | [i18n]      | 国际化     |
+|      | [auth]      | 认证       |
+|      | [api]       | API        |
+|      | [ui]        | UI         |
+|      | [data]      | 数据处理   |
+| 模块 | [dashboard] | 仪表板     |
+|      | [cp-im]     | CP-IM 模块 |
+|      | [learning]  | 学习中心   |
+|      | [settings]  | 设置       |
 
 #### 1.5 实际示例
 
@@ -141,10 +140,16 @@ YYC³（YanYuCloudCube） 代码标头规范标准定义了项目中所有代码
  * notes: 需要在 App 根组件包裹 I18nProvider
  */
 
-import { useState, useCallback, useMemo, createContext, useContext } from "react";
-import { zhCN, enUS } from "../i18n";
-import type { TranslationKeys } from "../i18n";
-import type { Locale, LocaleInfo } from "../types";
+import {
+  useState,
+  useCallback,
+  useMemo,
+  createContext,
+  useContext,
+} from 'react';
+import { zhCN, enUS } from '../i18n';
+import type { TranslationKeys } from '../i18n';
+import type { Locale, LocaleInfo } from '../types';
 
 // ... 代码实现
 ```
@@ -251,10 +256,10 @@ import type { Locale, LocaleInfo } from "../types";
  * notes: 修改配置后需要重启开发服务器
  */
 
-import { defineConfig } from 'vite'
-import path from 'path'
-import tailwindcss from 'tailwindcss/vite'
-import react from 'vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import path from 'path';
+import tailwindcss from 'tailwindcss/vite';
+import react from 'vitejs/plugin-react';
 
 // ... 配置实现
 ```
@@ -311,8 +316,8 @@ import react from 'vitejs/plugin-react'
  */
 
 // vitest-environment jsdom
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen, cleanup } from "testing-library/react";
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { render, screen, cleanup } from 'testing-library/react';
 
 // ... 测试实现
 ```
@@ -367,7 +372,14 @@ import { render, screen, cleanup } from "testing-library/react";
  * notes: 需要配合 preload.js 使用
  */
 
-const { app, BrowserWindow, Tray, Menu, nativeImage, dialog } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  Tray,
+  Menu,
+  nativeImage,
+  dialog,
+} = require('electron');
 const path = require('path');
 
 // ... 代码实现
@@ -382,14 +394,17 @@ const path = require('path');
 #### 1.1 创建新文件时
 
 1. **复制标头模板**：从本规范中复制对应文件类型的标头模板
-2. **填写必填字段**：填写所有必填字段（file, description, author, version, created, updated, status, tags）
-3. **填写可选字段**：根据需要填写可选字段（brief, details, dependencies, exports, notes）
+2. **填写必填字段**：填写所有必填字段（file, description, author, version,
+   created, updated, status, tags）
+3. **填写可选字段**：根据需要填写可选字段（brief, details, dependencies,
+   exports, notes）
 4. **更新日期**：每次修改文件时更新 updated 字段
 5. **更新版本**：重大修改时更新 version 字段（遵循语义化版本）
 
 #### 1.2 标头模板
 
 **TypeScript/JavaScript 文件模板**：
+
 ```typescript
 /**
  * file: 文件名.tsx
@@ -455,7 +470,16 @@ const path = require('path');
 const fs = require('fs');
 const path = require('path');
 
-const REQUIRED_FIELDS = ['file', 'description', 'author', 'version', 'created', 'updated', 'status', 'tags'];
+const REQUIRED_FIELDS = [
+  'file',
+  'description',
+  'author',
+  'version',
+  'created',
+  'updated',
+  'status',
+  'tags',
+];
 
 function checkFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf-8');
@@ -467,9 +491,14 @@ function checkFile(filePath) {
   }
 
   // 检查必填字段
-  const missingFields = REQUIRED_FIELDS.filter(field => !content.includes(field));
+  const missingFields = REQUIRED_FIELDS.filter(
+    (field) => !content.includes(field)
+  );
   if (missingFields.length > 0) {
-    return { valid: false, error: `Missing fields: ${missingFields.join(', ')}` };
+    return {
+      valid: false,
+      error: `Missing fields: ${missingFields.join(', ')}`,
+    };
   }
 
   return { valid: true };
@@ -481,7 +510,7 @@ function checkDirectory(dir) {
   let invalidCount = 0;
   const invalidFiles = [];
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
 
@@ -527,7 +556,8 @@ module.exports = {
       [
         '*',
         {
-          pattern: ' file: .+\\n description: .+\\n author: .+\\n version: .+\\n created: .+\\n updated: .+\\n status: .+\\n tags: .+',
+          pattern:
+            ' file: .+\\n description: .+\\n author: .+\\n version: .+\\n created: .+\\n updated: .+\\n status: .+\\n tags: .+',
           template: `/**
  * file: FILENAME
  * description: DESCRIPTION
@@ -629,14 +659,14 @@ exit 0
 
 ### B. 标头规范术语表
 
-| 术语 | 定义 |
-|------|------|
-| 标头 | 文件开头的注释块，包含文件信息 |
-| 必填字段 | 必须填写的标头字段 |
-| 可选字段 | 可选填写的标头字段 |
-| 状态 | 文件的当前状态 |
-| 标签 | 文件的分类标签 |
-| 版本号 | 文件的版本号，遵循语义化版本 |
+| 术语     | 定义                           |
+| -------- | ------------------------------ |
+| 标头     | 文件开头的注释块，包含文件信息 |
+| 必填字段 | 必须填写的标头字段             |
+| 可选字段 | 可选填写的标头字段             |
+| 状态     | 文件的当前状态                 |
+| 标签     | 文件的分类标签                 |
+| 版本号   | 文件的版本号，遵循语义化版本   |
 
 ### C. 参考文档
 
@@ -649,9 +679,8 @@ exit 0
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

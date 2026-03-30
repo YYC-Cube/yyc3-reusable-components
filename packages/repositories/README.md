@@ -35,16 +35,16 @@ import { UserRepository, ConfigRepository } from '@yyc3/repositories';
 function App() {
   const userRepo = new UserRepository();
   const configRepo = new ConfigRepository();
-  
+
   // 用户操作
   const users = await userRepo.findAll();
   const user = await userRepo.findById('123');
   await userRepo.create({ name: 'John', email: 'john@example.com' });
-  
+
   // 配置操作
   const config = await configRepo.get('app.theme');
   await configRepo.set('app.theme', 'dark');
-  
+
   return <div>App</div>;
 }
 ```
@@ -52,6 +52,7 @@ function App() {
 ## 📚 仓库列表
 
 ### 用户仓库
+
 - UserRepository - 用户数据仓库
   - findAll - 查找所有用户
   - findById - 根据ID查找
@@ -61,6 +62,7 @@ function App() {
   - delete - 删除用户
 
 ### 配置仓库
+
 - ConfigRepository - 配置数据仓库
   - get - 获取配置
   - set - 设置配置

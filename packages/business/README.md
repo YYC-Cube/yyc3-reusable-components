@@ -4,7 +4,8 @@
 
 ## 📦 简介
 
-`@yyc3/business` 提供了35个企业管理业务组件，涵盖财务、人力、供应链、营销等核心业务场景。
+`@yyc3/business`
+提供了35个企业管理业务组件，涵盖财务、人力、供应链、营销等核心业务场景。
 
 ## 🎯 特性
 
@@ -47,6 +48,7 @@ function App() {
 ## 📚 组件列表
 
 ### 财务管理
+
 - Accounting - 会计管理
 - Invoices - 发票管理
 - Payments - 支付管理
@@ -55,12 +57,14 @@ function App() {
 - Loans - 贷款管理
 
 ### 人力资源
+
 - Employees - 员工管理
 - Attendance - 考勤管理
 - Performance - 绩效管理
 - Contracts - 合同管理
 
 ### 供应链
+
 - Inventory - 库存管理
 - Procurement - 采购管理
 - Suppliers - 供应商管理
@@ -68,11 +72,13 @@ function App() {
 - Logistics - 物流管理
 
 ### 营销销售
+
 - Customers - 客户管理
 - Leads - 线索管理
 - Orders - 订单管理
 
 ### 运营管理
+
 - Projects - 项目管理
 - Tasks - 任务管理
 - WorkOrders - 工单管理
@@ -80,6 +86,7 @@ function App() {
 - Documents - 文档管理
 
 ### 其他
+
 - Dashboard - 仪表盘
 - Reports - 报表
 - Approvals - 审批管理

@@ -1,9 +1,9 @@
-
 # YYC3 本地存储与数据持久化架构
 
 ## 1. 概述
 
-YYC3 Hacker Chatbot 采用 **本地优先** 策略。数据主要存储在用户的浏览器中（`localStorage`），以实现即时访问和零延迟交互。与 Supabase 的可选同步（运行在 NAS 或云端）提供跨设备能力。
+YYC3 Hacker Chatbot 采用 **本地优先**
+策略。数据主要存储在用户的浏览器中（`localStorage`），以实现即时访问和零延迟交互。与 Supabase 的可选同步（运行在 NAS 或云端）提供跨设备能力。
 
 ## 2. 数据存储
 
@@ -71,14 +71,17 @@ YYC3 Hacker Chatbot 采用 **本地优先** 策略。数据主要存储在用户
 
 1. 用户修改设置或发送消息
 2. React 状态立即更新（乐观 UI）
-3. `useEffect` 或特定处理程序（如 `handleSave`）触发 `localStorage.setItem('KEY', JSON.stringify(newState))`
+3. `useEffect` 或特定处理程序（如 `handleSave`）触发
+   `localStorage.setItem('KEY', JSON.stringify(newState))`
 4. （可选）后台同步到 Supabase/NAS
 
 ### 4. 开发者最佳实践
 
-- **Hooks**：始终使用提供的 hooks（`useChatPersistence`、`useAI`）而不是原始 `localStorage` 调用，以确保状态一致性
+- **Hooks**：始终使用提供的 hooks（`useChatPersistence`、`useAI`）而不是原始
+  `localStorage` 调用，以确保状态一致性
 - **验证**：始终使用 try/catch 处理 `JSON.parse` 操作，以优雅地处理损坏的数据
-- **版本控制**：如果数据结构发生变化，请增加对象中的 `version` 字段，并在水合逻辑中实现迁移实用程序
+- **版本控制**：如果数据结构发生变化，请增加对象中的 `version`
+  字段，并在水合逻辑中实现迁移实用程序
 
 ### 5. 未来扩展：NAS 同步
 
@@ -89,14 +92,13 @@ YYC3 Hacker Chatbot 采用 **本地优先** 策略。数据主要存储在用户
 3. 使用 Supabase Realtime 监听来自其他设备（如 iMac、华为）的更改并更新本地状态
 
 ---
-        
-            
+
 toolName: todo_write
-            
+
 status: success
-          
+
 Todos updated: 2 items
-          
+
 ## 📋 详细操作指导
 
 ### 🎯 实施步骤概览
@@ -188,7 +190,7 @@ export const useChatPersistence = () => {
   const saveChats = useCallback((newChats: Chat[]) => {
     try {
       const serialized = JSON.stringify(newChats);
-      
+
       // 检查存储大小
       if (serialized.length > MAX_STORAGE_SIZE) {
         console.warn('存储空间不足，开始清理旧数据');
@@ -209,53 +211,67 @@ export const useChatPersistence = () => {
   // 清理旧聊天记录
   const cleanOldChats = useCallback((chatList: Chat[]): Chat[] => {
     const now = new Date();
-    const cutoffDate = new Date(now.getTime() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000);
-    
-    return chatList.filter(chat => {
+    const cutoffDate = new Date(
+      now.getTime() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000
+    );
+
+    return chatList.filter((chat) => {
       const chatDate = new Date(chat.updatedAt);
       return chatDate > cutoffDate || chat.isStarred; // 保留收藏的聊天
     });
   }, []);
 
   // 添加新聊天
-  const addChat = useCallback((title: string) => {
-    const newChat: Chat = {
-      id: `chat_${Date.now()}`,
-      title,
-      messages: [],
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isStarred: false,
-    };
-    saveChats([...chats, newChat]);
-    return newChat.id;
-  }, [chats, saveChats]);
+  const addChat = useCallback(
+    (title: string) => {
+      const newChat: Chat = {
+        id: `chat_${Date.now()}`,
+        title,
+        messages: [],
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        isStarred: false,
+      };
+      saveChats([...chats, newChat]);
+      return newChat.id;
+    },
+    [chats, saveChats]
+  );
 
   // 更新聊天
-  const updateChat = useCallback((chatId: string, updates: Partial<Chat>) => {
-    const updatedChats = chats.map(chat =>
-      chat.id === chatId
-        ? { ...chat, ...updates, updatedAt: new Date() }
-        : chat
-    );
-    saveChats(updatedChats);
-  }, [chats, saveChats]);
+  const updateChat = useCallback(
+    (chatId: string, updates: Partial<Chat>) => {
+      const updatedChats = chats.map((chat) =>
+        chat.id === chatId
+          ? { ...chat, ...updates, updatedAt: new Date() }
+          : chat
+      );
+      saveChats(updatedChats);
+    },
+    [chats, saveChats]
+  );
 
   // 删除聊天
-  const deleteChat = useCallback((chatId: string) => {
-    const updatedChats = chats.filter(chat => chat.id !== chatId);
-    saveChats(updatedChats);
-  }, [chats, saveChats]);
+  const deleteChat = useCallback(
+    (chatId: string) => {
+      const updatedChats = chats.filter((chat) => chat.id !== chatId);
+      saveChats(updatedChats);
+    },
+    [chats, saveChats]
+  );
 
   // 切换收藏状态
-  const toggleStar = useCallback((chatId: string) => {
-    const updatedChats = chats.map(chat =>
-      chat.id === chatId
-        ? { ...chat, isStarred: !chat.isStarred, updatedAt: new Date() }
-        : chat
-    );
-    saveChats(updatedChats);
-  }, [chats, saveChats]);
+  const toggleStar = useCallback(
+    (chatId: string) => {
+      const updatedChats = chats.map((chat) =>
+        chat.id === chatId
+          ? { ...chat, isStarred: !chat.isStarred, updatedAt: new Date() }
+          : chat
+      );
+      saveChats(updatedChats);
+    },
+    [chats, saveChats]
+  );
 
   return {
     chats,
@@ -300,7 +316,7 @@ export const useAI = () => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        
+
         // 数据迁移
         if (parsed.version !== CURRENT_VERSION) {
           const migrated = migrateConfig(parsed);
@@ -331,10 +347,13 @@ export const useAI = () => {
   }, []);
 
   // 更新配置
-  const updateConfig = useCallback((updates: Partial<AIConfig>) => {
-    const newConfig = { ...config, ...updates };
-    saveConfig(newConfig);
-  }, [config, saveConfig]);
+  const updateConfig = useCallback(
+    (updates: Partial<AIConfig>) => {
+      const newConfig = { ...config, ...updates };
+      saveConfig(newConfig);
+    },
+    [config, saveConfig]
+  );
 
   // 清除 API 密钥
   const clearApiKey = useCallback(() => {
@@ -354,12 +373,12 @@ export const useAI = () => {
 // 配置迁移函数
 function migrateConfig(oldConfig: any): AIConfig {
   let migrated = { ...oldConfig };
-  
+
   // 版本 0 -> 1: 添加 version 字段
   if (!migrated.version) {
     migrated.version = 1;
   }
-  
+
   // 确保所有必需字段存在
   return {
     ...DEFAULT_CONFIG,
@@ -398,7 +417,7 @@ export const useUISettings = () => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        
+
         // 数据迁移
         if (parsed.version !== CURRENT_VERSION) {
           const migrated = migrateSettings(parsed);
@@ -429,10 +448,13 @@ export const useUISettings = () => {
   }, []);
 
   // 更新设置
-  const updateSettings = useCallback((updates: Partial<UISettings>) => {
-    const newSettings = { ...settings, ...updates };
-    saveSettings(newSettings);
-  }, [settings, saveSettings]);
+  const updateSettings = useCallback(
+    (updates: Partial<UISettings>) => {
+      const newSettings = { ...settings, ...updates };
+      saveSettings(newSettings);
+    },
+    [settings, saveSettings]
+  );
 
   // 重置为默认设置
   const resetSettings = useCallback(() => {
@@ -451,12 +473,12 @@ export const useUISettings = () => {
 // 设置迁移函数
 function migrateSettings(oldSettings: any): UISettings {
   let migrated = { ...oldSettings };
-  
+
   // 版本 0 -> 1: 添加 version 字段
   if (!migrated.version) {
     migrated.version = 1;
   }
-  
+
   // 确保所有必需字段存在
   return {
     ...DEFAULT_SETTINGS,
@@ -486,12 +508,11 @@ export const useSupabaseSync = (
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   // 上传本地聊天到 Supabase
-  const syncToSupabase = useCallback(async (chats: Chat[]) => {
-    try {
-      const { error } = await supabase
-        .from('chats')
-        .upsert(
-          chats.map(chat => ({
+  const syncToSupabase = useCallback(
+    async (chats: Chat[]) => {
+      try {
+        const { error } = await supabase.from('chats').upsert(
+          chats.map((chat) => ({
             id: chat.id,
             title: chat.title,
             messages: chat.messages,
@@ -502,12 +523,14 @@ export const useSupabaseSync = (
           { onConflict: 'id' }
         );
 
-      if (error) throw error;
-      console.log('同步到 Supabase 成功');
-    } catch (err) {
-      console.error('同步到 Supabase 失败:', err);
-    }
-  }, [supabase]);
+        if (error) throw error;
+        console.log('同步到 Supabase 成功');
+      } catch (err) {
+        console.error('同步到 Supabase 失败:', err);
+      }
+    },
+    [supabase]
+  );
 
   // 从 Supabase 下载聊天
   const syncFromSupabase = useCallback(async () => {
@@ -519,7 +542,7 @@ export const useSupabaseSync = (
 
       if (error) throw error;
 
-      const remoteChats: Chat[] = data.map(row => ({
+      const remoteChats: Chat[] = data.map((row) => ({
         id: row.id,
         title: row.title,
         messages: row.messages,
@@ -670,7 +693,10 @@ export function validateUISettings(data: any): data is UISettings {
 }
 
 // 安全的 JSON 解析
-export function safeJSONParse<T>(json: string, validator: (data: any) => data is T): T | null {
+export function safeJSONParse<T>(
+  json: string,
+  validator: (data: any) => data is T
+): T | null {
   try {
     const parsed = JSON.parse(json);
     return validator(parsed) ? parsed : null;
@@ -722,10 +748,10 @@ export function getStorageUsage(): {
       used += localStorage[key].length;
     }
   }
-  
+
   const total = 5 * 1024 * 1024; // 5MB 限制
   const percentage = (used / total) * 100;
-  
+
   return { used, total, percentage };
 }
 ```
@@ -783,14 +809,13 @@ export function getStorageUsage(): {
 3. **性能考虑**：大量数据会影响加载速度，考虑分页或虚拟滚动
 4. **浏览器兼容性**：确保在目标浏览器中 localStorage 可用
 5. **隐私保护**：遵守数据隐私法规，提供数据删除选项
-        
-            
+
 toolName: todo_write
-            
+
 status: success
-          
+
 Todos updated: 2 items
-          
+
 完成了！我已经为您提供了完整的YYC3本地存储与数据持久化架构的中文翻译和详细的操作指导。
 
 ## 📚 内容总结

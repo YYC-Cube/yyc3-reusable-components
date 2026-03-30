@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Switch } from './switch';
+import { Switch } from '../switch';
 
 describe('Switch', () => {
   it('renders correctly', () => {

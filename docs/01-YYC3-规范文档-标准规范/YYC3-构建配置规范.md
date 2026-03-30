@@ -1,8 +1,7 @@
 # YYC³ 组件库 - 构建配置规范
 
-> **规范版本**: v1.0.0
-> **创建日期**: 2024年3月28日
-> **适用范围**: YYC³组件库所有包的构建配置
+> **规范版本**: v1.0.0 **创建日期**: 2024年3月28日 **适用范围**:
+> YYC³组件库所有包的构建配置
 
 ---
 
@@ -40,14 +39,14 @@
 
 ### 脚本说明
 
-| 脚本 | 命令 | 说明 |
-|------|------|------|
-| `dev` | `tsup --watch` | 开发模式，监听文件变化自动构建 |
-| `build` | `tsup` | 生产构建，生成优化的产物 |
-| `test` | `vitest` | 运行测试 |
-| `lint` | `eslint src --ext .ts,.tsx` | 代码检查 |
-| `typecheck` | `tsc --noEmit` | 类型检查 |
-| `clean` | `rm -rf dist` | 清理构建产物 |
+| 脚本        | 命令                        | 说明                           |
+| ----------- | --------------------------- | ------------------------------ |
+| `dev`       | `tsup --watch`              | 开发模式，监听文件变化自动构建 |
+| `build`     | `tsup`                      | 生产构建，生成优化的产物       |
+| `test`      | `vitest`                    | 运行测试                       |
+| `lint`      | `eslint src --ext .ts,.tsx` | 代码检查                       |
+| `typecheck` | `tsc --noEmit`              | 类型检查                       |
+| `clean`     | `rm -rf dist`               | 清理构建产物                   |
 
 ---
 
@@ -70,9 +69,7 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -108,9 +105,7 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -145,9 +140,7 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -204,7 +197,14 @@ export default defineConfig({
     "incremental": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
+  ]
 }
 ```
 

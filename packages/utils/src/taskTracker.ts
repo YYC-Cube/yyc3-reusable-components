@@ -34,11 +34,11 @@ export class TaskTracker {
   }
 
   getTasksByStatus(status: Task['status']): Task[] {
-    return Array.from(this.tasks.values()).filter(t => t.status === status);
+    return Array.from(this.tasks.values()).filter((t) => t.status === status);
   }
 
   getTasksByPriority(priority: Task['priority']): Task[] {
-    return Array.from(this.tasks.values()).filter(t => t.priority === priority);
+    return Array.from(this.tasks.values()).filter((t) => t.priority === priority);
   }
 
   exportTasks(): string {

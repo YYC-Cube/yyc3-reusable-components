@@ -10,8 +10,9 @@ export default meta;
 type Story = StoryObj;
 
 function NotificationsDemo() {
-  const { notifications, addNotification, removeNotification, clearNotifications } = useNotifications();
-  
+  const { notifications, addNotification, removeNotification, clearNotifications } =
+    useNotifications();
+
   const addSuccess = () => {
     addNotification({
       id: Date.now().toString(),
@@ -20,7 +21,7 @@ function NotificationsDemo() {
       duration: 3000,
     });
   };
-  
+
   const addError = () => {
     addNotification({
       id: Date.now().toString(),
@@ -29,7 +30,7 @@ function NotificationsDemo() {
       duration: 5000,
     });
   };
-  
+
   const addWarning = () => {
     addNotification({
       id: Date.now().toString(),
@@ -38,7 +39,7 @@ function NotificationsDemo() {
       duration: 4000,
     });
   };
-  
+
   const addInfo = () => {
     addNotification({
       id: Date.now().toString(),
@@ -47,40 +48,25 @@ function NotificationsDemo() {
       duration: 3000,
     });
   };
-  
+
   return (
     <div className="p-6 space-y-4">
       <div className="text-2xl font-bold">Notification System</div>
       <div className="flex gap-2">
-        <button
-          onClick={addSuccess}
-          className="bg-green-500 text-white px-4 py-2 rounded"
-        >
+        <button onClick={addSuccess} className="bg-green-500 text-white px-4 py-2 rounded">
           Success
         </button>
-        <button
-          onClick={addError}
-          className="bg-red-500 text-white px-4 py-2 rounded"
-        >
+        <button onClick={addError} className="bg-red-500 text-white px-4 py-2 rounded">
           Error
         </button>
-        <button
-          onClick={addWarning}
-          className="bg-yellow-500 text-white px-4 py-2 rounded"
-        >
+        <button onClick={addWarning} className="bg-yellow-500 text-white px-4 py-2 rounded">
           Warning
         </button>
-        <button
-          onClick={addInfo}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
+        <button onClick={addInfo} className="bg-blue-500 text-white px-4 py-2 rounded">
           Info
         </button>
       </div>
-      <button
-        onClick={clearNotifications}
-        className="bg-gray-500 text-white px-4 py-2 rounded"
-      >
+      <button onClick={clearNotifications} className="bg-gray-500 text-white px-4 py-2 rounded">
         Clear All
       </button>
       <div className="space-y-2">
@@ -92,10 +78,13 @@ function NotificationsDemo() {
             <div
               key={notification.id}
               className={`p-3 rounded ${
-                notification.type === 'success' ? 'bg-green-100' :
-                notification.type === 'error' ? 'bg-red-100' :
-                notification.type === 'warning' ? 'bg-yellow-100' :
-                'bg-blue-100'
+                notification.type === 'success'
+                  ? 'bg-green-100'
+                  : notification.type === 'error'
+                    ? 'bg-red-100'
+                    : notification.type === 'warning'
+                      ? 'bg-yellow-100'
+                      : 'bg-blue-100'
               }`}
             >
               <div className="flex justify-between items-center">
@@ -121,7 +110,7 @@ export const Default: Story = {
 
 function AutoDismissDemo() {
   const { notifications, addNotification } = useNotifications();
-  
+
   const addAutoNotification = () => {
     addNotification({
       id: Date.now().toString(),
@@ -130,22 +119,16 @@ function AutoDismissDemo() {
       duration: 3000,
     });
   };
-  
+
   return (
     <div className="p-6 space-y-4">
       <div className="text-2xl font-bold">Auto-Dismiss Notifications</div>
-      <button
-        onClick={addAutoNotification}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
+      <button onClick={addAutoNotification} className="bg-blue-500 text-white px-4 py-2 rounded">
         Add Notification (3s auto-dismiss)
       </button>
       <div className="space-y-2">
         {notifications.map((notification) => (
-          <div
-            key={notification.id}
-            className="p-3 bg-blue-100 rounded"
-          >
+          <div key={notification.id} className="p-3 bg-blue-100 rounded">
             {notification.message}
           </div>
         ))}
@@ -160,7 +143,7 @@ export const AutoDismiss: Story = {
 
 function MultipleNotificationsDemo() {
   const { notifications, addNotification, clearNotifications } = useNotifications();
-  
+
   const addMultiple = () => {
     const types = ['success', 'error', 'warning', 'info'] as const;
     types.forEach((type, index) => {
@@ -174,20 +157,14 @@ function MultipleNotificationsDemo() {
       }, index * 500);
     });
   };
-  
+
   return (
     <div className="p-6 space-y-4">
       <div className="text-2xl font-bold">Multiple Notifications</div>
-      <button
-        onClick={addMultiple}
-        className="bg-purple-500 text-white px-4 py-2 rounded"
-      >
+      <button onClick={addMultiple} className="bg-purple-500 text-white px-4 py-2 rounded">
         Add Multiple Notifications
       </button>
-      <button
-        onClick={clearNotifications}
-        className="bg-gray-500 text-white px-4 py-2 rounded"
-      >
+      <button onClick={clearNotifications} className="bg-gray-500 text-white px-4 py-2 rounded">
         Clear All ({notifications.length})
       </button>
       <div className="space-y-2">
@@ -195,10 +172,13 @@ function MultipleNotificationsDemo() {
           <div
             key={notification.id}
             className={`p-3 rounded ${
-              notification.type === 'success' ? 'bg-green-100' :
-              notification.type === 'error' ? 'bg-red-100' :
-              notification.type === 'warning' ? 'bg-yellow-100' :
-              'bg-blue-100'
+              notification.type === 'success'
+                ? 'bg-green-100'
+                : notification.type === 'error'
+                  ? 'bg-red-100'
+                  : notification.type === 'warning'
+                    ? 'bg-yellow-100'
+                    : 'bg-blue-100'
             }`}
           >
             {notification.message}

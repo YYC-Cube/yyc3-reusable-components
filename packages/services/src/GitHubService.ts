@@ -10,7 +10,7 @@
  * Encapsulates all GitHub operation business logic, coordinating Repository layer and MCP API calls
  */
 
-import { gitHubRepository } from "@yyc3/repositories";
+import { gitHubRepository } from '@yyc3/repositories';
 import type {
   GitHubRepository as GitHubRepo,
   GitHubBranch,
@@ -18,7 +18,7 @@ import type {
   GitHubOperationResult,
   RepoSearchParams,
   PaginatedResponse,
-} from "./types/github";
+} from './types/github';
 
 /* ──────────────────── MCP 连接状态 / MCP Connection State ──────────────────── */
 
@@ -53,125 +53,125 @@ export interface MCPConnectionState {
 const MOCK_REPOSITORIES: GitHubRepo[] = [
   {
     id: 1001,
-    fullName: "YY-Nexus/YYC-Cube",
-    name: "YYC-Cube",
-    description: "YYC3 AI Family Ecosystem - Core Monorepo | YYC3 AI 家族生态系统核心仓库",
+    fullName: 'YY-Nexus/YYC-Cube',
+    name: 'YYC-Cube',
+    description: 'YYC3 AI Family Ecosystem - Core Monorepo | YYC3 AI 家族生态系统核心仓库',
     isPrivate: false,
-    defaultBranch: "main",
-    htmlUrl: "https://github.com/YY-Nexus/YYC-Cube",
-    apiUrl: "https://api.github.com/repos/YY-Nexus/YYC-Cube",
-    cloneUrl: "https://github.com/YY-Nexus/YYC-Cube.git",
-    language: "TypeScript",
+    defaultBranch: 'main',
+    htmlUrl: 'https://github.com/YY-Nexus/YYC-Cube',
+    apiUrl: 'https://api.github.com/repos/YY-Nexus/YYC-Cube',
+    cloneUrl: 'https://github.com/YY-Nexus/YYC-Cube.git',
+    language: 'TypeScript',
     stargazersCount: 42,
     forksCount: 8,
     openIssuesCount: 15,
     size: 28400,
-    createdAt: "2024-01-15T08:00:00Z",
-    updatedAt: "2026-02-14T10:30:00Z",
-    pushedAt: "2026-02-14T09:45:00Z",
-    topics: ["ai", "family", "mcp", "typescript", "terminal-ui"],
+    createdAt: '2024-01-15T08:00:00Z',
+    updatedAt: '2026-02-14T10:30:00Z',
+    pushedAt: '2026-02-14T09:45:00Z',
+    topics: ['ai', 'family', 'mcp', 'typescript', 'terminal-ui'],
     archived: false,
     disabled: false,
   },
   {
     id: 1002,
-    fullName: "YY-Nexus/Ralph-Loop",
-    name: "Ralph-Loop",
-    description: "文档智能闭环工作流系统 | Intelligent Document Closed-Loop Workflow System",
+    fullName: 'YY-Nexus/Ralph-Loop',
+    name: 'Ralph-Loop',
+    description: '文档智能闭环工作流系统 | Intelligent Document Closed-Loop Workflow System',
     isPrivate: false,
-    defaultBranch: "main",
-    htmlUrl: "https://github.com/YY-Nexus/Ralph-Loop",
-    apiUrl: "https://api.github.com/repos/YY-Nexus/Ralph-Loop",
-    cloneUrl: "https://github.com/YY-Nexus/Ralph-Loop.git",
-    language: "Python",
+    defaultBranch: 'main',
+    htmlUrl: 'https://github.com/YY-Nexus/Ralph-Loop',
+    apiUrl: 'https://api.github.com/repos/YY-Nexus/Ralph-Loop',
+    cloneUrl: 'https://github.com/YY-Nexus/Ralph-Loop.git',
+    language: 'Python',
     stargazersCount: 18,
     forksCount: 3,
     openIssuesCount: 7,
     size: 15200,
-    createdAt: "2024-03-20T12:00:00Z",
-    updatedAt: "2026-02-13T15:00:00Z",
-    pushedAt: "2026-02-13T14:30:00Z",
-    topics: ["workflow", "document", "automation", "fastapi"],
+    createdAt: '2024-03-20T12:00:00Z',
+    updatedAt: '2026-02-13T15:00:00Z',
+    pushedAt: '2026-02-13T14:30:00Z',
+    topics: ['workflow', 'document', 'automation', 'fastapi'],
     archived: false,
     disabled: false,
   },
   {
     id: 1003,
-    fullName: "YY-Nexus/YYC3-Terminal",
-    name: "YYC3-Terminal",
-    description: "终端对话界面 | Terminal UI for AI Family Interaction",
+    fullName: 'YY-Nexus/YYC3-Terminal',
+    name: 'YYC3-Terminal',
+    description: '终端对话界面 | Terminal UI for AI Family Interaction',
     isPrivate: false,
-    defaultBranch: "main",
-    htmlUrl: "https://github.com/YY-Nexus/YYC3-Terminal",
-    apiUrl: "https://api.github.com/repos/YY-Nexus/YYC3-Terminal",
-    cloneUrl: "https://github.com/YY-Nexus/YYC3-Terminal.git",
-    language: "TypeScript",
+    defaultBranch: 'main',
+    htmlUrl: 'https://github.com/YY-Nexus/YYC3-Terminal',
+    apiUrl: 'https://api.github.com/repos/YY-Nexus/YYC3-Terminal',
+    cloneUrl: 'https://github.com/YY-Nexus/YYC3-Terminal.git',
+    language: 'TypeScript',
     stargazersCount: 25,
     forksCount: 5,
     openIssuesCount: 4,
     size: 12800,
-    createdAt: "2024-06-01T09:00:00Z",
-    updatedAt: "2026-02-14T08:00:00Z",
-    pushedAt: "2026-02-14T07:50:00Z",
-    topics: ["terminal", "react", "tailwind", "hacker-ui"],
+    createdAt: '2024-06-01T09:00:00Z',
+    updatedAt: '2026-02-14T08:00:00Z',
+    pushedAt: '2026-02-14T07:50:00Z',
+    topics: ['terminal', 'react', 'tailwind', 'hacker-ui'],
     archived: false,
     disabled: false,
   },
   {
     id: 1004,
-    fullName: "YY-Nexus/MCP-Bridge",
-    name: "MCP-Bridge",
-    description: "MCP 协议桥接层 | Model Context Protocol Bridge Layer",
+    fullName: 'YY-Nexus/MCP-Bridge',
+    name: 'MCP-Bridge',
+    description: 'MCP 协议桥接层 | Model Context Protocol Bridge Layer',
     isPrivate: true,
-    defaultBranch: "develop",
-    htmlUrl: "https://github.com/YY-Nexus/MCP-Bridge",
-    apiUrl: "https://api.github.com/repos/YY-Nexus/MCP-Bridge",
-    cloneUrl: "https://github.com/YY-Nexus/MCP-Bridge.git",
-    language: "TypeScript",
+    defaultBranch: 'develop',
+    htmlUrl: 'https://github.com/YY-Nexus/MCP-Bridge',
+    apiUrl: 'https://api.github.com/repos/YY-Nexus/MCP-Bridge',
+    cloneUrl: 'https://github.com/YY-Nexus/MCP-Bridge.git',
+    language: 'TypeScript',
     stargazersCount: 0,
     forksCount: 0,
     openIssuesCount: 12,
     size: 5600,
-    createdAt: "2025-09-10T10:00:00Z",
-    updatedAt: "2026-02-14T11:00:00Z",
-    pushedAt: "2026-02-14T10:55:00Z",
-    topics: ["mcp", "bridge", "protocol", "api-gateway"],
+    createdAt: '2025-09-10T10:00:00Z',
+    updatedAt: '2026-02-14T11:00:00Z',
+    pushedAt: '2026-02-14T10:55:00Z',
+    topics: ['mcp', 'bridge', 'protocol', 'api-gateway'],
     archived: false,
     disabled: false,
   },
 ];
 
 const MOCK_BRANCHES: GitHubBranch[] = [
-  { name: "main", commitSha: "abc123def456", isProtected: true },
-  { name: "develop", commitSha: "789ghi012jkl", isProtected: false },
-  { name: "feature/v0.9.3-intelligence", commitSha: "mno345pqr678", isProtected: false },
-  { name: "hotfix/settings-modal", commitSha: "stu901vwx234", isProtected: false },
+  { name: 'main', commitSha: 'abc123def456', isProtected: true },
+  { name: 'develop', commitSha: '789ghi012jkl', isProtected: false },
+  { name: 'feature/v0.9.3-intelligence', commitSha: 'mno345pqr678', isProtected: false },
+  { name: 'hotfix/settings-modal', commitSha: 'stu901vwx234', isProtected: false },
 ];
 
 const MOCK_COMMITS: GitHubCommit[] = [
   {
-    sha: "a1b2c3d4e5f6",
-    message: "fix(settings): resolve ReferenceError for installedExtensions state",
-    author: { name: "YanYu", email: "admin@0379.email", date: "2026-02-14T09:00:00Z" },
-    htmlUrl: "https://github.com/YY-Nexus/YYC-Cube/commit/a1b2c3d4e5f6",
+    sha: 'a1b2c3d4e5f6',
+    message: 'fix(settings): resolve ReferenceError for installedExtensions state',
+    author: { name: 'YanYu', email: 'admin@0379.email', date: '2026-02-14T09:00:00Z' },
+    htmlUrl: 'https://github.com/YY-Nexus/YYC-Cube/commit/a1b2c3d4e5f6',
   },
   {
-    sha: "b2c3d4e5f6a1",
-    message: "feat(audio): integrate sound engine into ChatContainer and SystemStartup",
-    author: { name: "YanYu", email: "admin@0379.email", date: "2026-02-13T18:00:00Z" },
-    htmlUrl: "https://github.com/YY-Nexus/YYC-Cube/commit/b2c3d4e5f6a1",
+    sha: 'b2c3d4e5f6a1',
+    message: 'feat(audio): integrate sound engine into ChatContainer and SystemStartup',
+    author: { name: 'YanYu', email: 'admin@0379.email', date: '2026-02-13T18:00:00Z' },
+    htmlUrl: 'https://github.com/YY-Nexus/YYC-Cube/commit/b2c3d4e5f6a1',
   },
   {
-    sha: "c3d4e5f6a1b2",
-    message: "feat(mcp): verify GitHub MCP connection with 120+ repos discovered",
-    author: { name: "YanYu", email: "admin@0379.email", date: "2026-02-13T15:30:00Z" },
-    htmlUrl: "https://github.com/YY-Nexus/YYC-Cube/commit/c3d4e5f6a1b2",
+    sha: 'c3d4e5f6a1b2',
+    message: 'feat(mcp): verify GitHub MCP connection with 120+ repos discovered',
+    author: { name: 'YanYu', email: 'admin@0379.email', date: '2026-02-13T15:30:00Z' },
+    htmlUrl: 'https://github.com/YY-Nexus/YYC-Cube/commit/c3d4e5f6a1b2',
   },
   {
-    sha: "d4e5f6a1b2c3",
-    message: "docs: update yyc3.md to v0.9.3 Intelligence milestone",
-    author: { name: "YanYu", email: "admin@0379.email", date: "2026-02-13T12:00:00Z" },
-    htmlUrl: "https://github.com/YY-Nexus/YYC-Cube/commit/d4e5f6a1b2c3",
+    sha: 'd4e5f6a1b2c3',
+    message: 'docs: update yyc3.md to v0.9.3 Intelligence milestone',
+    author: { name: 'YanYu', email: 'admin@0379.email', date: '2026-02-13T12:00:00Z' },
+    htmlUrl: 'https://github.com/YY-Nexus/YYC-Cube/commit/d4e5f6a1b2c3',
   },
 ];
 
@@ -197,8 +197,8 @@ class GitHubServiceImpl {
   /** MCP 连接状态 / MCP connection state */
   private connectionState: MCPConnectionState = {
     isConnected: true,
-    authenticatedUser: "YanYu",
-    organization: "YY-Nexus",
+    authenticatedUser: 'YanYu',
+    organization: 'YY-Nexus',
     lastVerifiedAt: new Date().toISOString(),
     repoCount: 120,
     latency: 45,
@@ -240,7 +240,7 @@ class GitHubServiceImpl {
       return this.wrapResult(this.connectionState);
     } catch (error) {
       this.connectionState.isConnected = false;
-      return this.wrapError("MCP_CONNECTION_VERIFY_FAILED / MCP 连接验证失败");
+      return this.wrapError('MCP_CONNECTION_VERIFY_FAILED / MCP 连接验证失败');
     }
   }
 
@@ -256,7 +256,9 @@ class GitHubServiceImpl {
    * @param {boolean} [forceRefresh=false] - 强制刷新 / Force refresh
    * @returns {Promise<GitHubOperationResult<GitHubRepo[]>>} 仓库列表 / Repository list
    */
-  async listRepositories(forceRefresh: boolean = false): Promise<GitHubOperationResult<GitHubRepo[]>> {
+  async listRepositories(
+    forceRefresh: boolean = false
+  ): Promise<GitHubOperationResult<GitHubRepo[]>> {
     try {
       // 尝试从缓存读取 / Try reading from cache
       if (!forceRefresh) {
@@ -281,7 +283,7 @@ class GitHubServiceImpl {
       if (fallback.length > 0) {
         return this.wrapResult(fallback);
       }
-      return this.wrapError("REPO_LIST_FETCH_FAILED / 获取仓库列表失败");
+      return this.wrapError('REPO_LIST_FETCH_FAILED / 获取仓库列表失败');
     }
   }
 
@@ -296,9 +298,10 @@ class GitHubServiceImpl {
     params: RepoSearchParams
   ): Promise<GitHubOperationResult<PaginatedResponse<GitHubRepo>>> {
     try {
-      const allRepos = gitHubRepository.getRepositories().length > 0
-        ? gitHubRepository.getRepositories()
-        : MOCK_REPOSITORIES;
+      const allRepos =
+        gitHubRepository.getRepositories().length > 0
+          ? gitHubRepository.getRepositories()
+          : MOCK_REPOSITORIES;
 
       // 应用过滤条件 / Apply filters
       const filtered = allRepos.filter((repo) => {
@@ -308,36 +311,34 @@ class GitHubServiceImpl {
           (repo.description?.toLowerCase().includes(params.query.toLowerCase()) ?? false);
 
         const matchesOrg =
-          !params.org ||
-          repo.fullName.toLowerCase().startsWith(params.org.toLowerCase());
+          !params.org || repo.fullName.toLowerCase().startsWith(params.org.toLowerCase());
 
         const matchesLang =
-          !params.language ||
-          repo.language?.toLowerCase() === params.language.toLowerCase();
+          !params.language || repo.language?.toLowerCase() === params.language.toLowerCase();
 
         return matchesQuery && matchesOrg && matchesLang;
       });
 
       // 应用排序 / Apply sorting
-      const sortField = params.sort ?? "updated";
-      const sortOrder = params.order ?? "desc";
+      const sortField = params.sort ?? 'updated';
+      const sortOrder = params.order ?? 'desc';
       filtered.sort((a, b) => {
         let comparison = 0;
         switch (sortField) {
-          case "stars":
+          case 'stars':
             comparison = a.stargazersCount - b.stargazersCount;
             break;
-          case "forks":
+          case 'forks':
             comparison = a.forksCount - b.forksCount;
             break;
-          case "updated":
+          case 'updated':
             comparison = new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime();
             break;
-          case "created":
+          case 'created':
             comparison = new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
             break;
         }
-        return sortOrder === "desc" ? -comparison : comparison;
+        return sortOrder === 'desc' ? -comparison : comparison;
       });
 
       // 应用分页 / Apply pagination
@@ -351,12 +352,13 @@ class GitHubServiceImpl {
         totalCount: filtered.length,
         page,
         perPage,
+        hasMore: startIndex + perPage < filtered.length,
         hasNextPage: startIndex + perPage < filtered.length,
       };
 
       return this.wrapResult(result);
     } catch {
-      return this.wrapError("REPO_SEARCH_FAILED / 搜索仓库失败");
+      return this.wrapError('REPO_SEARCH_FAILED / 搜索仓库失败');
     }
   }
 

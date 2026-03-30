@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { AIConfig } from './types/storage';
+import type { AIMessage, AIStreamChunk } from './types/ai';
 import { toast } from 'sonner';
 
 const STORAGE_KEY = 'yyc3_ai_config';
@@ -15,12 +16,12 @@ const DEFAULT_CONFIG: AIConfig = {
 };
 
 // Simulation responses for preview environment
-const SIMULATION_RESPONSES = [
-  "ANALYZING SYSTEM ARCHITECTURE... [OK]",
-  "OPTIMIZING DATABASE QUERIES... [COMPLETED]",
-  "DETECTING NETWORK ANOMALIES... [NONE FOUND]",
-  "EXECUTING NEURAL HANDSHAKE WITH CLOUD NODE...",
-  "LOCAL MODEL UNREACHABLE. ENTERING SIMULATION MODE.\n\nI am the fallback system. Your local Ollama instance appears to be offline or unreachable from this environment. Ensure `ollama serve` is running and CORS is configured.",
+const _SIMULATION_RESPONSES = [
+  'ANALYZING SYSTEM ARCHITECTURE... [OK]',
+  'OPTIMIZING DATABASE QUERIES... [COMPLETED]',
+  'DETECTING NETWORK ANOMALIES... [NONE FOUND]',
+  'EXECUTING NEURAL HANDSHAKE WITH CLOUD NODE...',
+  'LOCAL MODEL UNREACHABLE. ENTERING SIMULATION MODE.\n\nI am the fallback system. Your local Ollama instance appears to be offline or unreachable from this environment. Ensure `ollama serve` is running and CORS is configured.',
 ];
 
 export const useAI = () => {
@@ -34,7 +35,7 @@ export const useAI = () => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        
+
         // Migration
         if (parsed.version !== CURRENT_VERSION) {
           const migrated = { ...DEFAULT_CONFIG, ...parsed, version: CURRENT_VERSION };
@@ -57,15 +58,15 @@ export const useAI = () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(newConfig));
       setConfig(newConfig);
     } catch (e) {
-      console.error("Failed to save AI config", e);
+      console.error('Failed to save AI config', e);
     }
   }, []);
 
   // Chat Function
-  const chat = async (messages: { role: string; content: string }[], onChunk: (chunk: string) => void) => {
+  const chat = async (messages: AIMessage[], onChunk: (chunk: string) => void) => {
     setIsStreaming(true);
-    
-    const currentConfig = config; 
+
+    const currentConfig = config;
 
     try {
       // Create an AbortController for timeout
@@ -77,7 +78,7 @@ export const useAI = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${currentConfig.apiKey}`
+            Authorization: `Bearer ${currentConfig.apiKey}`,
           },
           body: JSON.stringify({
             model: currentConfig.model,
@@ -85,7 +86,7 @@ export const useAI = () => {
             temperature: currentConfig.temperature,
             stream: true,
           }),
-          signal: controller.signal
+          signal: controller.signal,
         });
 
         clearTimeout(timeoutId);
@@ -97,6 +98,7 @@ export const useAI = () => {
         const decoder = new TextDecoder();
         let buffer = '';
 
+        // eslint-disable-next-line no-constant-condition
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
@@ -110,7 +112,7 @@ export const useAI = () => {
             if (trimmed.startsWith('data: ')) {
               const dataStr = trimmed.slice(6);
               if (dataStr === '[DONE]') continue;
-              
+
               try {
                 const data = JSON.parse(dataStr);
                 const content = data.choices?.[0]?.delta?.content || '';
@@ -123,21 +125,21 @@ export const useAI = () => {
         }
       } catch (networkError: any) {
         // Fallback to simulation if network fails (likely due to preview env not reaching localhost)
-        console.warn("Network error or timeout, switching to simulation:", networkError);
-        
-        let simText = "";
-        const fallbackMessage = "Local inference node unreachable. Simulating intelligent response based on protocols...\n\n" + 
-          `Executing command: ${messages[messages.length - 1].content.slice(0, 20)}...\n` +
-          "Analysis: Request valid.\nOutput: This is a simulated response because the local LLM is not accessible from this cloud preview environment. In your local deployment, this would be the Llama3 output.";
+        console.warn('Network error or timeout, switching to simulation:', networkError);
 
-        const chunks = fallbackMessage.split(" ");
+        let simText = '';
+        const fallbackMessage =
+          'Local inference node unreachable. Simulating intelligent response based on protocols...\n\n' +
+          `Executing command: ${messages[messages.length - 1].content.slice(0, 20)}...\n` +
+          'Analysis: Request valid.\nOutput: This is a simulated response because the local LLM is not accessible from this cloud preview environment. In your local deployment, this would be the Llama3 output.';
+
+        const chunks = fallbackMessage.split(' ');
         for (const chunk of chunks) {
-          await new Promise(r => setTimeout(r, 50)); // Simulate typing
-          simText += chunk + " ";
-          onChunk(chunk + " ");
+          await new Promise((r) => setTimeout(r, 50)); // Simulate typing
+          simText += chunk + ' ';
+          onChunk(chunk + ' ');
         }
       }
-
     } catch (error: any) {
       toast.error(`AI_CORE_FAILURE: ${error.message}`);
       onChunk(`\n[SYSTEM_ERROR]: ${error.message}\n`);

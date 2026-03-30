@@ -14,14 +14,12 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "types": ["vitest/globals"]
   },
-  "include": [
-    "vitest.setup.ts",
-    "vitest.config.ts"
-  ],
+  "include": ["vitest.setup.ts", "vitest.config.ts"],
   "exclude": [
     "node_modules",
     "dist",

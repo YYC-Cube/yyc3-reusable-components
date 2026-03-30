@@ -12,6 +12,16 @@ export { devOpsService } from './DevOpsService';
 export { gitHubService } from './GitHubService';
 
 // 类型导出
-export type { DatabaseConfig, DatabaseConnection, DatabaseStats, QueryResult } from './types/database';
+export type {
+  DatabaseConfig,
+  DatabaseConnection,
+  DatabaseStats,
+  QueryResult,
+} from './types/database';
 export type { DevOpsConfig, Pipeline, Deployment, DevOpsMetrics } from './types/devops';
-export type { GitHubConfig, GitHubRepository, GitHubIssue, GitHubPullRequest } from './types/github';
+export type {
+  GitHubConfig,
+  GitHubRepository,
+  GitHubIssue,
+  GitHubPullRequest,
+} from './types/github';

@@ -1,5 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from './form';
 import { Input } from './input';
 import { Button } from './button';
 import { useForm } from 'react-hook-form';
@@ -32,9 +40,7 @@ function InputForm() {
               <FormControl>
                 <Input placeholder="Enter your username" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
+              <FormDescription>This is your public display name.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -68,9 +74,7 @@ function EmailForm() {
               <FormControl>
                 <Input type="email" placeholder="Enter your email" {...field} />
               </FormControl>
-              <FormDescription>
-                We'll never share your email with anyone else.
-              </FormDescription>
+              <FormDescription>We'll never share your email with anyone else.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -229,12 +233,7 @@ function SearchForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="search"
-                  placeholder="Search..."
-                  {...field}
-                  className="pr-12"
-                />
+                <Input type="search" placeholder="Search..." {...field} className="pr-12" />
               </FormControl>
             </FormItem>
           )}

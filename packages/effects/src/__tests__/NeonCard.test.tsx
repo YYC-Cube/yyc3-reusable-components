@@ -21,11 +21,14 @@ const mockObserve = vi.fn();
 const mockUnobserve = vi.fn();
 const mockDisconnect = vi.fn();
 
-vi.stubGlobal('IntersectionObserver', vi.fn().mockImplementation(() => ({
-  observe: mockObserve,
-  unobserve: mockUnobserve,
-  disconnect: mockDisconnect,
-})));
+vi.stubGlobal(
+  'IntersectionObserver',
+  vi.fn().mockImplementation(() => ({
+    observe: mockObserve,
+    unobserve: mockUnobserve,
+    disconnect: mockDisconnect,
+  }))
+);
 
 describe('NeonCard', () => {
   beforeEach(() => {

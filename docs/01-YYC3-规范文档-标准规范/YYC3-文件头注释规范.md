@@ -1,8 +1,7 @@
 # YYC³ 组件库 - 文件头注释规范
 
-> **规范版本**: v1.0.0
-> **创建日期**: 2024年3月28日
-> **适用范围**: YYC³组件库所有源代码文件
+> **规范版本**: v1.0.0 **创建日期**: 2024年3月28日 **适用范围**:
+> YYC³组件库所有源代码文件
 
 ---
 
@@ -59,24 +58,24 @@ export const Button = () => {
 
 ### 必填字段
 
-| 字段 | 说明 | 示例 |
-|------|------|------|
-| `@file` | 文件名 | `Button.tsx` |
+| 字段           | 说明     | 示例                         |
+| -------------- | -------- | ---------------------------- |
+| `@file`        | 文件名   | `Button.tsx`                 |
 | `@description` | 文件描述 | `YYC³ UI基础组件 - 按钮组件` |
-| `@author` | 作者 | `YYC³ Team` |
-| `@version` | 版本号 | `1.0.0` |
-| `@date` | 创建日期 | `2024-03-28` |
-| `@license` | 许可证 | `MIT` |
+| `@author`      | 作者     | `YYC³ Team`                  |
+| `@version`     | 版本号   | `1.0.0`                      |
+| `@date`        | 创建日期 | `2024-03-28`                 |
+| `@license`     | 许可证   | `MIT`                        |
 
 ### 可选字段
 
-| 字段 | 说明 | 示例 |
-|------|------|------|
-| `@package` | 所属包名 | `@yyc3/ui` |
-| `@category` | 组件分类 | `UI Components` |
-| `@tags` | 标签 | `button, ui, interactive` |
-| `@see` | 相关文件 | `@see ./ButtonGroup.tsx` |
-| `@example` | 使用示例 | `@example <Button>Click</Button>` |
+| 字段        | 说明     | 示例                              |
+| ----------- | -------- | --------------------------------- |
+| `@package`  | 所属包名 | `@yyc3/ui`                        |
+| `@category` | 组件分类 | `UI Components`                   |
+| `@tags`     | 标签     | `button, ui, interactive`         |
+| `@see`      | 相关文件 | `@see ./ButtonGroup.tsx`          |
+| `@example`  | 使用示例 | `@example <Button>Click</Button>` |
 
 ---
 
@@ -184,7 +183,9 @@ export const Button = () => {
 - **示例**:
   - ✅ `YYC³ UI基础组件 - 按钮组件，支持多种样式和变体`
   - ❌ `这是一个按钮组件` (缺少包名和分类)
-  - ❌ `YYC³ UI基础组件 - 按钮组件，支持多种样式和变体，包括主要按钮、次要按钮、文本按钮、图标按钮等，可以自定义颜色、大小、圆角等属性` (太长)
+  - ❌
+    `YYC³ UI基础组件 - 按钮组件，支持多种样式和变体，包括主要按钮、次要按钮、文本按钮、图标按钮等，可以自定义颜色、大小、圆角等属性`
+    (太长)
 
 ### @author 规范
 
@@ -225,17 +226,18 @@ module.exports = {
     'yyc3/file-header': [
       'error',
       {
-        pattern: '^\\s*\\/\\*\\*\\n' +
-                '( \\* @file .+\\n)+' +
-                '( \\* @description .+\\n)+' +
-                '( \\* @author .+\\n)+' +
-                '( \\* @version \\d+\\.\\d+\\.\\d+\\n)+' +
-                '( \\* @date \\d{4}-\\d{2}-\\d{2}\\n)+' +
-                '( \\* @license .+\\n)+' +
-                ' \\*\\/\\s*$'
-      }
-    ]
-  }
+        pattern:
+          '^\\s*\\/\\*\\*\\n' +
+          '( \\* @file .+\\n)+' +
+          '( \\* @description .+\\n)+' +
+          '( \\* @author .+\\n)+' +
+          '( \\* @version \\d+\\.\\d+\\.\\d+\\n)+' +
+          '( \\* @date \\d{4}-\\d{2}-\\d{2}\\n)+' +
+          '( \\* @license .+\\n)+' +
+          ' \\*\\/\\s*$',
+      },
+    ],
+  },
 };
 ```
 
@@ -266,17 +268,18 @@ fi
 const fs = require('fs');
 const path = require('path');
 
-const FILE_HEADER_PATTERN = /^\/\*\*\n \* @file .+\n \* @description .+\n \* @author .+\n \* @version \d+\.\d+\.\d+\n \* @date \d{4}-\d{2}-\d{2}\n \* @license .+\n \*\/\n/;
+const FILE_HEADER_PATTERN =
+  /^\/\*\*\n \* @file .+\n \* @description .+\n \* @author .+\n \* @version \d+\.\d+\.\d+\n \* @date \d{4}-\d{2}-\d{2}\n \* @license .+\n \*\/\n/;
 
 function checkFileHeader(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const header = content.split('\n').slice(0, 8).join('\n') + '\n';
-  
+
   if (!FILE_HEADER_PATTERN.test(header)) {
     console.error(`❌ ${filePath}: 文件头注释格式不正确`);
     return false;
   }
-  
+
   console.log(`✅ ${filePath}: 文件头注释检查通过`);
   return true;
 }
@@ -284,7 +287,7 @@ function checkFileHeader(filePath) {
 const files = process.argv.slice(2);
 let allPassed = true;
 
-files.forEach(file => {
+files.forEach((file) => {
   if (!checkFileHeader(file)) {
     allPassed = false;
   }
@@ -379,7 +382,7 @@ export function useTheme() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return { theme, toggleTheme };

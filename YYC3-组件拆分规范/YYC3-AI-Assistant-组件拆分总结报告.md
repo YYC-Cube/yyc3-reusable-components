@@ -1,10 +1,9 @@
 # YYC³-AI-Assistant 组件拆分总结报告
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -24,14 +23,14 @@
 
 ### 项目基本信息
 
-| 项目属性 | 信息 |
-|----------|------|
-| **项目名称** | YYC³-AI-Assistant |
-| **项目类型** | AI智能助手应用 |
-| **技术栈** | React + TypeScript + Tailwind CSS + Radix UI |
-| **架构模式** | 组件化 + Monorepo |
-| **组件总数** | 55+ 个组件 |
-| **状态** | ✅ 生产就绪 |
+| 项目属性     | 信息                                         |
+| ------------ | -------------------------------------------- |
+| **项目名称** | YYC³-AI-Assistant                            |
+| **项目类型** | AI智能助手应用                               |
+| **技术栈**   | React + TypeScript + Tailwind CSS + Radix UI |
+| **架构模式** | 组件化 + Monorepo                            |
+| **组件总数** | 55+ 个组件                                   |
+| **状态**     | ✅ 生产就绪                                  |
 
 ### 核心功能模块
 
@@ -75,13 +74,13 @@ YYC³-AI-Assistant
 
 ### 组件分类统计
 
-| 组件类型 | 数量 | 完成度 | 复用性 |
-|----------|------|--------|--------|
-| **原子组件 (Atoms)** | 18 | 100% | ⭐⭐⭐⭐⭐ |
-| **分子组件 (Molecules)** | 12 | 100% | ⭐⭐⭐⭐ |
-| **有机体组件 (Organisms)** | 15 | 100% | ⭐⭐⭐ |
-| **业务组件 (Business)** | 10 | 100% | ⭐⭐ |
-| **总计** | **55+** | **100%** | - |
+| 组件类型                   | 数量    | 完成度   | 复用性     |
+| -------------------------- | ------- | -------- | ---------- |
+| **原子组件 (Atoms)**       | 18      | 100%     | ⭐⭐⭐⭐⭐ |
+| **分子组件 (Molecules)**   | 12      | 100%     | ⭐⭐⭐⭐   |
+| **有机体组件 (Organisms)** | 15      | 100%     | ⭐⭐⭐     |
+| **业务组件 (Business)**    | 10      | 100%     | ⭐⭐       |
+| **总计**                   | **55+** | **100%** | -          |
 
 ---
 
@@ -453,107 +452,107 @@ YYC3-AI-Assistant/                          # 🏠 项目根目录
 
 #### 1.1 表单输入类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Button** | `components/ui/button.tsx` | 按钮交互 | 表单提交、操作触发 | ⭐⭐⭐⭐⭐ |
-| **Input** | `components/ui/input.tsx` | 文本输入 | 表单输入、搜索框 | ⭐⭐⭐⭐⭐ |
-| **Textarea** | `components/ui/textarea.tsx` | 多行文本 | 长文本输入、内容编辑 | ⭐⭐⭐⭐ |
-| **Checkbox** | `components/ui/checkbox.tsx` | 复选框 | 多选、选项勾选 | ⭐⭐⭐⭐⭐ |
-| **RadioGroup** | `components/ui/radio-group.tsx` | 单选框组 | 单选、互斥选择 | ⭐⭐⭐⭐ |
-| **Switch** | `components/ui/switch.tsx` | 开关切换 | 状态切换、功能启用 | ⭐⭐⭐⭐ |
-| **Slider** | `components/ui/slider.tsx` | 滑块选择 | 数值调节、范围选择 | ⭐⭐⭐ |
-| **Select** | `components/ui/select.tsx` | 下拉选择 | 选项选择、数据筛选 | ⭐⭐⭐⭐⭐ |
+| 组件名称       | 文件路径                        | 主要功能 | 使用场景             | 复用度     |
+| -------------- | ------------------------------- | -------- | -------------------- | ---------- |
+| **Button**     | `components/ui/button.tsx`      | 按钮交互 | 表单提交、操作触发   | ⭐⭐⭐⭐⭐ |
+| **Input**      | `components/ui/input.tsx`       | 文本输入 | 表单输入、搜索框     | ⭐⭐⭐⭐⭐ |
+| **Textarea**   | `components/ui/textarea.tsx`    | 多行文本 | 长文本输入、内容编辑 | ⭐⭐⭐⭐   |
+| **Checkbox**   | `components/ui/checkbox.tsx`    | 复选框   | 多选、选项勾选       | ⭐⭐⭐⭐⭐ |
+| **RadioGroup** | `components/ui/radio-group.tsx` | 单选框组 | 单选、互斥选择       | ⭐⭐⭐⭐   |
+| **Switch**     | `components/ui/switch.tsx`      | 开关切换 | 状态切换、功能启用   | ⭐⭐⭐⭐   |
+| **Slider**     | `components/ui/slider.tsx`      | 滑块选择 | 数值调节、范围选择   | ⭐⭐⭐     |
+| **Select**     | `components/ui/select.tsx`      | 下拉选择 | 选项选择、数据筛选   | ⭐⭐⭐⭐⭐ |
 
 #### 1.2 信息展示类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Badge** | `components/ui/badge.tsx` | 徽章标识 | 状态标识、数量提示 | ⭐⭐⭐⭐⭐ |
-| **Avatar** | `components/ui/avatar.tsx` | 头像显示 | 用户头像、个人资料 | ⭐⭐⭐⭐ |
-| **Tooltip** | `components/ui/tooltip.tsx` | 提示框 | 辅助说明、上下文帮助 | ⭐⭐⭐⭐⭐ |
-| **Progress** | `components/ui/progress.tsx` | 进度显示 | 进度展示、完成度 | ⭐⭐⭐ |
-| **Skeleton** | `components/ui/skeleton.tsx` | 骨架屏 | 加载状态占位 | ⭐⭐⭐⭐ |
-| **Alert** | `components/ui/alert.tsx` | 警告提示 | 警告提示、错误提示 | ⭐⭐⭐⭐ |
+| 组件名称     | 文件路径                     | 主要功能 | 使用场景             | 复用度     |
+| ------------ | ---------------------------- | -------- | -------------------- | ---------- |
+| **Badge**    | `components/ui/badge.tsx`    | 徽章标识 | 状态标识、数量提示   | ⭐⭐⭐⭐⭐ |
+| **Avatar**   | `components/ui/avatar.tsx`   | 头像显示 | 用户头像、个人资料   | ⭐⭐⭐⭐   |
+| **Tooltip**  | `components/ui/tooltip.tsx`  | 提示框   | 辅助说明、上下文帮助 | ⭐⭐⭐⭐⭐ |
+| **Progress** | `components/ui/progress.tsx` | 进度显示 | 进度展示、完成度     | ⭐⭐⭐     |
+| **Skeleton** | `components/ui/skeleton.tsx` | 骨架屏   | 加载状态占位         | ⭐⭐⭐⭐   |
+| **Alert**    | `components/ui/alert.tsx`    | 警告提示 | 警告提示、错误提示   | ⭐⭐⭐⭐   |
 
 #### 1.3 布局容器类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Card** | `components/ui/card.tsx` | 卡片容器 | 内容展示、信息卡片 | ⭐⭐⭐⭐⭐ |
-| **Separator** | `components/ui/separator.tsx` | 分隔线 | 内容分隔、视觉分割 | ⭐⭐⭐⭐ |
-| **Label** | `components/ui/label.tsx` | 标签 | 表单字段标签 | ⭐⭐⭐⭐⭐ |
+| 组件名称      | 文件路径                      | 主要功能 | 使用场景           | 复用度     |
+| ------------- | ----------------------------- | -------- | ------------------ | ---------- |
+| **Card**      | `components/ui/card.tsx`      | 卡片容器 | 内容展示、信息卡片 | ⭐⭐⭐⭐⭐ |
+| **Separator** | `components/ui/separator.tsx` | 分隔线   | 内容分隔、视觉分割 | ⭐⭐⭐⭐   |
+| **Label**     | `components/ui/label.tsx`     | 标签     | 表单字段标签       | ⭐⭐⭐⭐⭐ |
 
 ### 2. 分子组件 (Molecules) - 简单组合组件
 
 #### 2.1 弹窗菜单类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Dialog** | `components/ui/dialog.tsx` | 对话框 | 弹窗对话框、确认操作 | ⭐⭐⭐⭐ |
-| **AlertDialog** | `components/ui/alert-dialog.tsx` | 警告对话框 | 确认操作、警告提示 | ⭐⭐⭐ |
-| **Drawer** | `components/ui/drawer.tsx` | 抽屉 | 侧边抽屉、详情展示 | ⭐⭐⭐ |
-| **Sheet** | `components/ui/sheet.tsx` | 工作表 | 类似drawer但更灵活 | ⭐⭐⭐ |
-| **Popover** | `components/ui/popover.tsx` | 弹出框 | 触发弹出、定位显示 | ⭐⭐⭐⭐ |
-| **DropdownMenu** | `components/ui/dropdown-menu.tsx` | 下拉菜单 | 操作菜单、功能入口 | ⭐⭐⭐⭐⭐ |
-| **ContextMenu** | `components/ui/context-menu.tsx` | 上下文菜单 | 右键菜单、操作菜单 | ⭐⭐⭐ |
-| **Command** | `components/ui/command.tsx` | 命令面板 | 快捷命令、搜索面板 | ⭐⭐⭐ |
+| 组件名称         | 文件路径                          | 主要功能   | 使用场景             | 复用度     |
+| ---------------- | --------------------------------- | ---------- | -------------------- | ---------- |
+| **Dialog**       | `components/ui/dialog.tsx`        | 对话框     | 弹窗对话框、确认操作 | ⭐⭐⭐⭐   |
+| **AlertDialog**  | `components/ui/alert-dialog.tsx`  | 警告对话框 | 确认操作、警告提示   | ⭐⭐⭐     |
+| **Drawer**       | `components/ui/drawer.tsx`        | 抽屉       | 侧边抽屉、详情展示   | ⭐⭐⭐     |
+| **Sheet**        | `components/ui/sheet.tsx`         | 工作表     | 类似drawer但更灵活   | ⭐⭐⭐     |
+| **Popover**      | `components/ui/popover.tsx`       | 弹出框     | 触发弹出、定位显示   | ⭐⭐⭐⭐   |
+| **DropdownMenu** | `components/ui/dropdown-menu.tsx` | 下拉菜单   | 操作菜单、功能入口   | ⭐⭐⭐⭐⭐ |
+| **ContextMenu**  | `components/ui/context-menu.tsx`  | 上下文菜单 | 右键菜单、操作菜单   | ⭐⭐⭐     |
+| **Command**      | `components/ui/command.tsx`       | 命令面板   | 快捷命令、搜索面板   | ⭐⭐⭐     |
 
 #### 2.2 导航菜单类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Tabs** | `components/ui/tabs.tsx` | 标签页 | 标签导航、内容切换 | ⭐⭐⭐⭐⭐ |
-| **Breadcrumb** | `components/ui/breadcrumb.tsx` | 面包屑 | 路径导航、层级展示 | ⭐⭐⭐⭐ |
-| **Menubar** | `components/ui/menubar.tsx` | 菜单栏 | 顶部菜单、功能菜单 | ⭐⭐⭐ |
-| **NavigationMenu** | `components/ui/navigation-menu.tsx` | 导航菜单 | 多级导航、菜单导航 | ⭐⭐⭐ |
-| **Sidebar** | `components/ui/sidebar.tsx` | 侧边栏 | 侧边导航、功能菜单 | ⭐⭐⭐⭐ |
+| 组件名称           | 文件路径                            | 主要功能 | 使用场景           | 复用度     |
+| ------------------ | ----------------------------------- | -------- | ------------------ | ---------- |
+| **Tabs**           | `components/ui/tabs.tsx`            | 标签页   | 标签导航、内容切换 | ⭐⭐⭐⭐⭐ |
+| **Breadcrumb**     | `components/ui/breadcrumb.tsx`      | 面包屑   | 路径导航、层级展示 | ⭐⭐⭐⭐   |
+| **Menubar**        | `components/ui/menubar.tsx`         | 菜单栏   | 顶部菜单、功能菜单 | ⭐⭐⭐     |
+| **NavigationMenu** | `components/ui/navigation-menu.tsx` | 导航菜单 | 多级导航、菜单导航 | ⭐⭐⭐     |
+| **Sidebar**        | `components/ui/sidebar.tsx`         | 侧边栏   | 侧边导航、功能菜单 | ⭐⭐⭐⭐   |
 
 #### 2.3 数据展示类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Table** | `components/ui/table.tsx` | 表格 | 数据表格、信息展示 | ⭐⭐⭐⭐ |
-| **Pagination** | `components/ui/pagination.tsx` | 分页器 | 数据分页、内容导航 | ⭐⭐⭐⭐ |
-| **Chart** | `components/ui/chart.tsx` | 图表 | 数据可视化、统计图表 | ⭐⭐⭐ |
-| **Carousel** | `components/ui/carousel.tsx` | 轮播 | 图片轮播、内容轮播 | ⭐⭐⭐ |
+| 组件名称       | 文件路径                       | 主要功能 | 使用场景             | 复用度   |
+| -------------- | ------------------------------ | -------- | -------------------- | -------- |
+| **Table**      | `components/ui/table.tsx`      | 表格     | 数据表格、信息展示   | ⭐⭐⭐⭐ |
+| **Pagination** | `components/ui/pagination.tsx` | 分页器   | 数据分页、内容导航   | ⭐⭐⭐⭐ |
+| **Chart**      | `components/ui/chart.tsx`      | 图表     | 数据可视化、统计图表 | ⭐⭐⭐   |
+| **Carousel**   | `components/ui/carousel.tsx`   | 轮播     | 图片轮播、内容轮播   | ⭐⭐⭐   |
 
 ### 3. 有机体组件 (Organisms) - 复杂UI区块
 
 #### 3.1 交互控制类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Collapsible** | `components/ui/collapsible.tsx` | 可折叠 | 内容折叠、展开收起 | ⭐⭐⭐ |
-| **Accordion** | `components/ui/accordion.tsx` | 手风琴 | 多个collapsible组合 | ⭐⭐⭐ |
-| **Toggle** | `components/ui/toggle.tsx` | 切换按钮 | 状态切换、选项选择 | ⭐⭐⭐ |
-| **ToggleGroup** | `components/ui/toggle-group.tsx` | 切换组 | 多个toggle组合 | ⭐⭐⭐ |
+| 组件名称        | 文件路径                         | 主要功能 | 使用场景            | 复用度 |
+| --------------- | -------------------------------- | -------- | ------------------- | ------ |
+| **Collapsible** | `components/ui/collapsible.tsx`  | 可折叠   | 内容折叠、展开收起  | ⭐⭐⭐ |
+| **Accordion**   | `components/ui/accordion.tsx`    | 手风琴   | 多个collapsible组合 | ⭐⭐⭐ |
+| **Toggle**      | `components/ui/toggle.tsx`       | 切换按钮 | 状态切换、选项选择  | ⭐⭐⭐ |
+| **ToggleGroup** | `components/ui/toggle-group.tsx` | 切换组   | 多个toggle组合      | ⭐⭐⭐ |
 
 #### 3.2 特殊功能类
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Resizable** | `components/ui/resizable.tsx` | 可调整大小 | 拖拽调整、面板调整 | ⭐⭐ |
-| **ScrollArea** | `components/ui/scroll-area.tsx` | 滚动区域 | 自定义滚动、内容滚动 | ⭐⭐⭐ |
-| **AspectRatio** | `components/ui/aspect-ratio.tsx` | 宽高比 | 保持元素宽高比 | ⭐⭐⭐ |
-| **Calendar** | `components/ui/calendar.tsx` | 日历 | 日期选择、范围选择 | ⭐⭐⭐ |
-| **InputOTP** | `components/ui/input-otp.tsx` | OTP输入 | 一次性密码输入 | ⭐⭐ |
-| **HoverCard** | `components/ui/hover-card.tsx` | 悬停卡片 | 鼠标悬停显示内容 | ⭐⭐⭐ |
-| **Sonner** | `components/ui/sonner.tsx` | 通知提示 | 消息通知、状态反馈 | ⭐⭐⭐⭐ |
+| 组件名称        | 文件路径                         | 主要功能   | 使用场景             | 复用度   |
+| --------------- | -------------------------------- | ---------- | -------------------- | -------- |
+| **Resizable**   | `components/ui/resizable.tsx`    | 可调整大小 | 拖拽调整、面板调整   | ⭐⭐     |
+| **ScrollArea**  | `components/ui/scroll-area.tsx`  | 滚动区域   | 自定义滚动、内容滚动 | ⭐⭐⭐   |
+| **AspectRatio** | `components/ui/aspect-ratio.tsx` | 宽高比     | 保持元素宽高比       | ⭐⭐⭐   |
+| **Calendar**    | `components/ui/calendar.tsx`     | 日历       | 日期选择、范围选择   | ⭐⭐⭐   |
+| **InputOTP**    | `components/ui/input-otp.tsx`    | OTP输入    | 一次性密码输入       | ⭐⭐     |
+| **HoverCard**   | `components/ui/hover-card.tsx`   | 悬停卡片   | 鼠标悬停显示内容     | ⭐⭐⭐   |
+| **Sonner**      | `components/ui/sonner.tsx`       | 通知提示   | 消息通知、状态反馈   | ⭐⭐⭐⭐ |
 
 ### 4. 业务组件 (Business) - 特定业务逻辑
 
-| 组件名称 | 文件路径 | 主要功能 | 使用场景 | 复用度 |
-|----------|----------|----------|----------|--------|
-| **Chat** | `components/Chat.tsx` | AI对话主界面 | AI对话、消息交互 | ⭐⭐ |
-| **ChatContainer** | `components/ChatContainer.tsx` | 聊天容器 | 消息容器、布局管理 | ⭐⭐ |
-| **ChatInput** | `components/ChatInput.tsx` | 聊天输入 | 用户输入、发送消息 | ⭐⭐ |
-| **ChatMessage** | `components/ChatMessage.tsx` | 聊天消息 | 显示单条消息 | ⭐⭐ |
-| **ChatSidebar** | `components/ChatSidebar.tsx` | 聊天侧边栏 | 历史记录、会话管理 | ⭐⭐ |
-| **ClaudeSidebar** | `components/ClaudeSidebar.tsx` | Claude侧边栏 | Claude设置、配置管理 | ⭐⭐ |
-| **SettingsModal** | `components/SettingsModal.tsx` | 设置模态框 | 应用设置、个性化配置 | ⭐⭐ |
-| **ArtifactsPanel** | `components/ArtifactsPanel.tsx` | 工件面板 | 显示AI生成的代码 | ⭐⭐ |
-| **TypingIndicator** | `components/TypingIndicator.tsx` | 输入指示器 | 显示AI输入状态 | ⭐⭐⭐ |
-| **YYC3Background** | `components/YYC3Background.tsx` | YYC³背景 | 动态背景效果 | ⭐ |
+| 组件名称            | 文件路径                         | 主要功能     | 使用场景             | 复用度 |
+| ------------------- | -------------------------------- | ------------ | -------------------- | ------ |
+| **Chat**            | `components/Chat.tsx`            | AI对话主界面 | AI对话、消息交互     | ⭐⭐   |
+| **ChatContainer**   | `components/ChatContainer.tsx`   | 聊天容器     | 消息容器、布局管理   | ⭐⭐   |
+| **ChatInput**       | `components/ChatInput.tsx`       | 聊天输入     | 用户输入、发送消息   | ⭐⭐   |
+| **ChatMessage**     | `components/ChatMessage.tsx`     | 聊天消息     | 显示单条消息         | ⭐⭐   |
+| **ChatSidebar**     | `components/ChatSidebar.tsx`     | 聊天侧边栏   | 历史记录、会话管理   | ⭐⭐   |
+| **ClaudeSidebar**   | `components/ClaudeSidebar.tsx`   | Claude侧边栏 | Claude设置、配置管理 | ⭐⭐   |
+| **SettingsModal**   | `components/SettingsModal.tsx`   | 设置模态框   | 应用设置、个性化配置 | ⭐⭐   |
+| **ArtifactsPanel**  | `components/ArtifactsPanel.tsx`  | 工件面板     | 显示AI生成的代码     | ⭐⭐   |
+| **TypingIndicator** | `components/TypingIndicator.tsx` | 输入指示器   | 显示AI输入状态       | ⭐⭐⭐ |
+| **YYC3Background**  | `components/YYC3Background.tsx`  | YYC³背景     | 动态背景效果         | ⭐     |
 
 ---
 
@@ -678,9 +677,7 @@ function MyComponent() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>对话框标题</DialogTitle>
-          <DialogDescription>
-            这是对话框的描述内容
-          </DialogDescription>
+          <DialogDescription>这是对话框的描述内容</DialogDescription>
         </DialogHeader>
         <div>对话框内容</div>
       </DialogContent>
@@ -752,13 +749,8 @@ function App() {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>
-        打开设置
-      </Button>
-      <SettingsModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
+      <Button onClick={() => setIsOpen(true)}>打开设置</Button>
+      <SettingsModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 }
@@ -771,9 +763,7 @@ function MyComponent() {
     console.log('发送消息:', message);
   };
 
-  return (
-    <ChatInput onSend={handleSend} />
-  );
+  return <ChatInput onSend={handleSend} />;
 }
 ```
 
@@ -786,11 +776,11 @@ import { useAI } from './hooks/useAI';
 
 function MyComponent() {
   const {
-    messages,        // 聊天消息列表
-    loading,         // 加载状态
-    error,          // 错误信息
-    sendMessage,     // 发送消息
-    clearMessages,   // 清空消息
+    messages, // 聊天消息列表
+    loading, // 加载状态
+    error, // 错误信息
+    sendMessage, // 发送消息
+    clearMessages, // 清空消息
   } = useAI();
 
   const handleSend = (text: string) => {
@@ -799,7 +789,7 @@ function MyComponent() {
 
   return (
     <div>
-      {messages.map(msg => (
+      {messages.map((msg) => (
         <div key={msg.id}>{msg.content}</div>
       ))}
       {loading && <div>AI正在思考...</div>}
@@ -817,20 +807,22 @@ import { useUISettings } from './hooks/useUISettings';
 
 function MyComponent() {
   const {
-    settings,           // UI设置
-    activeThemeColor,    // 当前主题色
-    activeFont,         // 当前字体
-    activeFontSize,     // 当前字号
-    updateSettings,     // 更新设置
+    settings, // UI设置
+    activeThemeColor, // 当前主题色
+    activeFont, // 当前字体
+    activeFontSize, // 当前字号
+    updateSettings, // 更新设置
   } = useUISettings();
 
   return (
     <div>
-      <h1 style={{ 
-        color: activeThemeColor.primary,
-        fontFamily: activeFont.family,
-        fontSize: activeFontSize.value 
-      }}>
+      <h1
+        style={{
+          color: activeThemeColor.primary,
+          fontFamily: activeFont.family,
+          fontSize: activeFontSize.value,
+        }}
+      >
         标题文本
       </h1>
       <Button onClick={() => updateSettings({ bgOpacity: 80 })}>
@@ -848,10 +840,10 @@ import { useChatPersistence } from './hooks/useChatPersistence';
 
 function MyComponent() {
   const {
-    saveChat,         // 保存聊天
-    loadChat,         // 加载聊天
-    deleteChat,       // 删除聊天
-    listChats,        // 列出聊天
+    saveChat, // 保存聊天
+    loadChat, // 加载聊天
+    deleteChat, // 删除聊天
+    listChats, // 列出聊天
   } = useChatPersistence();
 
   const handleSave = () => {
@@ -906,10 +898,12 @@ return (
 const { activeFont, activeFontSize } = useUISettings();
 
 return (
-  <div style={{
-    fontFamily: activeFont.family,
-    fontSize: activeFontSize.value,
-  }}>
+  <div
+    style={{
+      fontFamily: activeFont.family,
+      fontSize: activeFontSize.value,
+    }}
+  >
     内容文本
   </div>
 );
@@ -923,9 +917,11 @@ const { settings } = useUISettings();
 const bgOpacity = settings.bgOpacity / 100;
 
 return (
-  <div style={{
-    backgroundColor: `rgba(0, 0, 0, ${bgOpacity})`,
-  }}>
+  <div
+    style={{
+      backgroundColor: `rgba(0, 0, 0, ${bgOpacity})`,
+    }}
+  >
     内容区域
   </div>
 );
@@ -951,10 +947,7 @@ interface ButtonProps {
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, size, children }, ref) => {
     return (
-      <button
-        ref={ref}
-        className={cn(buttonVariants({ variant, size }))}
-      >
+      <button ref={ref} className={cn(buttonVariants({ variant, size }))}>
         {children}
       </button>
     );
@@ -964,22 +957,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 
 // 3. 使用class-variance-authority管理变体
-const buttonVariants = cva(
-  'inline-flex items-center justify-center',
-  {
-    variants: {
-      variant: {
-        default: 'bg-primary text-primary-foreground',
-        destructive: 'bg-destructive text-white',
-      },
-      size: {
-        default: 'h-9 px-4',
-        sm: 'h-8 px-3',
-        lg: 'h-10 px-6',
-      },
+const buttonVariants = cva('inline-flex items-center justify-center', {
+  variants: {
+    variant: {
+      default: 'bg-primary text-primary-foreground',
+      destructive: 'bg-destructive text-white',
     },
-  }
-);
+    size: {
+      default: 'h-9 px-4',
+      sm: 'h-8 px-3',
+      lg: 'h-10 px-6',
+    },
+  },
+});
 
 // 4. 使用cn工具函数合并类名
 import { cn } from './utils';
@@ -998,8 +988,8 @@ const className = cn(
 ```tsx
 // 1. 不要使用any类型
 interface ButtonProps {
-  variant: any;  // ❌ 错误
-  onClick: any;   // ❌ 错误
+  variant: any; // ❌ 错误
+  onClick: any; // ❌ 错误
 }
 
 // 2. 不要忘记设置displayName
@@ -1011,17 +1001,19 @@ const Button = ({ children }) => {
 // 3. 不要硬编码样式
 const Button = () => {
   return (
-    <button style={{ 
-      backgroundColor: '#3b82f6',  // ❌ 硬编码
-      padding: '8px 16px',          // ❌ 硬编码
-    }}>
+    <button
+      style={{
+        backgroundColor: '#3b82f6', // ❌ 硬编码
+        padding: '8px 16px', // ❌ 硬编码
+      }}
+    >
       按钮
     </button>
   );
 };
 
 // 4. 不要直接拼接类名
-const className = 'base-class ' + props.className;  // ❌ 错误
+const className = 'base-class ' + props.className; // ❌ 错误
 ```
 
 ### 2. Hooks开发最佳实践
@@ -1073,14 +1065,14 @@ function useAI() {
 // 1. 不要忘记依赖数组
 useEffect(() => {
   // 副作用
-}, []);  // ❌ 如果依赖messages，应该包含在依赖数组中
+}, []); // ❌ 如果依赖messages，应该包含在依赖数组中
 
 // 2. 不要在Hook中直接修改状态
 function useAI() {
   const [messages, setMessages] = useState([]);
-  
+
   const sendMessage = (text: string) => {
-    messages.push({ text });  // ❌ 直接修改状态
+    messages.push({ text }); // ❌ 直接修改状态
     setMessages(messages);
   };
 }
@@ -1088,10 +1080,10 @@ function useAI() {
 // 3. 不要在Hook中创建不必要的依赖
 function useAI() {
   const [data, setData] = useState(null);
-  
+
   useEffect(() => {
     fetchData().then(setData);
-  }, [fetchData]);  // ❌ fetchData可能每次都是新的函数
+  }, [fetchData]); // ❌ fetchData可能每次都是新的函数
 }
 ```
 
@@ -1111,9 +1103,12 @@ const sortedMessages = useMemo(() => {
 }, [messages]);
 
 // 3. 使用useCallback缓存回调函数
-const handleSend = useCallback((text: string) => {
-  sendMessage(text);
-}, [sendMessage]);
+const handleSend = useCallback(
+  (text: string) => {
+    sendMessage(text);
+  },
+  [sendMessage]
+);
 
 // 4. 使用React.lazy进行代码分割
 const SettingsModal = React.lazy(() => import('./SettingsModal'));
@@ -1132,20 +1127,21 @@ function App() {
 ```tsx
 // 1. 不要在render中创建新对象/数组
 function MyComponent() {
-  const items = [{ id: 1 }, { id: 2 }];  // ❌ 每次render都创建新数组
+  const items = [{ id: 1 }, { id: 2 }]; // ❌ 每次render都创建新数组
   return <List items={items} />;
 }
 
 // 2. 不要在render中定义函数
 function MyComponent() {
-  const handleClick = () => {  // ❌ 每次render都创建新函数
+  const handleClick = () => {
+    // ❌ 每次render都创建新函数
     console.log('clicked');
   };
   return <Button onClick={handleClick}>点击</Button>;
 }
 
 // 3. 不要过度使用useMemo
-const simpleValue = useMemo(() => 'hello', []);  // ❌ 简单值不需要缓存
+const simpleValue = useMemo(() => 'hello', []); // ❌ 简单值不需要缓存
 ```
 
 ---
@@ -1247,10 +1243,9 @@ const simpleValue = useMemo(() => 'hello', []);  // ❌ 简单值不需要缓存
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 ---
 

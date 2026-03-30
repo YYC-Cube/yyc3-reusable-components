@@ -24,7 +24,7 @@ import {
   DollarSign,
   Clock,
   CheckCircle2,
-  Star
+  Star,
 } from 'lucide-react';
 import {
   AreaChart,
@@ -44,7 +44,7 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  Radar
+  Radar,
 } from 'recharts';
 
 interface SmartAcquisitionProps {
@@ -56,44 +56,108 @@ type TabType = 'overview' | 'channels' | 'campaigns' | 'funnel';
 // 渠道数据
 const CHANNEL_DATA = [
   {
-    id: 'website', name: '官网', icon: Globe, color: '#3b82f6',
-    visitors: 12580, leads: 342, conversion: 2.72, cost: 18500, costPerLead: 54.1,
-    trend: '+15.3%', trendUp: true
+    id: 'website',
+    name: '官网',
+    icon: Globe,
+    color: '#3b82f6',
+    visitors: 12580,
+    leads: 342,
+    conversion: 2.72,
+    cost: 18500,
+    costPerLead: 54.1,
+    trend: '+15.3%',
+    trendUp: true,
   },
   {
-    id: 'wechat', name: '微信生态', icon: MessageSquare, color: '#22c55e',
-    visitors: 8920, leads: 267, conversion: 2.99, cost: 12000, costPerLead: 44.9,
-    trend: '+22.8%', trendUp: true
+    id: 'wechat',
+    name: '微信生态',
+    icon: MessageSquare,
+    color: '#22c55e',
+    visitors: 8920,
+    leads: 267,
+    conversion: 2.99,
+    cost: 12000,
+    costPerLead: 44.9,
+    trend: '+22.8%',
+    trendUp: true,
   },
   {
-    id: 'exhibition', name: '行业展会', icon: Users, color: '#f59e0b',
-    visitors: 1850, leads: 156, conversion: 8.43, cost: 85000, costPerLead: 544.9,
-    trend: '+5.2%', trendUp: true
+    id: 'exhibition',
+    name: '行业展会',
+    icon: Users,
+    color: '#f59e0b',
+    visitors: 1850,
+    leads: 156,
+    conversion: 8.43,
+    cost: 85000,
+    costPerLead: 544.9,
+    trend: '+5.2%',
+    trendUp: true,
   },
   {
-    id: 'telemarketing', name: '电话拓展', icon: Phone, color: '#8b5cf6',
-    visitors: 3200, leads: 98, conversion: 3.06, cost: 22000, costPerLead: 224.5,
-    trend: '-3.1%', trendUp: false
+    id: 'telemarketing',
+    name: '电话拓展',
+    icon: Phone,
+    color: '#8b5cf6',
+    visitors: 3200,
+    leads: 98,
+    conversion: 3.06,
+    cost: 22000,
+    costPerLead: 224.5,
+    trend: '-3.1%',
+    trendUp: false,
   },
   {
-    id: 'referral', name: '客户转介绍', icon: Share2, color: '#ec4899',
-    visitors: 680, leads: 89, conversion: 13.09, cost: 5000, costPerLead: 56.2,
-    trend: '+31.5%', trendUp: true
+    id: 'referral',
+    name: '客户转介绍',
+    icon: Share2,
+    color: '#ec4899',
+    visitors: 680,
+    leads: 89,
+    conversion: 13.09,
+    cost: 5000,
+    costPerLead: 56.2,
+    trend: '+31.5%',
+    trendUp: true,
   },
   {
-    id: 'sem', name: 'SEM竞价', icon: Search, color: '#06b6d4',
-    visitors: 15600, leads: 198, conversion: 1.27, cost: 45000, costPerLead: 227.3,
-    trend: '+8.7%', trendUp: true
+    id: 'sem',
+    name: 'SEM竞价',
+    icon: Search,
+    color: '#06b6d4',
+    visitors: 15600,
+    leads: 198,
+    conversion: 1.27,
+    cost: 45000,
+    costPerLead: 227.3,
+    trend: '+8.7%',
+    trendUp: true,
   },
   {
-    id: 'email', name: '邮件营销', icon: Mail, color: '#6366f1',
-    visitors: 4500, leads: 67, conversion: 1.49, cost: 3500, costPerLead: 52.2,
-    trend: '-1.2%', trendUp: false
+    id: 'email',
+    name: '邮件营销',
+    icon: Mail,
+    color: '#6366f1',
+    visitors: 4500,
+    leads: 67,
+    conversion: 1.49,
+    cost: 3500,
+    costPerLead: 52.2,
+    trend: '-1.2%',
+    trendUp: false,
   },
   {
-    id: 'ads', name: '信息流广告', icon: Megaphone, color: '#f97316',
-    visitors: 22000, leads: 312, conversion: 1.42, cost: 68000, costPerLead: 217.9,
-    trend: '+12.4%', trendUp: true
+    id: 'ads',
+    name: '信息流广告',
+    icon: Megaphone,
+    color: '#f97316',
+    visitors: 22000,
+    leads: 312,
+    conversion: 1.42,
+    cost: 68000,
+    costPerLead: 217.9,
+    trend: '+12.4%',
+    trendUp: true,
   },
 ];
 
@@ -117,34 +181,82 @@ const FUNNEL_DATA = [
 
 const CAMPAIGN_LIST = [
   {
-    id: 'C001', name: '2026年中国废金属回收展', type: '线下展会', status: 'active',
-    startDate: '2026-03-20', endDate: '2026-03-23', budget: 120000, spent: 85000,
-    leads: 0, target: 200, roi: null
+    id: 'C001',
+    name: '2026年中国废金属回收展',
+    type: '线下展会',
+    status: 'active',
+    startDate: '2026-03-20',
+    endDate: '2026-03-23',
+    budget: 120000,
+    spent: 85000,
+    leads: 0,
+    target: 200,
+    roi: null,
   },
   {
-    id: 'C002', name: '废铜行情分析白皮书', type: '内容营销', status: 'active',
-    startDate: '2026-02-15', endDate: '2026-04-15', budget: 8000, spent: 6500,
-    leads: 156, target: 200, roi: 3.8
+    id: 'C002',
+    name: '废铜行情分析白皮书',
+    type: '内容营销',
+    status: 'active',
+    startDate: '2026-02-15',
+    endDate: '2026-04-15',
+    budget: 8000,
+    spent: 6500,
+    leads: 156,
+    target: 200,
+    roi: 3.8,
   },
   {
-    id: 'C003', name: '春季采购季百度竞价', type: 'SEM投放', status: 'active',
-    startDate: '2026-03-01', endDate: '2026-03-31', budget: 50000, spent: 32000,
-    leads: 142, target: 250, roi: 2.1
+    id: 'C003',
+    name: '春季采购季百度竞价',
+    type: 'SEM投放',
+    status: 'active',
+    startDate: '2026-03-01',
+    endDate: '2026-03-31',
+    budget: 50000,
+    spent: 32000,
+    leads: 142,
+    target: 250,
+    roi: 2.1,
   },
   {
-    id: 'C004', name: '微信视频号系列短片', type: '社交媒体', status: 'active',
-    startDate: '2026-01-10', endDate: '2026-06-30', budget: 25000, spent: 12000,
-    leads: 89, target: 300, roi: 4.2
+    id: 'C004',
+    name: '微信视频号系列短片',
+    type: '社交媒体',
+    status: 'active',
+    startDate: '2026-01-10',
+    endDate: '2026-06-30',
+    budget: 25000,
+    spent: 12000,
+    leads: 89,
+    target: 300,
+    roi: 4.2,
   },
   {
-    id: 'C005', name: '老客户推荐有礼活动', type: '转介绍', status: 'completed',
-    startDate: '2026-01-01', endDate: '2026-02-28', budget: 15000, spent: 14200,
-    leads: 67, target: 50, roi: 5.6
+    id: 'C005',
+    name: '老客户推荐有礼活动',
+    type: '转介绍',
+    status: 'completed',
+    startDate: '2026-01-01',
+    endDate: '2026-02-28',
+    budget: 15000,
+    spent: 14200,
+    leads: 67,
+    target: 50,
+    roi: 5.6,
   },
   {
-    id: 'C006', name: '行业邮件精准推送', type: '邮件营销', status: 'paused',
-    startDate: '2026-02-01', endDate: '2026-03-31', budget: 5000, spent: 3200,
-    leads: 34, target: 80, roi: 1.8
+    id: 'C006',
+    name: '行业邮件精准推送',
+    type: '邮件营销',
+    status: 'paused',
+    startDate: '2026-02-01',
+    endDate: '2026-03-31',
+    budget: 5000,
+    spent: 3200,
+    leads: 34,
+    target: 80,
+    roi: 1.8,
   },
 ];
 
@@ -180,9 +292,13 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
   const totalLeads = CHANNEL_DATA.reduce((s, c) => s + c.leads, 0);
   const totalCost = CHANNEL_DATA.reduce((s, c) => s + c.cost, 0);
   const avgCostPerLead = totalCost / totalLeads;
-  const avgConversion = (totalLeads / CHANNEL_DATA.reduce((s, c) => s + c.visitors, 0) * 100).toFixed(2);
+  const avgConversion = (
+    (totalLeads / CHANNEL_DATA.reduce((s, c) => s + c.visitors, 0)) *
+    100
+  ).toFixed(2);
 
-  const formatMoney = (v: number) => v >= 10000 ? `¥${(v / 10000).toFixed(1)}万` : `¥${v.toLocaleString()}`;
+  const formatMoney = (v: number) =>
+    v >= 10000 ? `¥${(v / 10000).toFixed(1)}万` : `¥${v.toLocaleString()}`;
 
   return (
     <div className="p-6 space-y-6 max-w-[1600px] mx-auto">
@@ -194,14 +310,18 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
           </div>
           <div>
             <h1 className="text-2xl text-white">{isZh ? '智能获客' : 'Smart Acquisition'}</h1>
-            <p className="text-sm text-gray-400">{isZh ? '多渠道获客分析与营销管理' : 'Multi-channel acquisition analytics & campaign management'}</p>
+            <p className="text-sm text-gray-400">
+              {isZh
+                ? '多渠道获客分析与营销管理'
+                : 'Multi-channel acquisition analytics & campaign management'}
+            </p>
           </div>
         </div>
       </div>
 
       {/* Tabs */}
       <div className="flex space-x-1 p-1 bg-slate-800/40 backdrop-blur-xl rounded-xl border border-white/5">
-        {tabs.map(tab => {
+        {tabs.map((tab) => {
           const TabIcon = tab.icon;
           return (
             <button
@@ -226,27 +346,68 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
           {/* KPI Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { label: isZh ? '本月新增线索' : 'New Leads', value: totalLeads.toLocaleString(), trend: '+18.5%', up: true, icon: Target, gradient: 'from-fuchsia-500 to-pink-500' },
-              { label: isZh ? '平均获客成本' : 'Avg. CAC', value: `¥${avgCostPerLead.toFixed(0)}`, trend: '-8.2%', up: true, icon: DollarSign, gradient: 'from-emerald-500 to-green-500' },
-              { label: isZh ? '综合转化率' : 'Overall CVR', value: `${avgConversion}%`, trend: '+0.35%', up: true, icon: TrendingUp, gradient: 'from-blue-500 to-cyan-500' },
-              { label: isZh ? '营销ROI' : 'Marketing ROI', value: '3.2x', trend: '+0.4x', up: true, icon: Zap, gradient: 'from-amber-500 to-orange-500' },
+              {
+                label: isZh ? '本月新增线索' : 'New Leads',
+                value: totalLeads.toLocaleString(),
+                trend: '+18.5%',
+                up: true,
+                icon: Target,
+                gradient: 'from-fuchsia-500 to-pink-500',
+              },
+              {
+                label: isZh ? '平均获客成本' : 'Avg. CAC',
+                value: `¥${avgCostPerLead.toFixed(0)}`,
+                trend: '-8.2%',
+                up: true,
+                icon: DollarSign,
+                gradient: 'from-emerald-500 to-green-500',
+              },
+              {
+                label: isZh ? '综合转化率' : 'Overall CVR',
+                value: `${avgConversion}%`,
+                trend: '+0.35%',
+                up: true,
+                icon: TrendingUp,
+                gradient: 'from-blue-500 to-cyan-500',
+              },
+              {
+                label: isZh ? '营销ROI' : 'Marketing ROI',
+                value: '3.2x',
+                trend: '+0.4x',
+                up: true,
+                icon: Zap,
+                gradient: 'from-amber-500 to-orange-500',
+              },
             ].map((stat, idx) => {
               const StatIcon = stat.icon;
               return (
-                <div key={idx} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all">
+                <div
+                  key={idx}
+                  className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all"
+                >
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm text-gray-400">{stat.label}</p>
                       <p className="text-2xl text-white mt-1">{stat.value}</p>
                     </div>
-                    <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.gradient} opacity-80 flex items-center justify-center`}>
+                    <div
+                      className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.gradient} opacity-80 flex items-center justify-center`}
+                    >
                       <StatIcon className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   <div className="mt-3 flex items-center space-x-1">
-                    {stat.up ? <ArrowUpRight className="w-3 h-3 text-emerald-400" /> : <ArrowDownRight className="w-3 h-3 text-red-400" />}
-                    <span className={`text-xs ${stat.up ? 'text-emerald-400' : 'text-red-400'}`}>{stat.trend}</span>
-                    <span className="text-xs text-gray-500">{isZh ? '较上月' : 'vs last month'}</span>
+                    {stat.up ? (
+                      <ArrowUpRight className="w-3 h-3 text-emerald-400" />
+                    ) : (
+                      <ArrowDownRight className="w-3 h-3 text-red-400" />
+                    )}
+                    <span className={`text-xs ${stat.up ? 'text-emerald-400' : 'text-red-400'}`}>
+                      {stat.trend}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {isZh ? '较上月' : 'vs last month'}
+                    </span>
                   </div>
                 </div>
               );
@@ -257,7 +418,9 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Monthly Leads Trend */}
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
-              <h3 className="text-white mb-4">{isZh ? '各渠道线索月度趋势' : 'Monthly Leads by Channel'}</h3>
+              <h3 className="text-white mb-4">
+                {isZh ? '各渠道线索月度趋势' : 'Monthly Leads by Channel'}
+              </h3>
               <div className="h-72">
                 <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                   <AreaChart data={MONTHLY_LEADS_DATA}>
@@ -272,13 +435,52 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis dataKey="month" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                    <XAxis
+                      dataKey="month"
+                      stroke="#64748b"
+                      tick={{ fill: '#94a3b8', fontSize: 12 }}
+                    />
                     <YAxis stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                    <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} />
-                    <Area type="monotone" dataKey="website" stroke="#3b82f6" fill="url(#webGrad)" strokeWidth={2} name={isZh ? '官网' : 'Website'} />
-                    <Area type="monotone" dataKey="wechat" stroke="#22c55e" fill="url(#wxGrad)" strokeWidth={2} name={isZh ? '微信' : 'WeChat'} />
-                    <Area type="monotone" dataKey="exhibition" stroke="#f59e0b" fill="transparent" strokeWidth={2} name={isZh ? '展会' : 'Exhibition'} />
-                    <Area type="monotone" dataKey="other" stroke="#8b5cf6" fill="transparent" strokeWidth={2} name={isZh ? '其他' : 'Other'} />
+                    <Tooltip
+                      contentStyle={{
+                        background: 'rgba(15,23,42,0.95)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '12px',
+                        color: '#fff',
+                      }}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="website"
+                      stroke="#3b82f6"
+                      fill="url(#webGrad)"
+                      strokeWidth={2}
+                      name={isZh ? '官网' : 'Website'}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="wechat"
+                      stroke="#22c55e"
+                      fill="url(#wxGrad)"
+                      strokeWidth={2}
+                      name={isZh ? '微信' : 'WeChat'}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="exhibition"
+                      stroke="#f59e0b"
+                      fill="transparent"
+                      strokeWidth={2}
+                      name={isZh ? '展会' : 'Exhibition'}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="other"
+                      stroke="#8b5cf6"
+                      fill="transparent"
+                      strokeWidth={2}
+                      name={isZh ? '其他' : 'Other'}
+                    />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
@@ -286,17 +488,54 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
 
             {/* Channel Quality Radar */}
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
-              <h3 className="text-white mb-4">{isZh ? '渠道质量雷达图' : 'Channel Quality Radar'}</h3>
+              <h3 className="text-white mb-4">
+                {isZh ? '渠道质量雷达图' : 'Channel Quality Radar'}
+              </h3>
               <div className="h-72">
                 <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                   <RadarChart data={CHANNEL_QUALITY_RADAR}>
                     <PolarGrid stroke="rgba(255,255,255,0.1)" />
                     <PolarAngleAxis dataKey="metric" tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <Radar name={isZh ? '官网' : 'Website'} dataKey="website" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.15} strokeWidth={2} />
-                    <Radar name={isZh ? '微信' : 'WeChat'} dataKey="wechat" stroke="#22c55e" fill="#22c55e" fillOpacity={0.1} strokeWidth={2} />
-                    <Radar name={isZh ? '展会' : 'Exhibition'} dataKey="exhibition" stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.1} strokeWidth={2} />
-                    <Radar name={isZh ? '转介绍' : 'Referral'} dataKey="referral" stroke="#ec4899" fill="#ec4899" fillOpacity={0.1} strokeWidth={2} />
-                    <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} />
+                    <Radar
+                      name={isZh ? '官网' : 'Website'}
+                      dataKey="website"
+                      stroke="#3b82f6"
+                      fill="#3b82f6"
+                      fillOpacity={0.15}
+                      strokeWidth={2}
+                    />
+                    <Radar
+                      name={isZh ? '微信' : 'WeChat'}
+                      dataKey="wechat"
+                      stroke="#22c55e"
+                      fill="#22c55e"
+                      fillOpacity={0.1}
+                      strokeWidth={2}
+                    />
+                    <Radar
+                      name={isZh ? '展会' : 'Exhibition'}
+                      dataKey="exhibition"
+                      stroke="#f59e0b"
+                      fill="#f59e0b"
+                      fillOpacity={0.1}
+                      strokeWidth={2}
+                    />
+                    <Radar
+                      name={isZh ? '转介绍' : 'Referral'}
+                      dataKey="referral"
+                      stroke="#ec4899"
+                      fill="#ec4899"
+                      fillOpacity={0.1}
+                      strokeWidth={2}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: 'rgba(15,23,42,0.95)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '12px',
+                        color: '#fff',
+                      }}
+                    />
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
@@ -310,10 +549,28 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
               <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                 <LineChart data={ROI_TREND_DATA}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="month" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                  <XAxis
+                    dataKey="month"
+                    stroke="#64748b"
+                    tick={{ fill: '#94a3b8', fontSize: 12 }}
+                  />
                   <YAxis stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                  <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} />
-                  <Line type="monotone" dataKey="roi" stroke="#d946ef" strokeWidth={3} dot={{ fill: '#d946ef', r: 5, strokeWidth: 2, stroke: '#1e293b' }} name="ROI" />
+                  <Tooltip
+                    contentStyle={{
+                      background: 'rgba(15,23,42,0.95)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '12px',
+                      color: '#fff',
+                    }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="roi"
+                    stroke="#d946ef"
+                    strokeWidth={3}
+                    dot={{ fill: '#d946ef', r: 5, strokeWidth: 2, stroke: '#1e293b' }}
+                    name="ROI"
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -325,19 +582,31 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
       {activeTab === 'channels' && (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {CHANNEL_DATA.map(ch => {
+            {CHANNEL_DATA.map((ch) => {
               const ChIcon = ch.icon;
               return (
-                <div key={ch.id} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all group cursor-pointer">
+                <div
+                  key={ch.id}
+                  className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all group cursor-pointer"
+                >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${ch.color}20` }}>
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        style={{ backgroundColor: `${ch.color}20` }}
+                      >
                         <ChIcon className="w-5 h-5" style={{ color: ch.color }} />
                       </div>
                       <span className="text-white">{ch.name}</span>
                     </div>
-                    <div className={`flex items-center space-x-1 text-xs ${ch.trendUp ? 'text-emerald-400' : 'text-red-400'}`}>
-                      {ch.trendUp ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
+                    <div
+                      className={`flex items-center space-x-1 text-xs ${ch.trendUp ? 'text-emerald-400' : 'text-red-400'}`}
+                    >
+                      {ch.trendUp ? (
+                        <ArrowUpRight className="w-3 h-3" />
+                      ) : (
+                        <ArrowDownRight className="w-3 h-3" />
+                      )}
                       <span>{ch.trend}</span>
                     </div>
                   </div>
@@ -363,7 +632,13 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
 
                   {/* Mini bar */}
                   <div className="mt-4 h-1.5 bg-slate-700/40 rounded-full overflow-hidden">
-                    <div className="h-full rounded-full" style={{ width: `${Math.min(ch.conversion * 10, 100)}%`, backgroundColor: ch.color }} />
+                    <div
+                      className="h-full rounded-full"
+                      style={{
+                        width: `${Math.min(ch.conversion * 10, 100)}%`,
+                        backgroundColor: ch.color,
+                      }}
+                    />
                   </div>
                 </div>
               );
@@ -376,7 +651,9 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
       {activeTab === 'campaigns' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-gray-400 text-sm">{isZh ? `共 ${CAMPAIGN_LIST.length} 个营销活动` : `${CAMPAIGN_LIST.length} campaigns`}</p>
+            <p className="text-gray-400 text-sm">
+              {isZh ? `共 ${CAMPAIGN_LIST.length} 个营销活动` : `${CAMPAIGN_LIST.length} campaigns`}
+            </p>
             <button className="flex items-center space-x-2 px-4 py-2 bg-fuchsia-500/20 text-fuchsia-300 rounded-xl border border-fuchsia-500/30 hover:bg-fuchsia-500/30 transition-all text-sm">
               <Plus className="w-4 h-4" />
               <span>{isZh ? '新建活动' : 'New Campaign'}</span>
@@ -384,7 +661,7 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
           </div>
 
           <div className="space-y-3">
-            {CAMPAIGN_LIST.map(camp => {
+            {CAMPAIGN_LIST.map((camp) => {
               const progress = camp.target > 0 ? Math.round((camp.leads / camp.target) * 100) : 0;
               const budgetUsed = camp.budget > 0 ? Math.round((camp.spent / camp.budget) * 100) : 0;
               const statusColors: Record<string, { text: string; bg: string }> = {
@@ -395,21 +672,40 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
               const sc = statusColors[camp.status] || statusColors.active;
 
               return (
-                <div key={camp.id} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all">
+                <div
+                  key={camp.id}
+                  className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all"
+                >
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <div className="flex items-center space-x-3">
                         <h4 className="text-white">{camp.name}</h4>
                         <span className={`text-xs px-2 py-0.5 rounded-full ${sc.bg} ${sc.text}`}>
-                          {camp.status === 'active' ? (isZh ? '进行中' : 'Active') : camp.status === 'completed' ? (isZh ? '已结束' : 'Completed') : (isZh ? '已暂停' : 'Paused')}
+                          {camp.status === 'active'
+                            ? isZh
+                              ? '进行中'
+                              : 'Active'
+                            : camp.status === 'completed'
+                              ? isZh
+                                ? '已结束'
+                                : 'Completed'
+                              : isZh
+                                ? '已暂停'
+                                : 'Paused'}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">{camp.type} · {camp.startDate} ~ {camp.endDate}</p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {camp.type} · {camp.startDate} ~ {camp.endDate}
+                      </p>
                     </div>
                     {camp.roi !== null && (
                       <div className="text-right">
                         <p className="text-xs text-gray-500">ROI</p>
-                        <p className={`text-lg ${camp.roi >= 3 ? 'text-emerald-400' : camp.roi >= 2 ? 'text-amber-400' : 'text-red-400'}`}>{camp.roi}x</p>
+                        <p
+                          className={`text-lg ${camp.roi >= 3 ? 'text-emerald-400' : camp.roi >= 2 ? 'text-amber-400' : 'text-red-400'}`}
+                        >
+                          {camp.roi}x
+                        </p>
                       </div>
                     )}
                   </div>
@@ -425,11 +721,15 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">{isZh ? '获得线索' : 'Leads'}</p>
-                      <p className="text-sm text-white">{camp.leads} / {camp.target}</p>
+                      <p className="text-sm text-white">
+                        {camp.leads} / {camp.target}
+                      </p>
                     </div>
                     <div>
                       <p className="text-xs text-gray-500">{isZh ? '单线索成本' : 'CPL'}</p>
-                      <p className="text-sm text-white">{camp.leads > 0 ? `¥${Math.round(camp.spent / camp.leads)}` : '-'}</p>
+                      <p className="text-sm text-white">
+                        {camp.leads > 0 ? `¥${Math.round(camp.spent / camp.leads)}` : '-'}
+                      </p>
                     </div>
                   </div>
 
@@ -441,7 +741,10 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
                         <span className="text-white">{progress}%</span>
                       </div>
                       <div className="h-1.5 bg-slate-700/40 rounded-full overflow-hidden">
-                        <div className="h-full rounded-full bg-gradient-to-r from-fuchsia-500 to-pink-500" style={{ width: `${Math.min(progress, 100)}%` }} />
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-fuchsia-500 to-pink-500"
+                          style={{ width: `${Math.min(progress, 100)}%` }}
+                        />
                       </div>
                     </div>
                     <div>
@@ -450,7 +753,10 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
                         <span className="text-white">{budgetUsed}%</span>
                       </div>
                       <div className="h-1.5 bg-slate-700/40 rounded-full overflow-hidden">
-                        <div className={`h-full rounded-full ${budgetUsed > 90 ? 'bg-red-500' : 'bg-blue-500'}`} style={{ width: `${Math.min(budgetUsed, 100)}%` }} />
+                        <div
+                          className={`h-full rounded-full ${budgetUsed > 90 ? 'bg-red-500' : 'bg-blue-500'}`}
+                          style={{ width: `${Math.min(budgetUsed, 100)}%` }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -466,7 +772,9 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
         <div className="space-y-6">
           {/* Visual Funnel */}
           <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-6">
-            <h3 className="text-white mb-6">{isZh ? '全渠道转化漏斗' : 'Full Channel Conversion Funnel'}</h3>
+            <h3 className="text-white mb-6">
+              {isZh ? '全渠道转化漏斗' : 'Full Channel Conversion Funnel'}
+            </h3>
             <div className="space-y-3 max-w-3xl mx-auto">
               {FUNNEL_DATA.map((stage, idx) => {
                 const widthPercent = 100 - idx * 14;
@@ -485,7 +793,9 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
                         }}
                       >
                         <span className="text-white text-sm">{stage.count.toLocaleString()}</span>
-                        <span className="text-xs" style={{ color: stage.color }}>{stage.rate}</span>
+                        <span className="text-xs" style={{ color: stage.color }}>
+                          {stage.rate}
+                        </span>
                       </div>
                     </div>
                     {idx < FUNNEL_DATA.length - 1 && (
@@ -506,10 +816,14 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <Clock className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '平均转化周期' : 'Avg. Conversion Time'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '平均转化周期' : 'Avg. Conversion Time'}
+                </span>
               </div>
               <p className="text-2xl text-white">23 {isZh ? '天' : 'days'}</p>
-              <p className="text-xs text-emerald-400 mt-1">-3 {isZh ? '天较上月' : 'days vs last month'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                -3 {isZh ? '天较上月' : 'days vs last month'}
+              </p>
             </div>
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
@@ -522,10 +836,14 @@ export function SmartAcquisition({ currentLanguage }: SmartAcquisitionProps) {
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '本月成交额' : 'Monthly Revenue'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '本月成交额' : 'Monthly Revenue'}
+                </span>
               </div>
               <p className="text-2xl text-white">¥ 856{isZh ? '万' : '0K'}</p>
-              <p className="text-xs text-emerald-400 mt-1">+28.3% {isZh ? '较上月' : 'vs last month'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                +28.3% {isZh ? '较上月' : 'vs last month'}
+              </p>
             </div>
           </div>
         </div>

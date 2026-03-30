@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Checkbox } from './checkbox';
+import { Checkbox } from '../checkbox';
 
 describe('Checkbox', () => {
   it('renders correctly', () => {
