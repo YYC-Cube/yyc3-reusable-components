@@ -15,8 +15,13 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["vitest/globals"]
   },
+  "include": [
+    "vitest.setup.ts",
+    "vitest.config.ts"
+  ],
   "exclude": [
     "node_modules",
     "dist",
