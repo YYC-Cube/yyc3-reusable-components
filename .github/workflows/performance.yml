@@ -6,57 +6,53 @@ on:
   push:
     branches: [main, develop]
   schedule:
-    - cron: '0 2 * * *' # Run daily at 2 AM
+    - cron: '0 2 * * *'
 
 jobs:
   performance:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      
+
       - name: Run performance tests
         run: pnpm test:performance
         continue-on-error: false
-      
+
       - name: Check for performance regression
         run: pnpm test:performance:regression
         continue-on-error: true
-      
+
       - name: Generate performance report
         run: pnpm test:performance:report
         continue-on-error: true
-      
+
       - name: Upload performance results
         uses: actions/upload-artifact@v7
         with:
-          name: performance-results-node-${{ matrix.node-version }}
+          name: performance-results
           path: |
             performance-results/
             coverage/
           retention-days: 30
-      
+
       - name: Comment PR with performance results
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v8
@@ -64,20 +60,20 @@ jobs:
           script: |
             const fs = require('fs');
             let comment = '## Performance Test Results\n\n';
-            
+
             try {
               const resultsPath = 'performance-results/summary.json';
               if (fs.existsSync(resultsPath)) {
                 const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
-                
+
                 comment += '| Component | Metric | Value | Threshold | Status |\n';
                 comment += '|-----------|--------|-------|-----------|--------|\n';
-                
+
                 results.forEach(r => {
                   const status = r.passed ? '✅' : '❌';
                   comment += `| ${r.componentName} | ${r.metric} | ${r.value}ms | ${r.threshold}ms | ${status} |\n`;
                 });
-                
+
                 const failedCount = results.filter(r => !r.passed).length;
                 if (failedCount > 0) {
                   comment += `\n⚠️ ${failedCount} performance test(s) failed!`;
@@ -90,14 +86,14 @@ jobs:
             } catch (error) {
               comment += `⚠️ Error reading performance results: ${error.message}`;
             }
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: comment
             });
-      
+
       - name: Check performance thresholds
         run: |
           if [ -f "performance-results/summary.json" ]; then
@@ -114,7 +110,7 @@ jobs:
               }
             "
           fi
-      
+
       - name: Update performance baseline
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
@@ -130,58 +126,58 @@ jobs:
     runs-on: ubuntu-latest
     needs: performance
     if: github.event_name == 'pull_request'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           cache: 'pnpm'
-      
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      
+
       - name: Download performance results
         uses: actions/download-artifact@v3
         with:
-          name: performance-results-node-20.x
+          name: performance-results
           path: performance-results/
-      
+
       - name: Compare with baseline
         run: pnpm test:performance:compare
         continue-on-error: true
-      
+
       - name: Comment PR with comparison results
         uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
             let comment = '## Performance Comparison\n\n';
-            
+
             try {
               const comparisonPath = 'performance-results/comparison.json';
               if (fs.existsSync(comparisonPath)) {
                 const comparison = JSON.parse(fs.readFileSync(comparisonPath, 'utf8'));
-                
+
                 comment += '| Component | Metric | Current | Baseline | Change | Status |\n';
                 comment += '|-----------|--------|---------|----------|--------|--------|\n';
-                
+
                 comparison.forEach(c => {
                   const change = ((c.currentValue - c.baselineValue) / c.baselineValue * 100).toFixed(1);
                   const status = c.isWithinBaseline ? '✅' : '⚠️';
                   comment += `| ${c.componentName} | ${c.metric} | ${c.currentValue}ms | ${c.baselineValue}ms | ${change}% | ${status} |\n`;
                 });
-                
+
                 const regressions = comparison.filter(c => !c.isWithinBaseline);
                 if (regressions.length > 0) {
                   comment += `\n⚠️ ${regressions.length} regression(s) detected!`;
@@ -194,7 +190,7 @@ jobs:
             } catch (error) {
               comment += `⚠️ Error reading performance comparison: ${error.message}`;
             }
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
