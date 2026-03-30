@@ -432,11 +432,11 @@ class DatabaseServiceImpl {
     return {
       tableCount: 6,
       totalRecords: 0,
-      databaseSize: health ? this.formatBytes(health.databaseSize) : "N/A",
+      databaseSize: health && health.databaseSize ? this.formatBytes(health.databaseSize) : "N/A",
       activeConnections: health?.activeConnections ?? 0,
       maxConnections: health?.maxConnections ?? 0,
       version: health?.serverVersion ?? "PostgreSQL 15.x",
-      uptime: health ? this.formatUptime(health.uptime) : "N/A",
+      uptime: health && health.uptime ? this.formatUptime(health.uptime) : "N/A",
     };
   }
 

@@ -259,7 +259,9 @@ export class AIColorGenerator {
     
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
-    let h = 0, s = 0, l = (max + min) / 2;
+    let h = 0;
+    let s = 0;
+    const l = (max + min) / 2;
     
     if (max !== min) {
       const d = max - min;
@@ -281,7 +283,9 @@ export class AIColorGenerator {
     const c = (1 - Math.abs(2 * l - 1)) * s;
     const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
     const m = l - c / 2;
-    let r = 0, g = 0, b = 0;
+    let r = 0;
+    let g = 0;
+    let b = 0;
 
     if (0 <= h && h < 60) {
       r = c; g = x; b = 0;

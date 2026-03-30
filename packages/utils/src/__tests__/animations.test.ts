@@ -168,4 +168,38 @@ describe('animations', () => {
       expect(dropdownAnimation.initial.scale).toBe(0.95);
     });
   });
+
+  describe('shimmerAnimation', () => {
+    it('should define shimmer animation', () => {
+      expect(shimmerAnimation.backgroundSize).toBe('200% 100%');
+      expect(shimmerAnimation.animation).toBe('shimmer 2s linear infinite');
+      expect(shimmerAnimation.backgroundImage).toBeDefined();
+    });
+  });
+
+  describe('liquidFlowAnimation', () => {
+    it('should define liquid flow animation', () => {
+      expect(liquidFlowAnimation.animate).toBeDefined();
+      expect(liquidFlowAnimation.animate.backgroundPosition).toBeDefined();
+      expect(liquidFlowAnimation.animate.transition.repeat).toBe(Infinity);
+    });
+  });
+
+  describe('badgeEnter', () => {
+    it('should define badge enter animation', () => {
+      expect(badgeEnter.initial).toBeDefined();
+      expect(badgeEnter.animate).toBeDefined();
+      expect(badgeEnter.exit).toBeDefined();
+      expect(badgeEnter.initial.scale).toBe(0);
+    });
+  });
+
+  describe('tooltipEnter', () => {
+    it('should define tooltip enter animation', () => {
+      expect(tooltipEnter.initial).toBeDefined();
+      expect(tooltipEnter.animate).toBeDefined();
+      expect(tooltipEnter.exit).toBeDefined();
+      expect(tooltipEnter.initial.opacity).toBe(0);
+    });
+  });
 });
