@@ -58,6 +58,7 @@ export interface Chat {
   createdAt: string;
   updatedAt: string;
   messages: ChatMessage[];
+  isStarred?: boolean;
 }
 
 // 聊天消息

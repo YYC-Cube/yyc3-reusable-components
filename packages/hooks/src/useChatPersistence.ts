@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Chat } from "../types/storage";
+import { Chat } from "./types/storage";
 
 const MAX_STORAGE_SIZE = 5 * 1024 * 1024; // 5MB
 const MAX_AGE_DAYS = 30;

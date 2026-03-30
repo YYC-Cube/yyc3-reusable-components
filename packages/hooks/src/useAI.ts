@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { AIConfig } from '../types/storage';
+import { AIConfig } from './types/storage';
 import { toast } from 'sonner';
 
 const STORAGE_KEY = 'yyc3_ai_config';

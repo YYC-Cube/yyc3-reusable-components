@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Chat } from '../types/storage';
+import { Chat } from './types/storage';
 import { toast } from 'sonner';
 import { projectId, publicAnonKey } from '../utils/supabase/info';
 

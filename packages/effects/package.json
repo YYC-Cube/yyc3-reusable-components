@@ -4,12 +4,12 @@
   "description": "YYC³特效组件库 - 3D和动画特效",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "require": "./dist/index.js",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
   "files": [
@@ -72,5 +72,6 @@
   "bugs": {
     "url": "https://github.com/YYC-Cube/yyc3-reusable-components/issues"
   },
-  "homepage": "https://github.com/YYC-Cube/yyc3-reusable-components#readme"
+  "homepage": "https://github.com/YYC-Cube/yyc3-reusable-components#readme",
+  "types": "./dist/index.d.ts"
 }

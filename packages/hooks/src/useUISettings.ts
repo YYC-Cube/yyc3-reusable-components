@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { UISettings, THEME_COLORS, FONT_OPTIONS, FONT_SIZE_OPTIONS } from '../types/storage';
+import { UISettings, THEME_COLORS, FONT_OPTIONS, FONT_SIZE_OPTIONS } from './types/storage';
 
 /**
  * UI 设置持久化管理 Hook

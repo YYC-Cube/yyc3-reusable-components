@@ -17,11 +17,11 @@ export { useNavigationContext } from './useNavigationContext';
 export { useAI } from './useAI';
 export { useChatPersistence } from './useChatPersistence';
 
-// 数据库和配置Hooks
-export { useDatabaseConfig } from './useDatabaseConfig';
-export { useSupabaseSync } from './useSupabaseSync';
+// 数据库和配置Hooks (暂时注释，待依赖修复)
+// export { useDatabaseConfig } from './useDatabaseConfig';
+// export { useSupabaseSync } from './useSupabaseSync';
 export { useUISettings } from './useUISettings';
 
-// 业务功能Hooks
-export { useDevOps } from './useDevOps';
-export { useNotifications } from './useNotifications';
+// 业务功能Hooks (暂时注释，待依赖修复)
+// export { useDevOps } from './useDevOps';
+// export { useNotifications } from './useNotifications';

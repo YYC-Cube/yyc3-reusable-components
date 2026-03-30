@@ -4,13 +4,13 @@
   "description": "YYC³主题系统 - Cyberpunk、Liquid Glass 等主题样式",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "require": "./dist/index.js",
   "style": "./dist/styles/index.css",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./styles": "./dist/styles/index.css",
     "./styles/cyberpunk": "./dist/styles/cyberpunk.css",
@@ -45,5 +45,6 @@
     "css"
   ],
   "author": "YYC³ Team <admin@0379.email>",
-  "license": "MIT"
+  "license": "MIT",
+  "types": "./dist/index.d.ts"
 }
