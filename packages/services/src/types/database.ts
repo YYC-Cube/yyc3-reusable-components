@@ -14,12 +14,18 @@ export interface DatabaseConfig {
   ssl?: boolean;
   sslMode?: string;
   schema?: string;
+  updatedAt?: string;
 }
 
 export interface LocalAPIProxyConfig {
   baseUrl: string;
   timeout?: number;
   retries?: number;
+  apiVersion?: string;
+  enableRetry?: boolean;
+  maxRetries?: number;
+  authToken?: string;
+  heartbeatInterval?: number;
 }
 
 export interface DatabaseQuery {
@@ -29,22 +35,33 @@ export interface DatabaseQuery {
 }
 
 export interface DatabaseResult<T = any> {
-  rows: T[];
-  rowCount: number;
+  rows?: T[];
+  rowCount?: number;
   fields?: string[];
   duration?: number;
   success?: boolean;
-  error?: string;
+  error?: string | null;
+  executionTime?: number;
+  // 扩展属性 - 用于 API 响应
+  data?: T | null;
+  affectedRows?: number;
+  timestamp?: string;
 }
 
 export interface ConnectionHealth {
-  status: 'healthy' | 'degraded' | 'unhealthy';
+  status: 'healthy' | 'degraded' | 'unhealthy' | 'connected';
   latency?: number;
   lastCheck?: Date;
+  lastCheckedAt?: string;
   error?: string;
+  serverVersion?: string;
+  activeConnections?: number;
+  maxConnections?: number;
+  databaseSize?: number;
+  uptime?: number;
 }
 
-export type ConnectionStatus = 'connected' | 'disconnected' | 'connecting' | 'error';
+export type ConnectionStatus = 'connected' | 'disconnected' | 'connecting' | 'error' | 'migrating';
 
 export interface DatabaseConnection {
   id: string;
@@ -56,10 +73,14 @@ export interface DatabaseConnection {
 }
 
 export interface QueryResult<T = any> {
-  rows: T[];
-  rowCount: number;
+  rows?: T[];
+  rowCount?: number;
   fields?: string[];
   duration?: number;
+  executionTime?: number;
+  data?: T | null;
+  affectedRows?: number;
+  timestamp?: string;
 }
 
 export interface DatabaseStats {

@@ -47,7 +47,7 @@ import type {
   DatabaseResult,
   ConnectionHealth,
   ConnectionStatus,
-} from "../types/database";
+} from "./types/database";
 
 /* ──────────────────── 数据同步策略 / Data Sync Strategy ──────────────────── */
 

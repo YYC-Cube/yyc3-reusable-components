@@ -522,7 +522,7 @@ class DatabaseRepositoryImpl {
 
     const startTime = Date.now();
     let lastError: string | null = null;
-    const maxAttempts = this.proxyConfig.enableRetry ? this.proxyConfig.maxRetries : 1;
+    const maxAttempts = this.proxyConfig.enableRetry ? (this.proxyConfig.maxRetries ?? 3) : 1;
 
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       try {
@@ -718,11 +718,11 @@ class DatabaseRepositoryImpl {
     if (result.success) {
       this.wasEverConnected = true;
       this.setStatus("connected");
-      this.recordConnectionHistory("connected", result.executionTime, null);
+      this.recordConnectionHistory("connected", result.executionTime ?? 0, null);
     } else {
       // 心跳失败：进入模拟模式 / Heartbeat failed: enter mock mode
       this.enterMockMode();
-      this.recordConnectionHistory("error", result.executionTime, result.error);
+      this.recordConnectionHistory("error", result.executionTime ?? 0, result.error ?? null);
     }
 
     return result;

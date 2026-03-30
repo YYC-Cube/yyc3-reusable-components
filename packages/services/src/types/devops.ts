@@ -50,4 +50,6 @@ export interface DevOpsMetrics {
   successfulDeployments: number;
   failedDeployments: number;
   averageDeploymentTime: number;
+  totalServices?: number;
+  healthyServices?: number;
 }

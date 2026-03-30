@@ -7,4 +7,5 @@
  * @copyright 2024 YanYuCloudCube
  */
 
-export { default as TabNavigation } from './TabNavigation';
+export { TabNavigation } from './TabNavigation';
+export type { Tab } from './TabNavigation';

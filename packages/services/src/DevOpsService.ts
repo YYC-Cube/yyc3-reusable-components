@@ -25,7 +25,7 @@ import type {
   DiagnosticIssue,
   OpsLogEntry,
   DevOpsMetrics,
-} from "../types/devops";
+} from "./types/devops";
 
 /* ══════════════════════════════════════════════════════════════════
  *  常量 / Constants
@@ -219,7 +219,6 @@ function createBuiltInTools(): Record<string, MCPTool[]> {
  */
 function createBuiltInServers(): MCPServer[] {
   const tools = createBuiltInTools();
-  const now = new Date().toISOString();
 
   return [
     {

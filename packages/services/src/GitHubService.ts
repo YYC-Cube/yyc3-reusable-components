@@ -18,7 +18,7 @@ import type {
   GitHubOperationResult,
   RepoSearchParams,
   PaginatedResponse,
-} from "../types/github";
+} from "./types/github";
 
 /* ──────────────────── MCP 连接状态 / MCP Connection State ──────────────────── */
 
@@ -301,7 +301,7 @@ class GitHubServiceImpl {
         : MOCK_REPOSITORIES;
 
       // 应用过滤条件 / Apply filters
-      let filtered = allRepos.filter((repo) => {
+      const filtered = allRepos.filter((repo) => {
         const matchesQuery =
           !params.query ||
           repo.name.toLowerCase().includes(params.query.toLowerCase()) ||
@@ -491,7 +491,7 @@ class GitHubServiceImpl {
     return {
       success: true,
       data,
-      error: null,
+      error: undefined,
       timestamp: new Date().toISOString(),
     };
   }
@@ -507,7 +507,7 @@ class GitHubServiceImpl {
   private wrapError<T>(message: string): GitHubOperationResult<T> {
     return {
       success: false,
-      data: null,
+      data: undefined,
       error: message,
       timestamp: new Date().toISOString(),
     };
