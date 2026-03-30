@@ -53,7 +53,22 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "check": "node scripts/smart-check.js",
+    "check:quick": "node scripts/smart-check.js --quick",
+    "check:full": "node scripts/smart-check.js --full",
+    "check:commit": "node scripts/pre-commit-check.js",
+    "check:push": "node scripts/pre-push-check.js",
+    "setup:hooks": "node scripts/setup-git-hooks.js",
+    "branch": "node scripts/branch-manager.js",
+    "branch:list": "node scripts/branch-manager.js list",
+    "branch:analyze": "node scripts/branch-manager.js analyze",
+    "branch:report": "node scripts/branch-manager.js report",
+    "branch:clean": "node scripts/clean-branches.js --dry-run",
+    "branch:clean:all": "node scripts/clean-branches.js --all --dry-run",
+    "branch:clean:merged": "node scripts/clean-branches.js --merged --dry-run",
+    "precommit": "node scripts/pre-commit-check.js",
+    "prepush": "node scripts/pre-push-check.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

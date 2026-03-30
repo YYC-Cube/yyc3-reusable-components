@@ -496,3 +496,16 @@ export function LikeButton({ className = '' }: { className?: string }) {
     </motion.button>
   );
 }
+
+// Default export for convenience
+export default {
+  RippleButton,
+  PulseButton,
+  MagneticButton,
+  AnimatedInput,
+  AnimatedSwitch,
+  LoadingButton,
+  AnimatedCounter,
+  AnimatedCheckbox,
+  LikeButton,
+};

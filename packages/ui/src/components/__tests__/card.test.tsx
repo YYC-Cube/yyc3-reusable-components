@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../card';
 
 describe('Card', () => {
   it('renders Card correctly', () => {
@@ -11,7 +11,7 @@ describe('Card', () => {
 
   it('renders CardHeader correctly', () => {
     const { container } = render(<CardHeader>Header content</CardHeader>);
-    const header = container.querySelector('.flex.flex-col.space-y-1.5');
+    const header = container.querySelector('[data-slot="card-header"]');
     expect(header).toBeInTheDocument();
   });
 
@@ -27,13 +27,13 @@ describe('Card', () => {
 
   it('renders CardContent correctly', () => {
     const { container } = render(<CardContent>Content</CardContent>);
-    const content = container.querySelector('.pt-6');
+    const content = container.querySelector('[data-slot="card-content"]');
     expect(content).toBeInTheDocument();
   });
 
   it('renders CardFooter correctly', () => {
     const { container } = render(<CardFooter>Footer</CardFooter>);
-    const footer = container.querySelector('.flex.items-center.pt-6');
+    const footer = container.querySelector('[data-slot="card-footer"]');
     expect(footer).toBeInTheDocument();
   });
 

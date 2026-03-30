@@ -423,3 +423,15 @@ export function BookPage({ pages, className = '' }: BookPageProps) {
     </div>
   );
 }
+
+// Default export for convenience
+export default {
+  TiltCard,
+  FlipCard,
+  StackedCards,
+  PerspectiveContainer,
+  RotatingShowcase,
+  FloatingCard,
+  GlassRefractionCard,
+  BookPage,
+};

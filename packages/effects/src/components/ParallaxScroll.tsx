@@ -382,3 +382,18 @@ export function InfiniteScroll({
     </div>
   );
 }
+
+// Default export for convenience
+export default {
+  Parallax,
+  ParallaxBackground,
+  SmoothParallax,
+  ParallaxText,
+  ParallaxImage,
+  ParallaxStack,
+  ParallaxReveal,
+  ScrollProgress,
+  ScrollTrigger,
+  Parallax3DCard,
+  InfiniteScroll,
+};

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Button } from './button';
+import { Button } from '../button';
 
 describe('Button', () => {
   it('renders correctly', () => {
@@ -28,7 +28,8 @@ describe('Button', () => {
   it('applies outline variant styles', () => {
     const { container } = render(<Button variant="outline">Outline</Button>);
     const button = container.querySelector('button');
-    expect(button).toHaveClass('border-input');
+    expect(button).toHaveClass('border');
+    expect(button).toHaveClass('bg-background');
   });
 
   it('applies ghost variant styles', () => {
@@ -46,15 +47,15 @@ describe('Button', () => {
   it('applies different sizes', () => {
     const { container: smallContainer } = render(<Button size="sm">Small</Button>);
     const smallButton = smallContainer.querySelector('button');
-    expect(smallButton).toHaveClass('h-9');
+    expect(smallButton).toHaveClass('h-8');
 
     const { container: defaultContainer } = render(<Button size="default">Default</Button>);
     const defaultButton = defaultContainer.querySelector('button');
-    expect(defaultButton).toHaveClass('h-10');
+    expect(defaultButton).toHaveClass('h-9');
 
     const { container: largeContainer } = render(<Button size="lg">Large</Button>);
     const largeButton = largeContainer.querySelector('button');
-    expect(largeButton).toHaveClass('h-11');
+    expect(largeButton).toHaveClass('h-10');
   });
 
   it('applies custom className', () => {

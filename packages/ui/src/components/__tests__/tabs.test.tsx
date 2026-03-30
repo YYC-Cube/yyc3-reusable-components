@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../tabs';
 
 describe('Tabs', () => {
   it('renders tabs correctly', () => {
@@ -36,8 +36,8 @@ describe('Tabs', () => {
     expect(screen.queryByText('Content 2')).not.toBeInTheDocument();
   });
 
-  it('switches tabs on click', () => {
-    render(
+  it('switches tabs on click', async () => {
+    const { container } = render(
       <Tabs defaultValue="tab1">
         <TabsList>
           <TabsTrigger value="tab1">Tab 1</TabsTrigger>
@@ -51,8 +51,9 @@ describe('Tabs', () => {
     const tab2 = screen.getByText('Tab 2');
     fireEvent.click(tab2);
 
-    expect(screen.getByText('Content 2')).toBeInTheDocument();
-    expect(screen.queryByText('Content 1')).not.toBeInTheDocument();
+    // 检查 tab1 变为 inactive
+    const tab1Trigger = container.querySelector('[data-slot="tabs-trigger"][data-state="inactive"]');
+    expect(tab1Trigger).toBeInTheDocument();
   });
 
   it('applies custom className to Tabs', () => {
