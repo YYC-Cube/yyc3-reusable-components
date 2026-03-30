@@ -1,108 +1,85 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+/**
+ * @file useNavigationContext.test.ts
+ * @description useNavigationContext Hook 测试
+ * @author YYC³ Team
+ */
+
+import { renderHook } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
 import { useNavigationContext } from '../useNavigationContext';
 
 describe('useNavigationContext', () => {
-  it('should initialize with default state', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should initialize with empty context', () => {
+    const { result } = renderHook(() => useNavigationContext(undefined, 'test'));
 
-    expect(result.current.currentPath).toBeDefined();
-    expect(result.current.previousPath).toBeNull();
+    expect(result.current.hasContext).toBe(false);
+    expect(result.current.context).toBeNull();
+    expect(result.current.contextData).toEqual({});
   });
 
-  it('should navigate to new path', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should detect context presence', () => {
+    const context = { customerId: '123', source: 'customers' };
+    const { result } = renderHook(() => useNavigationContext(context, 'orders'));
 
-    act(() => {
-      result.current.navigate('/new-path');
-    });
-
-    expect(result.current.currentPath).toBe('/new-path');
+    expect(result.current.hasContext).toBe(true);
+    expect(result.current.context).toEqual(context);
+    expect(result.current.contextData.customerId).toBe('123');
   });
 
-  it('should track previous path', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should extract context data correctly', () => {
+    const context = {
+      customerId: 'cust-001',
+      orderId: 'ord-001',
+      customerName: 'Test Customer',
+      amount: 1000,
+      status: 'active'
+    };
+    const { result } = renderHook(() => useNavigationContext(context, 'customers'));
 
-    act(() => {
-      result.current.navigate('/first-path');
-    });
-
-    act(() => {
-      result.current.navigate('/second-path');
-    });
-
-    expect(result.current.previousPath).toBe('/first-path');
-    expect(result.current.currentPath).toBe('/second-path');
+    expect(result.current.contextData.customerId).toBe('cust-001');
+    expect(result.current.contextData.orderId).toBe('ord-001');
+    expect(result.current.contextData.customerName).toBe('Test Customer');
+    expect(result.current.contextData.amount).toBe(1000);
+    expect(result.current.contextData.status).toBe('active');
   });
 
-  it('should go back to previous path', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should highlight items correctly', () => {
+    const context = { customerId: 'cust-001' };
+    const { result } = renderHook(() => useNavigationContext(context, 'customers'));
 
-    act(() => {
-      result.current.navigate('/first-path');
-    });
-
-    act(() => {
-      result.current.navigate('/second-path');
-    });
-
-    act(() => {
-      result.current.goBack();
-    });
-
-    expect(result.current.currentPath).toBe('/first-path');
+    expect(result.current.shouldHighlight('cust-001')).toBe(true);
+    expect(result.current.shouldHighlight('cust-002')).toBe(false);
   });
 
-  it('should handle navigation history', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should return filter criteria based on module type', () => {
+    const context = { customerId: 'cust-001', status: 'pending' };
+    const { result } = renderHook(() => useNavigationContext(context, 'orders'));
 
-    expect(result.current.history).toBeDefined();
-    expect(Array.isArray(result.current.history)).toBe(true);
+    const criteria = result.current.getFilterCriteria();
+    expect(criteria.customerId).toBe('cust-001');
+    expect(criteria.status).toBe('pending');
   });
 
-  it('should clear navigation history', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should return recommendations from context', () => {
+    const recommendations = [
+      { title: 'Test Recommendation', description: 'Test Description' }
+    ];
+    const context = { recommendations };
+    const { result } = renderHook(() => useNavigationContext(context, 'test'));
 
-    act(() => {
-      result.current.navigate('/path-1');
-      result.current.navigate('/path-2');
-    });
-
-    act(() => {
-      result.current.clearHistory();
-    });
-
-    expect(result.current.history.length).toBe(0);
+    expect(result.current.getRecommendations()).toEqual(recommendations);
   });
 
-  it('should handle navigation params', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should handle different module types', () => {
+    const context = { employeeId: 'emp-001' };
+    const { result } = renderHook(() => useNavigationContext(context, 'employees'));
 
-    act(() => {
-      result.current.navigate('/path', { id: '123', tab: 'settings' });
-    });
-
-    expect(result.current.params).toBeDefined();
+    expect(result.current.shouldHighlight('emp-001')).toBe(true);
   });
 
-  it('should check if can go back', () => {
-    const { result } = renderHook(() => useNavigationContext());
+  it('should return empty recommendations when no context', () => {
+    const { result } = renderHook(() => useNavigationContext(undefined, 'test'));
 
-    expect(result.current.canGoBack).toBe(false);
-
-    act(() => {
-      result.current.navigate('/new-path');
-    });
-
-    expect(result.current.canGoBack).toBe(true);
-  });
-
-  it('should handle active navigation item', () => {
-    const { result } = renderHook(() => useNavigationContext());
-
-    act(() => {
-      result.current.setActiveItem('nav-item-1');
-    });
-
-    expect(result.current.activeItem).toBe('nav-item-1');
+    expect(result.current.getRecommendations()).toEqual([]);
   });
 });

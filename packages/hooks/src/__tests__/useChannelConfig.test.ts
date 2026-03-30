@@ -1,74 +1,103 @@
-import { renderHook, act } from '@testing-library/react-hooks';
-import { useChannelConfig } from '../useChannelConfig';
+/**
+ * @file useChannelConfig.test.ts
+ * @description useChannelConfig Hook 测试
+ * @author YYC³ Team
+ */
+
+import { renderHook, act } from '@testing-library/react';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { useChannelConfig, PRESETS } from '../useChannelConfig';
 
 describe('useChannelConfig', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   it('should initialize with default config', () => {
-    const { result } = renderHook(() => useChannelConfig());
+    const { result } = renderHook(() => useChannelConfig('test-channel'));
 
     expect(result.current.config).toBeDefined();
-    expect(result.current.loading).toBe(false);
+    expect(result.current.config.provider).toBe('ollama');
+    expect(result.current.config.model).toBe('llama3');
   });
 
-  it('should update channel config', () => {
-    const { result } = renderHook(() => useChannelConfig());
+  it('should load config from localStorage', () => {
+    const savedConfig = {
+      provider: 'anthropic',
+      model: 'claude-3-opus',
+      apiKey: 'test-key',
+      baseUrl: 'https://api.anthropic.com',
+      temperature: 0.5
+    };
+    localStorage.setItem('yyc3_config_test-channel', JSON.stringify(savedConfig));
+
+    const { result } = renderHook(() => useChannelConfig('test-channel'));
+
+    expect(result.current.config.provider).toBe('anthropic');
+    expect(result.current.config.model).toBe('claude-3-opus');
+    expect(result.current.config.temperature).toBe(0.5);
+  });
+
+  it('should save config correctly', () => {
+    const { result } = renderHook(() => useChannelConfig('test-channel'));
 
     act(() => {
-      result.current.updateConfig({ name: 'New Channel' });
+      result.current.saveConfig({
+        provider: 'openai',
+        model: 'gpt-4',
+        apiKey: 'test-api-key',
+        baseUrl: 'https://api.openai.com/v1',
+        temperature: 0.8
+      });
     });
 
-    expect(result.current.updateConfig).toBeDefined();
+    expect(result.current.config.provider).toBe('openai');
+    expect(result.current.config.model).toBe('gpt-4');
+    expect(result.current.config.temperature).toBe(0.8);
+
+    const stored = JSON.parse(localStorage.getItem('yyc3_config_test-channel')!);
+    expect(stored.provider).toBe('openai');
   });
 
-  it('should reset config to defaults', () => {
-    const { result } = renderHook(() => useChannelConfig());
+  it('should apply preset correctly', () => {
+    const { result } = renderHook(() => useChannelConfig('test-channel'));
 
     act(() => {
-      result.current.resetConfig();
+      result.current.applyPreset('Coding');
     });
 
-    expect(result.current.resetConfig).toBeDefined();
+    expect(result.current.config.provider).toBe('anthropic');
+    expect(result.current.config.model).toBe('claude-3-opus-20240229');
+    expect(result.current.config.temperature).toBe(0.2);
   });
 
-  it('should validate config', () => {
-    const { result } = renderHook(() => useChannelConfig());
-
-    const isValid = result.current.validateConfig();
-    expect(typeof isValid).toBe('boolean');
+  it('should have presets available', () => {
+    expect(PRESETS).toBeDefined();
+    expect(PRESETS['General']).toBeDefined();
+    expect(PRESETS['Coding']).toBeDefined();
+    expect(PRESETS['Creative']).toBeDefined();
+    expect(PRESETS['Local-Secure']).toBeDefined();
   });
 
-  it('should get channel by id', () => {
-    const { result } = renderHook(() => useChannelConfig());
-
-    const channel = result.current.getChannel('channel-1');
-    expect(channel).toBeDefined();
-  });
-
-  it('should list all channels', () => {
-    const { result } = renderHook(() => useChannelConfig());
-
-    const channels = result.current.listChannels();
-    expect(Array.isArray(channels)).toBe(true);
-  });
-
-  it('should handle channel settings', () => {
-    const { result } = renderHook(() => useChannelConfig());
-
-    expect(result.current.settings).toBeDefined();
-  });
-
-  it('should persist config to storage', () => {
-    const { result } = renderHook(() => useChannelConfig());
+  it('should handle different channel IDs', () => {
+    const { result: result1 } = renderHook(() => useChannelConfig('channel-1'));
+    const { result: result2 } = renderHook(() => useChannelConfig('channel-2'));
 
     act(() => {
-      result.current.saveConfig();
+      result1.current.saveConfig({
+        ...result1.current.config,
+        temperature: 0.1
+      });
     });
 
-    expect(result.current.saveConfig).toBeDefined();
-  });
+    act(() => {
+      result2.current.saveConfig({
+        ...result2.current.config,
+        temperature: 0.9
+      });
+    });
 
-  it('should load config from storage', () => {
-    const { result } = renderHook(() => useChannelConfig());
-
-    expect(result.current.loadConfig).toBeDefined();
+    expect(result1.current.config.temperature).toBe(0.1);
+    expect(result2.current.config.temperature).toBe(0.9);
   });
 });

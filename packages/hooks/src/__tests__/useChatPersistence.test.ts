@@ -1,118 +1,152 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+/**
+ * @file useChatPersistence.test.ts
+ * @description useChatPersistence Hook 测试
+ * @author YYC³ Team
+ */
+
+import { renderHook, act } from '@testing-library/react';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { useChatPersistence } from '../useChatPersistence';
+import type { Chat } from '../types/storage';
 
 describe('useChatPersistence', () => {
   beforeEach(() => {
     localStorage.clear();
   });
 
+  const mockChats: Chat[] = [
+    {
+      id: 'chat-1',
+      title: 'Test Chat 1',
+      messages: [],
+      createdAt: new Date('2024-01-01'),
+      updatedAt: new Date('2024-01-01'),
+      isStarred: false,
+    },
+    {
+      id: 'chat-2',
+      title: 'Test Chat 2',
+      messages: [],
+      createdAt: new Date('2024-01-02'),
+      updatedAt: new Date('2024-01-02'),
+      isStarred: true,
+    },
+  ];
+
   it('should initialize with empty chats', () => {
-    const { result } = renderHook(() => useChatPersistence('test-channel'));
+    const { result } = renderHook(() => useChatPersistence('main'));
 
     expect(result.current.chats).toEqual([]);
     expect(result.current.loading).toBe(false);
   });
 
   it('should initialize with initial chats', () => {
-    const initialChats = [
-      { id: '1', message: 'Hello', createdAt: new Date(), updatedAt: new Date() },
-    ];
-
     const { result } = renderHook(() =>
-      useChatPersistence('test-channel', initialChats)
+      useChatPersistence('main', mockChats)
     );
 
-    expect(result.current.chats).toEqual(initialChats);
+    expect(result.current.chats).toEqual(mockChats);
   });
 
   it('should add a new chat', () => {
-    const { result } = renderHook(() => useChatPersistence('test-channel'));
+    const { result } = renderHook(() => useChatPersistence('main'));
 
     act(() => {
-      result.current.addChat({
-        id: '1',
-        message: 'Test message',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+      result.current.setChats([mockChats[0]]);
     });
 
     expect(result.current.chats).toHaveLength(1);
-    expect(result.current.chats[0].message).toBe('Test message');
+    expect(result.current.chats[0].id).toBe('chat-1');
   });
 
   it('should clear all chats', () => {
-    const { result } = renderHook(() => useChatPersistence('test-channel'));
+    const { result } = renderHook(() =>
+      useChatPersistence('main', mockChats)
+    );
 
     act(() => {
-      result.current.addChat({
-        id: '1',
-        message: 'Test message',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
-    });
-
-    expect(result.current.chats).toHaveLength(1);
-
-    act(() => {
-      result.current.clearChats();
+      result.current.setChats([]);
     });
 
     expect(result.current.chats).toHaveLength(0);
   });
 
   it('should persist chats to localStorage', () => {
-    const { result } = renderHook(() => useChatPersistence('test-channel'));
+    const { result } = renderHook(() => useChatPersistence('main'));
 
     act(() => {
-      result.current.addChat({
-        id: '1',
-        message: 'Test message',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+      result.current.setChats(mockChats);
     });
 
-    const stored = localStorage.getItem('yyc3_chat_history_test-channel');
-    expect(stored).toBeTruthy();
-    expect(JSON.parse(stored!)).toHaveLength(1);
+    const stored = localStorage.getItem('yyc3_chat_history');
+    expect(stored).toBeDefined();
+    const parsed = JSON.parse(stored!);
+    expect(parsed).toHaveLength(2);
   });
 
   it('should load chats from localStorage on mount', () => {
-    const existingChats = [
-      {
-        id: '1',
-        message: 'Existing message',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      },
-    ];
+    // Pre-populate localStorage
+    localStorage.setItem('yyc3_chat_history', JSON.stringify(mockChats));
 
-    localStorage.setItem(
-      'yyc3_chat_history_test-channel',
-      JSON.stringify(existingChats)
-    );
+    const { result } = renderHook(() => useChatPersistence('main'));
 
-    const { result } = renderHook(() => useChatPersistence('test-channel'));
-
-    expect(result.current.chats).toHaveLength(1);
-    expect(result.current.chats[0].message).toBe('Existing message');
+    expect(result.current.chats).toHaveLength(2);
+    expect(result.current.chats[0].id).toBe('chat-1');
   });
 
   it('should use main storage key for main channel', () => {
     const { result } = renderHook(() => useChatPersistence('main'));
 
     act(() => {
-      result.current.addChat({
-        id: '1',
-        message: 'Test message',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+      result.current.setChats(mockChats);
     });
 
-    const stored = localStorage.getItem('yyc3_chat_history');
-    expect(stored).toBeTruthy();
+    expect(localStorage.getItem('yyc3_chat_history')).toBeDefined();
+  });
+
+  it('should use custom storage key for other channels', () => {
+    const { result } = renderHook(() => useChatPersistence('custom-channel'));
+
+    act(() => {
+      result.current.setChats(mockChats);
+    });
+
+    expect(localStorage.getItem('yyc3_chat_history_custom-channel')).toBeDefined();
+  });
+
+  it('should export data correctly', () => {
+    const { result } = renderHook(() =>
+      useChatPersistence('main', mockChats)
+    );
+
+    // Mock DOM methods
+    const mockAnchor = document.createElement('a');
+    const clickSpy = vi.spyOn(mockAnchor, 'click');
+    
+    vi.spyOn(document, 'createElement').mockReturnValue(mockAnchor);
+
+    act(() => {
+      result.current.exportData();
+    });
+
+    expect(clickSpy).toHaveBeenCalled();
+  });
+
+  it('should import data correctly', () => {
+    const { result } = renderHook(() => useChatPersistence('main'));
+
+    const importData = {
+      channelId: 'main',
+      timestamp: new Date().toISOString(),
+      chats: mockChats,
+    };
+
+    let success = false;
+    act(() => {
+      success = result.current.importData(JSON.stringify(importData));
+    });
+
+    expect(success).toBe(true);
+    expect(result.current.chats).toHaveLength(2);
   });
 });

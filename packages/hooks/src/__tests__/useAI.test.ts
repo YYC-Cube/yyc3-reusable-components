@@ -1,66 +1,120 @@
+/**
+ * @file useAI.test.ts
+ * @description useAI Hook 测试
+ * @author YYC³ Team
+ */
+
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import { useAI } from './useAI';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { useAI } from '../useAI';
 
 describe('useAI', () => {
-  it('initializes with default state', () => {
-    const { result } = renderHook(() => useAI());
-    expect(result.current).toHaveProperty('messages');
-    expect(result.current).toHaveProperty('isLoading');
-    expect(result.current).toHaveProperty('error');
+  beforeEach(() => {
+    localStorage.clear();
   });
 
-  it('provides sendMessage function', () => {
+  it('should initialize with default config', () => {
     const { result } = renderHook(() => useAI());
-    expect(result.current).toHaveProperty('sendMessage');
-    expect(typeof result.current.sendMessage).toBe('function');
+
+    expect(result.current.config).toBeDefined();
+    expect(result.current.config.provider).toBe('ollama');
+    expect(result.current.config.model).toBe('llama3');
+    expect(result.current.loading).toBe(false);
   });
 
-  it('provides clearMessages function', () => {
+  it('should provide chat function', () => {
     const { result } = renderHook(() => useAI());
-    expect(result.current).toHaveProperty('clearMessages');
-    expect(typeof result.current.clearMessages).toBe('function');
+
+    expect(result.current.chat).toBeDefined();
+    expect(typeof result.current.chat).toBe('function');
   });
 
-  it('handles message sending', async () => {
+  it('should provide saveConfig function', () => {
     const { result } = renderHook(() => useAI());
-    
-    await act(async () => {
-      await result.current.sendMessage('Hello AI');
-    });
-    
-    expect(result.current.messages).toHaveLength(1);
+
+    expect(result.current.saveConfig).toBeDefined();
+    expect(typeof result.current.saveConfig).toBe('function');
   });
 
-  it('clears messages', () => {
+  it('should save config correctly', () => {
     const { result } = renderHook(() => useAI());
-    
+
     act(() => {
-      result.current.clearMessages();
-    });
-    
-    expect(result.current.messages).toHaveLength(0);
-  });
-
-  it('handles loading state', async () => {
-    const { result } = renderHook(() => useAI());
-    
-    act(() => {
-      result.current.sendMessage('Test message');
-    });
-    
-    expect(result.current.isLoading).toBe(true);
-  });
-
-  it('handles error state', async () => {
-    const { result } = renderHook(() => useAI());
-    
-    try {
-      await act(async () => {
-        await result.current.sendMessage('Error message');
+      result.current.saveConfig({
+        ...result.current.config,
+        model: 'llama3:8b',
+        temperature: 0.8,
       });
-    } catch (error) {
-      expect(result.current.error).not.toBeNull();
-    }
+    });
+
+    expect(result.current.config.model).toBe('llama3:8b');
+    expect(result.current.config.temperature).toBe(0.8);
+  });
+
+  it('should load config from localStorage', () => {
+    const savedConfig = {
+      provider: 'ollama',
+      apiKey: 'test-key',
+      baseUrl: 'http://localhost:11434/v1',
+      model: 'llama3:8b',
+      temperature: 0.9,
+      version: 1,
+    };
+    localStorage.setItem('yyc3_ai_config', JSON.stringify(savedConfig));
+
+    const { result } = renderHook(() => useAI());
+
+    expect(result.current.config.model).toBe('llama3:8b');
+    expect(result.current.config.temperature).toBe(0.9);
+  });
+
+  it('should handle streaming state', async () => {
+    const { result } = renderHook(() => useAI());
+
+    expect(result.current.isStreaming).toBe(false);
+
+    // Mock successful stream
+    const mockReader = {
+      read: vi.fn()
+        .mockResolvedValueOnce({ done: false, value: new TextEncoder().encode('data: {"choices":[{"delta":{"content":"Hello"}}]}\n\n') })
+        .mockResolvedValueOnce({ done: true }),
+    };
+
+    const mockResponse = {
+      ok: true,
+      body: {
+        getReader: () => mockReader,
+      },
+    };
+
+    global.fetch = vi.fn().mockResolvedValue(mockResponse);
+
+    const chunks: string[] = [];
+    await act(async () => {
+      await result.current.chat(
+        [{ role: 'user', content: 'Hi' }],
+        (chunk) => chunks.push(chunk)
+      );
+    });
+
+    expect(chunks.length).toBeGreaterThan(0);
+  });
+
+  it('should handle network errors gracefully', async () => {
+    const { result } = renderHook(() => useAI());
+
+    // Mock network error
+    global.fetch = vi.fn().mockRejectedValue(new Error('Network error'));
+
+    const chunks: string[] = [];
+    await act(async () => {
+      await result.current.chat(
+        [{ role: 'user', content: 'Test' }],
+        (chunk) => chunks.push(chunk)
+      );
+    });
+
+    // Should fallback to simulation mode
+    expect(chunks.length).toBeGreaterThan(0);
   });
 });

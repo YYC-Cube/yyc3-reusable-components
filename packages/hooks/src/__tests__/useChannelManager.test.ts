@@ -1,95 +1,143 @@
+/**
+ * @file useChannelManager.test.ts
+ * @description useChannelManager Hook 测试
+ * @author YYC³ Team
+ */
+
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import { useChannelManager } from './useChannelManager';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { useChannelManager } from '../useChannelManager';
 
 describe('useChannelManager', () => {
-  it('initializes with empty channels', () => {
-    const { result } = renderHook(() => useChannelManager());
-    expect(result.current.channels).toEqual([]);
+  beforeEach(() => {
+    localStorage.clear();
   });
 
-  it('provides addChannel function', () => {
+  it('should initialize with default channel', () => {
     const { result } = renderHook(() => useChannelManager());
-    expect(result.current).toHaveProperty('addChannel');
-    expect(typeof result.current.addChannel).toBe('function');
-  });
 
-  it('provides removeChannel function', () => {
-    const { result } = renderHook(() => useChannelManager());
-    expect(result.current).toHaveProperty('removeChannel');
-    expect(typeof result.current.removeChannel).toBe('function');
-  });
-
-  it('provides updateChannel function', () => {
-    const { result } = renderHook(() => useChannelManager());
-    expect(result.current).toHaveProperty('updateChannel');
-    expect(typeof result.current.updateChannel).toBe('function');
-  });
-
-  it('adds a channel', () => {
-    const { result } = renderHook(() => useChannelManager());
-    
-    act(() => {
-      result.current.addChannel({
-        id: '1',
-        name: 'Test Channel',
-        type: 'text',
-      });
-    });
-    
     expect(result.current.channels).toHaveLength(1);
-    expect(result.current.channels[0].name).toBe('Test Channel');
+    expect(result.current.channels[0].id).toBe('main');
+    expect(result.current.activeChannelId).toBe('main');
   });
 
-  it('removes a channel', () => {
+  it('should create a new channel', () => {
     const { result } = renderHook(() => useChannelManager());
-    
+
+    let channelId: string;
     act(() => {
-      result.current.addChannel({
-        id: '1',
-        name: 'Test Channel',
-        type: 'text',
-      });
+      channelId = result.current.createChannel('Test Channel');
     });
-    
+
+    expect(result.current.channels).toHaveLength(2);
+    expect(result.current.channels[1].name).toBe('Test Channel');
+    expect(channelId!).toBeDefined();
+  });
+
+  it('should delete a channel', () => {
+    const { result } = renderHook(() => useChannelManager());
+
+    act(() => {
+      result.current.createChannel('To Delete');
+    });
+
+    expect(result.current.channels).toHaveLength(2);
+
+    const channelId = result.current.channels[1].id;
+    act(() => {
+      result.current.deleteChannel(channelId);
+    });
+
     expect(result.current.channels).toHaveLength(1);
-    
-    act(() => {
-      result.current.removeChannel('1');
-    });
-    
-    expect(result.current.channels).toHaveLength(0);
   });
 
-  it('updates a channel', () => {
+  it('should not delete main channel', () => {
     const { result } = renderHook(() => useChannelManager());
-    
+
     act(() => {
-      result.current.addChannel({
-        id: '1',
-        name: 'Test Channel',
-        type: 'text',
-      });
+      result.current.deleteChannel('main');
     });
-    
-    expect(result.current.channels[0].name).toBe('Test Channel');
-    
-    act(() => {
-      result.current.updateChannel('1', { name: 'Updated Channel' });
-    });
-    
-    expect(result.current.channels[0].name).toBe('Updated Channel');
+
+    expect(result.current.channels).toHaveLength(1);
+    expect(result.current.channels[0].id).toBe('main');
   });
 
-  it('handles multiple channels', () => {
+  it('should update channel name', () => {
     const { result } = renderHook(() => useChannelManager());
-    
+
+    let channelId: string;
     act(() => {
-      result.current.addChannel({ id: '1', name: 'Channel 1', type: 'text' });
-      result.current.addChannel({ id: '2', name: 'Channel 2', type: 'image' });
-      result.current.addChannel({ id: '3', name: 'Channel 3', type: 'audio' });
+      channelId = result.current.createChannel('Original Name');
     });
-    
-    expect(result.current.channels).toHaveLength(3);
+
+    act(() => {
+      result.current.updateChannelName(channelId!, 'Updated Name');
+    });
+
+    expect(result.current.channels[1].name).toBe('Updated Name');
+  });
+
+  it('should set active channel', () => {
+    const { result } = renderHook(() => useChannelManager());
+
+    let channelId: string;
+    act(() => {
+      channelId = result.current.createChannel('New Channel');
+    });
+
+    expect(result.current.activeChannelId).toBe('main');
+
+    act(() => {
+      result.current.setActiveChannelId(channelId!);
+    });
+
+    expect(result.current.activeChannelId).toBe(channelId!);
+  });
+
+  it('should switch to main when active channel is deleted', () => {
+    const { result } = renderHook(() => useChannelManager());
+
+    let channelId: string;
+    act(() => {
+      channelId = result.current.createChannel('Test');
+    });
+
+    act(() => {
+      result.current.setActiveChannelId(channelId!);
+    });
+
+    expect(result.current.activeChannelId).toBe(channelId!);
+
+    act(() => {
+      result.current.deleteChannel(channelId!);
+    });
+
+    expect(result.current.activeChannelId).toBe('main');
+  });
+
+  it('should persist channels to localStorage', () => {
+    const { result } = renderHook(() => useChannelManager());
+
+    act(() => {
+      result.current.createChannel('Channel 1');
+    });
+
+    const stored = localStorage.getItem('yyc3_channels_meta');
+    expect(stored).toBeDefined();
+    const parsed = JSON.parse(stored!);
+    expect(parsed).toHaveLength(2); // main + 1 new channel
+  });
+
+  it('should load channels from localStorage', () => {
+    const savedChannels = [
+      { id: 'main', name: 'Main Console', createdAt: new Date().toISOString() },
+      { id: 'chan_1', name: 'Saved Channel', createdAt: new Date().toISOString() }
+    ];
+    localStorage.setItem('yyc3_channels_meta', JSON.stringify(savedChannels));
+
+    const { result } = renderHook(() => useChannelManager());
+
+    expect(result.current.channels).toHaveLength(2);
+    expect(result.current.channels[1].name).toBe('Saved Channel');
   });
 });

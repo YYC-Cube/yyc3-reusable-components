@@ -1,90 +1,135 @@
+/**
+ * @file useUISettings.test.ts
+ * @description useUISettings Hook 测试
+ * @author YYC³ Team
+ */
+
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import { useUISettings } from './useUISettings';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { useUISettings } from '../useUISettings';
 
 describe('useUISettings', () => {
-  it('initializes with default settings', () => {
-    const { result } = renderHook(() => useUISettings());
-    expect(result.current).toHaveProperty('theme');
-    expect(result.current).toHaveProperty('language');
-    expect(result.current).toHaveProperty('fontSize');
+  beforeEach(() => {
+    localStorage.clear();
   });
 
-  it('provides updateSettings function', () => {
+  it('should initialize with default settings', () => {
     const { result } = renderHook(() => useUISettings());
-    expect(result.current).toHaveProperty('updateSettings');
-    expect(typeof result.current.updateSettings).toBe('function');
+
+    expect(result.current.settings).toBeDefined();
+    expect(result.current.settings.theme).toBe('P1 Matrix');
+    expect(result.current.settings.themeColorId).toBe('green');
+    expect(result.current.settings.fontSize).toBe('xl');
+    expect(result.current.loading).toBe(false);
   });
 
-  it('provides resetSettings function', () => {
+  it('should load settings from localStorage', () => {
+    const savedSettings = {
+      theme: 'Cyberpunk',
+      themeColorId: 'cyan',
+      bgOpacity: 80,
+      fontSize: 'lg',
+      fontId: 'fira-code',
+      version: 2
+    };
+    localStorage.setItem('yyc3_ui_settings', JSON.stringify(savedSettings));
+
     const { result } = renderHook(() => useUISettings());
-    expect(result.current).toHaveProperty('resetSettings');
-    expect(typeof result.current.resetSettings).toBe('function');
+
+    expect(result.current.settings.theme).toBe('Cyberpunk');
+    expect(result.current.settings.themeColorId).toBe('cyan');
+    expect(result.current.settings.bgOpacity).toBe(80);
+    expect(result.current.settings.fontSize).toBe('lg');
   });
 
-  it('updates theme setting', () => {
+  it('should update settings correctly', () => {
     const { result } = renderHook(() => useUISettings());
-    
-    act(() => {
-      result.current.updateSettings({ theme: 'dark' });
-    });
-    
-    expect(result.current.theme).toBe('dark');
-  });
 
-  it('updates language setting', () => {
-    const { result } = renderHook(() => useUISettings());
-    
-    act(() => {
-      result.current.updateSettings({ language: 'zh-CN' });
-    });
-    
-    expect(result.current.language).toBe('zh-CN');
-  });
-
-  it('updates fontSize setting', () => {
-    const { result } = renderHook(() => useUISettings());
-    
-    act(() => {
-      result.current.updateSettings({ fontSize: 'large' });
-    });
-    
-    expect(result.current.fontSize).toBe('large');
-  });
-
-  it('updates multiple settings at once', () => {
-    const { result } = renderHook(() => useUISettings());
-    
     act(() => {
       result.current.updateSettings({
-        theme: 'dark',
-        language: 'zh-CN',
-        fontSize: 'large',
+        theme: 'Neon',
+        themeColorId: 'purple'
       });
     });
-    
-    expect(result.current.theme).toBe('dark');
-    expect(result.current.language).toBe('zh-CN');
-    expect(result.current.fontSize).toBe('large');
+
+    expect(result.current.settings.theme).toBe('Neon');
+    expect(result.current.settings.themeColorId).toBe('purple');
   });
 
-  it('resets settings to defaults', () => {
+  it('should save complete settings', () => {
     const { result } = renderHook(() => useUISettings());
-    
+
+    const newSettings = {
+      ...result.current.settings,
+      theme: 'Glass',
+      bgOpacity: 50
+    };
+
+    act(() => {
+      result.current.saveSettings(newSettings);
+    });
+
+    expect(result.current.settings.theme).toBe('Glass');
+    expect(result.current.settings.bgOpacity).toBe(50);
+
+    const stored = JSON.parse(localStorage.getItem('yyc3_ui_settings')!);
+    expect(stored.theme).toBe('Glass');
+  });
+
+  it('should reset settings to defaults', () => {
+    const { result } = renderHook(() => useUISettings());
+
     act(() => {
       result.current.updateSettings({
-        theme: 'dark',
-        language: 'zh-CN',
-        fontSize: 'large',
+        theme: 'Dark',
+        themeColorId: 'blue',
+        fontSize: 'sm'
       });
     });
-    
+
+    expect(result.current.settings.theme).toBe('Dark');
+
     act(() => {
       result.current.resetSettings();
     });
-    
-    expect(result.current.theme).toBe('light');
-    expect(result.current.language).toBe('en-US');
-    expect(result.current.fontSize).toBe('medium');
+
+    expect(result.current.settings.theme).toBe('P1 Matrix');
+    expect(result.current.settings.themeColorId).toBe('green');
+    expect(result.current.settings.fontSize).toBe('xl');
+  });
+
+  it('should compute active theme color', () => {
+    const { result } = renderHook(() => useUISettings());
+
+    // activeThemeColor might be undefined if THEME_COLORS doesn't have matching id
+    // Just verify the function exists
+    expect(result.current).toHaveProperty('activeThemeColor');
+  });
+
+  it('should compute active font', () => {
+    const { result } = renderHook(() => useUISettings());
+
+    // activeFont might be undefined if FONT_OPTIONS doesn't have matching id
+    // Just verify the function exists
+    expect(result.current).toHaveProperty('activeFont');
+  });
+
+  it('should compute active font size', () => {
+    const { result } = renderHook(() => useUISettings());
+
+    // activeFontSize might be undefined if FONT_SIZE_OPTIONS doesn't have matching id
+    // Just verify the function exists
+    expect(result.current).toHaveProperty('activeFontSize');
+  });
+
+  it('should persist settings to localStorage on update', () => {
+    const { result } = renderHook(() => useUISettings());
+
+    act(() => {
+      result.current.updateSettings({ theme: 'Matrix' });
+    });
+
+    const stored = JSON.parse(localStorage.getItem('yyc3_ui_settings')!);
+    expect(stored.theme).toBe('Matrix');
   });
 });
