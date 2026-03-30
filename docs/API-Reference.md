@@ -8,23 +8,23 @@
 
 ### 核心包
 
-| 包名 | 说明 | 文档链接 |
-|------|------|----------|
-| `@yyc3/ui` | UI 基础组件 | [API 参考](./packages/ui/README.md) |
-| `@yyc3/business` | 业务组件 | [API 参考](./packages/business/README.md) |
-| `@yyc3/smart` | AI 智能组件 | [API 参考](./packages/smart/README.md) |
-| `@yyc3/ai` | AI 聊天组件 | [API 参考](./packages/ai/README.md) |
-| `@yyc3/themes` | 主题系统 | [API 参考](./packages/themes/README.md) |
-| `@yyc3/core` | 核心功能 | [API 参考](./packages/core/README.md) |
+| 包名             | 说明        | 文档链接                                  |
+| ---------------- | ----------- | ----------------------------------------- |
+| `@yyc3/ui`       | UI 基础组件 | [API 参考](./packages/ui/README.md)       |
+| `@yyc3/business` | 业务组件    | [API 参考](./packages/business/README.md) |
+| `@yyc3/smart`    | AI 智能组件 | [API 参考](./packages/smart/README.md)    |
+| `@yyc3/ai`       | AI 聊天组件 | [API 参考](./packages/ai/README.md)       |
+| `@yyc3/themes`   | 主题系统    | [API 参考](./packages/themes/README.md)   |
+| `@yyc3/core`     | 核心功能    | [API 参考](./packages/core/README.md)     |
 
 ### 工具包
 
-| 包名 | 说明 | 文档链接 |
-|------|------|----------|
-| `@yyc3/hooks` | React Hooks | [API 参考](./packages/hooks/README.md) |
-| `@yyc3/utils` | 工具函数 | [API 参考](./packages/utils/README.md) |
-| `@yyc3/services` | 服务层 | [API 参考](./packages/services/README.md) |
-| `@yyc3/repositories` | 数据访问层 | [API 参考](./packages/repositories/README.md) |
+| 包名                 | 说明        | 文档链接                                      |
+| -------------------- | ----------- | --------------------------------------------- |
+| `@yyc3/hooks`        | React Hooks | [API 参考](./packages/hooks/README.md)        |
+| `@yyc3/utils`        | 工具函数    | [API 参考](./packages/utils/README.md)        |
+| `@yyc3/services`     | 服务层      | [API 参考](./packages/services/README.md)     |
+| `@yyc3/repositories` | 数据访问层  | [API 参考](./packages/repositories/README.md) |
 
 ---
 
@@ -54,61 +54,61 @@ function App() {
 
 #### 基础组件
 
-| 组件 | 说明 | Props |
-|------|------|-------|
-| `Button` | 按钮 | `variant`, `size`, `disabled` |
-| `Input` | 输入框 | `type`, `placeholder`, `value` |
-| `Textarea` | 文本域 | `rows`, `cols`, `maxLength` |
-| `Label` | 标签 | `htmlFor`, `required` |
-| `Checkbox` | 复选框 | `checked`, `indeterminate` |
-| `RadioGroup` | 单选组 | `value`, `onChange` |
-| `Switch` | 开关 | `checked`, `onCheckedChange` |
-| `Select` | 选择器 | `value`, `options`, `multiple` |
-| `Slider` | 滑块 | `value`, `min`, `max`, `step` |
+| 组件         | 说明   | Props                          |
+| ------------ | ------ | ------------------------------ |
+| `Button`     | 按钮   | `variant`, `size`, `disabled`  |
+| `Input`      | 输入框 | `type`, `placeholder`, `value` |
+| `Textarea`   | 文本域 | `rows`, `cols`, `maxLength`    |
+| `Label`      | 标签   | `htmlFor`, `required`          |
+| `Checkbox`   | 复选框 | `checked`, `indeterminate`     |
+| `RadioGroup` | 单选组 | `value`, `onChange`            |
+| `Switch`     | 开关   | `checked`, `onCheckedChange`   |
+| `Select`     | 选择器 | `value`, `options`, `multiple` |
+| `Slider`     | 滑块   | `value`, `min`, `max`, `step`  |
 
 #### 布局组件
 
-| 组件 | 说明 | Props |
-|------|------|-------|
-| `Card` | 卡片 | `variant`, `elevation` |
-| `Separator` | 分隔线 | `orientation` |
-| `AspectRatio` | 宽高比容器 | `ratio` |
-| `ScrollArea` | 滚动区域 | `orientation`, `scrollHideDelay` |
-| `Resizable` | 可调整大小 | `direction` |
+| 组件          | 说明       | Props                            |
+| ------------- | ---------- | -------------------------------- |
+| `Card`        | 卡片       | `variant`, `elevation`           |
+| `Separator`   | 分隔线     | `orientation`                    |
+| `AspectRatio` | 宽高比容器 | `ratio`                          |
+| `ScrollArea`  | 滚动区域   | `orientation`, `scrollHideDelay` |
+| `Resizable`   | 可调整大小 | `direction`                      |
 
 #### 反馈组件
 
-| 组件 | 说明 | Props |
-|------|------|-------|
-| `Dialog` | 对话框 | `open`, `onOpenChange` |
-| `AlertDialog` | 警告对话框 | `open`, `onOpenChange` |
-| `Sheet` | 抽屉 | `side`, `open`, `onOpenChange` |
-| `Drawer` | 抽屉（底部） | `open`, `onOpenChange` |
-| `Toast` | 轻提示 | `variant`, `duration` |
-| `Progress` | 进度条 | `value`, `max` |
-| `Skeleton` | 骨架屏 | `width`, `height` |
-| `Spinner` | 加载中 | `size`, `color` |
+| 组件          | 说明         | Props                          |
+| ------------- | ------------ | ------------------------------ |
+| `Dialog`      | 对话框       | `open`, `onOpenChange`         |
+| `AlertDialog` | 警告对话框   | `open`, `onOpenChange`         |
+| `Sheet`       | 抽屉         | `side`, `open`, `onOpenChange` |
+| `Drawer`      | 抽屉（底部） | `open`, `onOpenChange`         |
+| `Toast`       | 轻提示       | `variant`, `duration`          |
+| `Progress`    | 进度条       | `value`, `max`                 |
+| `Skeleton`    | 骨架屏       | `width`, `height`              |
+| `Spinner`     | 加载中       | `size`, `color`                |
 
 #### 导航组件
 
-| 组件 | 说明 | Props |
-|------|------|-------|
-| `Tabs` | 标签页 | `value`, `onValueChange` |
-| `NavigationMenu` | 导航菜单 | `items`, `orientation` |
-| `Breadcrumb` | 面包屑 | `items` |
-| `Pagination` | 分页 | `total`, `pageSize`, `current` |
-| `Menubar` | 菜单栏 | `items` |
+| 组件             | 说明     | Props                          |
+| ---------------- | -------- | ------------------------------ |
+| `Tabs`           | 标签页   | `value`, `onValueChange`       |
+| `NavigationMenu` | 导航菜单 | `items`, `orientation`         |
+| `Breadcrumb`     | 面包屑   | `items`                        |
+| `Pagination`     | 分页     | `total`, `pageSize`, `current` |
+| `Menubar`        | 菜单栏   | `items`                        |
 
 #### 数据展示
 
-| 组件 | 说明 | Props |
-|------|------|-------|
-| `Table` | 表格 | `columns`, `dataSource` |
-| `Badge` | 徽章 | `variant`, `count` |
-| `Avatar` | 头像 | `src`, `alt`, `fallback` |
-| `Tooltip` | 提示 | `content`, `side` |
-| `Popover` | 气泡卡片 | `content`, `trigger` |
-| `HoverCard` | 悬浮卡片 | `content` |
+| 组件        | 说明     | Props                    |
+| ----------- | -------- | ------------------------ |
+| `Table`     | 表格     | `columns`, `dataSource`  |
+| `Badge`     | 徽章     | `variant`, `count`       |
+| `Avatar`    | 头像     | `src`, `alt`, `fallback` |
+| `Tooltip`   | 提示     | `content`, `side`        |
+| `Popover`   | 气泡卡片 | `content`, `trigger`     |
+| `HoverCard` | 悬浮卡片 | `content`                |
 
 ---
 
@@ -135,10 +135,10 @@ manager.applyTheme('cyberpunk');
 
 ### 可用主题
 
-| 主题 | CSS 文件 | 说明 |
-|------|----------|------|
-| Default | `theme.css` | 默认主题 |
-| Cyberpunk | `cyberpunk.css` | 赛博朋克风格 |
+| 主题         | CSS 文件           | 说明         |
+| ------------ | ------------------ | ------------ |
+| Default      | `theme.css`        | 默认主题     |
+| Cyberpunk    | `cyberpunk.css`    | 赛博朋克风格 |
 | Liquid Glass | `liquid-glass.css` | 液态玻璃风格 |
 
 ### CSS 变量
@@ -150,10 +150,10 @@ manager.applyTheme('cyberpunk');
   --secondary: #64748b;
   --background: #ffffff;
   --foreground: #0f172a;
-  
+
   /* 圆角 */
   --radius: 0.5rem;
-  
+
   /* 间距 */
   --spacing: 1rem;
 }
@@ -215,16 +215,16 @@ pnpm add @yyc3/hooks
 
 ### Hooks 列表
 
-| Hook | 说明 | 返回值 |
-|------|------|--------|
-| `usePersistedState` | 持久化状态 | `[value, setValue]` |
-| `useResponsive` | 响应式布局 | `{ isMobile, isTablet, isDesktop }` |
-| `useGestures` | 手势识别 | `{ onTouchStart, onTouchMove, onTouchEnd }` |
-| `useAI` | AI 功能 | `{ chat, isStreaming, config }` |
-| `useNotifications` | 通知管理 | `{ notify, dismiss }` |
-| `useChatPersistence` | 聊天持久化 | `{ save, load, clear }` |
-| `useDatabaseConfig` | 数据库配置 | `{ config, updateConfig }` |
-| `useSupabaseSync` | Supabase 同步 | `{ sync, status }` |
+| Hook                 | 说明          | 返回值                                      |
+| -------------------- | ------------- | ------------------------------------------- |
+| `usePersistedState`  | 持久化状态    | `[value, setValue]`                         |
+| `useResponsive`      | 响应式布局    | `{ isMobile, isTablet, isDesktop }`         |
+| `useGestures`        | 手势识别      | `{ onTouchStart, onTouchMove, onTouchEnd }` |
+| `useAI`              | AI 功能       | `{ chat, isStreaming, config }`             |
+| `useNotifications`   | 通知管理      | `{ notify, dismiss }`                       |
+| `useChatPersistence` | 聊天持久化    | `{ save, load, clear }`                     |
+| `useDatabaseConfig`  | 数据库配置    | `{ config, updateConfig }`                  |
+| `useSupabaseSync`    | Supabase 同步 | `{ sync, status }`                          |
 
 ### 示例
 
@@ -256,13 +256,13 @@ pnpm add @yyc3/utils
 
 ### 工具函数
 
-| 函数 | 说明 | 参数 | 返回值 |
-|------|------|------|--------|
-| `cn` | 类名合并 | `...strings` | `string` |
-| `formatDate` | 日期格式化 | `date, format` | `string` |
-| `formatNumber` | 数字格式化 | `num, options` | `string` |
-| `debounce` | 防抖 | `fn, delay` | `Function` |
-| `throttle` | 节流 | `fn, limit` | `Function` |
+| 函数           | 说明       | 参数           | 返回值     |
+| -------------- | ---------- | -------------- | ---------- |
+| `cn`           | 类名合并   | `...strings`   | `string`   |
+| `formatDate`   | 日期格式化 | `date, format` | `string`   |
+| `formatNumber` | 数字格式化 | `num, options` | `string`   |
+| `debounce`     | 防抖       | `fn, delay`    | `Function` |
+| `throttle`     | 节流       | `fn, limit`    | `Function` |
 
 ### 示例
 

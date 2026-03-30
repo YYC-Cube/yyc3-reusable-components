@@ -17,6 +17,7 @@
 ### 问题：依赖安装失败
 
 **症状**：
+
 ```bash
 npm ERR! code ERESOLVE
 npm ERR! ERESOLVE unable to resolve dependency tree
@@ -25,21 +26,25 @@ npm ERR! ERESOLVE unable to resolve dependency tree
 **解决方案**：
 
 1. 清除npm缓存
+
 ```bash
 npm cache clean --force
 ```
 
 2. 删除node_modules和package-lock.json
+
 ```bash
 rm -rf node_modules package-lock.json
 ```
 
 3. 重新安装
+
 ```bash
 npm install
 ```
 
 4. 如果使用pnpm
+
 ```bash
 pnpm store prune
 rm -rf node_modules
@@ -49,6 +54,7 @@ pnpm install
 ### 问题：TypeScript类型错误
 
 **症状**：
+
 ```typescript
 Could not find a declaration file for module '@yyc3/ui'
 ```
@@ -56,11 +62,13 @@ Could not find a declaration file for module '@yyc3/ui'
 **解决方案**：
 
 1. 确保已安装类型定义
+
 ```bash
 npm install --save-dev @types/react @types/react-dom
 ```
 
 2. 检查tsconfig.json配置
+
 ```json
 {
   "compilerOptions": {
@@ -72,6 +80,7 @@ npm install --save-dev @types/react @types/react-dom
 ```
 
 3. 重启TypeScript服务器
+
 ```bash
 # VSCode
 Cmd+Shift+P -> "TypeScript: Restart TS Server"
@@ -82,6 +91,7 @@ Cmd+Shift+P -> "TypeScript: Restart TS Server"
 ### 问题：构建失败
 
 **症状**：
+
 ```bash
 Module not found: Error: Can't resolve '@yyc3/ui'
 ```
@@ -89,11 +99,13 @@ Module not found: Error: Can't resolve '@yyc3/ui'
 **解决方案**：
 
 1. 检查包是否正确安装
+
 ```bash
 npm list @yyc3/ui
 ```
 
 2. 确保在package.json中正确声明依赖
+
 ```json
 {
   "dependencies": {
@@ -103,6 +115,7 @@ npm list @yyc3/ui
 ```
 
 3. 清除构建缓存
+
 ```bash
 rm -rf .next dist build
 npm run build
@@ -115,11 +128,13 @@ npm run build
 **解决方案**：
 
 1. 确保导入了样式文件
+
 ```tsx
 import '@yyc3/ui/dist/styles.css';
 ```
 
 2. 检查Tailwind CSS配置
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -131,6 +146,7 @@ module.exports = {
 ```
 
 3. 确保CSS处理器正确配置
+
 ```javascript
 // postcss.config.js
 module.exports = {
@@ -150,6 +166,7 @@ module.exports = {
 **解决方案**：
 
 1. 检查React版本兼容性
+
 ```bash
 npm list react react-dom
 ```
@@ -157,12 +174,14 @@ npm list react react-dom
 确保React版本 >= 18.0.0
 
 2. 检查控制台错误
+
 ```bash
 # 打开浏览器开发者工具
 # 查看Console标签页
 ```
 
 3. 验证组件导入
+
 ```tsx
 // ✅ 正确
 import { Button } from '@yyc3/ui';
@@ -178,6 +197,7 @@ import Button from '@yyc3/ui';
 **解决方案**：
 
 1. 检查事件处理函数定义
+
 ```tsx
 // ✅ 正确
 const handleClick = () => {
@@ -191,6 +211,7 @@ const handleClick = () => {
 ```
 
 2. 检查事件绑定
+
 ```tsx
 // ✅ 正确
 <Button onClick={() => console.log('clicked')}>点击</Button>
@@ -208,6 +229,7 @@ const handleClick = () => {
 **解决方案**：
 
 1. 使用React.memo优化组件
+
 ```tsx
 import { memo } from 'react';
 
@@ -217,14 +239,12 @@ const ExpensiveComponent = memo(function ExpensiveComponent({ data }) {
 ```
 
 2. 使用useMemo和useCallback
+
 ```tsx
 import { useMemo, useCallback } from 'react';
 
 function MyComponent({ items }) {
-  const sortedItems = useMemo(
-    () => items.sort((a, b) => a.id - b.id),
-    [items]
-  );
+  const sortedItems = useMemo(() => items.sort((a, b) => a.id - b.id), [items]);
 
   const handleClick = useCallback((id) => {
     console.log('clicked', id);
@@ -235,6 +255,7 @@ function MyComponent({ items }) {
 ```
 
 3. 使用虚拟滚动
+
 ```tsx
 import { VirtualList } from '@yyc3/ui';
 
@@ -242,7 +263,7 @@ import { VirtualList } from '@yyc3/ui';
   items={largeList}
   itemHeight={50}
   renderItem={(item) => <div>{item.name}</div>}
-/>
+/>;
 ```
 
 ### 问题：内存泄漏
@@ -252,6 +273,7 @@ import { VirtualList } from '@yyc3/ui';
 **解决方案**：
 
 1. 清理副作用
+
 ```tsx
 useEffect(() => {
   const timer = setInterval(() => {
@@ -265,11 +287,12 @@ useEffect(() => {
 ```
 
 2. 取消未完成的请求
+
 ```tsx
 useEffect(() => {
   const controller = new AbortController();
 
-  fetchData(signal => controller.signal);
+  fetchData((signal) => controller.signal);
 
   return () => {
     controller.abort();
@@ -278,6 +301,7 @@ useEffect(() => {
 ```
 
 3. 清理事件监听器
+
 ```tsx
 useEffect(() => {
   const handleResize = () => {
@@ -301,6 +325,7 @@ useEffect(() => {
 **解决方案**：
 
 1. 检查Tailwind配置
+
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -316,12 +341,14 @@ module.exports = {
 ```
 
 2. 确保CSS文件被导入
+
 ```tsx
 // main.tsx
 import './index.css';
 ```
 
 3. 检查PostCSS配置
+
 ```javascript
 // postcss.config.js
 module.exports = {
@@ -339,6 +366,7 @@ module.exports = {
 **解决方案**：
 
 1. 使用响应式工具类
+
 ```tsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
   {/* 内容 */}
@@ -346,6 +374,7 @@ module.exports = {
 ```
 
 2. 使用响应式Hook
+
 ```tsx
 import { useResponsive } from '@yyc3/hooks';
 
@@ -367,6 +396,7 @@ function MyComponent() {
 ### 问题：TypeScript类型不匹配
 
 **症状**：
+
 ```typescript
 Type 'string' is not assignable to type 'number'
 ```
@@ -374,11 +404,13 @@ Type 'string' is not assignable to type 'number'
 **解决方案**：
 
 1. 使用类型断言
+
 ```tsx
 const value = '123' as unknown as number;
 ```
 
 2. 使用类型守卫
+
 ```tsx
 function isNumber(value: any): value is number {
   return typeof value === 'number';
@@ -390,6 +422,7 @@ if (isNumber(value)) {
 ```
 
 3. 使用泛型
+
 ```tsx
 function identity<T>(value: T): T {
   return value;
@@ -401,6 +434,7 @@ const result = identity<string>('hello');
 ### 问题：Props类型错误
 
 **症状**：
+
 ```typescript
 Property 'onClick' does not exist on type 'IntrinsicAttributes & { children?: ReactNode; }'
 ```
@@ -408,6 +442,7 @@ Property 'onClick' does not exist on type 'IntrinsicAttributes & { children?: Re
 **解决方案**：
 
 1. 正确定义Props接口
+
 ```tsx
 interface MyComponentProps {
   onClick?: () => void;
@@ -420,6 +455,7 @@ function MyComponent({ onClick, children }: MyComponentProps) {
 ```
 
 2. 扩展HTML属性
+
 ```tsx
 interface MyComponentProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   customProp?: string;
@@ -435,6 +471,7 @@ function MyComponent({ customProp, ...props }: MyComponentProps) {
 ### 问题：测试失败
 
 **症状**：
+
 ```
 Expected: "Hello"
 Received: "World"
@@ -443,6 +480,7 @@ Received: "World"
 **解决方案**：
 
 1. 检查测试断言
+
 ```tsx
 // ✅ 正确
 expect(screen.getByText('Hello')).toBeInTheDocument();
@@ -452,6 +490,7 @@ expect(screen.getByText('World')).toBeInTheDocument();
 ```
 
 2. 使用正确的查询方法
+
 ```tsx
 // 按文本查找
 screen.getByText('Submit');
@@ -464,6 +503,7 @@ screen.getByTestId('submit-button');
 ```
 
 3. 等待异步操作
+
 ```tsx
 await waitFor(() => {
   expect(screen.getByText('Loaded')).toBeInTheDocument();
@@ -477,6 +517,7 @@ await waitFor(() => {
 **解决方案**：
 
 1. 添加更多测试用例
+
 ```tsx
 describe('MyComponent', () => {
   it('renders correctly', () => {
@@ -498,6 +539,7 @@ describe('MyComponent', () => {
 ```
 
 2. 测试边界情况
+
 ```tsx
 it('handles empty data', () => {
   render(<MyComponent data={[]} />);
@@ -511,6 +553,7 @@ it('handles null values', () => {
 ```
 
 3. 测试异步操作
+
 ```tsx
 it('loads data asynchronously', async () => {
   render(<MyComponent />);
@@ -546,8 +589,7 @@ it('loads data asynchronously', async () => {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」
 
 </div>

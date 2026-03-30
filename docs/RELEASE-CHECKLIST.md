@@ -26,7 +26,7 @@
 ### 包配置
 
 - [ ] package.json 版本号已更新
-- [ ] package.json name 正确（@yyc3/*）
+- [ ] package.json name 正确（@yyc3/\*）
 - [ ] package.json main/module/exports 正确
 - [ ] package.json types 指向正确
 - [ ] package.json files 包含 dist
@@ -158,6 +158,7 @@ npm install @yyc3/ui@latest
 **原因**: 没有发布权限或包名冲突
 
 **解决**:
+
 ```bash
 # 检查是否有权限
 npm whoami
@@ -171,6 +172,7 @@ npm info @yyc3/package-name
 **原因**: 相同版本号已发布
 
 **解决**:
+
 ```bash
 # 检查当前版本
 npm info @yyc3/ui version
@@ -184,6 +186,7 @@ pnpm version-packages
 **原因**: TypeScript 类型定义错误
 
 **解决**:
+
 ```bash
 # 检查类型错误
 pnpm typecheck
@@ -197,6 +200,7 @@ pnpm build
 **原因**: .changeset 目录有未提交的文件
 
 **解决**:
+
 ```bash
 # 检查 changeset 状态
 ls .changeset/*.md
@@ -212,25 +216,25 @@ git commit -m "chore: add changeset"
 
 ### 核心包
 
-| 包名 | 当前版本 | dist 存在 | CHANGELOG | README |
-|------|----------|-----------|-----------|--------|
-| @yyc3/ui | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/business | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/smart | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/ai | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/themes | 1.0.0 | ⬜ | ✅ | ✅ |
-| @yyc3/core | 1.0.0 | ⬜ | ⬜ | ⬜ |
+| 包名           | 当前版本 | dist 存在 | CHANGELOG | README |
+| -------------- | -------- | --------- | --------- | ------ |
+| @yyc3/ui       | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/business | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/smart    | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/ai       | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/themes   | 1.0.0    | ⬜        | ✅        | ✅     |
+| @yyc3/core     | 1.0.0    | ⬜        | ⬜        | ⬜     |
 
 ### 工具包
 
-| 包名 | 当前版本 | dist 存在 | CHANGELOG | README |
-|------|----------|-----------|-----------|--------|
-| @yyc3/hooks | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/utils | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/services | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/repositories | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/effects | 1.0.0 | ⬜ | ⬜ | ⬜ |
-| @yyc3/navigation | 1.0.0 | ⬜ | ⬜ | ⬜ |
+| 包名               | 当前版本 | dist 存在 | CHANGELOG | README |
+| ------------------ | -------- | --------- | --------- | ------ |
+| @yyc3/hooks        | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/utils        | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/services     | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/repositories | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/effects      | 1.0.0    | ⬜        | ⬜        | ⬜     |
+| @yyc3/navigation   | 1.0.0    | ⬜        | ⬜        | ⬜     |
 
 ---
 

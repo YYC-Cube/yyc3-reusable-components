@@ -52,19 +52,24 @@
 
 ```markdown
 ## Bug 描述
+
 [清晰简洁的描述]
 
 ## 复现步骤
+
 1. ...
 2. ...
 
 ## 期望行为
+
 [描述您期望发生的事情]
 
 ## 实际行为
+
 [描述实际发生的事情]
 
 ## 环境
+
 - 包名: @yyc3/ui@x.x.x
 - React 版本: x.x.x
 - Node 版本: x.x.x
@@ -72,9 +77,11 @@
 - 浏览器: [e.g. Chrome, Safari, Firefox]
 
 ## 截图
+
 [如有必要，添加截图]
 
 ## 其他
+
 [其他相关信息]
 ```
 
@@ -118,12 +125,12 @@ git push origin feature/amazing-feature
 
 ### 必备工具
 
-| 工具 | 版本 | 说明 |
-|------|------|------|
+| 工具    | 版本      | 说明     |
+| ------- | --------- | -------- |
 | Node.js | >= 18.0.0 | 运行环境 |
-| pnpm | >= 8.0.0 | 包管理器 |
-| Git | >= 2.0.0 | 版本控制 |
-| VS Code | 最新版 | 推荐 IDE |
+| pnpm    | >= 8.0.0  | 包管理器 |
+| Git     | >= 2.0.0  | 版本控制 |
+| VS Code | 最新版    | 推荐 IDE |
 
 ### 推荐 VS Code 扩展
 
@@ -200,7 +207,7 @@ NewComponent/
 
 ### 组件代码模板
 
-```tsx
+````tsx
 import * as React from 'react';
 import { cn } from '@yyc3/utils';
 
@@ -218,7 +225,7 @@ export interface NewComponentProps extends React.HTMLAttributes<HTMLDivElement> 
 
 /**
  * 新组件
- * 
+ *
  * @example
  * ```tsx
  * <NewComponent variant="primary">
@@ -244,7 +251,7 @@ export const NewComponent = React.forwardRef<HTMLDivElement, NewComponentProps>(
 );
 
 NewComponent.displayName = 'NewComponent';
-```
+````
 
 ---
 
@@ -271,13 +278,13 @@ export const Button = (props: any) => {
 
 ### 命名规范
 
-| 类型 | 规范 | 示例 |
-|------|------|------|
-| 组件 | PascalCase | `Button`, `DatePicker` |
-| 函数 | camelCase | `formatDate`, `parseJSON` |
-| 常量 | UPPER_SNAKE_CASE | `MAX_SIZE`, `API_BASE_URL` |
-| 文件 | PascalCase | `Button.tsx`, `DatePicker.tsx` |
-| 目录 | kebab-case | `date-picker/`, `form-control/` |
+| 类型 | 规范             | 示例                            |
+| ---- | ---------------- | ------------------------------- |
+| 组件 | PascalCase       | `Button`, `DatePicker`          |
+| 函数 | camelCase        | `formatDate`, `parseJSON`       |
+| 常量 | UPPER_SNAKE_CASE | `MAX_SIZE`, `API_BASE_URL`      |
+| 文件 | PascalCase       | `Button.tsx`, `DatePicker.tsx`  |
+| 目录 | kebab-case       | `date-picker/`, `form-control/` |
 
 ### 样式规范
 
@@ -311,12 +318,12 @@ const buttonVariants = cva(
 
 ### 测试覆盖率要求
 
-| 类型 | 要求 |
-|------|------|
+| 类型       | 要求   |
+| ---------- | ------ |
 | 语句覆盖率 | >= 80% |
 | 分支覆盖率 | >= 75% |
 | 函数覆盖率 | >= 80% |
-| 行覆盖率 | >= 80% |
+| 行覆盖率   | >= 80% |
 
 ### 测试示例
 
@@ -350,14 +357,14 @@ describe('Button', () => {
 
 ### JSDoc 注释
 
-```tsx
+````tsx
 /**
  * 计算两个数的和
- * 
+ *
  * @param a - 第一个数
  * @param b - 第二个数
  * @returns 两数之和
- * 
+ *
  * @example
  * ```ts
  * const result = sum(1, 2); // 3
@@ -366,7 +373,7 @@ describe('Button', () => {
 export function sum(a: number, b: number): number {
   return a + b;
 }
-```
+````
 
 ### README 模板
 
@@ -377,27 +384,21 @@ export function sum(a: number, b: number): number {
 
 ## 安装
 
-\`\`\`bash
-pnpm add @yyc3/package-name
-\`\`\`
+\`\`\`bash pnpm add @yyc3/package-name \`\`\`
 
 ## 使用
 
-\`\`\`tsx
-import { Component } from '@yyc3/package-name';
+\`\`\`tsx import { Component } from '@yyc3/package-name';
 
-function App() {
-  return <Component />;
-}
-\`\`\`
+function App() { return <Component />; } \`\`\`
 
 ## API
 
 ### Props
 
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| prop | string | - | 说明 |
+| 属性 | 类型   | 默认值 | 说明 |
+| ---- | ------ | ------ | ---- |
+| prop | string | -      | 说明 |
 
 ## License
 
@@ -420,17 +421,17 @@ MIT
 
 ### Type 类型
 
-| Type | 说明 | 示例 |
-|------|------|------|
-| `feat` | 新功能 | feat(ui): add Button component |
-| `fix` | Bug 修复 | fix(ui): fix Button click handler |
-| `docs` | 文档更新 | docs: update README |
-| `style` | 代码格式 | style: format code |
-| `refactor` | 代码重构 | refactor: extract utility |
-| `test` | 测试相关 | test: add Button tests |
-| `chore` | 构建/工具 | chore: update dependencies |
-| `perf` | 性能优化 | perf: optimize render |
-| `ci` | CI/CD | ci: add GitHub Actions |
+| Type       | 说明      | 示例                              |
+| ---------- | --------- | --------------------------------- |
+| `feat`     | 新功能    | feat(ui): add Button component    |
+| `fix`      | Bug 修复  | fix(ui): fix Button click handler |
+| `docs`     | 文档更新  | docs: update README               |
+| `style`    | 代码格式  | style: format code                |
+| `refactor` | 代码重构  | refactor: extract utility         |
+| `test`     | 测试相关  | test: add Button tests            |
+| `chore`    | 构建/工具 | chore: update dependencies        |
+| `perf`     | 性能优化  | perf: optimize render             |
+| `ci`       | CI/CD     | ci: add GitHub Actions            |
 
 ### 示例
 
@@ -501,11 +502,11 @@ pnpm release
 
 ## 获取帮助
 
-| 渠道 | 信息 |
-|------|------|
-| 📧 Email | admin@0379.email |
+| 渠道           | 信息                                                                                   |
+| -------------- | -------------------------------------------------------------------------------------- |
+| 📧 Email       | admin@0379.email                                                                       |
 | 💬 Discussions | [GitHub Discussions](https://github.com/YYC-Cube/yyc3-reusable-components/discussions) |
-| 🐛 Issues | [GitHub Issues](https://github.com/YYC-Cube/yyc3-reusable-components/issues) |
+| 🐛 Issues      | [GitHub Issues](https://github.com/YYC-Cube/yyc3-reusable-components/issues)           |
 
 ---
 
@@ -519,6 +520,6 @@ pnpm release
 
 **感谢您的贡献！**
 
-> *「言启象限 | 语枢未来」*
+> _「言启象限 | 语枢未来」_
 
 </div>

@@ -29,6 +29,7 @@ interface ButtonProps {
 ```
 
 **Props**:
+
 - `variant`: 按钮样式变体，默认为 `'primary'`
 - `size`: 按钮尺寸，默认为 `'md'`
 - `disabled`: 是否禁用，默认为 `false`
@@ -38,12 +39,13 @@ interface ButtonProps {
 - `className`: 自定义类名
 
 **示例**:
+
 ```tsx
 import { Button } from '@yyc3/ui';
 
 <Button variant="primary" onClick={() => console.log('clicked')}>
   点击我
-</Button>
+</Button>;
 ```
 
 ### Input
@@ -65,6 +67,7 @@ interface InputProps {
 ```
 
 **Props**:
+
 - `type`: 输入类型，默认为 `'text'`
 - `placeholder`: 占位符文本
 - `value`: 输入值
@@ -76,6 +79,7 @@ interface InputProps {
 - `className`: 自定义类名
 
 **示例**:
+
 ```tsx
 import { Input } from '@yyc3/ui';
 
@@ -86,7 +90,7 @@ import { Input } from '@yyc3/ui';
   value={email}
   onChange={setEmail}
   error={error}
-/>
+/>;
 ```
 
 ### Dialog
@@ -105,6 +109,7 @@ interface DialogProps {
 ```
 
 **Props**:
+
 - `open`: 是否打开对话框
 - `onClose`: 关闭回调
 - `title`: 对话框标题
@@ -113,14 +118,17 @@ interface DialogProps {
 - `className`: 自定义类名
 
 **示例**:
+
 ```tsx
 import { Dialog } from '@yyc3/ui';
 
 <Dialog open={isOpen} onClose={() => setIsOpen(false)} title="确认">
   <p>确定要删除此项目吗？</p>
   <Button onClick={() => setIsOpen(false)}>取消</Button>
-  <Button variant="danger" onClick={handleDelete}>删除</Button>
-</Dialog>
+  <Button variant="danger" onClick={handleDelete}>
+    删除
+  </Button>
+</Dialog>;
 ```
 
 ## 业务组件
@@ -145,18 +153,17 @@ interface DashboardData {
 ```
 
 **Props**:
+
 - `data`: 仪表板数据
 - `onRefresh`: 刷新回调
 - `className`: 自定义类名
 
 **示例**:
+
 ```tsx
 import { Dashboard } from '@yyc3/business';
 
-<Dashboard
-  data={dashboardData}
-  onRefresh={() => fetchDashboardData()}
-/>
+<Dashboard data={dashboardData} onRefresh={() => fetchDashboardData()} />;
 ```
 
 ### Customers
@@ -184,6 +191,7 @@ interface Customer {
 ```
 
 **Props**:
+
 - `customers`: 客户列表
 - `onAdd`: 添加客户回调
 - `onEdit`: 编辑客户回调
@@ -191,6 +199,7 @@ interface Customer {
 - `className`: 自定义类名
 
 **示例**:
+
 ```tsx
 import { Customers } from '@yyc3/business';
 
@@ -199,7 +208,7 @@ import { Customers } from '@yyc3/business';
   onAdd={handleAddCustomer}
   onEdit={handleEditCustomer}
   onDelete={handleDeleteCustomer}
-/>
+/>;
 ```
 
 ## Hooks
@@ -212,17 +221,20 @@ import { Customers } from '@yyc3/business';
 function usePersistedState<T>(
   key: string,
   initialValue: T
-): [T, (value: T) => void]
+): [T, (value: T) => void];
 ```
 
 **参数**:
+
 - `key`: localStorage键名
 - `initialValue`: 初始值
 
 **返回值**:
+
 - `[state, setState]`: 状态和设置函数
 
 **示例**:
+
 ```tsx
 import { usePersistedState } from '@yyc3/hooks';
 
@@ -239,16 +251,18 @@ function useNotifications(): {
   addNotification: (notification: Omit<Notification, 'id'>) => void;
   removeNotification: (id: string) => void;
   clearNotifications: () => void;
-}
+};
 ```
 
 **返回值**:
+
 - `notifications`: 通知列表
 - `addNotification`: 添加通知
 - `removeNotification`: 移除通知
 - `clearNotifications`: 清除所有通知
 
 **示例**:
+
 ```tsx
 import { useNotifications } from '@yyc3/hooks';
 
@@ -268,10 +282,11 @@ addNotification({
 类名合并工具，支持Tailwind CSS类名。
 
 ```typescript
-function cn(...classes: (string | undefined | null | false)[]): string
+function cn(...classes: (string | undefined | null | false)[]): string;
 ```
 
 **示例**:
+
 ```tsx
 import { cn } from '@yyc3/utils';
 
@@ -283,14 +298,16 @@ const className = cn('base-class', isActive && 'active-class', customClass);
 日期格式化工具。
 
 ```typescript
-function formatDate(date: Date | string, format?: string): string
+function formatDate(date: Date | string, format?: string): string;
 ```
 
 **参数**:
+
 - `date`: 日期对象或字符串
 - `format`: 格式字符串，默认为 `'YYYY-MM-DD'`
 
 **示例**:
+
 ```tsx
 import { formatDate } from '@yyc3/utils';
 
@@ -305,14 +322,16 @@ const formattedDate = formatDate(new Date(), 'YYYY年MM月DD日');
 function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
-): (...args: Parameters<T>) => void
+): (...args: Parameters<T>) => void;
 ```
 
 **参数**:
+
 - `func`: 要防抖的函数
 - `wait`: 等待时间（毫秒）
 
 **示例**:
+
 ```tsx
 import { debounce } from '@yyc3/utils';
 
@@ -329,20 +348,22 @@ const debouncedSearch = debounce((query: string) => {
 
 ```typescript
 class DatabaseService {
-  static async connect(config: DatabaseConfig): Promise<void>
-  static async query<T>(sql: string, params?: any[]): Promise<T[]>
-  static async execute(sql: string, params?: any[]): Promise<void>
-  static async disconnect(): Promise<void>
+  static async connect(config: DatabaseConfig): Promise<void>;
+  static async query<T>(sql: string, params?: any[]): Promise<T[]>;
+  static async execute(sql: string, params?: any[]): Promise<void>;
+  static async disconnect(): Promise<void>;
 }
 ```
 
 **方法**:
+
 - `connect`: 连接数据库
 - `query`: 执行查询
 - `execute`: 执行命令
 - `disconnect`: 断开连接
 
 **示例**:
+
 ```tsx
 import { DatabaseService } from '@yyc3/services';
 
@@ -362,18 +383,20 @@ DevOps服务，提供CI/CD操作接口。
 
 ```typescript
 class DevOpsService {
-  static async deploy(config: DeployConfig): Promise<DeployResult>
-  static async rollback(deploymentId: string): Promise<void>
-  static async getStatus(deploymentId: string): Promise<DeploymentStatus>
+  static async deploy(config: DeployConfig): Promise<DeployResult>;
+  static async rollback(deploymentId: string): Promise<void>;
+  static async getStatus(deploymentId: string): Promise<DeploymentStatus>;
 }
 ```
 
 **方法**:
+
 - `deploy`: 部署应用
 - `rollback`: 回滚部署
 - `getStatus`: 获取部署状态
 
 **示例**:
+
 ```tsx
 import { DevOpsService } from '@yyc3/services';
 
@@ -388,8 +411,7 @@ const result = await DevOpsService.deploy({
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」
 
 </div>

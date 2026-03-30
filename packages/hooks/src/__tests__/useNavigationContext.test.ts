@@ -32,7 +32,7 @@ describe('useNavigationContext', () => {
       orderId: 'ord-001',
       customerName: 'Test Customer',
       amount: 1000,
-      status: 'active'
+      status: 'active',
     };
     const { result } = renderHook(() => useNavigationContext(context, 'customers'));
 
@@ -61,9 +61,7 @@ describe('useNavigationContext', () => {
   });
 
   it('should return recommendations from context', () => {
-    const recommendations = [
-      { title: 'Test Recommendation', description: 'Test Description' }
-    ];
+    const recommendations = [{ title: 'Test Recommendation', description: 'Test Description' }];
     const context = { recommendations };
     const { result } = renderHook(() => useNavigationContext(context, 'test'));
 

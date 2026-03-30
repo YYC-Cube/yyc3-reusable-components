@@ -25,17 +25,17 @@ import type {
   DiagnosticIssue,
   OpsLogEntry,
   DevOpsMetrics,
-} from "./types/devops";
+} from './types/devops';
 
 /* ══════════════════════════════════════════════════════════════════
  *  常量 / Constants
  * ══════════════════════════════════════════════════════════════════ */
 
 const STORAGE_KEYS = {
-  MCP_SERVERS: "yyc3_mcp_servers",
-  WORKFLOWS: "yyc3_workflows",
-  OPS_LOG: "yyc3_ops_log",
-  INFRA_SERVICES: "yyc3_infra_services",
+  MCP_SERVERS: 'yyc3_mcp_servers',
+  WORKFLOWS: 'yyc3_workflows',
+  OPS_LOG: 'yyc3_ops_log',
+  INFRA_SERVICES: 'yyc3_infra_services',
 } as const;
 
 const MAX_OPS_LOG_ENTRIES = 200;
@@ -52,30 +52,30 @@ function createBuiltInTools(): Record<string, MCPTool[]> {
   return {
     proxy: [
       {
-        id: "proxy_health",
-        name: "HEALTH_CHECK",
-        description: "检查 API 代理服务健康状态 / Check API proxy service health",
-        category: "monitoring",
+        id: 'proxy_health',
+        name: 'HEALTH_CHECK',
+        description: '检查 API 代理服务健康状态 / Check API proxy service health',
+        category: 'monitoring',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 500,
       },
       {
-        id: "proxy_tables",
-        name: "LIST_TABLES",
-        description: "列出数据库全部表 / List all database tables",
-        category: "database",
+        id: 'proxy_tables',
+        name: 'LIST_TABLES',
+        description: '列出数据库全部表 / List all database tables',
+        category: 'database',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 1000,
       },
       {
-        id: "proxy_e2e",
-        name: "E2E_TEST",
-        description: "执行全部 10 个端点 E2E 测试 / Run all 10 endpoint E2E tests",
-        category: "testing",
+        id: 'proxy_e2e',
+        name: 'E2E_TEST',
+        description: '执行全部 10 个端点 E2E 测试 / Run all 10 endpoint E2E tests',
+        category: 'testing',
         params: [],
         isDangerous: false,
         requiresConfirmation: true,
@@ -84,44 +84,55 @@ function createBuiltInTools(): Record<string, MCPTool[]> {
     ],
     database: [
       {
-        id: "db_query",
-        name: "EXECUTE_QUERY",
-        description: "执行结构化数据库查询 / Execute structured database query",
-        category: "database",
+        id: 'db_query',
+        name: 'EXECUTE_QUERY',
+        description: '执行结构化数据库查询 / Execute structured database query',
+        category: 'database',
         params: [
-          { name: "table", type: "string", required: true, description: "目标表名 / Target table" },
-          { name: "action", type: "string", required: true, description: "操作类型 / Action type (SELECT/INSERT/UPDATE/DELETE)" },
-          { name: "limit", type: "number", required: false, description: "限制返回行数 / Limit rows", defaultValue: 20 },
+          { name: 'table', type: 'string', required: true, description: '目标表名 / Target table' },
+          {
+            name: 'action',
+            type: 'string',
+            required: true,
+            description: '操作类型 / Action type (SELECT/INSERT/UPDATE/DELETE)',
+          },
+          {
+            name: 'limit',
+            type: 'number',
+            required: false,
+            description: '限制返回行数 / Limit rows',
+            defaultValue: 20,
+          },
         ],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 2000,
       },
       {
-        id: "db_stats",
-        name: "DB_STATISTICS",
-        description: "获取数据库统计信息 / Get database statistics",
-        category: "database",
+        id: 'db_stats',
+        name: 'DB_STATISTICS',
+        description: '获取数据库统计信息 / Get database statistics',
+        category: 'database',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 1500,
       },
       {
-        id: "db_schema_verify",
-        name: "SCHEMA_VERIFY",
-        description: "验证 DDL 表结构完整性 / Verify DDL schema integrity",
-        category: "database",
+        id: 'db_schema_verify',
+        name: 'SCHEMA_VERIFY',
+        description: '验证 DDL 表结构完整性 / Verify DDL schema integrity',
+        category: 'database',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 3000,
       },
       {
-        id: "db_reset",
-        name: "DB_RESET",
-        description: "重置数据库（删除并重建） / Reset database (drop and recreate)",
-        category: "database",
+        id: 'db_reset',
+        name: 'DB_RESET',
+        description: '重置数据库（删除并重建） / Reset database (drop and recreate)',
+        category: 'database',
         params: [],
         isDangerous: true,
         requiresConfirmation: true,
@@ -130,34 +141,46 @@ function createBuiltInTools(): Record<string, MCPTool[]> {
     ],
     docker: [
       {
-        id: "docker_ps",
-        name: "CONTAINER_STATUS",
-        description: "列出全部 Docker 容器状态 / List all Docker container status",
-        category: "docker",
+        id: 'docker_ps',
+        name: 'CONTAINER_STATUS',
+        description: '列出全部 Docker 容器状态 / List all Docker container status',
+        category: 'docker',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 2000,
       },
       {
-        id: "docker_compose_up",
-        name: "COMPOSE_UP",
-        description: "启动 Docker Compose 编排 / Start Docker Compose orchestration",
-        category: "docker",
+        id: 'docker_compose_up',
+        name: 'COMPOSE_UP',
+        description: '启动 Docker Compose 编排 / Start Docker Compose orchestration',
+        category: 'docker',
         params: [
-          { name: "build", type: "boolean", required: false, description: "是否重新构建 / Rebuild images", defaultValue: false },
+          {
+            name: 'build',
+            type: 'boolean',
+            required: false,
+            description: '是否重新构建 / Rebuild images',
+            defaultValue: false,
+          },
         ],
         isDangerous: false,
         requiresConfirmation: true,
         estimatedDuration: 60000,
       },
       {
-        id: "docker_compose_down",
-        name: "COMPOSE_DOWN",
-        description: "停止 Docker Compose 编排 / Stop Docker Compose orchestration",
-        category: "docker",
+        id: 'docker_compose_down',
+        name: 'COMPOSE_DOWN',
+        description: '停止 Docker Compose 编排 / Stop Docker Compose orchestration',
+        category: 'docker',
         params: [
-          { name: "volumes", type: "boolean", required: false, description: "同时删除数据卷 / Also remove volumes", defaultValue: false },
+          {
+            name: 'volumes',
+            type: 'boolean',
+            required: false,
+            description: '同时删除数据卷 / Also remove volumes',
+            defaultValue: false,
+          },
         ],
         isDangerous: true,
         requiresConfirmation: true,
@@ -166,22 +189,28 @@ function createBuiltInTools(): Record<string, MCPTool[]> {
     ],
     git: [
       {
-        id: "git_status",
-        name: "GIT_STATUS",
-        description: "查看 Git 仓库状态 / Check Git repository status",
-        category: "git",
+        id: 'git_status',
+        name: 'GIT_STATUS',
+        description: '查看 Git 仓库状态 / Check Git repository status',
+        category: 'git',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 1000,
       },
       {
-        id: "git_log",
-        name: "GIT_LOG",
-        description: "查看最近提交历史 / View recent commit history",
-        category: "git",
+        id: 'git_log',
+        name: 'GIT_LOG',
+        description: '查看最近提交历史 / View recent commit history',
+        category: 'git',
         params: [
-          { name: "count", type: "number", required: false, description: "显示条数 / Display count", defaultValue: 10 },
+          {
+            name: 'count',
+            type: 'number',
+            required: false,
+            description: '显示条数 / Display count',
+            defaultValue: 10,
+          },
         ],
         isDangerous: false,
         requiresConfirmation: false,
@@ -190,20 +219,20 @@ function createBuiltInTools(): Record<string, MCPTool[]> {
     ],
     security: [
       {
-        id: "sec_scan",
-        name: "DEPENDENCY_SCAN",
-        description: "扫描依赖安全漏洞 / Scan dependency vulnerabilities",
-        category: "security",
+        id: 'sec_scan',
+        name: 'DEPENDENCY_SCAN',
+        description: '扫描依赖安全漏洞 / Scan dependency vulnerabilities',
+        category: 'security',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
         estimatedDuration: 30000,
       },
       {
-        id: "sec_env_audit",
-        name: "ENV_AUDIT",
-        description: "审计环境变量配置安全 / Audit environment variable security",
-        category: "security",
+        id: 'sec_env_audit',
+        name: 'ENV_AUDIT',
+        description: '审计环境变量配置安全 / Audit environment variable security',
+        category: 'security',
         params: [],
         isDangerous: false,
         requiresConfirmation: false,
@@ -222,74 +251,74 @@ function createBuiltInServers(): MCPServer[] {
 
   return [
     {
-      id: "mcp_yyc3_proxy",
-      name: "YYC3_API_PROXY",
-      description: "本地 API 代理服务 (Express :3721) / Local API Proxy Service",
-      status: "disconnected",
-      transport: "http",
-      endpoint: "http://localhost:3721",
+      id: 'mcp_yyc3_proxy',
+      name: 'YYC3_API_PROXY',
+      description: '本地 API 代理服务 (Express :3721) / Local API Proxy Service',
+      status: 'disconnected',
+      transport: 'http',
+      endpoint: 'http://localhost:3721',
       latency: 0,
       tools: tools.proxy,
       lastHeartbeat: null,
       isBuiltIn: true,
       autoConnect: true,
-      version: "0.9.4",
+      version: '0.9.4',
     },
     {
-      id: "mcp_postgresql",
-      name: "POSTGRESQL_15",
-      description: "本地 PostgreSQL 15 数据库 / Local PostgreSQL 15 Database",
-      status: "disconnected",
-      transport: "http",
-      endpoint: "localhost:5432",
+      id: 'mcp_postgresql',
+      name: 'POSTGRESQL_15',
+      description: '本地 PostgreSQL 15 数据库 / Local PostgreSQL 15 Database',
+      status: 'disconnected',
+      transport: 'http',
+      endpoint: 'localhost:5432',
       latency: 0,
       tools: tools.database,
       lastHeartbeat: null,
       isBuiltIn: true,
       autoConnect: true,
-      version: "15.x",
+      version: '15.x',
     },
     {
-      id: "mcp_docker",
-      name: "DOCKER_ENGINE",
-      description: "Docker 容器编排引擎 / Docker Container Orchestration Engine",
-      status: "disconnected",
-      transport: "stdio",
-      endpoint: "unix:///var/run/docker.sock",
+      id: 'mcp_docker',
+      name: 'DOCKER_ENGINE',
+      description: 'Docker 容器编排引擎 / Docker Container Orchestration Engine',
+      status: 'disconnected',
+      transport: 'stdio',
+      endpoint: 'unix:///var/run/docker.sock',
       latency: 0,
       tools: tools.docker,
       lastHeartbeat: null,
       isBuiltIn: true,
       autoConnect: false,
-      version: "24.x",
+      version: '24.x',
     },
     {
-      id: "mcp_github",
-      name: "GITHUB_MCP",
-      description: "GitHub 仓库操作 (MCP 协议) / GitHub Repository Operations",
-      status: "disconnected",
-      transport: "stdio",
-      endpoint: "mcp-github-yyc3",
+      id: 'mcp_github',
+      name: 'GITHUB_MCP',
+      description: 'GitHub 仓库操作 (MCP 协议) / GitHub Repository Operations',
+      status: 'disconnected',
+      transport: 'stdio',
+      endpoint: 'mcp-github-yyc3',
       latency: 0,
       tools: tools.git,
       lastHeartbeat: null,
       isBuiltIn: true,
       autoConnect: true,
-      version: "1.0.0",
+      version: '1.0.0',
     },
     {
-      id: "mcp_security",
-      name: "SECURE_SENTINEL",
-      description: "安全扫描与审计工具 / Security Scanning & Audit Tools",
-      status: "disconnected",
-      transport: "stdio",
-      endpoint: "yyc3-sec-scanner",
+      id: 'mcp_security',
+      name: 'SECURE_SENTINEL',
+      description: '安全扫描与审计工具 / Security Scanning & Audit Tools',
+      status: 'disconnected',
+      transport: 'stdio',
+      endpoint: 'yyc3-sec-scanner',
       latency: 0,
       tools: tools.security,
       lastHeartbeat: null,
       isBuiltIn: true,
       autoConnect: false,
-      version: "5.0.1",
+      version: '5.0.1',
     },
   ];
 }
@@ -307,19 +336,24 @@ function createBuiltInWorkflows(): Workflow[] {
 
   return [
     {
-      id: "wf_full_health",
-      name: "FULL_STACK_HEALTH_CHECK",
-      description: "全栈健康检查：PG → Proxy → 前端 → MCP / Full-stack health: PG → Proxy → Frontend → MCP",
-      category: "monitoring",
-      trigger: { type: "schedule", config: { interval: 60000, cron: "*/1 * * * *" }, enabled: true },
+      id: 'wf_full_health',
+      name: 'FULL_STACK_HEALTH_CHECK',
+      description:
+        '全栈健康检查：PG → Proxy → 前端 → MCP / Full-stack health: PG → Proxy → Frontend → MCP',
+      category: 'monitoring',
+      trigger: {
+        type: 'schedule',
+        config: { interval: 60000, cron: '*/1 * * * *' },
+        enabled: true,
+      },
       steps: [
-        createStep("step_1", "PROBE_POSTGRESQL", "mcp_tool", "db_stats", 1),
-        createStep("step_2", "PROBE_API_PROXY", "mcp_tool", "proxy_health", 2),
-        createStep("step_3", "CHECK_MCP_SERVERS", "mcp_tool", null, 3),
-        createStep("step_4", "AGGREGATE_REPORT", "notification", null, 4),
+        createStep('step_1', 'PROBE_POSTGRESQL', 'mcp_tool', 'db_stats', 1),
+        createStep('step_2', 'PROBE_API_PROXY', 'mcp_tool', 'proxy_health', 2),
+        createStep('step_3', 'CHECK_MCP_SERVERS', 'mcp_tool', null, 3),
+        createStep('step_4', 'AGGREGATE_REPORT', 'notification', null, 4),
       ],
       enabled: true,
-      executionStatus: "idle",
+      executionStatus: 'idle',
       lastExecutedAt: null,
       lastDuration: 0,
       executionCount: 0,
@@ -329,19 +363,19 @@ function createBuiltInWorkflows(): Workflow[] {
       isBuiltIn: true,
     },
     {
-      id: "wf_e2e_verify",
-      name: "E2E_ENDPOINT_VERIFY",
-      description: "端到端验证全部 10 个 API 端点 / E2E verify all 10 API endpoints",
-      category: "testing",
-      trigger: { type: "manual", config: {}, enabled: true },
+      id: 'wf_e2e_verify',
+      name: 'E2E_ENDPOINT_VERIFY',
+      description: '端到端验证全部 10 个 API 端点 / E2E verify all 10 API endpoints',
+      category: 'testing',
+      trigger: { type: 'manual', config: {}, enabled: true },
       steps: [
-        createStep("step_1", "CHECK_PROXY_ALIVE", "mcp_tool", "proxy_health", 1),
-        createStep("step_2", "RUN_E2E_SUITE", "mcp_tool", "proxy_e2e", 2),
-        createStep("step_3", "PARSE_RESULTS", "script", null, 3),
-        createStep("step_4", "REPORT_STATUS", "notification", null, 4),
+        createStep('step_1', 'CHECK_PROXY_ALIVE', 'mcp_tool', 'proxy_health', 1),
+        createStep('step_2', 'RUN_E2E_SUITE', 'mcp_tool', 'proxy_e2e', 2),
+        createStep('step_3', 'PARSE_RESULTS', 'script', null, 3),
+        createStep('step_4', 'REPORT_STATUS', 'notification', null, 4),
       ],
       enabled: true,
-      executionStatus: "idle",
+      executionStatus: 'idle',
       lastExecutedAt: null,
       lastDuration: 0,
       executionCount: 0,
@@ -351,22 +385,23 @@ function createBuiltInWorkflows(): Workflow[] {
       isBuiltIn: true,
     },
     {
-      id: "wf_deploy_pipeline",
-      name: "DEPLOY_TO_PROD",
-      description: "生产部署流水线：Lint → Test → Build → Deploy / Production pipeline: Lint → Test → Build → Deploy",
-      category: "deployment",
-      trigger: { type: "git_push", config: { branch: "main" }, enabled: false },
+      id: 'wf_deploy_pipeline',
+      name: 'DEPLOY_TO_PROD',
+      description:
+        '生产部署流水线：Lint → Test → Build → Deploy / Production pipeline: Lint → Test → Build → Deploy',
+      category: 'deployment',
+      trigger: { type: 'git_push', config: { branch: 'main' }, enabled: false },
       steps: [
-        createStep("step_1", "TYPECHECK", "mcp_tool", null, 1),
-        createStep("step_2", "LINT_CODE", "mcp_tool", null, 2),
-        createStep("step_3", "RUN_TESTS", "mcp_tool", "proxy_e2e", 3),
-        createStep("step_4", "BUILD_ARTIFACTS", "script", null, 4),
-        createStep("step_5", "DOCKER_BUILD", "mcp_tool", "docker_compose_up", 5),
-        createStep("step_6", "SMOKE_TEST", "mcp_tool", "proxy_health", 6),
-        createStep("step_7", "NOTIFY_TEAM", "notification", null, 7),
+        createStep('step_1', 'TYPECHECK', 'mcp_tool', null, 1),
+        createStep('step_2', 'LINT_CODE', 'mcp_tool', null, 2),
+        createStep('step_3', 'RUN_TESTS', 'mcp_tool', 'proxy_e2e', 3),
+        createStep('step_4', 'BUILD_ARTIFACTS', 'script', null, 4),
+        createStep('step_5', 'DOCKER_BUILD', 'mcp_tool', 'docker_compose_up', 5),
+        createStep('step_6', 'SMOKE_TEST', 'mcp_tool', 'proxy_health', 6),
+        createStep('step_7', 'NOTIFY_TEAM', 'notification', null, 7),
       ],
       enabled: false,
-      executionStatus: "idle",
+      executionStatus: 'idle',
       lastExecutedAt: null,
       lastDuration: 0,
       executionCount: 0,
@@ -376,18 +411,18 @@ function createBuiltInWorkflows(): Workflow[] {
       isBuiltIn: true,
     },
     {
-      id: "wf_security_scan",
-      name: "SECURITY_SCAN_DAILY",
-      description: "每日安全扫描：依赖审计 + 环境变量审计 / Daily security: dependency + env audit",
-      category: "security",
-      trigger: { type: "schedule", config: { cron: "0 2 * * *" }, enabled: true },
+      id: 'wf_security_scan',
+      name: 'SECURITY_SCAN_DAILY',
+      description: '每日安全扫描：依赖审计 + 环境变量审计 / Daily security: dependency + env audit',
+      category: 'security',
+      trigger: { type: 'schedule', config: { cron: '0 2 * * *' }, enabled: true },
       steps: [
-        createStep("step_1", "SCAN_DEPENDENCIES", "mcp_tool", "sec_scan", 1),
-        createStep("step_2", "AUDIT_ENV_VARS", "mcp_tool", "sec_env_audit", 2),
-        createStep("step_3", "GENERATE_REPORT", "script", null, 3),
+        createStep('step_1', 'SCAN_DEPENDENCIES', 'mcp_tool', 'sec_scan', 1),
+        createStep('step_2', 'AUDIT_ENV_VARS', 'mcp_tool', 'sec_env_audit', 2),
+        createStep('step_3', 'GENERATE_REPORT', 'script', null, 3),
       ],
       enabled: true,
-      executionStatus: "idle",
+      executionStatus: 'idle',
       lastExecutedAt: null,
       lastDuration: 0,
       executionCount: 0,
@@ -397,19 +432,20 @@ function createBuiltInWorkflows(): Workflow[] {
       isBuiltIn: true,
     },
     {
-      id: "wf_docker_orchestrate",
-      name: "DOCKER_ONE_CLICK",
-      description: "Docker Compose 一键编排：Build → Up → Verify / Docker Compose one-click: Build → Up → Verify",
-      category: "devops",
-      trigger: { type: "manual", config: {}, enabled: true },
+      id: 'wf_docker_orchestrate',
+      name: 'DOCKER_ONE_CLICK',
+      description:
+        'Docker Compose 一键编排：Build → Up → Verify / Docker Compose one-click: Build → Up → Verify',
+      category: 'devops',
+      trigger: { type: 'manual', config: {}, enabled: true },
       steps: [
-        createStep("step_1", "COMPOSE_BUILD", "mcp_tool", "docker_compose_up", 1, { build: true }),
-        createStep("step_2", "WAIT_FOR_HEALTHY", "delay", null, 2, { delay: 15000 }),
-        createStep("step_3", "VERIFY_ENDPOINTS", "mcp_tool", "proxy_health", 3),
-        createStep("step_4", "VERIFY_SCHEMA", "mcp_tool", "db_schema_verify", 4),
+        createStep('step_1', 'COMPOSE_BUILD', 'mcp_tool', 'docker_compose_up', 1, { build: true }),
+        createStep('step_2', 'WAIT_FOR_HEALTHY', 'delay', null, 2, { delay: 15000 }),
+        createStep('step_3', 'VERIFY_ENDPOINTS', 'mcp_tool', 'proxy_health', 3),
+        createStep('step_4', 'VERIFY_SCHEMA', 'mcp_tool', 'db_schema_verify', 4),
       ],
       enabled: true,
-      executionStatus: "idle",
+      executionStatus: 'idle',
       lastExecutedAt: null,
       lastDuration: 0,
       executionCount: 0,
@@ -419,20 +455,24 @@ function createBuiltInWorkflows(): Workflow[] {
       isBuiltIn: true,
     },
     {
-      id: "wf_auto_reconnect",
-      name: "AUTO_RECONNECT_RECOVERY",
-      description: "断线自动恢复：探针检测 → 重连 → 验证 / Auto-recovery: probe → reconnect → verify",
-      category: "monitoring",
-      trigger: { type: "on_disconnect", config: { service: "proxy" }, enabled: true },
+      id: 'wf_auto_reconnect',
+      name: 'AUTO_RECONNECT_RECOVERY',
+      description:
+        '断线自动恢复：探针检测 → 重连 → 验证 / Auto-recovery: probe → reconnect → verify',
+      category: 'monitoring',
+      trigger: { type: 'on_disconnect', config: { service: 'proxy' }, enabled: true },
       steps: [
-        createStep("step_1", "LOG_DISCONNECT", "notification", null, 1),
-        createStep("step_2", "ACTIVATE_MOCK_MODE", "script", null, 2),
-        createStep("step_3", "START_PROBE_TIMER", "loop", null, 3, { interval: 5000, maxRetries: 100 }),
-        createStep("step_4", "VERIFY_RECOVERY", "mcp_tool", "proxy_health", 4),
-        createStep("step_5", "DEACTIVATE_MOCK_MODE", "script", null, 5),
+        createStep('step_1', 'LOG_DISCONNECT', 'notification', null, 1),
+        createStep('step_2', 'ACTIVATE_MOCK_MODE', 'script', null, 2),
+        createStep('step_3', 'START_PROBE_TIMER', 'loop', null, 3, {
+          interval: 5000,
+          maxRetries: 100,
+        }),
+        createStep('step_4', 'VERIFY_RECOVERY', 'mcp_tool', 'proxy_health', 4),
+        createStep('step_5', 'DEACTIVATE_MOCK_MODE', 'script', null, 5),
       ],
       enabled: true,
-      executionStatus: "idle",
+      executionStatus: 'idle',
       lastExecutedAt: null,
       lastDuration: 0,
       executionCount: 0,
@@ -451,7 +491,7 @@ function createBuiltInWorkflows(): Workflow[] {
 function createStep(
   id: string,
   name: string,
-  type: WorkflowStep["type"],
+  type: WorkflowStep['type'],
   toolId: string | null,
   order: number,
   extraConfig?: Record<string, string | number | boolean>
@@ -462,11 +502,11 @@ function createStep(
     type,
     toolId,
     config: extraConfig ?? {},
-    onFailure: "stop",
+    onFailure: 'stop',
     retryCount: 1,
     timeout: 30000,
     condition: null,
-    executionStatus: "pending",
+    executionStatus: 'pending',
     executionOutput: null,
     executionDuration: 0,
     order,
@@ -485,11 +525,11 @@ function createInfraServices(): InfraService[] {
   const now = new Date().toISOString();
   return [
     {
-      id: "svc_postgres",
-      name: "POSTGRESQL_15",
-      type: "database",
-      endpoint: "localhost:5432",
-      health: "unknown",
+      id: 'svc_postgres',
+      name: 'POSTGRESQL_15',
+      type: 'database',
+      endpoint: 'localhost:5432',
+      health: 'unknown',
       latency: 0,
       lastCheckAt: now,
       consecutiveHealthy: 0,
@@ -497,11 +537,11 @@ function createInfraServices(): InfraService[] {
       uptimePercent: 0,
     },
     {
-      id: "svc_proxy",
-      name: "API_PROXY",
-      type: "proxy",
-      endpoint: "http://localhost:3721",
-      health: "unknown",
+      id: 'svc_proxy',
+      name: 'API_PROXY',
+      type: 'proxy',
+      endpoint: 'http://localhost:3721',
+      health: 'unknown',
       latency: 0,
       lastCheckAt: now,
       consecutiveHealthy: 0,
@@ -509,11 +549,11 @@ function createInfraServices(): InfraService[] {
       uptimePercent: 0,
     },
     {
-      id: "svc_frontend",
-      name: "VITE_DEV_SERVER",
-      type: "frontend",
-      endpoint: "http://localhost:5173",
-      health: "healthy",
+      id: 'svc_frontend',
+      name: 'VITE_DEV_SERVER',
+      type: 'frontend',
+      endpoint: 'http://localhost:5173',
+      health: 'healthy',
       latency: 0,
       lastCheckAt: now,
       consecutiveHealthy: 1,
@@ -521,11 +561,11 @@ function createInfraServices(): InfraService[] {
       uptimePercent: 100,
     },
     {
-      id: "svc_docker",
-      name: "DOCKER_ENGINE",
-      type: "docker",
-      endpoint: "unix:///var/run/docker.sock",
-      health: "unknown",
+      id: 'svc_docker',
+      name: 'DOCKER_ENGINE',
+      type: 'docker',
+      endpoint: 'unix:///var/run/docker.sock',
+      health: 'unknown',
       latency: 0,
       lastCheckAt: now,
       consecutiveHealthy: 0,
@@ -583,7 +623,7 @@ class DevOpsServiceImpl {
     this.infraServices = this.loadInfraServices();
     this.opsLog = this.loadOpsLog();
     this.workflowLog = [];
-    this.addLog("system", "info", "DEVOPS_SERVICE_INITIALIZED / DevOps 服务已初始化");
+    this.addLog('system', 'info', 'DEVOPS_SERVICE_INITIALIZED / DevOps 服务已初始化');
   }
 
   /* ──────────── 状态订阅 / State Subscription ──────────── */
@@ -598,7 +638,7 @@ class DevOpsServiceImpl {
   subscribe(listener: () => void): () => void {
     this.listeners.push(listener);
     return () => {
-      this.listeners = this.listeners.filter(l => l !== listener);
+      this.listeners = this.listeners.filter((l) => l !== listener);
     };
   }
 
@@ -638,7 +678,7 @@ class DevOpsServiceImpl {
    * @returns {MCPServer | undefined} 服务器或 undefined / Server or undefined
    */
   getServer(serverId: string): MCPServer | undefined {
-    return this.servers.find(s => s.id === serverId);
+    return this.servers.find((s) => s.id === serverId);
   }
 
   /**
@@ -649,28 +689,28 @@ class DevOpsServiceImpl {
    * @returns {Promise<boolean>} 是否可达 / Is reachable
    */
   async probeServer(serverId: string): Promise<boolean> {
-    const idx = this.servers.findIndex(s => s.id === serverId);
+    const idx = this.servers.findIndex((s) => s.id === serverId);
     if (idx === -1) return false;
 
     const server = this.servers[idx];
-    this.servers[idx] = { ...server, status: "probing" };
+    this.servers[idx] = { ...server, status: 'probing' };
     this.notify();
 
     const start = Date.now();
 
     // 仅对 HTTP 端点执行真实探测 / Only probe HTTP endpoints
-    if (server.transport === "http" && server.endpoint.startsWith("http")) {
+    if (server.transport === 'http' && server.endpoint?.startsWith('http')) {
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
-        const response = await fetch(
-          `${server.endpoint}/api/v1/health`,
-          { method: "GET", signal: controller.signal }
-        );
+        const response = await fetch(`${server.endpoint}/api/v1/health`, {
+          method: 'GET',
+          signal: controller.signal,
+        });
         clearTimeout(timeoutId);
 
         const latency = Date.now() - start;
-        const newStatus: MCPServerStatus = response.ok ? "connected" : "error";
+        const newStatus: MCPServerStatus = response.ok ? 'connected' : 'error';
 
         this.servers[idx] = {
           ...server,
@@ -679,30 +719,37 @@ class DevOpsServiceImpl {
           lastHeartbeat: new Date().toISOString(),
         };
 
-        this.addLog("mcp", newStatus === "connected" ? "success" : "error",
-          `MCP_PROBE: ${server.name} → ${newStatus.toUpperCase()} (${latency}ms)`);
+        this.addLog(
+          'mcp',
+          newStatus === 'connected' ? 'success' : 'error',
+          `MCP_PROBE: ${server.name} → ${newStatus.toUpperCase()} (${latency}ms)`
+        );
         this.notify();
-        return newStatus === "connected";
+        return newStatus === 'connected';
       } catch {
-        this.servers[idx] = { ...server, status: "error", latency: Date.now() - start };
-        this.addLog("mcp", "error", `MCP_PROBE_FAILED: ${server.name} → UNREACHABLE`);
+        this.servers[idx] = { ...server, status: 'error', latency: Date.now() - start };
+        this.addLog('mcp', 'error', `MCP_PROBE_FAILED: ${server.name} → UNREACHABLE`);
         this.notify();
         return false;
       }
     }
 
     // 非 HTTP 协议模拟探测 / Simulate probe for non-HTTP protocols
-    await new Promise(r => setTimeout(r, 200 + Math.random() * 300));
+    await new Promise((r) => setTimeout(r, 200 + Math.random() * 300));
     const simLatency = Math.round(5 + Math.random() * 40);
 
     // 模拟: stdio 工具默认视为已连接 / Simulate: stdio tools default to connected
     this.servers[idx] = {
       ...server,
-      status: "connected",
+      status: 'connected',
       latency: simLatency,
       lastHeartbeat: new Date().toISOString(),
     };
-    this.addLog("mcp", "success", `MCP_PROBE: ${server.name} → CONNECTED (${simLatency}ms, simulated)`);
+    this.addLog(
+      'mcp',
+      'success',
+      `MCP_PROBE: ${server.name} → CONNECTED (${simLatency}ms, simulated)`
+    );
     this.notify();
     return true;
   }
@@ -731,10 +778,10 @@ class DevOpsServiceImpl {
    * @param {string} serverId - 服务器 ID / Server ID
    */
   disconnectServer(serverId: string): void {
-    const idx = this.servers.findIndex(s => s.id === serverId);
+    const idx = this.servers.findIndex((s) => s.id === serverId);
     if (idx === -1) return;
-    this.servers[idx] = { ...this.servers[idx], status: "disconnected", latency: 0 };
-    this.addLog("mcp", "info", `MCP_DISCONNECT: ${this.servers[idx].name}`);
+    this.servers[idx] = { ...this.servers[idx], status: 'disconnected', latency: 0 };
+    this.addLog('mcp', 'info', `MCP_DISCONNECT: ${this.servers[idx].name}`);
     this.notify();
   }
 
@@ -745,7 +792,7 @@ class DevOpsServiceImpl {
    * @param {string} serverId - 服务器 ID / Server ID
    */
   toggleAutoConnect(serverId: string): void {
-    const idx = this.servers.findIndex(s => s.id === serverId);
+    const idx = this.servers.findIndex((s) => s.id === serverId);
     if (idx === -1) return;
     this.servers[idx] = { ...this.servers[idx], autoConnect: !this.servers[idx].autoConnect };
     this.saveServers();
@@ -767,24 +814,28 @@ class DevOpsServiceImpl {
     params?: Record<string, string | number | boolean>
   ): Promise<MCPToolResult> {
     const server = this.getServer(serverId);
-    const tool = server?.tools.find(t => t.id === toolId);
+    const tool = server?.tools.find((t) => t.id === toolId);
 
     if (!server || !tool) {
       return {
         toolId,
         success: false,
-        output: "",
-        error: "TOOL_NOT_FOUND / 工具未找到",
+        output: '',
+        error: 'TOOL_NOT_FOUND / 工具未找到',
         duration: 0,
         timestamp: new Date().toISOString(),
       };
     }
 
     const start = Date.now();
-    this.addLog("mcp", "info", `TOOL_EXEC_START: ${server.name}/${tool.name} ${JSON.stringify(params ?? {})}`);
+    this.addLog(
+      'mcp',
+      'info',
+      `TOOL_EXEC_START: ${server.name}/${tool.name} ${JSON.stringify(params ?? {})}`
+    );
 
     // 对 proxy_health 执行真实请求 / Real request for proxy_health
-    if (toolId === "proxy_health" && server.endpoint.startsWith("http")) {
+    if (toolId === 'proxy_health' && server.endpoint?.startsWith('http')) {
       try {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -795,7 +846,7 @@ class DevOpsServiceImpl {
         const data = await response.json();
         const duration = Date.now() - start;
 
-        this.addLog("mcp", "success", `TOOL_EXEC_OK: ${tool.name} (${duration}ms)`);
+        this.addLog('mcp', 'success', `TOOL_EXEC_OK: ${tool.name} (${duration}ms)`);
         return {
           toolId,
           success: true,
@@ -806,12 +857,12 @@ class DevOpsServiceImpl {
         };
       } catch (err) {
         const duration = Date.now() - start;
-        const errMsg = err instanceof Error ? err.message : "FETCH_FAILED";
-        this.addLog("mcp", "error", `TOOL_EXEC_FAIL: ${tool.name} → ${errMsg}`);
+        const errMsg = err instanceof Error ? err.message : 'FETCH_FAILED';
+        this.addLog('mcp', 'error', `TOOL_EXEC_FAIL: ${tool.name} → ${errMsg}`);
         return {
           toolId,
           success: false,
-          output: "",
+          output: '',
           error: errMsg,
           duration,
           timestamp: new Date().toISOString(),
@@ -820,11 +871,11 @@ class DevOpsServiceImpl {
     }
 
     // 其他工具模拟执行 / Simulate other tools
-    await new Promise(r => setTimeout(r, 300 + Math.random() * tool.estimatedDuration * 0.3));
+    await new Promise((r) => setTimeout(r, 300 + Math.random() * tool.estimatedDuration * 0.3));
     const duration = Date.now() - start;
 
     const simOutput = this.generateSimulatedOutput(toolId, params);
-    this.addLog("mcp", "success", `TOOL_EXEC_OK: ${tool.name} (${duration}ms, simulated)`);
+    this.addLog('mcp', 'success', `TOOL_EXEC_OK: ${tool.name} (${duration}ms, simulated)`);
 
     return {
       toolId,
@@ -840,27 +891,57 @@ class DevOpsServiceImpl {
    * 生成模拟工具输出
    * Generate simulated tool output
    */
-  private generateSimulatedOutput(toolId: string, params?: Record<string, string | number | boolean>): string {
+  private generateSimulatedOutput(
+    toolId: string,
+    params?: Record<string, string | number | boolean>
+  ): string {
     const outputs: Record<string, string> = {
-      proxy_tables: JSON.stringify({
-        tables: ["agents", "channels", "chats", "messages", "system_configs", "workflows", "audit_logs", "migrations"],
-        count: 8,
-      }, null, 2),
-      proxy_e2e: "E2E RESULTS: 10/10 passed, 0 failed\nTotal Duration: 1847ms\nAll endpoints operational.",
-      db_query: JSON.stringify({ rows: [{ id: 1, status: "active" }], rowCount: 1 }, null, 2),
-      db_stats: JSON.stringify({
-        tableCount: 8, totalRecords: 142, databaseSize: "28 MB",
-        activeConnections: 3, maxConnections: 100, version: "PostgreSQL 15.8",
-      }, null, 2),
-      db_schema_verify: "SCHEMA VERIFICATION: 8/8 tables OK\n2 views OK\n4 triggers OK\n6 indexes OK\nChecksum: 0xA3F7B2C1",
-      db_reset: "WARNING: Database yyc3_family dropped and recreated.\n8 tables initialized.",
+      proxy_tables: JSON.stringify(
+        {
+          tables: [
+            'agents',
+            'channels',
+            'chats',
+            'messages',
+            'system_configs',
+            'workflows',
+            'audit_logs',
+            'migrations',
+          ],
+          count: 8,
+        },
+        null,
+        2
+      ),
+      proxy_e2e:
+        'E2E RESULTS: 10/10 passed, 0 failed\nTotal Duration: 1847ms\nAll endpoints operational.',
+      db_query: JSON.stringify({ rows: [{ id: 1, status: 'active' }], rowCount: 1 }, null, 2),
+      db_stats: JSON.stringify(
+        {
+          tableCount: 8,
+          totalRecords: 142,
+          databaseSize: '28 MB',
+          activeConnections: 3,
+          maxConnections: 100,
+          version: 'PostgreSQL 15.8',
+        },
+        null,
+        2
+      ),
+      db_schema_verify:
+        'SCHEMA VERIFICATION: 8/8 tables OK\n2 views OK\n4 triggers OK\n6 indexes OK\nChecksum: 0xA3F7B2C1',
+      db_reset: 'WARNING: Database yyc3_family dropped and recreated.\n8 tables initialized.',
       docker_ps: `CONTAINER ID   NAME             STATUS\na1b2c3d4e5f6   yyc3-postgres    Up 2 hours (healthy)\nf6e5d4c3b2a1   yyc3-proxy       Up 2 hours (healthy)\n1a2b3c4d5e6f   yyc3-frontend    Up 2 hours`,
-      docker_compose_up: `Creating network "yyc3-network"\nCreating yyc3-postgres ... done\nCreating yyc3-proxy    ... done\nCreating yyc3-frontend ... done\n${params?.build ? "Building images..." : "Using existing images."}`,
-      docker_compose_down: `Stopping yyc3-frontend ... done\nStopping yyc3-proxy    ... done\nStopping yyc3-postgres ... done\n${params?.volumes ? "Removing volumes..." : "Volumes preserved."}`,
-      git_status: "On branch main\nYour branch is up to date with 'origin/main'.\nnothing to commit, working tree clean",
-      git_log: "a1b2c3d feat: add DevOps MCP layer (2 minutes ago)\nf4e5d6c refactor: auto-reconnect mechanism (1 hour ago)\nc7b8a9d chore: docker-compose orchestration (3 hours ago)",
-      sec_scan: "Scanning 47 dependencies...\n0 critical, 0 high, 1 moderate, 2 low\nAll production dependencies clean.",
-      sec_env_audit: "ENV AUDIT REPORT:\n✓ YYC3_PG_PASSWORD: SET (masked)\n✓ YYC3_AUTH_TOKEN: EMPTY (local dev OK)\n✓ No hardcoded secrets detected\n✓ .env in .gitignore: YES",
+      docker_compose_up: `Creating network "yyc3-network"\nCreating yyc3-postgres ... done\nCreating yyc3-proxy    ... done\nCreating yyc3-frontend ... done\n${params?.build ? 'Building images...' : 'Using existing images.'}`,
+      docker_compose_down: `Stopping yyc3-frontend ... done\nStopping yyc3-proxy    ... done\nStopping yyc3-postgres ... done\n${params?.volumes ? 'Removing volumes...' : 'Volumes preserved.'}`,
+      git_status:
+        "On branch main\nYour branch is up to date with 'origin/main'.\nnothing to commit, working tree clean",
+      git_log:
+        'a1b2c3d feat: add DevOps MCP layer (2 minutes ago)\nf4e5d6c refactor: auto-reconnect mechanism (1 hour ago)\nc7b8a9d chore: docker-compose orchestration (3 hours ago)',
+      sec_scan:
+        'Scanning 47 dependencies...\n0 critical, 0 high, 1 moderate, 2 low\nAll production dependencies clean.',
+      sec_env_audit:
+        'ENV AUDIT REPORT:\n✓ YYC3_PG_PASSWORD: SET (masked)\n✓ YYC3_AUTH_TOKEN: EMPTY (local dev OK)\n✓ No hardcoded secrets detected\n✓ .env in .gitignore: YES',
     };
     return outputs[toolId] ?? `Tool ${toolId} executed successfully.`;
   }
@@ -903,7 +984,7 @@ class DevOpsServiceImpl {
    * @returns {Workflow | undefined} 工作流或 undefined / Workflow or undefined
    */
   getWorkflow(workflowId: string): Workflow | undefined {
-    return this.workflows.find(w => w.id === workflowId);
+    return this.workflows.find((w) => w.id === workflowId);
   }
 
   /**
@@ -913,7 +994,7 @@ class DevOpsServiceImpl {
    * @param {string} workflowId - 工作流 ID / Workflow ID
    */
   toggleWorkflow(workflowId: string): void {
-    const idx = this.workflows.findIndex(w => w.id === workflowId);
+    const idx = this.workflows.findIndex((w) => w.id === workflowId);
     if (idx === -1) return;
     this.workflows[idx] = {
       ...this.workflows[idx],
@@ -921,8 +1002,11 @@ class DevOpsServiceImpl {
       updatedAt: new Date().toISOString(),
     };
     this.saveWorkflows();
-    this.addLog("workflow", "info",
-      `WORKFLOW_${this.workflows[idx].enabled ? "ENABLED" : "DISABLED"}: ${this.workflows[idx].name}`);
+    this.addLog(
+      'workflow',
+      'info',
+      `WORKFLOW_${this.workflows[idx].enabled ? 'ENABLED' : 'DISABLED'}: ${this.workflows[idx].name}`
+    );
     this.notify();
   }
 
@@ -934,14 +1018,18 @@ class DevOpsServiceImpl {
    * @returns {Promise<boolean>} 是否执行成功 / Execution success
    */
   async executeWorkflow(workflowId: string): Promise<boolean> {
-    const idx = this.workflows.findIndex(w => w.id === workflowId);
+    const idx = this.workflows.findIndex((w) => w.id === workflowId);
     if (idx === -1) return false;
 
     const workflow = this.workflows[idx];
 
     // 更新状态为运行中 / Set status to running
-    this.workflows[idx] = { ...workflow, executionStatus: "running" as WorkflowExecutionStatus };
-    this.addLog("workflow", "info", `WORKFLOW_START: ${workflow.name} (${workflow.steps.length} steps)`);
+    this.workflows[idx] = { ...workflow, executionStatus: 'running' as WorkflowExecutionStatus };
+    this.addLog(
+      'workflow',
+      'info',
+      `WORKFLOW_START: ${workflow.name} (${workflow.steps.length} steps)`
+    );
     this.notify();
 
     const startTime = Date.now();
@@ -955,42 +1043,53 @@ class DevOpsServiceImpl {
       this.workflows[idx] = {
         ...this.workflows[idx],
         steps: this.workflows[idx].steps.map((s, si) =>
-          si === i ? { ...s, executionStatus: "running" as const } : s
+          si === i ? { ...s, executionStatus: 'running' as const } : s
         ),
       };
-      this.addLog("workflow", "info", `  STEP_${i + 1}: ${step.name} → RUNNING`);
+      this.addLog('workflow', 'info', `  STEP_${i + 1}: ${step.name} → RUNNING`);
       this.notify();
 
       // 模拟步骤执行 / Simulate step execution
       const stepStart = Date.now();
 
-      if (step.type === "delay") {
+      if (step.type === 'delay') {
         const delayMs = (step.config.delay as number) ?? 3000;
-        await new Promise(r => setTimeout(r, Math.min(delayMs, 2000)));
-      } else if (step.type === "mcp_tool" && step.toolId) {
+        await new Promise((r) => setTimeout(r, Math.min(delayMs, 2000)));
+      } else if (step.type === 'mcp_tool' && step.toolId) {
         // 查找对应服务器 / Find matching server
-        const toolInfo = this.getAllTools().find(t => t.id === step.toolId);
+        const toolInfo = this.getAllTools().find((t) => t.id === step.toolId);
         if (toolInfo) {
           const result = await this.executeTool(toolInfo.serverId, step.toolId);
           if (!result.success) {
             allSuccess = false;
-            if (step.onFailure === "stop") {
+            if (step.onFailure === 'stop') {
               this.workflows[idx] = {
                 ...this.workflows[idx],
                 steps: this.workflows[idx].steps.map((s, si) =>
-                  si === i ? { ...s, executionStatus: "failed" as const, executionOutput: result.error, executionDuration: Date.now() - stepStart } : s
+                  si === i
+                    ? {
+                        ...s,
+                        executionStatus: 'failed' as const,
+                        executionOutput: result.error,
+                        executionDuration: Date.now() - stepStart,
+                      }
+                    : s
                 ),
               };
-              this.addLog("workflow", "error", `  STEP_${i + 1}: ${step.name} → FAILED (${result.error})`);
+              this.addLog(
+                'workflow',
+                'error',
+                `  STEP_${i + 1}: ${step.name} → FAILED (${result.error})`
+              );
               break;
             }
           }
         } else {
-          await new Promise(r => setTimeout(r, 300 + Math.random() * 500));
+          await new Promise((r) => setTimeout(r, 300 + Math.random() * 500));
         }
       } else {
         // 模拟其他步骤类型 / Simulate other step types
-        await new Promise(r => setTimeout(r, 200 + Math.random() * 800));
+        await new Promise((r) => setTimeout(r, 200 + Math.random() * 800));
       }
 
       const stepDuration = Date.now() - stepStart;
@@ -999,16 +1098,21 @@ class DevOpsServiceImpl {
       this.workflows[idx] = {
         ...this.workflows[idx],
         steps: this.workflows[idx].steps.map((s, si) =>
-          si === i ? {
-            ...s,
-            executionStatus: allSuccess ? "success" as const : "failed" as const,
-            executionDuration: stepDuration,
-            executionOutput: allSuccess ? `OK (${stepDuration}ms)` : "STEP_FAILED",
-          } : s
+          si === i
+            ? {
+                ...s,
+                executionStatus: allSuccess ? ('success' as const) : ('failed' as const),
+                executionDuration: stepDuration,
+                executionOutput: allSuccess ? `OK (${stepDuration}ms)` : 'STEP_FAILED',
+              }
+            : s
         ),
       };
-      this.addLog("workflow", allSuccess ? "info" : "error",
-        `  STEP_${i + 1}: ${step.name} → ${allSuccess ? "SUCCESS" : "FAILED"} (${stepDuration}ms)`);
+      this.addLog(
+        'workflow',
+        allSuccess ? 'info' : 'error',
+        `  STEP_${i + 1}: ${step.name} → ${allSuccess ? 'SUCCESS' : 'FAILED'} (${stepDuration}ms)`
+      );
       this.notify();
     }
 
@@ -1016,16 +1120,19 @@ class DevOpsServiceImpl {
     const totalDuration = Date.now() - startTime;
     this.workflows[idx] = {
       ...this.workflows[idx],
-      executionStatus: allSuccess ? "completed" : "failed",
+      executionStatus: allSuccess ? 'completed' : 'failed',
       lastExecutedAt: new Date().toISOString(),
       lastDuration: totalDuration,
-      executionCount: this.workflows[idx].executionCount + 1,
-      successCount: this.workflows[idx].successCount + (allSuccess ? 1 : 0),
+      executionCount: (this.workflows[idx].executionCount ?? 0) + 1,
+      successCount: (this.workflows[idx].successCount ?? 0) + (allSuccess ? 1 : 0),
       updatedAt: new Date().toISOString(),
     };
 
-    this.addLog("workflow", allSuccess ? "success" : "error",
-      `WORKFLOW_${allSuccess ? "COMPLETED" : "FAILED"}: ${workflow.name} (${totalDuration}ms)`);
+    this.addLog(
+      'workflow',
+      allSuccess ? 'success' : 'error',
+      `WORKFLOW_${allSuccess ? 'COMPLETED' : 'FAILED'}: ${workflow.name} (${totalDuration}ms)`
+    );
     this.saveWorkflows();
     this.notify();
     return allSuccess;
@@ -1038,14 +1145,14 @@ class DevOpsServiceImpl {
    * @param {string} workflowId - 工作流 ID / Workflow ID
    */
   resetWorkflow(workflowId: string): void {
-    const idx = this.workflows.findIndex(w => w.id === workflowId);
+    const idx = this.workflows.findIndex((w) => w.id === workflowId);
     if (idx === -1) return;
     this.workflows[idx] = {
       ...this.workflows[idx],
-      executionStatus: "idle",
-      steps: this.workflows[idx].steps.map(s => ({
+      executionStatus: 'idle',
+      steps: this.workflows[idx].steps.map((s) => ({
         ...s,
-        executionStatus: "pending" as const,
+        executionStatus: 'pending' as const,
         executionOutput: null,
         executionDuration: 0,
       })),
@@ -1076,62 +1183,66 @@ class DevOpsServiceImpl {
    * @returns {Promise<InfraService[]>} 更新后的服务列表 / Updated service list
    */
   async scanHealth(): Promise<InfraService[]> {
-    this.addLog("health", "info", "HEALTH_SCAN_START: Scanning all infrastructure services...");
+    this.addLog('health', 'info', 'HEALTH_SCAN_START: Scanning all infrastructure services...');
 
     for (let i = 0; i < this.infraServices.length; i++) {
       const svc = this.infraServices[i];
 
       // 对 HTTP 端点执行真实探测 / Real probe for HTTP endpoints
-      if (svc.endpoint.startsWith("http")) {
+      if (svc.endpoint.startsWith('http')) {
         const start = Date.now();
         try {
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 3000);
 
           let url = svc.endpoint;
-          if (svc.type === "proxy") url += "/api/v1/health";
+          if (svc.type === 'proxy') url += '/api/v1/health';
 
           const response = await fetch(url, { signal: controller.signal });
           clearTimeout(timeoutId);
 
           const latency = Date.now() - start;
-          const newHealth: ServiceHealthStatus = response.ok ? "healthy" : "degraded";
+          const newHealth: ServiceHealthStatus = response.ok ? 'healthy' : 'degraded';
 
           this.infraServices[i] = {
             ...svc,
             health: newHealth,
             latency,
             lastCheckAt: new Date().toISOString(),
-            consecutiveHealthy: newHealth === "healthy" ? svc.consecutiveHealthy + 1 : 0,
-            consecutiveFailures: newHealth !== "healthy" ? svc.consecutiveFailures + 1 : 0,
-            uptimePercent: newHealth === "healthy"
-              ? Math.min(100, svc.uptimePercent + 0.1)
-              : Math.max(0, svc.uptimePercent - 5),
+            consecutiveHealthy: newHealth === 'healthy' ? (svc.consecutiveHealthy ?? 0) + 1 : 0,
+            consecutiveFailures: newHealth !== 'healthy' ? (svc.consecutiveFailures ?? 0) + 1 : 0,
+            uptimePercent:
+              newHealth === 'healthy'
+                ? Math.min(100, (svc.uptimePercent ?? 0) + 0.1)
+                : Math.max(0, (svc.uptimePercent ?? 0) - 5),
           };
         } catch {
           this.infraServices[i] = {
             ...svc,
-            health: "down",
+            health: 'down',
             latency: Date.now() - start,
             lastCheckAt: new Date().toISOString(),
             consecutiveHealthy: 0,
-            consecutiveFailures: svc.consecutiveFailures + 1,
-            uptimePercent: Math.max(0, svc.uptimePercent - 10),
+            consecutiveFailures: (svc.consecutiveFailures ?? 0) + 1,
+            uptimePercent: Math.max(0, (svc.uptimePercent ?? 0) - 10),
           };
         }
       } else {
         // 非 HTTP 服务模拟 / Simulate non-HTTP services
-        await new Promise(r => setTimeout(r, 100));
+        await new Promise((r) => setTimeout(r, 100));
         this.infraServices[i] = {
           ...svc,
-          health: "unknown",
+          health: 'unknown',
           lastCheckAt: new Date().toISOString(),
         };
       }
     }
 
-    this.addLog("health", "info",
-      `HEALTH_SCAN_COMPLETE: ${this.infraServices.filter(s => s.health === "healthy").length}/${this.infraServices.length} healthy`);
+    this.addLog(
+      'health',
+      'info',
+      `HEALTH_SCAN_COMPLETE: ${this.infraServices.filter((s) => s.health === 'healthy').length}/${this.infraServices.length} healthy`
+    );
     this.saveInfraServices();
     this.notify();
     return this.getInfraServices();
@@ -1177,31 +1288,32 @@ class DevOpsServiceImpl {
 
     // 检查基础服务健康 / Check infrastructure health
     for (const svc of this.infraServices) {
-      if (svc.health === "down") {
+      if (svc.health === 'down') {
         issues.push({
           id: `diag_${svc.id}_down`,
           title: `SERVICE_DOWN: ${svc.name}`,
           description: `${svc.name} 在 ${svc.endpoint} 无法访问 / is unreachable at ${svc.endpoint}`,
-          severity: "critical",
+          severity: 'critical',
           source: svc.name,
-          suggestion: svc.type === "proxy"
-            ? "执行 cd server && npm run dev 启动代理 / Run 'cd server && npm run dev'"
-            : svc.type === "database"
-              ? "执行 brew services start postgresql@15 / Run 'brew services start postgresql@15'"
-              : `检查 ${svc.name} 服务状态 / Check ${svc.name} service status`,
-          autoFixCommand: svc.type === "proxy" ? "cd server && npm run dev" : null,
-          isAutoFixable: svc.type === "proxy",
+          suggestion:
+            svc.type === 'proxy'
+              ? "执行 cd server && npm run dev 启动代理 / Run 'cd server && npm run dev'"
+              : svc.type === 'database'
+                ? "执行 brew services start postgresql@15 / Run 'brew services start postgresql@15'"
+                : `检查 ${svc.name} 服务状态 / Check ${svc.name} service status`,
+          autoFixCommand: svc.type === 'proxy' ? 'cd server && npm run dev' : null,
+          isAutoFixable: svc.type === 'proxy',
           detectedAt: now,
           resolved: false,
         });
-      } else if (svc.health === "degraded") {
+      } else if (svc.health === 'degraded') {
         issues.push({
           id: `diag_${svc.id}_degraded`,
           title: `SERVICE_DEGRADED: ${svc.name}`,
           description: `${svc.name} 响应异常 (延迟: ${svc.latency}ms) / responding abnormally`,
-          severity: "warning",
+          severity: 'warning',
           source: svc.name,
-          suggestion: "检查服务日志和资源使用率 / Check service logs and resource usage",
+          suggestion: '检查服务日志和资源使用率 / Check service logs and resource usage',
           autoFixCommand: null,
           isAutoFixable: false,
           detectedAt: now,
@@ -1209,14 +1321,14 @@ class DevOpsServiceImpl {
         });
       }
 
-      if (svc.latency > 500 && svc.health === "healthy") {
+      if ((svc.latency ?? 0) > 500 && svc.health === 'healthy') {
         issues.push({
           id: `diag_${svc.id}_slow`,
           title: `HIGH_LATENCY: ${svc.name}`,
-          description: `${svc.name} 延迟过高: ${svc.latency}ms / high latency detected`,
-          severity: "warning",
+          description: `${svc.name} 延迟过高: ${svc.latency ?? 0}ms / high latency detected`,
+          severity: 'warning',
           source: svc.name,
-          suggestion: "检查网络连接和服务负载 / Check network connection and service load",
+          suggestion: '检查网络连接和服务负载 / Check network connection and service load',
           autoFixCommand: null,
           isAutoFixable: false,
           detectedAt: now,
@@ -1227,16 +1339,16 @@ class DevOpsServiceImpl {
 
     // 检查 MCP 服务器 / Check MCP servers
     const disconnectedAutoConnect = this.servers.filter(
-      s => s.autoConnect && s.status === "disconnected"
+      (s) => s.autoConnect && s.status === 'disconnected'
     );
     if (disconnectedAutoConnect.length > 0) {
       issues.push({
-        id: "diag_mcp_disconnected",
-        title: "MCP_SERVERS_OFFLINE",
+        id: 'diag_mcp_disconnected',
+        title: 'MCP_SERVERS_OFFLINE',
         description: `${disconnectedAutoConnect.length} 个自动连接的 MCP 服务器离线 / auto-connect MCP servers offline`,
-        severity: "info",
-        source: "MCP_REGISTRY",
-        suggestion: "点击 PROBE ALL 重新探测 / Click PROBE ALL to re-probe",
+        severity: 'info',
+        source: 'MCP_REGISTRY',
+        suggestion: '点击 PROBE ALL 重新探测 / Click PROBE ALL to re-probe',
         autoFixCommand: null,
         isAutoFixable: false,
         detectedAt: now,
@@ -1245,15 +1357,15 @@ class DevOpsServiceImpl {
     }
 
     // 检查工作流 / Check workflows
-    const failedWorkflows = this.workflows.filter(w => w.executionStatus === "failed");
+    const failedWorkflows = this.workflows.filter((w) => w.executionStatus === 'failed');
     if (failedWorkflows.length > 0) {
       issues.push({
-        id: "diag_workflow_failed",
-        title: "WORKFLOWS_FAILED",
+        id: 'diag_workflow_failed',
+        title: 'WORKFLOWS_FAILED',
         description: `${failedWorkflows.length} 个工作流执行失败 / workflow(s) have failed`,
-        severity: "warning",
-        source: "WORKFLOW_ENGINE",
-        suggestion: `检查失败工作流: ${failedWorkflows.map(w => w.name).join(", ")} / Check failed workflows`,
+        severity: 'warning',
+        source: 'WORKFLOW_ENGINE',
+        suggestion: `检查失败工作流: ${failedWorkflows.map((w) => w.name).join(', ')} / Check failed workflows`,
         autoFixCommand: null,
         isAutoFixable: false,
         detectedAt: now,
@@ -1261,8 +1373,11 @@ class DevOpsServiceImpl {
       });
     }
 
-    this.addLog("system", "info",
-      `DIAGNOSTICS_COMPLETE: ${issues.length} issue(s) found (${issues.filter(i => i.severity === "critical").length} critical)`);
+    this.addLog(
+      'system',
+      'info',
+      `DIAGNOSTICS_COMPLETE: ${issues.length} issue(s) found (${issues.filter((i) => i.severity === 'critical').length} critical)`
+    );
     this.notify();
     return issues;
   }
@@ -1279,22 +1394,23 @@ class DevOpsServiceImpl {
    */
   getMetrics(): DevOpsMetrics {
     const totalServices = this.infraServices.length;
-    const healthyServices = this.infraServices.filter(s => s.health === "healthy").length;
-    const degradedServices = this.infraServices.filter(s => s.health === "degraded").length;
-    const downServices = this.infraServices.filter(s => s.health === "down").length;
+    const healthyServices = this.infraServices.filter((s) => s.health === 'healthy').length;
+    const degradedServices = this.infraServices.filter((s) => s.health === 'degraded').length;
+    const downServices = this.infraServices.filter((s) => s.health === 'down').length;
 
     const allTools = this.getAllTools();
-    const activeWorkflows = this.workflows.filter(w => w.enabled).length;
+    const activeWorkflows = this.workflows.filter((w) => w.enabled).length;
 
-    const totalExecs = this.workflows.reduce((sum, w) => sum + w.executionCount, 0);
-    const totalSuccess = this.workflows.reduce((sum, w) => sum + w.successCount, 0);
+    const totalExecs = this.workflows.reduce((sum, w) => sum + (w.executionCount ?? 0), 0);
+    const totalSuccess = this.workflows.reduce((sum, w) => sum + (w.successCount ?? 0), 0);
 
     const healthyLatencies = this.infraServices
-      .filter(s => s.health === "healthy" && s.latency > 0)
-      .map(s => s.latency);
-    const avgLatency = healthyLatencies.length > 0
-      ? Math.round(healthyLatencies.reduce((a, b) => a + b, 0) / healthyLatencies.length)
-      : 0;
+      .filter((s) => s.health === 'healthy' && (s.latency ?? 0) > 0)
+      .map((s) => s.latency ?? 0);
+    const avgLatency =
+      healthyLatencies.length > 0
+        ? Math.round(healthyLatencies.reduce((a, b) => a + b, 0) / healthyLatencies.length)
+        : 0;
 
     const issues = this.runDiagnostics();
 
@@ -1307,7 +1423,7 @@ class DevOpsServiceImpl {
       activeWorkflows,
       todayExecutions: totalExecs,
       todaySuccessRate: totalExecs > 0 ? Math.round((totalSuccess / totalExecs) * 100) : 100,
-      unresolvedIssues: issues.filter(i => !i.resolved).length,
+      unresolvedIssues: issues.filter((i) => !i.resolved).length,
       avgLatency,
     };
   }
@@ -1326,8 +1442,8 @@ class DevOpsServiceImpl {
    * @param {string} [detail] - 详细数据 / Detail
    */
   addLog(
-    source: OpsLogEntry["source"],
-    level: OpsLogEntry["level"],
+    source: OpsLogEntry['source'],
+    level: OpsLogEntry['level'],
     message: string,
     detail?: string
   ): void {
@@ -1352,10 +1468,10 @@ class DevOpsServiceImpl {
    * @param {OpsLogEntry["level"]} [filterLevel] - 过滤级别 / Filter level
    * @returns {OpsLogEntry[]} 日志列表 / Log list
    */
-  getOpsLog(limit: number = 50, filterLevel?: OpsLogEntry["level"]): OpsLogEntry[] {
+  getOpsLog(limit: number = 50, filterLevel?: OpsLogEntry['level']): OpsLogEntry[] {
     let logs = [...this.opsLog];
     if (filterLevel) {
-      logs = logs.filter(l => l.level === filterLevel);
+      logs = logs.filter((l) => l.level === filterLevel);
     }
     return logs.slice(0, limit);
   }
@@ -1367,7 +1483,7 @@ class DevOpsServiceImpl {
   clearOpsLog(): void {
     this.opsLog = [];
     this.saveOpsLog();
-    this.addLog("system", "info", "OPS_LOG_CLEARED / 操作日志已清空");
+    this.addLog('system', 'info', 'OPS_LOG_CLEARED / 操作日志已清空');
     this.notify();
   }
 
@@ -1380,7 +1496,9 @@ class DevOpsServiceImpl {
     try {
       const stored = localStorage.getItem(STORAGE_KEYS.MCP_SERVERS);
       if (stored) return JSON.parse(stored);
-    } catch { /* fallback */ }
+    } catch {
+      /* fallback */
+    }
     return createBuiltInServers();
   }
 
@@ -1394,7 +1512,9 @@ class DevOpsServiceImpl {
     try {
       const stored = localStorage.getItem(STORAGE_KEYS.WORKFLOWS);
       if (stored) return JSON.parse(stored);
-    } catch { /* fallback */ }
+    } catch {
+      /* fallback */
+    }
     return createBuiltInWorkflows();
   }
 
@@ -1408,7 +1528,9 @@ class DevOpsServiceImpl {
     try {
       const stored = localStorage.getItem(STORAGE_KEYS.INFRA_SERVICES);
       if (stored) return JSON.parse(stored);
-    } catch { /* fallback */ }
+    } catch {
+      /* fallback */
+    }
     return createInfraServices();
   }
 
@@ -1422,7 +1544,9 @@ class DevOpsServiceImpl {
     try {
       const stored = localStorage.getItem(STORAGE_KEYS.OPS_LOG);
       if (stored) return JSON.parse(stored);
-    } catch { /* fallback */ }
+    } catch {
+      /* fallback */
+    }
     return [];
   }
 

@@ -7,13 +7,7 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
-  external: [
-    'react',
-    'react-dom',
-    '@yyc3/ui',
-    'recharts',
-    'lucide-react',
-  ],
+  external: ['react', 'react-dom', '@yyc3/ui', 'recharts', 'lucide-react'],
   // 跳过不存在的模块
   ignoreNodeModules: true,
   // 忽略外部依赖警告

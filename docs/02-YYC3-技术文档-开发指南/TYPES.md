@@ -260,7 +260,12 @@ export interface CustomersProps {
 ### 订单管理类型
 
 ```typescript
-export type OrderStatus = 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+export type OrderStatus =
+  | 'pending'
+  | 'processing'
+  | 'shipped'
+  | 'delivered'
+  | 'cancelled';
 
 export interface OrderItem {
   id: string;
@@ -482,38 +487,21 @@ export function cn(...classes: (string | undefined | null | false)[]): string;
 ### 日期工具
 
 ```typescript
-export function formatDate(
-  date: Date | string,
-  format?: string
-): string;
+export function formatDate(date: Date | string, format?: string): string;
 
-export function parseDate(
-  dateString: string,
-  format?: string
-): Date;
+export function parseDate(dateString: string, format?: string): Date;
 
-export function addDays(
-  date: Date,
-  days: number
-): Date;
+export function addDays(date: Date, days: number): Date;
 
-export function diffDays(
-  date1: Date,
-  date2: Date
-): number;
+export function diffDays(date1: Date, date2: Date): number;
 ```
 
 ### 字符串工具
 
 ```typescript
-export function truncate(
-  str: string,
-  length: number
-): string;
+export function truncate(str: string, length: number): string;
 
-export function capitalize(
-  str: string
-): string;
+export function capitalize(str: string): string;
 
 export function camelCase(str: string): string;
 export function kebabCase(str: string): string;
@@ -523,19 +511,11 @@ export function snakeCase(str: string): string;
 ### 数组工具
 
 ```typescript
-export function chunk<T>(
-  array: T[],
-  size: number
-): T[][];
+export function chunk<T>(array: T[], size: number): T[][];
 
-export function unique<T>(
-  array: T[]
-): T[];
+export function unique<T>(array: T[]): T[];
 
-export function groupBy<T>(
-  array: T[],
-  key: keyof T
-): Record<string, T[]>;
+export function groupBy<T>(array: T[], key: keyof T): Record<string, T[]>;
 ```
 
 ### 对象工具
@@ -551,9 +531,7 @@ export function pick<T extends object, K extends keyof T>(
   keys: K[]
 ): Pick<T, K>;
 
-export function merge<T extends object>(
-  ...objects: Partial<T>[]
-): T;
+export function merge<T extends object>(...objects: Partial<T>[]): T;
 ```
 
 ### 函数工具
@@ -569,9 +547,7 @@ export function throttle<T extends (...args: any[]) => any>(
   wait: number
 ): (...args: Parameters<T>) => void;
 
-export function memoize<T extends (...args: any[]) => any>(
-  func: T
-): T;
+export function memoize<T extends (...args: any[]) => any>(func: T): T;
 ```
 
 ### 验证工具
@@ -585,10 +561,7 @@ export interface ValidationRule {
   custom?: (value: any) => boolean | string;
 }
 
-export function validate(
-  value: any,
-  rules: ValidationRule
-): string | null;
+export function validate(value: any, rules: ValidationRule): string | null;
 
 export function validateEmail(email: string): boolean;
 export function validatePhone(phone: string): boolean;
@@ -690,8 +663,7 @@ function isCustomer(obj: any): obj is Customer {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」
 
 </div>

@@ -13,7 +13,7 @@ import {
   AlertCircle,
   Target
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 import { AIContextBanner } from './AIContextBanner';
 import { useNavigationContext, generateRecommendations } from '../hooks/useNavigationContext';
 

@@ -1,10 +1,9 @@
 # YYC³ 组件库统一管理指南
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence*
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_
+> _\*\*All things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_
 
 ---
 
@@ -25,21 +24,25 @@
 ### Monorepo架构优势
 
 #### 1. **统一管理**
+
 - 所有组件在一个仓库中管理
 - 统一的代码规范和开发流程
 - 简化的依赖管理和版本控制
 
 #### 2. **模块化设计**
+
 - 按功能分类为独立的包
 - 每个包可以独立开发和发布
 - 减少不必要的依赖和打包体积
 
 #### 3. **性能优化**
+
 - 使用 Turborepo 优化构建性能
 - 并行执行任务，提高构建速度
 - 智能缓存，避免重复构建
 
 #### 4. **易于复用**
+
 - 独立发布到 npm
 - 其他项目可以按需安装
 - 清晰的版本管理和更新机制
@@ -125,11 +128,11 @@ MAJOR.MINOR.PATCH
 
 #### 版本更新规则
 
-| 变更类型 | 版本变化 | 示例 | 说明 |
-|----------|----------|------|------|
-| **破坏性变更** | MAJOR+1 | 1.0.0 → 2.0.0 | 不兼容的API修改 |
-| **新功能** | MINOR+1 | 1.0.0 → 1.1.0 | 向下兼容的功能新增 |
-| **Bug修复** | PATCH+1 | 1.0.0 → 1.0.1 | 向下兼容的问题修正 |
+| 变更类型       | 版本变化 | 示例          | 说明               |
+| -------------- | -------- | ------------- | ------------------ |
+| **破坏性变更** | MAJOR+1  | 1.0.0 → 2.0.0 | 不兼容的API修改    |
+| **新功能**     | MINOR+1  | 1.0.0 → 1.1.0 | 向下兼容的功能新增 |
+| **Bug修复**    | PATCH+1  | 1.0.0 → 1.0.1 | 向下兼容的问题修正 |
 
 ### Changesets版本管理
 
@@ -324,6 +327,7 @@ pnpm lint
 ```
 
 协议说明：
+
 - `workspace:*` - 匹配任何版本
 - `workspace:^` - 匹配主版本号相同
 - `workspace:~` - 匹配主次版本号相同
@@ -409,6 +413,7 @@ git push origin docs/update-documentation
 在GitHub上创建Pull Request，遵循以下规范：
 
 **PR标题格式**:
+
 ```
 <type>(<scope>): <subject>
 
@@ -428,11 +433,14 @@ docs: 更新组件使用指南
 ```
 
 **PR描述模板**:
+
 ```markdown
 ## 变更说明
+
 简要描述这个PR的变更内容
 
 ## 变更类型
+
 - [ ] 新功能
 - [ ] Bug修复
 - [ ] 文档更新
@@ -441,11 +449,13 @@ docs: 更新组件使用指南
 - [ ] 其他
 
 ## 测试
+
 - [ ] 已添加单元测试
 - [ ] 已添加集成测试
 - [ ] 已手动测试
 
 ## 检查清单
+
 - [ ] 代码遵循项目规范
 - [ ] 已添加必要的文档
 - [ ] 已更新CHANGELOG.md
@@ -486,6 +496,7 @@ git push origin main
 **问题**: `pnpm install` 失败
 
 **解决方案**:
+
 ```bash
 # 清理缓存
 pnpm store prune
@@ -503,6 +514,7 @@ pnpm install
 **问题**: `pnpm build` 失败
 
 **解决方案**:
+
 ```bash
 # 清理构建产物
 pnpm clean
@@ -520,6 +532,7 @@ pnpm build
 **问题**: TypeScript类型错误
 
 **解决方案**:
+
 ```bash
 # 运行类型检查
 pnpm typecheck
@@ -534,6 +547,7 @@ pnpm typecheck
 **问题**: `pnpm test` 失败
 
 **解决方案**:
+
 ```bash
 # 运行特定包的测试
 pnpm --filter @yyc3/ui test
@@ -548,6 +562,7 @@ pnpm --filter @yyc3/ui test
 **问题**: `npm publish` 失败
 
 **解决方案**:
+
 ```bash
 # 检查npm登录状态
 npm whoami
@@ -630,10 +645,9 @@ rm -rf packages/*/.turbo
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 ---
 

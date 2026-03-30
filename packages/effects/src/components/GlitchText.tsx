@@ -86,7 +86,7 @@ export const GlitchText = memo(function GlitchText({
 }: GlitchTextProps) {
   const [isGlitching, setIsGlitching] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   // 检查是否支持动画
   const prefersReducedMotion =
@@ -105,10 +105,13 @@ export const GlitchText = memo(function GlitchText({
       timerRef.current = setTimeout(() => {
         setIsGlitching(true);
         // Glitch lasts 150-400ms
-        setTimeout(() => {
-          setIsGlitching(false);
-          scheduleGlitch();
-        }, 150 + Math.random() * 250);
+        setTimeout(
+          () => {
+            setIsGlitching(false);
+            scheduleGlitch();
+          },
+          150 + Math.random() * 250
+        );
       }, delay);
     };
 
@@ -135,9 +138,7 @@ export const GlitchText = memo(function GlitchText({
         ...style,
         color,
         willChange: active ? 'transform, clip-path' : 'auto',
-        animation: active
-          ? `glitch-skew ${hoverActive ? '0.3s' : '0.5s'} ease-in-out`
-          : undefined,
+        animation: active ? `glitch-skew ${hoverActive ? '0.3s' : '0.5s'} ease-in-out` : undefined,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

@@ -24,7 +24,7 @@
  * dependencies: react
  */
 
-import { useEffect, useRef, useCallback, memo, type CSSProperties } from 'react';
+import { useEffect, useRef, useCallback, memo, useMemo, type CSSProperties } from 'react';
 
 // ==========================================
 // 类型定义
@@ -141,7 +141,7 @@ export const ParticleCanvas = memo(function ParticleCanvas({
   enableMouseInteraction = true,
   autoResize = true,
 }: ParticleCanvasProps) {
-  const config = { ...DEFAULT_CONFIG, ...userConfig };
+  const config = useMemo(() => ({ ...DEFAULT_CONFIG, ...userConfig }), [userConfig]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animFrameRef = useRef<number>(0);
@@ -280,8 +280,7 @@ export const ParticleCanvas = memo(function ParticleCanvas({
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < config.connectionDistance) {
-            const lineAlpha =
-              (1 - dist / config.connectionDistance) * 0.15 * neonScale;
+            const lineAlpha = (1 - dist / config.connectionDistance) * 0.15 * neonScale;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -330,12 +329,7 @@ export const ParticleCanvas = memo(function ParticleCanvas({
         canvas.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
-  }, [
-    config,
-    createParticles,
-    enableMouseInteraction,
-    autoResize,
-  ]);
+  }, [config, createParticles, enableMouseInteraction, autoResize]);
 
   if (!config.enabled) return null;
 

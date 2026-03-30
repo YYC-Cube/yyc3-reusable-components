@@ -1,6 +1,6 @@
 import React from 'react';
 import { Package, Plus, Search, Filter, TrendingUp, TrendingDown, Layers, Scale, AlertTriangle, ArrowDownLeft } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 import { useAppContext } from '../context/AppContext';
 
 interface InventoryProps {

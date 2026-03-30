@@ -1,10 +1,9 @@
 # YYC³ 组件保存复用指南
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_ **_All
+> things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_**
 
 ---
 
@@ -25,12 +24,14 @@
 ### 架构设计原则
 
 #### 1. **Monorepo架构**
+
 - 使用Monorepo管理多个组件包
 - 统一的代码规范和构建流程
 - 共享依赖和工具配置
 - 简化跨包依赖管理
 
 #### 2. **包分类策略**
+
 - **@yyc3/ui** - UI基础组件包
 - **@yyc3/business** - 业务组件包
 - **@yyc3/smart** - Smart组件包
@@ -40,6 +41,7 @@
 - **@yyc3/utils** - 工具函数包
 
 #### 3. **依赖管理**
+
 - 使用pnpm workspace管理依赖
 - 统一版本管理
 - 避免重复依赖
@@ -311,11 +313,7 @@ packages:
     },
     "./styles": "./dist/styles.css"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "CHANGELOG.md"
-  ],
+  "files": ["dist", "README.md", "CHANGELOG.md"],
   "scripts": {
     "dev": "vite",
     "build": "tsup",
@@ -358,13 +356,7 @@ packages:
     "url": "https://github.com/YYC-Cube/yyc3-reusable-components.git",
     "directory": "packages/ui"
   },
-  "keywords": [
-    "yyc3",
-    "ui",
-    "components",
-    "react",
-    "tailwindcss"
-  ],
+  "keywords": ["yyc3", "ui", "components", "react", "tailwindcss"],
   "author": "YYC³ Team <admin@0379.email>",
   "license": "MIT",
   "bugs": {
@@ -406,7 +398,7 @@ export default defineConfig({
   clean: true,
   external: ['react', 'react-dom'],
   treeshake: true,
-  onSuccess: 'npm run build:styles'
+  onSuccess: 'npm run build:styles',
 });
 ```
 
@@ -553,11 +545,11 @@ MAJOR.MINOR.PATCH
 
 #### 版本更新规则
 
-| 变更类型 | 版本变化 | 示例 | 说明 |
-|----------|----------|------|------|
-| **破坏性变更** | MAJOR+1 | 1.0.0 → 2.0.0 | 不兼容的API修改 |
-| **新功能** | MINOR+1 | 1.0.0 → 1.1.0 | 向下兼容的功能新增 |
-| **Bug修复** | PATCH+1 | 1.0.0 → 1.0.1 | 向下兼容的问题修正 |
+| 变更类型       | 版本变化 | 示例          | 说明               |
+| -------------- | -------- | ------------- | ------------------ |
+| **破坏性变更** | MAJOR+1  | 1.0.0 → 2.0.0 | 不兼容的API修改    |
+| **新功能**     | MINOR+1  | 1.0.0 → 1.1.0 | 向下兼容的功能新增 |
+| **Bug修复**    | PATCH+1  | 1.0.0 → 1.0.1 | 向下兼容的问题修正 |
 
 ### Changesets配置
 
@@ -727,7 +719,7 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
 ```
 
 #### globals.css
@@ -807,9 +799,7 @@ function App() {
       <Button>点击按钮</Button>
       <Input placeholder="请输入内容" />
       <Dialog>
-        <DialogContent>
-          对话框内容
-        </DialogContent>
+        <DialogContent>对话框内容</DialogContent>
       </Dialog>
       <Dashboard currentLanguage="zh" onNavigate={() => {}} />
       <SmartSales currentLanguage="zh" />
@@ -900,7 +890,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+      options: [
+        'default',
+        'destructive',
+        'outline',
+        'secondary',
+        'ghost',
+        'link',
+      ],
     },
     size: {
       control: 'select',
@@ -1100,10 +1097,9 @@ const handleClick = useCallback(() => {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 ---
 

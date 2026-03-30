@@ -29,14 +29,12 @@ export class PerformanceAlertManager {
   }
 
   removeRule(componentName: string, metric: string): void {
-    this.rules = this.rules.filter(
-      r => r.componentName !== componentName || r.metric !== metric
-    );
+    this.rules = this.rules.filter((r) => r.componentName !== componentName || r.metric !== metric);
   }
 
   updateRule(rule: AlertRule): void {
     const index = this.rules.findIndex(
-      r => r.componentName === rule.componentName && r.metric === rule.metric
+      (r) => r.componentName === rule.componentName && r.metric === rule.metric
     );
     if (index !== -1) {
       this.rules[index] = rule;
@@ -48,16 +46,16 @@ export class PerformanceAlertManager {
   }
 
   getRulesByComponent(componentName: string): AlertRule[] {
-    return this.rules.filter(r => r.componentName === componentName);
+    return this.rules.filter((r) => r.componentName === componentName);
   }
 
   getRulesByMetric(metric: string): AlertRule[] {
-    return this.rules.filter(r => r.metric === metric);
+    return this.rules.filter((r) => r.metric === metric);
   }
 
   checkMetric(componentName: string, metric: string, value: number): PerformanceAlert | null {
     const rule = this.rules.find(
-      r => r.componentName === componentName && r.metric === metric && r.enabled
+      (r) => r.componentName === componentName && r.metric === metric && r.enabled
     );
 
     if (!rule) return null;
@@ -84,12 +82,8 @@ export class PerformanceAlertManager {
   checkAllMetrics(metrics: PerformanceMetrics[]): PerformanceAlert[] {
     const alerts: PerformanceAlert[] = [];
 
-    metrics.forEach(metric => {
-      const alert = this.checkMetric(
-        metric.componentName,
-        metric.metric,
-        metric.value
-      );
+    metrics.forEach((metric) => {
+      const alert = this.checkMetric(metric.componentName, metric.metric, metric.value);
       if (alert) {
         alerts.push(alert);
       }
@@ -98,7 +92,10 @@ export class PerformanceAlertManager {
     return alerts;
   }
 
-  private calculateSeverity(value: number, threshold: number): 'low' | 'medium' | 'high' | 'critical' {
+  private calculateSeverity(
+    value: number,
+    threshold: number
+  ): 'low' | 'medium' | 'high' | 'critical' {
     const ratio = value / threshold;
 
     if (ratio <= 1) return 'low';
@@ -123,15 +120,15 @@ export class PerformanceAlertManager {
   }
 
   getAlertsByComponent(componentName: string): PerformanceAlert[] {
-    return this.alerts.filter(a => a.componentName === componentName);
+    return this.alerts.filter((a) => a.componentName === componentName);
   }
 
   getAlertsByMetric(metric: string): PerformanceAlert[] {
-    return this.alerts.filter(a => a.metric === metric);
+    return this.alerts.filter((a) => a.metric === metric);
   }
 
   getAlertsBySeverity(severity: 'low' | 'medium' | 'high' | 'critical'): PerformanceAlert[] {
-    return this.alerts.filter(a => a.severity === severity);
+    return this.alerts.filter((a) => a.severity === severity);
   }
 
   getCriticalAlerts(): PerformanceAlert[] {
@@ -144,7 +141,7 @@ export class PerformanceAlertManager {
 
   getRecentAlerts(hours: number = 24): PerformanceAlert[] {
     const cutoff = new Date(Date.now() - hours * 60 * 60 * 1000);
-    return this.alerts.filter(a => a.timestamp >= cutoff);
+    return this.alerts.filter((a) => a.timestamp >= cutoff);
   }
 
   getAlertSummary(): {
@@ -178,7 +175,7 @@ export class PerformanceAlertManager {
 
   clearOldAlerts(hours: number = 24): void {
     const cutoff = new Date(Date.now() - hours * 60 * 60 * 1000);
-    this.alerts = this.alerts.filter(a => a.timestamp >= cutoff);
+    this.alerts = this.alerts.filter((a) => a.timestamp >= cutoff);
   }
 
   exportAlerts(): string {

@@ -1,8 +1,7 @@
 # YYC³ 组件库 - 测试规范
 
-> **规范版本**: v1.0.0
-> **创建日期**: 2024年3月28日
-> **适用范围**: YYC³组件库所有包的测试
+> **规范版本**: v1.0.0 **创建日期**: 2024年3月28日 **适用范围**:
+> YYC³组件库所有包的测试
 
 ---
 
@@ -33,11 +32,13 @@
 测试单个函数、组件或类的功能。
 
 **适用场景**:
+
 - 工具函数
 - 自定义Hooks
 - 独立组件
 
 **示例**:
+
 ```typescript
 import { describe, it, expect } from 'vitest';
 import { add } from './utils';
@@ -58,11 +59,13 @@ describe('add', () => {
 测试多个组件或模块之间的交互。
 
 **适用场景**:
+
 - 组件组合
 - 状态管理
 - 服务层集成
 
 **示例**:
+
 ```typescript
 import { render, screen } from '@testing-library/react';
 import { Button } from './Button';
@@ -86,11 +89,13 @@ describe('Button with ThemeProvider', () => {
 测试完整的用户流程。
 
 **适用场景**:
+
 - 关键用户路径
 - 跨页面交互
 - 复杂业务流程
 
 **示例**:
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -99,7 +104,7 @@ test('user can login and view dashboard', async ({ page }) => {
   await page.fill('input[name="email"]', 'user@example.com');
   await page.fill('input[name="password"]', 'password');
   await page.click('button[type="submit"]');
-  
+
   await expect(page).toHaveURL('/dashboard');
   await expect(page.locator('h1')).toContainText('Welcome');
 });
@@ -114,6 +119,7 @@ test('user can login and view dashboard', async ({ page }) => {
 Vitest是一个快速的单元测试框架，与Vite完美集成。
 
 **配置**:
+
 ```typescript
 // vitest.config.ts
 import { defineConfig } from 'vitest/config';
@@ -151,11 +157,13 @@ export default defineConfig({
 Testing Library提供了一组用于测试React组件的工具。
 
 **核心原则**:
+
 - 测试用户行为，而不是实现细节
 - 模拟真实用户交互
 - 使用可访问性查询
 
 **示例**:
+
 ```typescript
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -178,6 +186,7 @@ describe('Button', () => {
 Playwright用于E2E测试，支持多浏览器。
 
 **配置**:
+
 ```typescript
 // playwright.config.ts
 import { defineConfig, devices } from '@playwright/test';
@@ -475,12 +484,12 @@ describe('counterStore', () => {
 
 ### 覆盖率目标
 
-| 类型 | 目标 | 说明 |
-|------|------|------|
+| 类型           | 目标 | 说明               |
+| -------------- | ---- | ------------------ |
 | **语句覆盖率** | >80% | 执行的代码语句比例 |
 | **分支覆盖率** | >75% | 执行的代码分支比例 |
-| **函数覆盖率** | >90% | 调用的函数比例 |
-| **行覆盖率** | >80% | 执行的代码行比例 |
+| **函数覆盖率** | >90% | 调用的函数比例     |
+| **行覆盖率**   | >80% | 执行的代码行比例   |
 
 ### 生成覆盖率报告
 
@@ -612,9 +621,12 @@ pnpm test:run
 ```typescript
 // 解决方案：增加超时时间
 it('should load data', async () => {
-  await waitFor(() => {
-    expect(screen.getByText('Loaded')).toBeInTheDocument();
-  }, { timeout: 5000 });
+  await waitFor(
+    () => {
+      expect(screen.getByText('Loaded')).toBeInTheDocument();
+    },
+    { timeout: 5000 }
+  );
 });
 ```
 

@@ -20,9 +20,7 @@ export const Default: Story = {
   render: () => (
     <Alert>
       <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>
-        You can add components to your app using the cli.
-      </AlertDescription>
+      <AlertDescription>You can add components to your app using the cli.</AlertDescription>
     </Alert>
   ),
 };
@@ -31,9 +29,7 @@ export const Destructive: Story = {
   render: () => (
     <Alert variant="destructive">
       <AlertTitle>Error</AlertTitle>
-      <AlertDescription>
-        Your session has expired. Please log in again.
-      </AlertDescription>
+      <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
     </Alert>
   ),
 };
@@ -57,9 +53,7 @@ export const WithIcon: Story = {
         <line x1="12" y1="8" x2="12.01" y2="8" />
       </svg>
       <AlertTitle>Information</AlertTitle>
-      <AlertDescription>
-        This is an informational alert with a custom icon.
-      </AlertDescription>
+      <AlertDescription>This is an informational alert with a custom icon.</AlertDescription>
     </Alert>
   ),
 };
@@ -82,9 +76,7 @@ export const Success: Story = {
         <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
       <AlertTitle>Success!</AlertTitle>
-      <AlertDescription>
-        Your changes have been saved successfully.
-      </AlertDescription>
+      <AlertDescription>Your changes have been saved successfully.</AlertDescription>
     </Alert>
   ),
 };

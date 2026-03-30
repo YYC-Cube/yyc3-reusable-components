@@ -85,7 +85,13 @@ describe('Invoices', () => {
 
   it('handles navigation context', () => {
     const onNavigate = vi.fn();
-    render(<Invoices {...defaultProps} navigationContext={{ source: 'orders', orderId: 'ORD-2025-001' }} onNavigate={onNavigate} />);
+    render(
+      <Invoices
+        {...defaultProps}
+        navigationContext={{ source: 'orders', orderId: 'ORD-2025-001' }}
+        onNavigate={onNavigate}
+      />
+    );
     expect(onNavigate).toBeDefined();
   });
 

@@ -37,10 +37,7 @@ function ParallaxLayer({ children, speed, className = '', zIndex = 0 }: Parallax
   const y = useTransform(scrollY, [0, 1000], [0, speed * 100]);
 
   return (
-    <motion.div
-      style={{ y, zIndex }}
-      className={`absolute inset-0 ${className}`}
-    >
+    <motion.div style={{ y, zIndex }} className={`absolute inset-0 ${className}`}>
       {children}
     </motion.div>
   );
@@ -59,12 +56,7 @@ export function ParallaxBackground({ layers, className = '' }: ParallaxBackgroun
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {layers.map((layer, index) => (
-        <ParallaxLayer
-          key={index}
-          speed={layer.speed}
-          className={layer.className}
-          zIndex={index}
-        >
+        <ParallaxLayer key={index} speed={layer.speed} className={layer.className} zIndex={index}>
           {layer.content}
         </ParallaxLayer>
       ))}
@@ -151,9 +143,7 @@ export function ParallaxImage({
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, speed * 100]);
-  const scaleValue = scale
-    ? useTransform(scrollYProgress, [0, 0.5, 1], [1.2, 1, 1.2])
-    : 1;
+  const scaleValue = scale ? useTransform(scrollYProgress, [0, 0.5, 1], [1.2, 1, 1.2]) : 1;
 
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
@@ -183,21 +173,9 @@ export function ParallaxStack({ cards, className = '' }: ParallaxStackProps) {
   return (
     <div ref={ref} className={`space-y-8 ${className}`}>
       {cards.map((card, index) => {
-        const y = useTransform(
-          scrollYProgress,
-          [0, 1],
-          [0, -50 * (index + 1)]
-        );
-        const scale = useTransform(
-          scrollYProgress,
-          [0, 0.5, 1],
-          [0.95, 1, 0.95]
-        );
-        const opacity = useTransform(
-          scrollYProgress,
-          [0, 0.2, 0.8, 1],
-          [0, 1, 1, 0]
-        );
+        const y = useTransform(scrollYProgress, [0, 1], [0, -50 * (index + 1)]);
+        const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.95]);
+        const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
         return (
           <motion.div
@@ -361,21 +339,14 @@ export function InfiniteScroll({
   className = '',
 }: InfiniteScrollProps) {
   const { scrollY } = useScroll();
-  
-  const x = direction === 'horizontal' 
-    ? useTransform(scrollY, [0, 1000], [0, -speed * 100])
-    : 0;
-  
-  const y = direction === 'vertical' 
-    ? useTransform(scrollY, [0, 1000], [0, -speed * 100])
-    : 0;
+
+  const x = direction === 'horizontal' ? useTransform(scrollY, [0, 1000], [0, -speed * 100]) : 0;
+
+  const y = direction === 'vertical' ? useTransform(scrollY, [0, 1000], [0, -speed * 100]) : 0;
 
   return (
     <div className={`overflow-hidden ${className}`}>
-      <motion.div
-        style={{ x, y }}
-        className="flex gap-4"
-      >
+      <motion.div style={{ x, y }} className="flex gap-4">
         {children}
         {children} {/* 重复内容实现无限滚动效果 */}
       </motion.div>

@@ -24,7 +24,14 @@
  * dependencies: react
  */
 
-import React, { memo, useRef, useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import React, {
+  memo,
+  useRef,
+  useEffect,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react';
 
 // ==========================================
 // 类型定义
@@ -184,8 +191,7 @@ export const NeonCard = memo(function NeonCard({
       const target = e.currentTarget;
       if (isLiquid) {
         target.style.background = 'rgba(255,255,255,0.06)';
-        target.style.boxShadow =
-          '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.08)';
+        target.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.08)';
       } else {
         target.style.borderColor = `${effectiveColor}33`;
         target.style.boxShadow = `0 0 10px ${effectiveColor}33, inset 0 0 15px ${effectiveColor}0d`;

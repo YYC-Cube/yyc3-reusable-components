@@ -12,4 +12,4 @@ export const i18nConfig: I18nConfig = {
   localeDetection: 'browser',
 };
 
-export type Locale = typeof i18nConfig.supportedLocales[number];
+export type Locale = (typeof i18nConfig.supportedLocales)[number];

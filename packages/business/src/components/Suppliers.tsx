@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Building2, 
-  Search, 
-  Plus, 
-  Filter, 
+import {
+  Building2,
+  Search,
+  Plus,
+  Filter,
   Download,
   MoreVertical,
   TrendingUp,
@@ -12,9 +12,9 @@ import {
   MapPin,
   Package,
   Star,
-  CheckCircle2
+  CheckCircle2,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface SuppliersProps {
   currentLanguage: string;
@@ -36,7 +36,7 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
       orders: 234,
       rating: 5,
       status: 'verified',
-      reliability: 98
+      reliability: 98,
     },
     {
       id: 'SUP-002',
@@ -50,7 +50,7 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
       orders: 189,
       rating: 5,
       status: 'verified',
-      reliability: 96
+      reliability: 96,
     },
     {
       id: 'SUP-003',
@@ -64,7 +64,7 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
       orders: 156,
       rating: 4,
       status: 'verified',
-      reliability: 94
+      reliability: 94,
     },
     {
       id: 'SUP-004',
@@ -78,7 +78,7 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
       orders: 123,
       rating: 4,
       status: 'pending',
-      reliability: 89
+      reliability: 89,
     },
     {
       id: 'SUP-005',
@@ -92,8 +92,8 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
       orders: 98,
       rating: 4,
       status: 'verified',
-      reliability: 92
-    }
+      reliability: 92,
+    },
   ];
 
   const stats = [
@@ -101,26 +101,26 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
       title: { en: 'Total Suppliers', zh: '总供应商' },
       value: '456',
       change: '+8.2%',
-      color: 'from-indigo-500 to-blue-500'
+      color: 'from-indigo-500 to-blue-500',
     },
     {
       title: { en: 'Verified Suppliers', zh: '认证供应商' },
       value: '387',
       change: '+5.7%',
-      color: 'from-emerald-500 to-teal-500'
+      color: 'from-emerald-500 to-teal-500',
     },
     {
       title: { en: 'Total Purchases', zh: '总采购额' },
       value: '9,901,231 ﷼',
       change: '+12.4%',
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-amber-500 to-orange-500',
     },
     {
       title: { en: 'Avg Reliability', zh: '平均可靠性' },
       value: '94.2%',
       change: '+2.1%',
-      color: 'from-purple-500 to-pink-500'
-    }
+      color: 'from-purple-500 to-pink-500',
+    },
   ];
 
   const getStatusColor = (status: string) => {
@@ -137,7 +137,7 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
   const getStatusLabel = (status: string) => {
     const labels = {
       verified: { en: 'Verified', zh: '已认证' },
-      pending: { en: 'Pending', zh: '待审核' }
+      pending: { en: 'Pending', zh: '待审核' },
     };
     return labels[status as keyof typeof labels][currentLanguage as keyof typeof labels.verified];
   };
@@ -155,7 +155,9 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
               {currentLanguage === 'en' ? 'Supplier Management' : '供应商管理'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Manage and track all supplier relationships' : '管理和跟踪所有供应商关系'}
+              {currentLanguage === 'en'
+                ? 'Manage and track all supplier relationships'
+                : '管理和跟踪所有供应商关系'}
             </p>
           </div>
         </div>
@@ -185,7 +187,9 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
                 <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
                 <span className="text-indigo-400 text-sm font-medium">{stat.change}</span>
               </div>
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+              <div
+                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+              ></div>
             </div>
           </div>
         ))}
@@ -253,7 +257,7 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
             </thead>
             <tbody className="divide-y divide-slate-700/30">
               {suppliers.map((supplier, index) => (
-                <tr 
+                <tr
                   key={supplier.id}
                   className="hover:bg-slate-800/30 transition-colors duration-200 group"
                   style={{ animationDelay: `${index * 50}ms` }}
@@ -279,7 +283,9 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
                       </div>
                       <div className="flex items-center space-x-2 text-gray-400 text-sm">
                         <MapPin className="w-3 h-3 text-gray-500" />
-                        <span>{supplier.location[currentLanguage as keyof typeof supplier.location]}</span>
+                        <span>
+                          {supplier.location[currentLanguage as keyof typeof supplier.location]}
+                        </span>
                       </div>
                     </div>
                   </td>
@@ -292,21 +298,27 @@ export function Suppliers({ currentLanguage }: SuppliersProps) {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="text-indigo-400 font-semibold">{supplier.totalSupplied} ﷼</span>
+                    <span className="text-indigo-400 font-semibold">
+                      {supplier.totalSupplied} ﷼
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center space-x-2">
                       <div className="w-24 h-2 bg-slate-700 rounded-full overflow-hidden">
-                        <div 
+                        <div
                           className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transition-all duration-500"
                           style={{ width: `${supplier.reliability}%` }}
                         ></div>
                       </div>
-                      <span className="text-green-400 text-sm font-medium">{supplier.reliability}%</span>
+                      <span className="text-green-400 text-sm font-medium">
+                        {supplier.reliability}%
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium border inline-flex items-center space-x-1 ${getStatusColor(supplier.status)}`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium border inline-flex items-center space-x-1 ${getStatusColor(supplier.status)}`}
+                    >
                       {supplier.status === 'verified' && <CheckCircle2 className="w-3 h-3" />}
                       <span>{getStatusLabel(supplier.status)}</span>
                     </span>

@@ -75,9 +75,10 @@ export class PerformanceMonitor {
 
   // 获取网络信息
   getNetwork() {
-    const connection = (navigator as any).connection ||
-                      (navigator as any).mozConnection ||
-                      (navigator as any).webkitConnection;
+    const connection =
+      (navigator as any).connection ||
+      (navigator as any).mozConnection ||
+      (navigator as any).webkitConnection;
 
     if (!connection) return null;
 
@@ -91,7 +92,7 @@ export class PerformanceMonitor {
   // 获取页面加载性能
   getPageLoadMetrics() {
     const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-    
+
     if (!navigation) {
       return {
         loadTime: 0,
@@ -105,7 +106,9 @@ export class PerformanceMonitor {
     // 获取First Paint和First Contentful Paint
     const paintEntries = performance.getEntriesByType('paint');
     const firstPaint = paintEntries.find((entry) => entry.name === 'first-paint');
-    const firstContentfulPaint = paintEntries.find((entry) => entry.name === 'first-contentful-paint');
+    const firstContentfulPaint = paintEntries.find(
+      (entry) => entry.name === 'first-contentful-paint'
+    );
 
     // 获取Largest Contentful Paint
     let largestContentfulPaint = 0;
@@ -299,9 +302,7 @@ export const performanceMonitor = new PerformanceMonitor();
 
 // React Hook
 export function usePerformanceMetrics() {
-  const [metrics, setMetrics] = useState<PerformanceMetrics>(
-    performanceMonitor.getMetrics()
-  );
+  const [metrics, setMetrics] = useState<PerformanceMetrics>(performanceMonitor.getMetrics());
 
   useEffect(() => {
     return performanceMonitor.subscribe(setMetrics);
@@ -316,27 +317,18 @@ export function usePerformanceWarnings() {
 
   useEffect(() => {
     const unsubscribeLongTask = PerformanceMonitor.monitorLongTasks((duration) => {
-      setWarnings((prev) => [
-        ...prev,
-        `检测到长任务: ${duration.toFixed(2)}ms`,
-      ].slice(-10));
+      setWarnings((prev) => [...prev, `检测到长任务: ${duration.toFixed(2)}ms`].slice(-10));
     });
 
     const unsubscribeCLS = PerformanceMonitor.monitorLayoutShift((score) => {
       if (score > 0.1) {
-        setWarnings((prev) => [
-          ...prev,
-          `布局偏移过大: ${score.toFixed(4)}`,
-        ].slice(-10));
+        setWarnings((prev) => [...prev, `布局偏移过大: ${score.toFixed(4)}`].slice(-10));
       }
     });
 
     const unsubscribeFID = PerformanceMonitor.monitorFirstInputDelay((delay) => {
       if (delay > 100) {
-        setWarnings((prev) => [
-          ...prev,
-          `首次输入延迟过长: ${delay.toFixed(2)}ms`,
-        ].slice(-10));
+        setWarnings((prev) => [...prev, `首次输入延迟过长: ${delay.toFixed(2)}ms`].slice(-10));
       }
     });
 

@@ -10,7 +10,8 @@
 
 **为您的AI助手提供热重载提示词、结构化推理和链式工作流。专为Claude打造，可在任何地方工作。**
 
-[快速开始](#快速开始) • [功能特性](#功能特性) • [语法参考](#语法参考) • [文档](#文档)
+[快速开始](#快速开始) • [功能特性](#功能特性) • [语法参考](#语法参考) •
+[文档](#文档)
 
 </div>
 
@@ -20,7 +21,8 @@
 
 - **版本控制** — 提示词是git中的Markdown文件。跟踪变更、查看差异、分支实验。
 - **热重载** — 编辑模板，立即运行。无需重启。
-- **结构化执行** — 不仅仅是文本。服务器解析运算符、注入方法论、强制执行质量检查、渲染最终提示词。
+- **结构化执行**
+  — 不仅仅是文本。服务器解析运算符、注入方法论、强制执行质量检查、渲染最终提示词。
 
 ## 快速开始
 
@@ -291,22 +293,22 @@ Help me refactor this function :: 'keep it under 20 lines' :: 'add error handlin
 Research the topic :: 'use recent sources' --> Summarize findings :: 'be concise' --> Create action items
 ```
 
-| 检查格式 | 语法                            | 用例                              |
-| -------- | ------------------------------- | --------------------------------- |
-| **内联** | `:: 'criteria text'`            | 快速检查，可读命令                |
-| **命名** | `:: {name, description}`        | 具有明确意图的可重用检查          |
-| **完整** | `:: {name, criteria[], guidance}` | 复杂验证，多个标准              |
+| 检查格式 | 语法                              | 用例                     |
+| -------- | --------------------------------- | ------------------------ |
+| **内联** | `:: 'criteria text'`              | 快速检查，可读命令       |
+| **命名** | `:: {name, description}`          | 具有明确意图的可重用检查 |
+| **完整** | `:: {name, criteria[], guidance}` | 复杂验证，多个标准       |
 
 **结构化检查（程序化）：**
 
 ```javascript
 prompt_engine({
-  command: ">>code_review",
+  command: '>>code_review',
   gates: [
     {
-      name: "Security Check",
-      criteria: ["No hardcoded secrets", "Input validation on user data"],
-      guidance: "Flag vulnerabilities with severity ratings",
+      name: 'Security Check',
+      criteria: ['No hardcoded secrets', 'Input validation on user data'],
+      guidance: 'Flag vulnerabilities with severity ratings',
     },
   ],
 });
@@ -318,14 +320,14 @@ prompt_engine({
 
 `prompt_engine`使用符号运算符来组合工作流：
 
-| 符号 | 名称          | 功能描述                                         |
-| :--- | :------------ | :----------------------------------------------- |
-|  `>>`  | **提示词**    | 按ID执行模板（`>>code_review`）                  |
-| `-->`  | **链式**     | 将输出传递到下一步（`step1 --> step2`）          |
-|  `@`   | **框架**     | 注入方法论 + 自动检查（`@CAGEERF`）              |
-|  `::`  | **检查**      | 添加质量标准（`:: 'cite sources'`）               |
-|  `%`   | **修饰符**    | 切换执行模式（`%clean`、`%lean`、`%judge`）      |
-|  `#`   | **风格**      | 应用语气/角色预设（`#analytical`）                |
+| 符号  | 名称       | 功能描述                                    |
+| :---- | :--------- | :------------------------------------------ |
+| `>>`  | **提示词** | 按ID执行模板（`>>code_review`）             |
+| `-->` | **链式**   | 将输出传递到下一步（`step1 --> step2`）     |
+| `@`   | **框架**   | 注入方法论 + 自动检查（`@CAGEERF`）         |
+| `::`  | **检查**   | 添加质量标准（`:: 'cite sources'`）         |
+| `%`   | **修饰符** | 切换执行模式（`%clean`、`%lean`、`%judge`） |
+| `#`   | **风格**   | 应用语气/角色预设（`#analytical`）          |
 
 **修饰符解释：**
 
@@ -362,15 +364,13 @@ prompt_engine(command:">>code_review @CAGEERF :: security_review #style(analytic
 
 _`%judge`修饰符返回资源菜单。Claude分析任务，选择适当的资源，并使用内联运算符进行后续调用。_
 
-**2. 链式推理**
-每个阶段都有质量检查的多步骤工作流：
+**2. 链式推理** 每个阶段都有质量检查的多步骤工作流：
 
 ```text
 Research AI trends :: 'use 2024 sources' --> Analyze implications --> Write executive summary :: 'keep under 500 words'
 ```
 
-**3. 迭代提示词优化**
-发现提示词有问题？让Claude修复它——更改立即生效：
+**3. 迭代提示词优化** 发现提示词有问题？让Claude修复它——更改立即生效：
 
 ```text
 User: "The code_review prompt is too verbose, make it more concise"
@@ -387,13 +387,13 @@ Claude: prompt_engine(command:">>code_review")
 
 通过`server/config.json`自定义行为。无需重建——只需重启。
 
-| 部分          | 设置                           | 默认值                         | 描述                                                                             |
-| :----------- | :---------------------------- | :--------------------------- | :-------------------------------------------------------------------------------- |
-| `prompts`    | `file`                        | `prompts/promptsConfig.json` | 定义提示词类别和导入路径的主配置。                                               |
-| `prompts`    | `registerWithMcp`             | `true`                       | 向Claude客户端公开提示词。设置为`false`进入内部使用模式。                         |
-| `frameworks` | `enableSystemPromptInjection` | `true`                       | 自动将方法论指导（CAGEERF等）注入系统提示词。                                     |
-| `gates`      | `definitionsDirectory`        | `src/gates/definitions`      | 自定义质量检查定义的路径（JSON）。                                               |
-| `judge`      | `enabled`                     | `true`                       | 启用内置的智能阶段（`%judge`），显示框架/风格/检查选项。                         |
+| 部分         | 设置                          | 默认值                       | 描述                                                      |
+| :----------- | :---------------------------- | :--------------------------- | :-------------------------------------------------------- |
+| `prompts`    | `file`                        | `prompts/promptsConfig.json` | 定义提示词类别和导入路径的主配置。                        |
+| `prompts`    | `registerWithMcp`             | `true`                       | 向Claude客户端公开提示词。设置为`false`进入内部使用模式。 |
+| `frameworks` | `enableSystemPromptInjection` | `true`                       | 自动将方法论指导（CAGEERF等）注入系统提示词。             |
+| `gates`      | `definitionsDirectory`        | `src/gates/definitions`      | 自定义质量检查定义的路径（JSON）。                        |
+| `judge`      | `enabled`                     | `true`                       | 启用内置的智能阶段（`%judge`），显示框架/风格/检查选项。  |
 
 ### 注入目标模式（高级）
 
@@ -408,11 +408,11 @@ Claude: prompt_engine(command:">>code_review")
 }
 ```
 
-| 目标    | 行为                                   |
-| :------ | :------------------------------------- |
-| `both`  | 在步骤和检查审查时注入（默认）         |
-| `steps` | 仅在正常步骤执行期间注入               |
-| `gates` | 仅在检查审查步骤期间注入               |
+| 目标    | 行为                           |
+| :------ | :----------------------------- |
+| `both`  | 在步骤和检查审查时注入（默认） |
+| `steps` | 仅在正常步骤执行期间注入       |
+| `gates` | 仅在检查审查步骤期间注入       |
 
 适用于：`system-prompt`、`gate-guidance`、`style-guidance`
 

@@ -75,8 +75,12 @@ describe('useAI', () => {
 
     // Mock successful stream
     const mockReader = {
-      read: vi.fn()
-        .mockResolvedValueOnce({ done: false, value: new TextEncoder().encode('data: {"choices":[{"delta":{"content":"Hello"}}]}\n\n') })
+      read: vi
+        .fn()
+        .mockResolvedValueOnce({
+          done: false,
+          value: new TextEncoder().encode('data: {"choices":[{"delta":{"content":"Hello"}}]}\n\n'),
+        })
         .mockResolvedValueOnce({ done: true }),
     };
 
@@ -91,10 +95,7 @@ describe('useAI', () => {
 
     const chunks: string[] = [];
     await act(async () => {
-      await result.current.chat(
-        [{ role: 'user', content: 'Hi' }],
-        (chunk) => chunks.push(chunk)
-      );
+      await result.current.chat([{ role: 'user', content: 'Hi' }], (chunk) => chunks.push(chunk));
     });
 
     expect(chunks.length).toBeGreaterThan(0);
@@ -108,10 +109,7 @@ describe('useAI', () => {
 
     const chunks: string[] = [];
     await act(async () => {
-      await result.current.chat(
-        [{ role: 'user', content: 'Test' }],
-        (chunk) => chunks.push(chunk)
-      );
+      await result.current.chat([{ role: 'user', content: 'Test' }], (chunk) => chunks.push(chunk));
     });
 
     // Should fallback to simulation mode

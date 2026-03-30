@@ -1768,7 +1768,7 @@ export function SettingsModal({ isOpen, onClose, defaultTab = 'models', channelM
                   <Input 
                     type="password"
                     value={dbConfig.proxyConfig.authToken}
-                    onChange={(e) => dbConfig.saveProxyConfig({ authToken: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => dbConfig.saveProxyConfig({ authToken: e.target.value })}
                     placeholder="Bearer token for proxy auth..."
                     className="bg-black border-green-500/20 text-green-500 font-mono h-10 rounded-none focus-visible:ring-0 focus-visible:border-green-500/50 text-sm"
                   />

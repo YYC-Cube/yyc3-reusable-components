@@ -1,16 +1,17 @@
 # YYC³ Component Library
 
-> ***YanYuCloudCube***
-> *言启象限 | 语枢未来*
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> *万象归元于云枢 | 深栈智启新纪元*
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence*
+> **_YanYuCloudCube_** _言启象限 | 语枢未来_ **_Words Initiate Quadrants,
+> Language Serves as Core for Future_** _万象归元于云枢 | 深栈智启新纪元_
+> _\*\*All things converge in cloud pivot; Deep stacks ignite a new era of
+> intelligence_
 
 ---
 
 ## 📋 项目概述
 
-YYC³ Component Library 是一个统一的 Monorepo 架构，整合了 YYC³ AI Assistant 和 Futuristic Business Management 两个项目的所有组件，提供完整的组件库解决方案。
+YYC³ Component Library 是一个统一的 Monorepo 架构，整合了 YYC³ AI
+Assistant 和 Futuristic Business
+Management 两个项目的所有组件，提供完整的组件库解决方案。
 
 ### 🎯 项目特点
 
@@ -151,11 +152,13 @@ pnpm --filter @yyc3/ui test
 UI基础组件库，包含所有基础UI组件。
 
 **安装**:
+
 ```bash
 npm install @yyc3/ui
 ```
 
 **使用**:
+
 ```tsx
 import { Button, Input, Dialog } from '@yyc3/ui';
 
@@ -173,6 +176,7 @@ function App() {
 ```
 
 **包含组件**:
+
 - Button, Input, Dialog, Card, Table, Badge, Avatar, Tooltip, Alert, Skeleton
 - Tabs, Select, Checkbox, RadioGroup, Switch, Slider, Progress
 - DropdownMenu, Popover, Accordion, Collapsible, Sheet, Drawer
@@ -188,11 +192,13 @@ function App() {
 业务组件库，包含企业管理相关的业务组件。
 
 **安装**:
+
 ```bash
 npm install @yyc3/business
 ```
 
 **使用**:
+
 ```tsx
 import { Dashboard, Customers, Orders } from '@yyc3/business';
 
@@ -208,13 +214,15 @@ function App() {
 ```
 
 **包含组件**:
+
 - Dashboard, Customers, Orders, Inventory, Employees, Suppliers
 - Projects, Contracts, Payments, Invoices, Leads, Loans
 - Logistics, Warehouse, WorkOrders, Accounting, Approvals
 - Attendance, Payroll, Reconciliation, VAT, Procurement
 - Assets, EquipmentManager, DataManagement, DataMining
 - Reports, Performance, MarketIntelligence, InventoryCheck
-- TalentProfile, ProcessAutomation, WorkflowDesigner, PermissionManager, Documents
+- TalentProfile, ProcessAutomation, WorkflowDesigner, PermissionManager,
+  Documents
 
 ---
 
@@ -223,11 +231,13 @@ function App() {
 Smart组件库，包含AI智能组件。
 
 **安装**:
+
 ```bash
 npm install @yyc3/smart
 ```
 
 **使用**:
+
 ```tsx
 import { SmartSales, SmartPrediction, SmartAlert } from '@yyc3/smart';
 
@@ -243,6 +253,7 @@ function App() {
 ```
 
 **包含组件**:
+
 - SmartSales, SmartPrediction, SmartAlert, SmartRisk, SmartBudget
 - SmartDecision, SmartDocs, SmartSearch, SmartNLP, SmartChatbot
 - SmartTraining, SmartRecruitment, SmartScheduling, SmartProduction
@@ -256,11 +267,13 @@ function App() {
 特效组件库，包含3D和动画特效组件。
 
 **安装**:
+
 ```bash
 npm install @yyc3/effects
 ```
 
 **使用**:
+
 ```tsx
 import { _3DEffects, MicroInteractions, ParallaxScroll } from '@yyc3/effects';
 
@@ -276,7 +289,8 @@ function App() {
 ```
 
 **包含组件**:
-- _3DEffects, MicroInteractions, ParallaxScroll
+
+- \_3DEffects, MicroInteractions, ParallaxScroll
 
 ---
 
@@ -285,11 +299,13 @@ function App() {
 导航组件库，包含导航和路由组件。
 
 **安装**:
+
 ```bash
 npm install @yyc3/navigation
 ```
 
 **使用**:
+
 ```tsx
 import { TabNavigation } from '@yyc3/navigation';
 
@@ -299,6 +315,7 @@ function App() {
 ```
 
 **包含组件**:
+
 - TabNavigation
 
 ---
@@ -308,11 +325,13 @@ function App() {
 AI组件库，包含AI助手和聊天组件。
 
 **安装**:
+
 ```bash
 npm install @yyc3/ai
 ```
 
 **使用**:
+
 ```tsx
 import { Chat, ChatContainer, ChatInput, ChatMessage } from '@yyc3/ai';
 
@@ -328,6 +347,7 @@ function App() {
 ```
 
 **包含组件**:
+
 - Chat, ChatContainer, ChatInput, ChatMessage, ChatSidebar
 - ClaudeSidebar, ClaudeWelcome, SettingsModal, SystemStartup
 - TypingIndicator, AsciiArt, ArtifactsPanel, YYC3Background
@@ -339,13 +359,19 @@ function App() {
 自定义React Hooks库。
 
 **安装**:
+
 ```bash
 npm install @yyc3/hooks
 ```
 
 **使用**:
+
 ```tsx
-import { usePersistedState, useNavigationContext, useNotifications } from '@yyc3/hooks';
+import {
+  usePersistedState,
+  useNavigationContext,
+  useNotifications,
+} from '@yyc3/hooks';
 
 function App() {
   const [state, setState] = usePersistedState('key', 'default');
@@ -357,6 +383,7 @@ function App() {
 ```
 
 **包含Hooks**:
+
 - usePersistedState, useNavigationContext, useNotifications
 - useResponsive, useGestures, useAI, useChannelConfig
 - useChannelManager, useChatPersistence, useDatabaseConfig
@@ -369,11 +396,13 @@ function App() {
 工具函数库，包含通用工具函数。
 
 **安装**:
+
 ```bash
 npm install @yyc3/utils
 ```
 
 **使用**:
+
 ```tsx
 import { cn, formatDate, formatNumber, debounce, throttle } from '@yyc3/utils';
 
@@ -382,11 +411,16 @@ function App() {
   const date = formatDate(new Date());
   const number = formatNumber(1234.56);
 
-  return <div className={className}>{date} - {number}</div>;
+  return (
+    <div className={className}>
+      {date} - {number}
+    </div>
+  );
 }
 ```
 
 **包含函数**:
+
 - cn, formatDate, formatNumber, debounce, throttle
 - animations, colors, performanceMonitor, serviceWorkerRegistration
 
@@ -397,11 +431,13 @@ function App() {
 服务层库，包含业务逻辑服务。
 
 **安装**:
+
 ```bash
 npm install @yyc3/services
 ```
 
 **使用**:
+
 ```tsx
 import { DatabaseService, DevOpsService, GitHubService } from '@yyc3/services';
 
@@ -411,6 +447,7 @@ const gitHubService = new GitHubService();
 ```
 
 **包含服务**:
+
 - DatabaseService, DevOpsService, GitHubService
 
 ---
@@ -420,11 +457,13 @@ const gitHubService = new GitHubService();
 数据访问层库，包含数据库和API仓库。
 
 **安装**:
+
 ```bash
 npm install @yyc3/repositories
 ```
 
 **使用**:
+
 ```tsx
 import { DatabaseRepository, GitHubRepository } from '@yyc3/repositories';
 
@@ -433,6 +472,7 @@ const githubRepo = new GitHubRepository();
 ```
 
 **包含仓库**:
+
 - DatabaseRepository, GitHubRepository
 
 ---
@@ -496,10 +536,9 @@ YYC³ Team <admin@0379.email>
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
-> 「***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」「**_All things converge in
+> cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 ---
 

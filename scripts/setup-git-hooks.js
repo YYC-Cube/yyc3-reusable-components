@@ -120,7 +120,9 @@ const results = [
 const successCount = results.filter(Boolean).length;
 
 console.log(`\n${colors.cyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
-console.log(`${colors.green}成功安装 ${successCount}/${results.length} 个 Git Hooks${colors.reset}`);
+console.log(
+  `${colors.green}成功安装 ${successCount}/${results.length} 个 Git Hooks${colors.reset}`
+);
 console.log(`${colors.cyan}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`);
 
 console.log(`${colors.blue}已安装的 Hooks:${colors.reset}`);

@@ -30,7 +30,7 @@ describe('useUISettings', () => {
       bgOpacity: 80,
       fontSize: 'lg',
       fontId: 'fira-code',
-      version: 2
+      version: 2,
     };
     localStorage.setItem('yyc3_ui_settings', JSON.stringify(savedSettings));
 
@@ -48,7 +48,7 @@ describe('useUISettings', () => {
     act(() => {
       result.current.updateSettings({
         theme: 'Neon',
-        themeColorId: 'purple'
+        themeColorId: 'purple',
       });
     });
 
@@ -62,7 +62,7 @@ describe('useUISettings', () => {
     const newSettings = {
       ...result.current.settings,
       theme: 'Glass',
-      bgOpacity: 50
+      bgOpacity: 50,
     };
 
     act(() => {
@@ -83,7 +83,7 @@ describe('useUISettings', () => {
       result.current.updateSettings({
         theme: 'Dark',
         themeColorId: 'blue',
-        fontSize: 'sm'
+        fontSize: 'sm',
       });
     });
 

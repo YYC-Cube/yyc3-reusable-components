@@ -147,8 +147,8 @@ export const LongText: Story = {
       </TooltipTrigger>
       <TooltipContent className="max-w-xs">
         <p>
-          This is a longer tooltip with more information. It can contain multiple
-          lines of text and will wrap appropriately.
+          This is a longer tooltip with more information. It can contain multiple lines of text and
+          will wrap appropriately.
         </p>
       </TooltipContent>
     </Tooltip>

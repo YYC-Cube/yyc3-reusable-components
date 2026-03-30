@@ -4,7 +4,8 @@
 
 ## 📦 简介
 
-`@yyc3/ui` 是YYC³组件库的基础层，提供了54个高质量的UI组件，基于Radix UI和Tailwind CSS构建，支持完整的可访问性和主题定制。
+`@yyc3/ui` 是YYC³组件库的基础层，提供了54个高质量的UI组件，基于Radix
+UI和Tailwind CSS构建，支持完整的可访问性和主题定制。
 
 ## 🎯 特性
 
@@ -47,6 +48,7 @@ function App() {
 ## 📚 组件列表
 
 ### 表单组件
+
 - Button - 按钮
 - Input - 输入框
 - Checkbox - 复选框
@@ -58,6 +60,7 @@ function App() {
 - Textarea - 文本域
 
 ### 布局组件
+
 - Card - 卡片
 - Dialog - 对话框
 - Sheet - 抽屉
@@ -66,12 +69,14 @@ function App() {
 - Accordion - 折叠面板
 
 ### 导航组件
+
 - NavigationMenu - 导航菜单
 - Menubar - 菜单栏
 - Breadcrumb - 面包屑
 - Pagination - 分页
 
 ### 数据展示
+
 - Table - 表格
 - Badge - 徽章
 - Avatar - 头像
@@ -80,6 +85,7 @@ function App() {
 - Chart - 图表
 
 ### 反馈组件
+
 - Alert - 警告
 - Tooltip - 提示
 - Sonner - Toast通知
@@ -126,7 +132,7 @@ module.exports = {
       },
     },
   },
-}
+};
 ```
 
 ## 🔧 开发

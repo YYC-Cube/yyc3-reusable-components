@@ -11,7 +11,7 @@ type Story = StoryObj;
 
 function ResponsiveDemo() {
   const { isMobile, isTablet, isDesktop, isLargeDesktop, width } = useResponsive();
-  
+
   return (
     <div className="p-6 space-y-4">
       <div className="text-2xl font-bold">Responsive Information</div>
@@ -57,7 +57,7 @@ export const Default: Story = {
 
 function ResponsiveLayoutDemo() {
   const { isMobile, isDesktop } = useResponsive();
-  
+
   return (
     <div className="p-6">
       <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-3'} gap-4`}>
@@ -78,7 +78,7 @@ export const ResponsiveLayout: Story = {
 
 function ConditionalContentDemo() {
   const { isMobile } = useResponsive();
-  
+
   return (
     <div className="p-6">
       {isMobile ? (

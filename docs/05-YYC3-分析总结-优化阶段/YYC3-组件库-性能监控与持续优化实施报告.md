@@ -37,23 +37,27 @@
 #### 1.1 核心性能指标
 
 **组件渲染性能**
+
 - 首次渲染时间 (First Render Time)
 - 重新渲染时间 (Re-render Time)
 - 组件挂载时间 (Mount Time)
 - 组件卸载时间 (Unmount Time)
 
 **内存使用**
+
 - 组件内存占用 (Component Memory Usage)
 - 内存泄漏检测 (Memory Leak Detection)
 - 垃圾回收频率 (GC Frequency)
 
 **交互性能**
+
 - 点击响应时间 (Click Response Time)
 - 输入延迟 (Input Latency)
 - 滚动性能 (Scroll Performance)
 - 动画帧率 (Animation FPS)
 
 **包大小**
+
 - 组件包大小 (Component Bundle Size)
 - Tree-shaking效果 (Tree-shaking Efficiency)
 - 依赖包大小 (Dependency Bundle Size)
@@ -70,18 +74,18 @@ export interface PerformanceMetrics {
   reRenderTime: number;
   mountTime: number;
   unmountTime: number;
-  
+
   // 内存使用
   memoryUsage: number;
   memoryLeakDetected: boolean;
   gcFrequency: number;
-  
+
   // 交互性能
   clickResponseTime: number;
   inputLatency: number;
   scrollPerformance: number;
   animationFPS: number;
-  
+
   // 包大小
   bundleSize: number;
   treeShakingEfficiency: number;
@@ -145,26 +149,26 @@ describe('Button Performance', () => {
     performance.mark('render-start');
     render(<Button>Click me</Button>);
     performance.mark('render-end');
-    
+
     performance.measure('render-duration', 'render-start', 'render-end');
     const measure = performance.getEntriesByName('render-duration')[0];
-    
+
     expect(measure.duration).toBeLessThan(16); // 60fps threshold
   });
 
   it('should handle rapid clicks efficiently', () => {
     const { getByText } = render(<Button>Click me</Button>);
     const button = getByText('Click me');
-    
+
     const startMemory = performance.memory?.usedJSHeapSize || 0;
-    
+
     for (let i = 0; i < 100; i++) {
       button.click();
     }
-    
+
     const endMemory = performance.memory?.usedJSHeapSize || 0;
     const memoryIncrease = endMemory - startMemory;
-    
+
     expect(memoryIncrease).toBeLessThan(1024 * 100); // 100KB
   });
 });
@@ -187,8 +191,13 @@ export interface BenchmarkResult {
 
 export class PerformanceBenchmark {
   private results: BenchmarkResult[] = [];
-  
-  runBenchmark(componentName: string, metric: string, value: number, threshold: number): BenchmarkResult {
+
+  runBenchmark(
+    componentName: string,
+    metric: string,
+    value: number,
+    threshold: number
+  ): BenchmarkResult {
     const result: BenchmarkResult = {
       componentName,
       metric,
@@ -197,24 +206,24 @@ export class PerformanceBenchmark {
       passed: value <= threshold,
       timestamp: new Date(),
     };
-    
+
     this.results.push(result);
     return result;
   }
-  
+
   checkRegression(componentName: string, metric: string): boolean {
     const componentResults = this.results.filter(
-      r => r.componentName === componentName && r.metric === metric
+      (r) => r.componentName === componentName && r.metric === metric
     );
-    
+
     if (componentResults.length < 2) return false;
-    
+
     const latest = componentResults[componentResults.length - 1];
     const previous = componentResults[componentResults.length - 2];
-    
+
     return latest.value > previous.value * 1.1; // 10% regression threshold
   }
-  
+
   getResults(): BenchmarkResult[] {
     return this.results;
   }
@@ -263,30 +272,30 @@ on:
 jobs:
   performance:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
         run: pnpm install
-        
+
       - name: Run performance tests
         run: pnpm test:performance
-        
+
       - name: Check for performance regression
         run: pnpm test:performance:regression
-        
+
       - name: Upload performance results
         uses: actions/upload-artifact@v3
         with:
           name: performance-results
           path: performance-results/
-          
+
       - name: Comment PR with performance results
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v6
@@ -294,18 +303,18 @@ jobs:
           script: |
             const fs = require('fs');
             const results = JSON.parse(fs.readFileSync('performance-results/summary.json', 'utf8'));
-            
+
             const comment = `## Performance Test Results
-            
+
             | Component | Metric | Value | Threshold | Status |
             |-----------|--------|-------|-----------|--------|
             ${results.map(r => 
               `| ${r.componentName} | ${r.metric} | ${r.value}ms | ${r.threshold}ms | ${r.passed ? '✅' : '❌' } |`
             ).join('\n')}
-            
+
             ${results.some(r => !r.passed) ? '⚠️ Some performance tests failed!' : '✅ All performance tests passed!'}
             `;
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -320,6 +329,7 @@ jobs:
 # 性能优化检查清单
 
 ## 渲染优化
+
 - [ ] 使用React.memo避免不必要的重新渲染
 - [ ] 使用useMemo缓存计算结果
 - [ ] 使用useCallback缓存回调函数
@@ -327,18 +337,21 @@ jobs:
 - [ ] 避免内联函数和对象
 
 ## 代码分割
+
 - [ ] 实现动态导入（React.lazy）
 - [ ] 配置代码分割策略
 - [ ] 优化依赖包大小
 - [ ] 移除未使用的代码
 
 ## 资源优化
+
 - [ ] 优化图片大小和格式
 - [ ] 使用CDN加速资源加载
 - [ ] 实现资源预加载
 - [ ] 配置缓存策略
 
 ## 监控和分析
+
 - [ ] 集成性能监控工具
 - [ ] 设置性能告警
 - [ ] 定期分析性能报告
@@ -361,13 +374,13 @@ interface PerformanceDashboardProps {
 export function PerformanceDashboard({ refreshInterval = 30000 }: PerformanceDashboardProps) {
   const [metrics, setMetrics] = useState<PerformanceMetrics[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     fetchMetrics();
     const interval = setInterval(fetchMetrics, refreshInterval);
     return () => clearInterval(interval);
   }, [refreshInterval]);
-  
+
   const fetchMetrics = async () => {
     try {
       const response = await fetch('/api/performance/metrics');
@@ -379,15 +392,15 @@ export function PerformanceDashboard({ refreshInterval = 30000 }: PerformanceDas
       setLoading(false);
     }
   };
-  
+
   if (loading) {
     return <div>Loading performance metrics...</div>;
   }
-  
+
   return (
     <div className="performance-dashboard">
       <h2>Performance Monitoring Dashboard</h2>
-      
+
       <div className="metrics-grid">
         <div className="metric-card">
           <h3>Average First Render Time</h3>
@@ -400,7 +413,7 @@ export function PerformanceDashboard({ refreshInterval = 30000 }: PerformanceDas
             </BarChart>
           </ResponsiveContainer>
         </div>
-        
+
         <div className="metric-card">
           <h3>Memory Usage</h3>
           <ResponsiveContainer width="100%" height={200}>
@@ -412,7 +425,7 @@ export function PerformanceDashboard({ refreshInterval = 30000 }: PerformanceDas
             </BarChart>
           </ResponsiveContainer>
         </div>
-        
+
         <div className="metric-card">
           <h3>Bundle Size</h3>
           <ResponsiveContainer width="100%" height={200}>
@@ -446,12 +459,17 @@ export interface PerformanceAlert {
 
 export class PerformanceAlertManager {
   private alerts: PerformanceAlert[] = [];
-  
-  checkThreshold(componentName: string, metric: string, value: number, threshold: number): PerformanceAlert | null {
+
+  checkThreshold(
+    componentName: string,
+    metric: string,
+    value: number,
+    threshold: number
+  ): PerformanceAlert | null {
     const severity = this.calculateSeverity(value, threshold);
-    
+
     if (severity === 'low') return null;
-    
+
     const alert: PerformanceAlert = {
       id: `${componentName}-${metric}-${Date.now()}`,
       componentName,
@@ -461,26 +479,29 @@ export class PerformanceAlertManager {
       severity,
       timestamp: new Date(),
     };
-    
+
     this.alerts.push(alert);
     return alert;
   }
-  
-  private calculateSeverity(value: number, threshold: number): 'low' | 'medium' | 'high' | 'critical' {
+
+  private calculateSeverity(
+    value: number,
+    threshold: number
+  ): 'low' | 'medium' | 'high' | 'critical' {
     const ratio = value / threshold;
-    
+
     if (ratio <= 1) return 'low';
     if (ratio <= 1.2) return 'medium';
     if (ratio <= 1.5) return 'high';
     return 'critical';
   }
-  
+
   getAlerts(): PerformanceAlert[] {
     return this.alerts;
   }
-  
+
   getCriticalAlerts(): PerformanceAlert[] {
-    return this.alerts.filter(a => a.severity === 'critical');
+    return this.alerts.filter((a) => a.severity === 'critical');
   }
 }
 ```
@@ -516,24 +537,24 @@ export class PerformanceAlertManager {
 
 ### 测试覆盖情况
 
-| 组件类型 | 组件数量 | 测试覆盖 | Stories覆盖 | 性能测试 |
-|---------|---------|---------|------------|---------|
-| 核心UI组件 | 24 | 100% | 100% | 100% |
-| 核心Hooks | 8 | 100% | 100% | 100% |
-| 业务组件 | 24 | 100% | 100% | 100% |
-| **总计** | **56** | **100%** | **100%** | **100%** |
+| 组件类型   | 组件数量 | 测试覆盖 | Stories覆盖 | 性能测试 |
+| ---------- | -------- | -------- | ----------- | -------- |
+| 核心UI组件 | 24       | 100%     | 100%        | 100%     |
+| 核心Hooks  | 8        | 100%     | 100%        | 100%     |
+| 业务组件   | 24       | 100%     | 100%        | 100%     |
+| **总计**   | **56**   | **100%** | **100%**    | **100%** |
 
 ### 性能指标达成情况
 
-| 性能指标 | 目标值 | 实际值 | 状态 |
-|---------|-------|-------|------|
-| 首次渲染时间 | <16ms | 8.5ms | ✅ |
-| 重新渲染时间 | <8ms | 4.2ms | ✅ |
-| 组件挂载时间 | <100ms | 45ms | ✅ |
-| 点击响应时间 | <50ms | 25ms | ✅ |
-| 输入延迟 | <16ms | 8ms | ✅ |
-| 动画帧率 | >60fps | 60fps | ✅ |
-| 组件包大小 | <100KB | 2.1KB | ✅ |
+| 性能指标     | 目标值 | 实际值 | 状态 |
+| ------------ | ------ | ------ | ---- |
+| 首次渲染时间 | <16ms  | 8.5ms  | ✅   |
+| 重新渲染时间 | <8ms   | 4.2ms  | ✅   |
+| 组件挂载时间 | <100ms | 45ms   | ✅   |
+| 点击响应时间 | <50ms  | 25ms   | ✅   |
+| 输入延迟     | <16ms  | 8ms    | ✅   |
+| 动画帧率     | >60fps | 60fps  | ✅   |
+| 组件包大小   | <100KB | 2.1KB  | ✅   |
 
 ## 🎯 YYC³标准符合性
 
@@ -620,11 +641,13 @@ pnpm test:performance:report
 ### 查看性能监控
 
 1. 启动性能监控服务：
+
 ```bash
 pnpm monitor:start
 ```
 
 2. 访问监控仪表板：
+
 ```
 http://localhost:3000/performance
 ```
@@ -675,6 +698,4 @@ http://localhost:3000/performance
 
 ---
 
-**报告生成时间**: 2026-03-28
-**报告版本**: v1.0
-**执行团队**: YYC³标准化审计专家
+**报告生成时间**: 2026-03-28 **报告版本**: v1.0 **执行团队**: YYC³标准化审计专家

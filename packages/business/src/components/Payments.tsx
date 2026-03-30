@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  CreditCard, 
-  Search, 
-  Plus, 
-  Filter, 
+import {
+  CreditCard,
+  Search,
+  Plus,
+  Filter,
   Download,
   TrendingUp,
   CheckCircle2,
@@ -12,9 +12,9 @@ import {
   DollarSign,
   Calendar,
   ArrowUpRight,
-  ArrowDownLeft
+  ArrowDownLeft,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface PaymentsProps {
   currentLanguage: string;
@@ -32,7 +32,7 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       date: '2025-02-03',
       method: { en: 'Bank Transfer', zh: '银行转账' },
       status: 'completed',
-      reference: 'INV-2025-145'
+      reference: 'INV-2025-145',
     },
     {
       id: 'PAY-2025-002',
@@ -42,7 +42,7 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       date: '2025-02-02',
       method: { en: 'Bank Transfer', zh: '银行转账' },
       status: 'completed',
-      reference: 'PO-2025-089'
+      reference: 'PO-2025-089',
     },
     {
       id: 'PAY-2025-003',
@@ -52,7 +52,7 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       date: '2025-02-02',
       method: { en: 'Wire Transfer', zh: '电汇' },
       status: 'pending',
-      reference: 'INV-2025-142'
+      reference: 'INV-2025-142',
     },
     {
       id: 'PAY-2025-004',
@@ -62,7 +62,7 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       date: '2025-02-01',
       method: { en: 'Check', zh: '支票' },
       status: 'processing',
-      reference: 'PO-2025-076'
+      reference: 'PO-2025-076',
     },
     {
       id: 'PAY-2025-005',
@@ -72,7 +72,7 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       date: '2025-01-31',
       method: { en: 'Bank Transfer', zh: '银行转账' },
       status: 'completed',
-      reference: 'INV-2025-138'
+      reference: 'INV-2025-138',
     },
     {
       id: 'PAY-2025-006',
@@ -82,8 +82,8 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       date: '2025-01-30',
       method: { en: 'Wire Transfer', zh: '电汇' },
       status: 'failed',
-      reference: 'INV-2025-134'
-    }
+      reference: 'INV-2025-134',
+    },
   ];
 
   const stats = [
@@ -92,29 +92,29 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       value: '5,678,942 ﷼',
       change: '+18.5%',
       color: 'from-green-500 to-emerald-500',
-      icon: ArrowDownLeft
+      icon: ArrowDownLeft,
     },
     {
       title: { en: 'Total Sent', zh: '总付款' },
       value: '3,456,123 ﷼',
       change: '+12.3%',
       color: 'from-red-500 to-pink-500',
-      icon: ArrowUpRight
+      icon: ArrowUpRight,
     },
     {
       title: { en: 'Pending Payments', zh: '待处理付款' },
       value: '234 ﷼',
       change: '-5.2%',
       color: 'from-yellow-500 to-orange-500',
-      icon: Clock
+      icon: Clock,
     },
     {
       title: { en: 'Net Balance', zh: '净余额' },
       value: '2,222,819 ﷼',
       change: '+25.7%',
       color: 'from-blue-500 to-cyan-500',
-      icon: DollarSign
-    }
+      icon: DollarSign,
+    },
   ];
 
   const getStatusConfig = (status: string) => {
@@ -122,23 +122,23 @@ export function Payments({ currentLanguage }: PaymentsProps) {
       completed: {
         color: 'bg-green-500/20 text-green-400 border-green-500/30',
         icon: CheckCircle2,
-        label: { en: 'Completed', zh: '已完成' }
+        label: { en: 'Completed', zh: '已完成' },
       },
       pending: {
         color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
         icon: Clock,
-        label: { en: 'Pending', zh: '待处理' }
+        label: { en: 'Pending', zh: '待处理' },
       },
       processing: {
         color: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
         icon: Clock,
-        label: { en: 'Processing', zh: '处理中' }
+        label: { en: 'Processing', zh: '处理中' },
       },
       failed: {
         color: 'bg-red-500/20 text-red-400 border-red-500/30',
         icon: XCircle,
-        label: { en: 'Failed', zh: '失败' }
-      }
+        label: { en: 'Failed', zh: '失败' },
+      },
     };
     return configs[status as keyof typeof configs];
   };
@@ -156,7 +156,9 @@ export function Payments({ currentLanguage }: PaymentsProps) {
               {currentLanguage === 'en' ? 'Payment Management' : '支付管理'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Track and manage all financial transactions' : '跟踪和管理所有财务交易'}
+              {currentLanguage === 'en'
+                ? 'Track and manage all financial transactions'
+                : '跟踪和管理所有财务交易'}
             </p>
           </div>
         </div>
@@ -188,7 +190,9 @@ export function Payments({ currentLanguage }: PaymentsProps) {
                   <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
                   <span className="text-green-400 text-sm font-medium">{stat.change}</span>
                 </div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+                ></div>
               </div>
             </div>
           );
@@ -265,9 +269,9 @@ export function Payments({ currentLanguage }: PaymentsProps) {
                 const statusConfig = getStatusConfig(payment.status);
                 const StatusIcon = statusConfig.icon;
                 const party = payment.type === 'received' ? payment.customer : payment.supplier;
-                
+
                 return (
-                  <tr 
+                  <tr
                     key={payment.id}
                     className="hover:bg-slate-800/30 transition-colors duration-200 group"
                     style={{ animationDelay: `${index * 50}ms` }}
@@ -276,21 +280,26 @@ export function Payments({ currentLanguage }: PaymentsProps) {
                       <span className="text-white font-medium">{payment.id}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full ${
-                        payment.type === 'received' 
-                          ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-                          : 'bg-red-500/20 text-red-400 border border-red-500/30'
-                      }`}>
+                      <div
+                        className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full ${
+                          payment.type === 'received'
+                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                            : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                        }`}
+                      >
                         {payment.type === 'received' ? (
                           <ArrowDownLeft className="w-3 h-3" />
                         ) : (
                           <ArrowUpRight className="w-3 h-3" />
                         )}
                         <span className="text-xs font-medium">
-                          {payment.type === 'received' 
-                            ? (currentLanguage === 'en' ? 'Received' : '收款')
-                            : (currentLanguage === 'en' ? 'Sent' : '付款')
-                          }
+                          {payment.type === 'received'
+                            ? currentLanguage === 'en'
+                              ? 'Received'
+                              : '收款'
+                            : currentLanguage === 'en'
+                              ? 'Sent'
+                              : '付款'}
                         </span>
                       </div>
                     </td>
@@ -300,10 +309,13 @@ export function Payments({ currentLanguage }: PaymentsProps) {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`font-semibold ${
-                        payment.type === 'received' ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                        {payment.type === 'received' ? '+' : '-'}{payment.amount} ﷼
+                      <span
+                        className={`font-semibold ${
+                          payment.type === 'received' ? 'text-green-400' : 'text-red-400'
+                        }`}
+                      >
+                        {payment.type === 'received' ? '+' : '-'}
+                        {payment.amount} ﷼
                       </span>
                     </td>
                     <td className="px-6 py-4">
@@ -318,9 +330,13 @@ export function Payments({ currentLanguage }: PaymentsProps) {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}>
+                      <span
+                        className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}
+                      >
                         <StatusIcon className="w-3 h-3" />
-                        <span>{statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}</span>
+                        <span>
+                          {statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}
+                        </span>
                       </span>
                     </td>
                     <td className="px-6 py-4">

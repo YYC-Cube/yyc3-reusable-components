@@ -1,4 +1,5 @@
 # YYC³ AI Family - PostgreSQL 15 Local Database Setup Guide
+
 # YYC³ AI 家族 - PostgreSQL 15 本地数据库对接操作流程
 
 > Version: 0.9.4 [Personalize]  
@@ -11,12 +12,12 @@
 
 ### 1.1 Required Software / 必需软件
 
-| Software | Version | Purpose |
-|----------|---------|---------|
-| PostgreSQL | 15.x | Local database engine |
-| Node.js | 18+ LTS | API proxy runtime |
-| npm/pnpm | Latest | Package management |
-| psql | 15.x (bundled) | CLI database client |
+| Software   | Version        | Purpose               |
+| ---------- | -------------- | --------------------- |
+| PostgreSQL | 15.x           | Local database engine |
+| Node.js    | 18+ LTS        | API proxy runtime     |
+| npm/pnpm   | Latest         | Package management    |
+| psql       | 15.x (bundled) | CLI database client   |
 
 ### 1.2 Verify Installation / 验证安装
 
@@ -88,7 +89,7 @@ psql -U yyc3_admin -d yyc3_family
 
 ```sql
 -- 列出所有表 / List all tables
-SELECT table_name FROM information_schema.tables 
+SELECT table_name FROM information_schema.tables
 WHERE table_schema = 'public' ORDER BY table_name;
 
 -- 预期输出 / Expected output:
@@ -131,7 +132,8 @@ SELECT version, name, status FROM migration_log;
 
 ### 3.2 Install Proxy Dependencies / 安装代理依赖
 
-The proxy server code is already in `/server/yyc3-api-proxy.ts` with its `package.json`.
+The proxy server code is already in `/server/yyc3-api-proxy.ts` with its
+`package.json`.
 
 ```bash
 # 进入 server 目录并安装依赖
@@ -142,9 +144,11 @@ npm install
 
 ### 3.3 Environment Variables / 环境变量配置
 
-Create a `.env` file in the server directory (optional, defaults work for local dev):
+Create a `.env` file in the server directory (optional, defaults work for local
+dev):
 
 **`server/.env`**
+
 ```env
 # PostgreSQL 连接配置 / PostgreSQL connection config
 YYC3_PG_HOST=localhost
@@ -174,27 +178,32 @@ npm start
 
 ### 3.5 API Endpoint Reference / API 端点清单
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/v1/health` | GET | Health check with PG stats |
-| `/api/v1/query` | POST | Structured query (DatabaseQuery format) |
-| `/api/v1/data/:table` | GET | List records with pagination |
-| `/api/v1/data/:table` | POST | Insert record |
-| `/api/v1/data/:table/:id` | GET | Get single record |
-| `/api/v1/data/:table/:id` | PUT | Update record |
-| `/api/v1/data/:table/:id` | DELETE | Delete record |
-| `/api/v1/tables` | GET | List all tables with metadata |
-| `/api/v1/migrations/status` | GET | Migration version status |
-| `/api/v1/migrations/run` | POST | Execute pending migrations |
+| Endpoint                    | Method | Description                             |
+| --------------------------- | ------ | --------------------------------------- |
+| `/api/v1/health`            | GET    | Health check with PG stats              |
+| `/api/v1/query`             | POST   | Structured query (DatabaseQuery format) |
+| `/api/v1/data/:table`       | GET    | List records with pagination            |
+| `/api/v1/data/:table`       | POST   | Insert record                           |
+| `/api/v1/data/:table/:id`   | GET    | Get single record                       |
+| `/api/v1/data/:table/:id`   | PUT    | Update record                           |
+| `/api/v1/data/:table/:id`   | DELETE | Delete record                           |
+| `/api/v1/tables`            | GET    | List all tables with metadata           |
+| `/api/v1/migrations/status` | GET    | Migration version status                |
+| `/api/v1/migrations/run`    | POST   | Execute pending migrations              |
 
 ### 3.6 Security Features / 安全特性
 
-- **Table whitelist**: Only predefined tables are accessible (chats, channels, agents, etc.)
-- **Safe identifier validation**: Column names are checked against `^[a-zA-Z_][a-zA-Z0-9_]*$`
-- **Parameterized queries**: All user input is parameterized (no string concatenation)
-- **Optional Bearer token auth**: Set `YYC3_AUTH_TOKEN` to require authentication
+- **Table whitelist**: Only predefined tables are accessible (chats, channels,
+  agents, etc.)
+- **Safe identifier validation**: Column names are checked against
+  `^[a-zA-Z_][a-zA-Z0-9_]*$`
+- **Parameterized queries**: All user input is parameterized (no string
+  concatenation)
+- **Optional Bearer token auth**: Set `YYC3_AUTH_TOKEN` to require
+  authentication
 - **DELETE requires conditions**: Prevents accidental full-table deletion
-- **Structured JSON logging**: No console.log, all output is structured JSON to stdout
+- **Structured JSON logging**: No console.log, all output is structured JSON to
+  stdout
 
 ---
 
@@ -331,10 +340,10 @@ curl -s http://localhost:3721/api/v1/migrations/status | jq .
 
 在 **SYNC_STRATEGY** 区域：
 
-| Setting | Recommended Value | Description |
-|---------|------------------|-------------|
-| DIRECTION | `BIDIRECTIONAL` | localStorage 和 PG 双向同步 |
-| CONFLICT_RESOLVE | `LATEST_WINS` | 最后修改者胜出 |
+| Setting          | Recommended Value | Description                 |
+| ---------------- | ----------------- | --------------------------- |
+| DIRECTION        | `BIDIRECTIONAL`   | localStorage 和 PG 双向同步 |
+| CONFLICT_RESOLVE | `LATEST_WINS`     | 最后修改者胜出              |
 
 ---
 
@@ -342,15 +351,15 @@ curl -s http://localhost:3721/api/v1/migrations/status | jq .
 
 ### Common Issues / 常见问题
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| `ECONNREFUSED :5432` | PostgreSQL 未运行 | `brew services start postgresql@15` |
-| `role "yyc3_admin" does not exist` | 角色未创建 | 执行 Step 2.1 创建角色 |
-| `database "yyc3_family" does not exist` | 数据库未创建 | 执行 Step 2.1 创建数据库 |
-| `CORS blocked` | 前端域不在白名单 | 检查 `.env` 中的 `CORS_ORIGIN` |
-| `relation does not exist` | DDL 脚本未执行 | 执行 Step 2.2 |
-| `API proxy :3721 not responding` | 代理服务未启动 | `cd server && npm run dev` |
-| `permission denied` | 权限不足 | 用 postgres 超级用户授权 |
+| Issue                                   | Cause             | Solution                            |
+| --------------------------------------- | ----------------- | ----------------------------------- |
+| `ECONNREFUSED :5432`                    | PostgreSQL 未运行 | `brew services start postgresql@15` |
+| `role "yyc3_admin" does not exist`      | 角色未创建        | 执行 Step 2.1 创建角色              |
+| `database "yyc3_family" does not exist` | 数据库未创建      | 执行 Step 2.1 创建数据库            |
+| `CORS blocked`                          | 前端域不在白名单  | 检查 `.env` 中的 `CORS_ORIGIN`      |
+| `relation does not exist`               | DDL 脚本未执行    | 执行 Step 2.2                       |
+| `API proxy :3721 not responding`        | 代理服务未启动    | `cd server && npm run dev`          |
+| `permission denied`                     | 权限不足          | 用 postgres 超级用户授权            |
 
 ### Debug Commands / 调试命令
 
@@ -364,8 +373,8 @@ psql -U yyc3_admin -d yyc3_family -c "SELECT * FROM pg_stat_activity WHERE datna
 
 # 检查表数据量 / Check table row counts
 psql -U yyc3_admin -d yyc3_family -c "
-  SELECT schemaname, relname, n_live_tup 
-  FROM pg_stat_user_tables 
+  SELECT schemaname, relname, n_live_tup
+  FROM pg_stat_user_tables
   ORDER BY n_live_tup DESC;
 "
 
@@ -393,18 +402,18 @@ PostgreSQL 15 (:5432)
 
 ### File Reference / 文件索引
 
-| File | Layer | Purpose |
-|------|-------|---------|
-| `/types/database.ts` | Type | Database type definitions |
-| `/repositories/DatabaseRepository.ts` | Repository | REST API client |
-| `/services/DatabaseService.ts` | Service | Business logic |
-| `/hooks/useDatabaseConfig.ts` | Hook | React state management |
-| `/components/SettingsModal.tsx` | UI | Configuration panel |
-| `/docs/postgresql-15-schema.sql` | DDL | Database schema |
-| `/server/yyc3-api-proxy.ts` | Proxy | Express API proxy server |
-| `/server/types.ts` | Type | Server-side type definitions |
-| `/server/package.json` | Config | Server dependencies & scripts |
+| File                                  | Layer      | Purpose                       |
+| ------------------------------------- | ---------- | ----------------------------- |
+| `/types/database.ts`                  | Type       | Database type definitions     |
+| `/repositories/DatabaseRepository.ts` | Repository | REST API client               |
+| `/services/DatabaseService.ts`        | Service    | Business logic                |
+| `/hooks/useDatabaseConfig.ts`         | Hook       | React state management        |
+| `/components/SettingsModal.tsx`       | UI         | Configuration panel           |
+| `/docs/postgresql-15-schema.sql`      | DDL        | Database schema               |
+| `/server/yyc3-api-proxy.ts`           | Proxy      | Express API proxy server      |
+| `/server/types.ts`                    | Type       | Server-side type definitions  |
+| `/server/package.json`                | Config     | Server dependencies & scripts |
 
 ---
 
-*Last Updated: 2026-02-14 | YYC³ AI Family v0.9.4 [Personalize]*
+_Last Updated: 2026-02-14 | YYC³ AI Family v0.9.4 [Personalize]_

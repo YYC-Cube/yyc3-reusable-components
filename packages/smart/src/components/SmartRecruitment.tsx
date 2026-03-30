@@ -24,7 +24,7 @@ import {
   Building2,
   GraduationCap,
   MessageSquare,
-  Award
+  Award,
 } from 'lucide-react';
 import {
   BarChart,
@@ -40,7 +40,7 @@ import {
   Pie,
   Cell,
   AreaChart,
-  Area
+  Area,
 } from 'recharts';
 
 interface SmartRecruitmentProps {
@@ -49,7 +49,14 @@ interface SmartRecruitmentProps {
 
 type TabType = 'positions' | 'candidates' | 'pipeline' | 'analytics';
 type PositionStatus = 'open' | 'interviewing' | 'offer' | 'filled' | 'cancelled';
-type CandidateStage = 'screening' | 'interview-1' | 'interview-2' | 'assessment' | 'offer' | 'hired' | 'rejected';
+type CandidateStage =
+  | 'screening'
+  | 'interview-1'
+  | 'interview-2'
+  | 'assessment'
+  | 'offer'
+  | 'hired'
+  | 'rejected';
 
 interface Position {
   id: string;
@@ -81,35 +88,257 @@ interface Candidate {
 }
 
 const POSITIONS: Position[] = [
-  { id: 'JOB-001', title: '高级废金属贸易专员', department: '销售部', location: '上海', type: '全职', salary: '20-35K', urgency: 'high', status: 'open', applicants: 28, publishDate: '2026-02-15', headcount: 2 },
-  { id: 'JOB-002', title: '供应链管理经理', department: '采购部', location: '上海', type: '全职', salary: '30-45K', urgency: 'high', status: 'interviewing', applicants: 15, publishDate: '2026-02-20', headcount: 1 },
-  { id: 'JOB-003', title: '质检工程师', department: '生产部', location: '天津', type: '全职', salary: '15-22K', urgency: 'medium', status: 'open', applicants: 42, publishDate: '2026-03-01', headcount: 3 },
-  { id: 'JOB-004', title: 'ERP实施顾问', department: 'IT部门', location: '上海', type: '全职', salary: '25-40K', urgency: 'medium', status: 'offer', applicants: 12, publishDate: '2026-02-10', headcount: 1 },
-  { id: 'JOB-005', title: '物流调度主管', department: '物流部', location: '天津港', type: '全职', salary: '18-28K', urgency: 'high', status: 'interviewing', applicants: 8, publishDate: '2026-03-05', headcount: 1 },
-  { id: 'JOB-006', title: '财务分析师', department: '财务部', location: '上海', type: '全职', salary: '18-30K', urgency: 'low', status: 'open', applicants: 35, publishDate: '2026-03-08', headcount: 1 },
-  { id: 'JOB-007', title: '仓库管理员', department: '物流部', location: '宁波', type: '全职', salary: '8-12K', urgency: 'medium', status: 'open', applicants: 56, publishDate: '2026-03-01', headcount: 5 },
-  { id: 'JOB-008', title: '国际贸易专员（东南亚）', department: '销售部', location: '上海', type: '全职', salary: '15-25K', urgency: 'medium', status: 'filled', applicants: 22, publishDate: '2026-01-20', headcount: 1 },
+  {
+    id: 'JOB-001',
+    title: '高级废金属贸易专员',
+    department: '销售部',
+    location: '上海',
+    type: '全职',
+    salary: '20-35K',
+    urgency: 'high',
+    status: 'open',
+    applicants: 28,
+    publishDate: '2026-02-15',
+    headcount: 2,
+  },
+  {
+    id: 'JOB-002',
+    title: '供应链管理经理',
+    department: '采购部',
+    location: '上海',
+    type: '全职',
+    salary: '30-45K',
+    urgency: 'high',
+    status: 'interviewing',
+    applicants: 15,
+    publishDate: '2026-02-20',
+    headcount: 1,
+  },
+  {
+    id: 'JOB-003',
+    title: '质检工程师',
+    department: '生产部',
+    location: '天津',
+    type: '全职',
+    salary: '15-22K',
+    urgency: 'medium',
+    status: 'open',
+    applicants: 42,
+    publishDate: '2026-03-01',
+    headcount: 3,
+  },
+  {
+    id: 'JOB-004',
+    title: 'ERP实施顾问',
+    department: 'IT部门',
+    location: '上海',
+    type: '全职',
+    salary: '25-40K',
+    urgency: 'medium',
+    status: 'offer',
+    applicants: 12,
+    publishDate: '2026-02-10',
+    headcount: 1,
+  },
+  {
+    id: 'JOB-005',
+    title: '物流调度主管',
+    department: '物流部',
+    location: '天津港',
+    type: '全职',
+    salary: '18-28K',
+    urgency: 'high',
+    status: 'interviewing',
+    applicants: 8,
+    publishDate: '2026-03-05',
+    headcount: 1,
+  },
+  {
+    id: 'JOB-006',
+    title: '财务分析师',
+    department: '财务部',
+    location: '上海',
+    type: '全职',
+    salary: '18-30K',
+    urgency: 'low',
+    status: 'open',
+    applicants: 35,
+    publishDate: '2026-03-08',
+    headcount: 1,
+  },
+  {
+    id: 'JOB-007',
+    title: '仓库管理员',
+    department: '物流部',
+    location: '宁波',
+    type: '全职',
+    salary: '8-12K',
+    urgency: 'medium',
+    status: 'open',
+    applicants: 56,
+    publishDate: '2026-03-01',
+    headcount: 5,
+  },
+  {
+    id: 'JOB-008',
+    title: '国际贸易专员（东南亚）',
+    department: '销售部',
+    location: '上海',
+    type: '全职',
+    salary: '15-25K',
+    urgency: 'medium',
+    status: 'filled',
+    applicants: 22,
+    publishDate: '2026-01-20',
+    headcount: 1,
+  },
 ];
 
 const CANDIDATES: Candidate[] = [
-  { id: 'C001', name: '徐志远', position: '供应链管理经理', stage: 'interview-2', experience: '8年', education: '复旦MBA', source: '猎头推荐', applyDate: '2026-02-25', rating: 4.5, interviewer: '赵总监', interviewDate: '2026-03-15' },
-  { id: 'C002', name: '何雪梅', position: '高级废金属贸易专员', stage: 'interview-1', experience: '5年', education: '国际贸易本科', source: 'Boss直聘', applyDate: '2026-03-02', rating: 4.0, interviewer: '王经理', interviewDate: '2026-03-14' },
-  { id: 'C003', name: '马天宇', position: 'ERP实施顾问', stage: 'offer', experience: '6年', education: '计算机硕士', source: '内部推荐', applyDate: '2026-02-18', rating: 4.8, notes: '已发Offer，待回复' },
-  { id: 'C004', name: '宋晓丽', position: '高级废金属贸易专员', stage: 'screening', experience: '3年', education: '商务英语本科', source: '前程无忧', applyDate: '2026-03-10', rating: 3.5 },
-  { id: 'C005', name: '杨建国', position: '质检工程师', stage: 'interview-1', experience: '10年', education: '冶金工程本科', source: '智联招聘', applyDate: '2026-03-05', rating: 4.2, interviewer: '王主任', interviewDate: '2026-03-16' },
-  { id: 'C006', name: '李文博', position: '物流调度主管', stage: 'assessment', experience: '7年', education: '物流管理本科', source: '猎头推荐', applyDate: '2026-03-08', rating: 4.0 },
-  { id: 'C007', name: '陈思思', position: '财务分析师', stage: 'screening', experience: '4年', education: '会计学硕士', source: '校招', applyDate: '2026-03-11', rating: 3.8 },
-  { id: 'C008', name: '张海洋', position: '国际贸易专员（东南亚）', stage: 'hired', experience: '5年', education: '印尼语本科', source: '猎头推荐', applyDate: '2026-01-28', rating: 4.5, notes: '已入职' },
-  { id: 'C009', name: '刘芳', position: '质检工程师', stage: 'rejected', experience: '2年', education: '化学工程本科', source: '校招', applyDate: '2026-03-03', rating: 2.8, notes: '经验不足' },
+  {
+    id: 'C001',
+    name: '徐志远',
+    position: '供应链管理经理',
+    stage: 'interview-2',
+    experience: '8年',
+    education: '复旦MBA',
+    source: '猎头推荐',
+    applyDate: '2026-02-25',
+    rating: 4.5,
+    interviewer: '赵总监',
+    interviewDate: '2026-03-15',
+  },
+  {
+    id: 'C002',
+    name: '何雪梅',
+    position: '高级废金属贸易专员',
+    stage: 'interview-1',
+    experience: '5年',
+    education: '国际贸易本科',
+    source: 'Boss直聘',
+    applyDate: '2026-03-02',
+    rating: 4.0,
+    interviewer: '王经理',
+    interviewDate: '2026-03-14',
+  },
+  {
+    id: 'C003',
+    name: '马天宇',
+    position: 'ERP实施顾问',
+    stage: 'offer',
+    experience: '6年',
+    education: '计算机硕士',
+    source: '内部推荐',
+    applyDate: '2026-02-18',
+    rating: 4.8,
+    notes: '已发Offer，待回复',
+  },
+  {
+    id: 'C004',
+    name: '宋晓丽',
+    position: '高级废金属贸易专员',
+    stage: 'screening',
+    experience: '3年',
+    education: '商务英语本科',
+    source: '前程无忧',
+    applyDate: '2026-03-10',
+    rating: 3.5,
+  },
+  {
+    id: 'C005',
+    name: '杨建国',
+    position: '质检工程师',
+    stage: 'interview-1',
+    experience: '10年',
+    education: '冶金工程本科',
+    source: '智联招聘',
+    applyDate: '2026-03-05',
+    rating: 4.2,
+    interviewer: '王主任',
+    interviewDate: '2026-03-16',
+  },
+  {
+    id: 'C006',
+    name: '李文博',
+    position: '物流调度主管',
+    stage: 'assessment',
+    experience: '7年',
+    education: '物流管理本科',
+    source: '猎头推荐',
+    applyDate: '2026-03-08',
+    rating: 4.0,
+  },
+  {
+    id: 'C007',
+    name: '陈思思',
+    position: '财务分析师',
+    stage: 'screening',
+    experience: '4年',
+    education: '会计学硕士',
+    source: '校招',
+    applyDate: '2026-03-11',
+    rating: 3.8,
+  },
+  {
+    id: 'C008',
+    name: '张海洋',
+    position: '国际贸易专员（东南亚）',
+    stage: 'hired',
+    experience: '5年',
+    education: '印尼语本科',
+    source: '猎头推荐',
+    applyDate: '2026-01-28',
+    rating: 4.5,
+    notes: '已入职',
+  },
+  {
+    id: 'C009',
+    name: '刘芳',
+    position: '质检工程师',
+    stage: 'rejected',
+    experience: '2年',
+    education: '化学工程本科',
+    source: '校招',
+    applyDate: '2026-03-03',
+    rating: 2.8,
+    notes: '经验不足',
+  },
 ];
 
-const STAGE_CONFIG: Record<CandidateStage, { label: { en: string; zh: string }; color: string; bg: string }> = {
-  screening: { label: { en: 'Screening', zh: '简历筛选' }, color: 'text-gray-400', bg: 'bg-gray-500/20' },
-  'interview-1': { label: { en: '1st Interview', zh: '初面' }, color: 'text-blue-400', bg: 'bg-blue-500/20' },
-  'interview-2': { label: { en: '2nd Interview', zh: '复面' }, color: 'text-indigo-400', bg: 'bg-indigo-500/20' },
-  assessment: { label: { en: 'Assessment', zh: '评估' }, color: 'text-purple-400', bg: 'bg-purple-500/20' },
-  offer: { label: { en: 'Offer', zh: '发放Offer' }, color: 'text-amber-400', bg: 'bg-amber-500/20' },
-  hired: { label: { en: 'Hired', zh: '已入职' }, color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
+const STAGE_CONFIG: Record<
+  CandidateStage,
+  { label: { en: string; zh: string }; color: string; bg: string }
+> = {
+  screening: {
+    label: { en: 'Screening', zh: '简历筛选' },
+    color: 'text-gray-400',
+    bg: 'bg-gray-500/20',
+  },
+  'interview-1': {
+    label: { en: '1st Interview', zh: '初面' },
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/20',
+  },
+  'interview-2': {
+    label: { en: '2nd Interview', zh: '复面' },
+    color: 'text-indigo-400',
+    bg: 'bg-indigo-500/20',
+  },
+  assessment: {
+    label: { en: 'Assessment', zh: '评估' },
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/20',
+  },
+  offer: {
+    label: { en: 'Offer', zh: '发放Offer' },
+    color: 'text-amber-400',
+    bg: 'bg-amber-500/20',
+  },
+  hired: {
+    label: { en: 'Hired', zh: '已入职' },
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-500/20',
+  },
   rejected: { label: { en: 'Rejected', zh: '已淘汰' }, color: 'text-red-400', bg: 'bg-red-500/20' },
 };
 
@@ -152,9 +381,15 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
     { id: 'analytics' as TabType, label: { en: 'Analytics', zh: '招聘分析' }, icon: BarChart3 },
   ];
 
-  const openPositions = POSITIONS.filter(p => p.status !== 'filled' && p.status !== 'cancelled').length;
-  const totalHeadcount = POSITIONS.filter(p => p.status !== 'filled' && p.status !== 'cancelled').reduce((s, p) => s + p.headcount, 0);
-  const interviewingCount = CANDIDATES.filter(c => ['interview-1', 'interview-2'].includes(c.stage)).length;
+  const openPositions = POSITIONS.filter(
+    (p) => p.status !== 'filled' && p.status !== 'cancelled'
+  ).length;
+  const totalHeadcount = POSITIONS.filter(
+    (p) => p.status !== 'filled' && p.status !== 'cancelled'
+  ).reduce((s, p) => s + p.headcount, 0);
+  const interviewingCount = CANDIDATES.filter((c) =>
+    ['interview-1', 'interview-2'].includes(c.stage)
+  ).length;
 
   const urgencyConf = {
     high: { label: isZh ? '紧急' : 'Urgent', color: 'text-red-400', bg: 'bg-red-500/20' },
@@ -164,8 +399,16 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
 
   const positionStatusConf: Record<PositionStatus, { label: string; color: string; bg: string }> = {
     open: { label: isZh ? '招聘中' : 'Open', color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
-    interviewing: { label: isZh ? '面试中' : 'Interviewing', color: 'text-blue-400', bg: 'bg-blue-500/20' },
-    offer: { label: isZh ? '已发Offer' : 'Offer Sent', color: 'text-amber-400', bg: 'bg-amber-500/20' },
+    interviewing: {
+      label: isZh ? '面试中' : 'Interviewing',
+      color: 'text-blue-400',
+      bg: 'bg-blue-500/20',
+    },
+    offer: {
+      label: isZh ? '已发Offer' : 'Offer Sent',
+      color: 'text-amber-400',
+      bg: 'bg-amber-500/20',
+    },
     filled: { label: isZh ? '已完成' : 'Filled', color: 'text-gray-400', bg: 'bg-gray-500/20' },
     cancelled: { label: isZh ? '已取消' : 'Cancelled', color: 'text-red-400', bg: 'bg-red-500/20' },
   };
@@ -180,7 +423,9 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
           </div>
           <div>
             <h1 className="text-2xl text-white">{isZh ? '智能招聘' : 'Smart Recruitment'}</h1>
-            <p className="text-sm text-gray-400">{isZh ? '招聘流程管理与人才库' : 'Recruitment pipeline & talent pool'}</p>
+            <p className="text-sm text-gray-400">
+              {isZh ? '招聘流程管理与人才库' : 'Recruitment pipeline & talent pool'}
+            </p>
           </div>
         </div>
         <button className="flex items-center space-x-2 px-4 py-2 bg-blue-500/20 text-blue-300 rounded-xl border border-blue-500/30 hover:bg-blue-500/30 transition-all text-sm">
@@ -192,15 +437,40 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
       {/* KPI Strip */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { label: isZh ? '开放职位' : 'Open Positions', value: openPositions.toString(), icon: Briefcase, gradient: 'from-blue-500 to-indigo-500' },
-          { label: isZh ? '待招人数' : 'Headcount', value: totalHeadcount.toString(), icon: Users, gradient: 'from-purple-500 to-pink-500' },
-          { label: isZh ? '面试安排' : 'Interviews', value: interviewingCount.toString(), icon: MessageSquare, gradient: 'from-amber-500 to-orange-500' },
-          { label: isZh ? '平均招聘周期' : 'Avg. Time-to-hire', value: isZh ? '28天' : '28d', icon: Clock, gradient: 'from-emerald-500 to-green-500' },
+          {
+            label: isZh ? '开放职位' : 'Open Positions',
+            value: openPositions.toString(),
+            icon: Briefcase,
+            gradient: 'from-blue-500 to-indigo-500',
+          },
+          {
+            label: isZh ? '待招人数' : 'Headcount',
+            value: totalHeadcount.toString(),
+            icon: Users,
+            gradient: 'from-purple-500 to-pink-500',
+          },
+          {
+            label: isZh ? '面试安排' : 'Interviews',
+            value: interviewingCount.toString(),
+            icon: MessageSquare,
+            gradient: 'from-amber-500 to-orange-500',
+          },
+          {
+            label: isZh ? '平均招聘周期' : 'Avg. Time-to-hire',
+            value: isZh ? '28天' : '28d',
+            icon: Clock,
+            gradient: 'from-emerald-500 to-green-500',
+          },
         ].map((stat, idx) => {
           const StatIcon = stat.icon;
           return (
-            <div key={idx} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-4 flex items-center space-x-3">
-              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.gradient} opacity-80 flex items-center justify-center`}>
+            <div
+              key={idx}
+              className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-4 flex items-center space-x-3"
+            >
+              <div
+                className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.gradient} opacity-80 flex items-center justify-center`}
+              >
                 <StatIcon className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -214,15 +484,18 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
 
       {/* Tabs */}
       <div className="flex space-x-1 p-1 bg-slate-800/40 backdrop-blur-xl rounded-xl border border-white/5">
-        {tabs.map(tab => {
+        {tabs.map((tab) => {
           const TabIcon = tab.icon;
           return (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg transition-all ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-white border border-blue-500/30'
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
-              }`}>
+              }`}
+            >
               <TabIcon className="w-4 h-4" />
               <span className="text-sm">{isZh ? tab.label.zh : tab.label.en}</span>
             </button>
@@ -235,30 +508,57 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
         <div className="space-y-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input type="text" placeholder={isZh ? '搜索职位...' : 'Search positions...'} value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50" />
+            <input
+              type="text"
+              placeholder={isZh ? '搜索职位...' : 'Search positions...'}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {POSITIONS.filter(p => searchTerm === '' || p.title.includes(searchTerm) || p.department.includes(searchTerm)).map(pos => {
+            {POSITIONS.filter(
+              (p) =>
+                searchTerm === '' ||
+                p.title.includes(searchTerm) ||
+                p.department.includes(searchTerm)
+            ).map((pos) => {
               const ps = positionStatusConf[pos.status];
               const uc = urgencyConf[pos.urgency];
               return (
-                <div key={pos.id} className={`bg-slate-800/40 backdrop-blur-xl rounded-2xl border p-5 hover:border-white/10 transition-all ${
-                  pos.status === 'filled' ? 'border-white/5 opacity-70' : 'border-white/5'
-                }`}>
+                <div
+                  key={pos.id}
+                  className={`bg-slate-800/40 backdrop-blur-xl rounded-2xl border p-5 hover:border-white/10 transition-all ${
+                    pos.status === 'filled' ? 'border-white/5 opacity-70' : 'border-white/5'
+                  }`}
+                >
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <div className="flex items-center space-x-2">
                         <h4 className="text-white">{pos.title}</h4>
-                        {pos.urgency === 'high' && <span className={`text-xs px-1.5 py-0.5 rounded-full ${uc.bg} ${uc.color}`}>{uc.label}</span>}
+                        {pos.urgency === 'high' && (
+                          <span
+                            className={`text-xs px-1.5 py-0.5 rounded-full ${uc.bg} ${uc.color}`}
+                          >
+                            {uc.label}
+                          </span>
+                        )}
                       </div>
                       <div className="flex items-center space-x-3 mt-1 text-xs text-gray-500">
-                        <span className="flex items-center space-x-1"><Building2 className="w-3 h-3" /><span>{pos.department}</span></span>
-                        <span className="flex items-center space-x-1"><MapPin className="w-3 h-3" /><span>{pos.location}</span></span>
+                        <span className="flex items-center space-x-1">
+                          <Building2 className="w-3 h-3" />
+                          <span>{pos.department}</span>
+                        </span>
+                        <span className="flex items-center space-x-1">
+                          <MapPin className="w-3 h-3" />
+                          <span>{pos.location}</span>
+                        </span>
                       </div>
                     </div>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${ps.bg} ${ps.color}`}>{ps.label}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${ps.bg} ${ps.color}`}>
+                      {ps.label}
+                    </span>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3 mb-3">
@@ -277,8 +577,12 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
                   </div>
 
                   <div className="flex items-center justify-between pt-3 border-t border-white/5">
-                    <span className="text-xs text-gray-500">{isZh ? '发布于' : 'Posted'} {pos.publishDate}</span>
-                    <button className="text-xs text-blue-400 hover:text-blue-300">{isZh ? '查看候选人' : 'View Candidates'}</button>
+                    <span className="text-xs text-gray-500">
+                      {isZh ? '发布于' : 'Posted'} {pos.publishDate}
+                    </span>
+                    <button className="text-xs text-blue-400 hover:text-blue-300">
+                      {isZh ? '查看候选人' : 'View Candidates'}
+                    </button>
                   </div>
                 </div>
               );
@@ -290,10 +594,13 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
       {/* Candidates Tab */}
       {activeTab === 'candidates' && (
         <div className="space-y-3">
-          {CANDIDATES.filter(c => c.stage !== 'hired' && c.stage !== 'rejected').map(cand => {
+          {CANDIDATES.filter((c) => c.stage !== 'hired' && c.stage !== 'rejected').map((cand) => {
             const sc = STAGE_CONFIG[cand.stage];
             return (
-              <div key={cand.id} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all">
+              <div
+                key={cand.id}
+                className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all"
+              >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center">
@@ -306,12 +613,17 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
                           {isZh ? sc.label.zh : sc.label.en}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-0.5">{isZh ? '应聘' : 'For'}: {cand.position}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {isZh ? '应聘' : 'For'}: {cand.position}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-0.5">
-                    {[1, 2, 3, 4, 5].map(s => (
-                      <Star key={s} className={`w-3.5 h-3.5 ${s <= Math.floor(cand.rating) ? 'text-amber-400 fill-amber-400' : s <= cand.rating ? 'text-amber-400/50 fill-amber-400/50' : 'text-gray-600'}`} />
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star
+                        key={s}
+                        className={`w-3.5 h-3.5 ${s <= Math.floor(cand.rating) ? 'text-amber-400 fill-amber-400' : s <= cand.rating ? 'text-amber-400/50 fill-amber-400/50' : 'text-gray-600'}`}
+                      />
                     ))}
                     <span className="text-xs text-gray-400 ml-1">{cand.rating}</span>
                   </div>
@@ -319,16 +631,20 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
                   <div className="flex items-center space-x-1.5 text-xs text-gray-400">
-                    <Briefcase className="w-3 h-3" /><span>{cand.experience}</span>
+                    <Briefcase className="w-3 h-3" />
+                    <span>{cand.experience}</span>
                   </div>
                   <div className="flex items-center space-x-1.5 text-xs text-gray-400">
-                    <GraduationCap className="w-3 h-3" /><span>{cand.education}</span>
+                    <GraduationCap className="w-3 h-3" />
+                    <span>{cand.education}</span>
                   </div>
                   <div className="flex items-center space-x-1.5 text-xs text-gray-400">
-                    <Target className="w-3 h-3" /><span>{cand.source}</span>
+                    <Target className="w-3 h-3" />
+                    <span>{cand.source}</span>
                   </div>
                   <div className="flex items-center space-x-1.5 text-xs text-gray-400">
-                    <Calendar className="w-3 h-3" /><span>{cand.applyDate}</span>
+                    <Calendar className="w-3 h-3" />
+                    <span>{cand.applyDate}</span>
                   </div>
                 </div>
 
@@ -336,7 +652,8 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
                   <div className="pt-3 border-t border-white/5 flex items-center justify-between">
                     {cand.interviewer && (
                       <span className="text-xs text-gray-500">
-                        {isZh ? '面试官' : 'Interviewer'}: {cand.interviewer} {cand.interviewDate && `· ${cand.interviewDate}`}
+                        {isZh ? '面试官' : 'Interviewer'}: {cand.interviewer}{' '}
+                        {cand.interviewDate && `· ${cand.interviewDate}`}
                       </span>
                     )}
                     {cand.notes && <span className="text-xs text-amber-400">{cand.notes}</span>}
@@ -386,7 +703,13 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
             <div className="mt-6 pt-4 border-t border-white/5 grid grid-cols-3 gap-4 text-center">
               <div>
                 <p className="text-xs text-gray-500">{isZh ? '整体转化率' : 'Overall CVR'}</p>
-                <p className="text-lg text-white">{((PIPELINE_DATA[PIPELINE_DATA.length - 1].count / PIPELINE_DATA[0].count) * 100).toFixed(1)}%</p>
+                <p className="text-lg text-white">
+                  {(
+                    (PIPELINE_DATA[PIPELINE_DATA.length - 1].count / PIPELINE_DATA[0].count) *
+                    100
+                  ).toFixed(1)}
+                  %
+                </p>
               </div>
               <div>
                 <p className="text-xs text-gray-500">{isZh ? '面试通过率' : 'Interview Pass'}</p>
@@ -406,16 +729,39 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
         <div className="space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
-              <h3 className="text-white mb-4">{isZh ? '入离职趋势' : 'Hiring & Resignation Trend'}</h3>
+              <h3 className="text-white mb-4">
+                {isZh ? '入离职趋势' : 'Hiring & Resignation Trend'}
+              </h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                   <BarChart data={HIRING_TREND}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis dataKey="month" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                    <XAxis
+                      dataKey="month"
+                      stroke="#64748b"
+                      tick={{ fill: '#94a3b8', fontSize: 12 }}
+                    />
                     <YAxis stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                    <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} />
-                    <Bar dataKey="hire" fill="#10b981" radius={[4, 4, 0, 0]} name={isZh ? '入职' : 'Hired'} />
-                    <Bar dataKey="resign" fill="#ef4444" radius={[4, 4, 0, 0]} name={isZh ? '离职' : 'Resigned'} />
+                    <Tooltip
+                      contentStyle={{
+                        background: 'rgba(15,23,42,0.95)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '12px',
+                        color: '#fff',
+                      }}
+                    />
+                    <Bar
+                      dataKey="hire"
+                      fill="#10b981"
+                      radius={[4, 4, 0, 0]}
+                      name={isZh ? '入职' : 'Hired'}
+                    />
+                    <Bar
+                      dataKey="resign"
+                      fill="#ef4444"
+                      radius={[4, 4, 0, 0]}
+                      name={isZh ? '离职' : 'Resigned'}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -427,10 +773,27 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
                 <div className="w-1/2 h-full">
                   <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                     <PieChart>
-                      <Pie data={SOURCE_PIE} cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={3} dataKey="value">
-                        {SOURCE_PIE.map((entry, i) => <Cell key={i} fill={entry.color} />)}
+                      <Pie
+                        data={SOURCE_PIE}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={50}
+                        outerRadius={80}
+                        paddingAngle={3}
+                        dataKey="value"
+                      >
+                        {SOURCE_PIE.map((entry, i) => (
+                          <Cell key={i} fill={entry.color} />
+                        ))}
                       </Pie>
-                      <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }} />
+                      <Tooltip
+                        contentStyle={{
+                          background: 'rgba(15,23,42,0.95)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          borderRadius: '12px',
+                          color: '#fff',
+                        }}
+                      />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
@@ -438,7 +801,10 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
                   {SOURCE_PIE.map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                        <div
+                          className="w-3 h-3 rounded-full"
+                          style={{ backgroundColor: item.color }}
+                        />
                         <span className="text-sm text-gray-300">{item.name}</span>
                       </div>
                       <span className="text-sm text-white">{item.value}%</span>
@@ -453,23 +819,33 @@ export function SmartRecruitment({ currentLanguage }: SmartRecruitmentProps) {
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <DollarSign className="w-5 h-5 text-amber-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '平均招聘成本' : 'Avg. Cost per Hire'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '平均招聘成本' : 'Avg. Cost per Hire'}
+                </span>
               </div>
               <p className="text-2xl text-white">¥8,650</p>
-              <p className="text-xs text-emerald-400 mt-1">-12% {isZh ? '较上季度' : 'vs last quarter'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                -12% {isZh ? '较上季度' : 'vs last quarter'}
+              </p>
             </div>
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <Award className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '内推占比' : 'Internal Referral'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '内推占比' : 'Internal Referral'}
+                </span>
               </div>
               <p className="text-2xl text-white">18%</p>
-              <p className="text-xs text-emerald-400 mt-1">+5% {isZh ? '较去年' : 'vs last year'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                +5% {isZh ? '较去年' : 'vs last year'}
+              </p>
             </div>
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <TrendingUp className="w-5 h-5 text-emerald-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '试用期通过率' : 'Probation Pass Rate'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '试用期通过率' : 'Probation Pass Rate'}
+                </span>
               </div>
               <p className="text-2xl text-white">92%</p>
               <p className="text-xs text-gray-500 mt-1">{isZh ? '近6个月' : 'Last 6 months'}</p>

@@ -78,7 +78,13 @@ describe('Customers', () => {
 
   it('handles navigation context', () => {
     const onNavigate = vi.fn();
-    render(<Customers {...defaultProps} navigationContext={{ source: 'orders', customerId: 'CUST-001' }} onNavigate={onNavigate} />);
+    render(
+      <Customers
+        {...defaultProps}
+        navigationContext={{ source: 'orders', customerId: 'CUST-001' }}
+        onNavigate={onNavigate}
+      />
+    );
     expect(onNavigate).toBeDefined();
   });
 

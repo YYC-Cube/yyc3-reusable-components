@@ -3,6 +3,7 @@
 ## 1. 概述
 
 Storybook是YYC³组件库的文档和开发环境，用于：
+
 - 组件可视化展示和交互测试
 - 组件文档自动生成
 - 设计系统一致性验证
@@ -78,7 +79,8 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
 };
@@ -142,7 +144,7 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const { theme } = context.globals;
-      
+
       return (
         <div className={theme === 'dark' ? 'dark' : 'light'}>
           <Story />
@@ -281,7 +283,7 @@ type Story = StoryObj;
 
 function PersistedStateDemo() {
   const [value, setValue] = usePersistedState('demo-key', 'default value');
-  
+
   return (
     <div className="p-4 space-y-4">
       <div className="text-lg font-semibold">Current Value: {value}</div>
@@ -351,7 +353,7 @@ export const Default: Story = {
 export const Controlled: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    
+
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -397,6 +399,7 @@ export const Controlled: Story = {
 ### 6.1 组件文档
 
 每个Story应包含：
+
 - **标题**: 清晰描述组件功能
 - **描述**: 组件用途和使用场景
 - **示例**: 展示不同状态和变体
@@ -417,7 +420,7 @@ export const WithInteraction: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
-    
+
     await userEvent.click(button);
     await expect(button).toHaveFocus();
   },

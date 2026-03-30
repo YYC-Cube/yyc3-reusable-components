@@ -34,13 +34,13 @@ import { formatDate, debounce, deepClone } from '@yyc3/utils';
 
 function App() {
   const formattedDate = formatDate(new Date(), 'YYYY-MM-DD');
-  
+
   const handleSearch = debounce((query) => {
     console.log('Searching:', query);
   }, 300);
-  
+
   const clonedData = deepClone(originalData);
-  
+
   return (
     <div>
       <p>Date: {formattedDate}</p>
@@ -53,35 +53,41 @@ function App() {
 ## 📚 工具函数列表
 
 ### 字符串工具
+
 - formatString - 字符串格式化
 - capitalize - 首字母大写
 - camelCase - 驼峰转换
 - kebabCase - 短横线转换
 
 ### 数组工具
+
 - uniqueArray - 数组去重
 - groupBy - 分组
 - sortBy - 排序
 - flatten - 扁平化
 
 ### 对象工具
+
 - deepClone - 深拷贝
 - deepMerge - 深合并
 - pick - 提取属性
 - omit - 忽略属性
 
 ### 日期工具
+
 - formatDate - 日期格式化
 - parseDate - 日期解析
 - dateDiff - 日期差值
 
 ### 函数工具
+
 - debounce - 防抖
 - throttle - 节流
 - memoize - 记忆化
 - curry - 柯里化
 
 ### 验证工具
+
 - isEmail - 邮箱验证
 - isPhone - 手机号验证
 - isUrl - URL验证

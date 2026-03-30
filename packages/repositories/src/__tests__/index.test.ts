@@ -20,7 +20,7 @@ describe('@yyc3/repositories Package Exports', () => {
 
   it('should have databaseRepository with expected methods', () => {
     const repo = Repositories.databaseRepository;
-    
+
     // Check for database repository methods
     expect(typeof repo.executeQuery).toBe('function');
     expect(typeof repo.insert).toBe('function');
@@ -31,7 +31,7 @@ describe('@yyc3/repositories Package Exports', () => {
 
   it('should have gitHubRepository with expected methods', () => {
     const repo = Repositories.gitHubRepository;
-    
+
     // Check for GitHub repository methods
     expect(typeof repo.getRepositories).toBe('function');
     expect(typeof repo.saveRepositories).toBe('function');

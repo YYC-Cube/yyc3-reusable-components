@@ -21,7 +21,7 @@ try {
   const regressions = [];
   const improvements = [];
 
-  results.forEach(result => {
+  results.forEach((result) => {
     const key = `${result.componentName}-${result.metric}`;
     const baselineValue = baseline[key];
 
@@ -77,22 +77,22 @@ try {
 
   if (regressions.length > 0) {
     console.log('\n⚠️ Regressions detected:');
-    regressions.forEach(regression => {
+    regressions.forEach((regression) => {
       console.log(
         `  - ${regression.componentName}.${regression.metric}: ` +
-        `${regression.currentValue}ms vs ${regression.baselineValue}ms ` +
-        `(+${regression.percentageChange.toFixed(1)}%)`
+          `${regression.currentValue}ms vs ${regression.baselineValue}ms ` +
+          `(+${regression.percentageChange.toFixed(1)}%)`
       );
     });
   }
 
   if (improvements.length > 0) {
     console.log('\n✅ Performance improvements:');
-    improvements.forEach(improvement => {
+    improvements.forEach((improvement) => {
       console.log(
         `  - ${improvement.componentName}.${improvement.metric}: ` +
-        `${improvement.currentValue}ms vs ${improvement.baselineValue}ms ` +
-        `(${improvement.percentageChange.toFixed(1)}%)`
+          `${improvement.currentValue}ms vs ${improvement.baselineValue}ms ` +
+          `(${improvement.percentageChange.toFixed(1)}%)`
       );
     });
   }

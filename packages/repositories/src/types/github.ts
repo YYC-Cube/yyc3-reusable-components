@@ -103,7 +103,7 @@ export interface GitHubCommit {
  * GitHub Issue 状态
  * GitHub Issue State
  */
-export type GitHubIssueState = "open" | "closed";
+export type GitHubIssueState = 'open' | 'closed';
 
 /**
  * GitHub Issue 信息
@@ -136,7 +136,7 @@ export interface GitHubIssue {
  * GitHub Pull Request 状态
  * GitHub Pull Request State
  */
-export type GitHubPRState = "open" | "closed" | "merged";
+export type GitHubPRState = 'open' | 'closed' | 'merged';
 
 /**
  * GitHub Pull Request 信息
@@ -209,9 +209,9 @@ export interface RepoSearchParams {
   /** 编程语言过滤 / Language filter */
   language?: string;
   /** 排序字段 / Sort field */
-  sort?: "stars" | "forks" | "updated" | "created";
+  sort?: 'stars' | 'forks' | 'updated' | 'created';
   /** 排序方向 / Sort direction */
-  order?: "asc" | "desc";
+  order?: 'asc' | 'desc';
   /** 每页数量 / Items per page */
   perPage?: number;
   /** 页码 / Page number */
@@ -268,7 +268,7 @@ export interface GitHubFileContent {
   /** 文件大小 / File size */
   size: number;
   /** 文件类型 / File type */
-  type: "file" | "dir" | "symlink" | "submodule";
+  type: 'file' | 'dir' | 'symlink' | 'submodule';
   /** Base64 编码内容 / Base64 encoded content */
   content: string | null;
   /** 编码方式 / Encoding */

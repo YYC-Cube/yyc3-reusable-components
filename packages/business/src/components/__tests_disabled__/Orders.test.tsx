@@ -77,12 +77,23 @@ describe('Orders', () => {
 
   it('handles navigation context', () => {
     const onNavigate = vi.fn();
-    render(<Orders {...defaultProps} navigationContext={{ source: 'customers', customerId: 'CUST-001' }} onNavigate={onNavigate} />);
+    render(
+      <Orders
+        {...defaultProps}
+        navigationContext={{ source: 'customers', customerId: 'CUST-001' }}
+        onNavigate={onNavigate}
+      />
+    );
     expect(onNavigate).toBeDefined();
   });
 
   it('filters orders by customer', () => {
-    render(<Orders {...defaultProps} navigationContext={{ source: 'customers', customerId: 'CUST-001' }} />);
+    render(
+      <Orders
+        {...defaultProps}
+        navigationContext={{ source: 'customers', customerId: 'CUST-001' }}
+      />
+    );
     expect(screen.getByText('ORD-2025-001')).toBeInTheDocument();
     expect(screen.getByText('ORD-2025-004')).toBeInTheDocument();
   });
@@ -114,7 +125,13 @@ describe('Orders', () => {
 
   it('handles recommendation actions', () => {
     const onNavigate = vi.fn();
-    render(<Orders {...defaultProps} navigationContext={{ source: 'dashboard', orderId: 'ORD-2025-001' }} onNavigate={onNavigate} />);
+    render(
+      <Orders
+        {...defaultProps}
+        navigationContext={{ source: 'dashboard', orderId: 'ORD-2025-001' }}
+        onNavigate={onNavigate}
+      />
+    );
     expect(onNavigate).toBeDefined();
   });
 });

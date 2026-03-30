@@ -21,17 +21,17 @@ import type {
   GitHubOperationResult,
   RepoSearchParams,
   PaginatedResponse,
-} from "../types/github";
+} from '../types/github';
 
 /* ──────────────────── 本地缓存键 / Local Cache Keys ──────────────────── */
 
 const CACHE_KEYS = {
-  REPOS: "yyc3_github_repos",
-  REPO_DETAIL: "yyc3_github_repo_",
-  BRANCHES: "yyc3_github_branches_",
-  COMMITS: "yyc3_github_commits_",
-  ISSUES: "yyc3_github_issues_",
-  SYNC_TIMESTAMP: "yyc3_github_last_sync",
+  REPOS: 'yyc3_github_repos',
+  REPO_DETAIL: 'yyc3_github_repo_',
+  BRANCHES: 'yyc3_github_branches_',
+  COMMITS: 'yyc3_github_commits_',
+  ISSUES: 'yyc3_github_issues_',
+  SYNC_TIMESTAMP: 'yyc3_github_last_sync',
 } as const;
 
 /** 缓存过期时间（毫秒）/ Cache expiry time (ms) - 5 minutes */
@@ -160,7 +160,7 @@ class GitHubRepositoryImpl {
    * @returns {GitHubRepo | null} 仓库信息或 null / Repository info or null
    */
   getRepositoryByName(fullName: string): GitHubRepo | null {
-    const cacheKey = `${CACHE_KEYS.REPO_DETAIL}${fullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.REPO_DETAIL}${fullName.replace('/', '_')}`;
     return this.readCache<GitHubRepo>(cacheKey);
   }
 
@@ -171,7 +171,7 @@ class GitHubRepositoryImpl {
    * @param {GitHubRepo} repo - 仓库信息 / Repository info
    */
   saveRepository(repo: GitHubRepo): void {
-    const cacheKey = `${CACHE_KEYS.REPO_DETAIL}${repo.fullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.REPO_DETAIL}${repo.fullName.replace('/', '_')}`;
     this.writeCache(cacheKey, repo);
   }
 
@@ -185,7 +185,7 @@ class GitHubRepositoryImpl {
    * @returns {GitHubBranch[]} 分支列表 / Branch list
    */
   getBranches(repoFullName: string): GitHubBranch[] {
-    const cacheKey = `${CACHE_KEYS.BRANCHES}${repoFullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.BRANCHES}${repoFullName.replace('/', '_')}`;
     return this.readCache<GitHubBranch[]>(cacheKey) ?? [];
   }
 
@@ -197,7 +197,7 @@ class GitHubRepositoryImpl {
    * @param {GitHubBranch[]} branches - 分支列表 / Branch list
    */
   saveBranches(repoFullName: string, branches: GitHubBranch[]): void {
-    const cacheKey = `${CACHE_KEYS.BRANCHES}${repoFullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.BRANCHES}${repoFullName.replace('/', '_')}`;
     this.writeCache(cacheKey, branches);
   }
 
@@ -211,7 +211,7 @@ class GitHubRepositoryImpl {
    * @returns {GitHubCommit[]} 提交列表 / Commit list
    */
   getCommits(repoFullName: string): GitHubCommit[] {
-    const cacheKey = `${CACHE_KEYS.COMMITS}${repoFullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.COMMITS}${repoFullName.replace('/', '_')}`;
     return this.readCache<GitHubCommit[]>(cacheKey) ?? [];
   }
 
@@ -223,7 +223,7 @@ class GitHubRepositoryImpl {
    * @param {GitHubCommit[]} commits - 提交列表 / Commit list
    */
   saveCommits(repoFullName: string, commits: GitHubCommit[]): void {
-    const cacheKey = `${CACHE_KEYS.COMMITS}${repoFullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.COMMITS}${repoFullName.replace('/', '_')}`;
     this.writeCache(cacheKey, commits);
   }
 
@@ -237,7 +237,7 @@ class GitHubRepositoryImpl {
    * @returns {GitHubIssue[]} Issue 列表 / Issue list
    */
   getIssues(repoFullName: string): GitHubIssue[] {
-    const cacheKey = `${CACHE_KEYS.ISSUES}${repoFullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.ISSUES}${repoFullName.replace('/', '_')}`;
     return this.readCache<GitHubIssue[]>(cacheKey) ?? [];
   }
 
@@ -249,7 +249,7 @@ class GitHubRepositoryImpl {
    * @param {GitHubIssue[]} issues - Issue 列表 / Issue list
    */
   saveIssues(repoFullName: string, issues: GitHubIssue[]): void {
-    const cacheKey = `${CACHE_KEYS.ISSUES}${repoFullName.replace("/", "_")}`;
+    const cacheKey = `${CACHE_KEYS.ISSUES}${repoFullName.replace('/', '_')}`;
     this.writeCache(cacheKey, issues);
   }
 
@@ -279,7 +279,7 @@ class GitHubRepositoryImpl {
    * Clear all GitHub cached data
    */
   clearAllCache(): void {
-    this.clearCacheByPrefix("yyc3_github_");
+    this.clearCacheByPrefix('yyc3_github_');
   }
 
   /**
@@ -289,7 +289,7 @@ class GitHubRepositoryImpl {
    * @returns {{ totalKeys: number; totalSize: number; lastSync: Date | null }} 缓存统计
    */
   getCacheStats(): { totalKeys: number; totalSize: number; lastSync: Date | null } {
-    const keys = Object.keys(localStorage).filter((k) => k.startsWith("yyc3_github_"));
+    const keys = Object.keys(localStorage).filter((k) => k.startsWith('yyc3_github_'));
     let totalSize = 0;
     keys.forEach((k) => {
       const val = localStorage.getItem(k);

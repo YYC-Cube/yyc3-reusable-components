@@ -38,7 +38,8 @@ describe('@yyc3/smart Package Exports', () => {
       expect(exported).toBeDefined();
       // React forward_ref components are objects, not functions
       // Check if it's a valid React component (has $$typeof or is a function)
-      const isValidComponent = typeof exported === 'function' || 
+      const isValidComponent =
+        typeof exported === 'function' ||
         (typeof exported === 'object' && exported?.$$typeof !== undefined);
       expect(isValidComponent).toBe(true);
     });

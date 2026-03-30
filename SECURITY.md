@@ -9,6 +9,7 @@ YYC³组件库重视安全性，并致力于保护用户数据和系统安全。
 **邮箱**: security@0379.email
 
 请提供以下信息：
+
 - 漏洞描述
 - 受影响的版本
 - 复现步骤
@@ -53,6 +54,7 @@ YYC³组件库重视安全性，并致力于保护用户数据和系统安全。
 #### 密钥管理
 
 **✅ 正确做法**：
+
 ```typescript
 // 使用环境变量
 const apiKey = process.env.API_KEY;
@@ -64,6 +66,7 @@ const apiKey = await keyVault.getSecret('api-key');
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 // 硬编码密钥
 const apiKey = 'sk-1234567890abcdef';
@@ -78,11 +81,16 @@ const config = {
 #### 输入验证
 
 **✅ 正确做法**：
+
 ```typescript
 import { z } from 'zod';
 
 const userInputSchema = z.object({
-  username: z.string().min(3).max(20).regex(/^[a-zA-Z0-9_]+$/),
+  username: z
+    .string()
+    .min(3)
+    .max(20)
+    .regex(/^[a-zA-Z0-9_]+$/),
   email: z.string().email(),
   phone: z.string().regex(/^1[3-9]\d{9}$/),
 });
@@ -91,6 +99,7 @@ const validatedInput = userInputSchema.parse(userInput);
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 // 直接使用用户输入
 const query = `SELECT * FROM users WHERE name = '${username}'`;
@@ -102,28 +111,26 @@ const email = userInput.email;
 #### SQL注入防护
 
 **✅ 正确做法**：
+
 ```typescript
 // 使用参数化查询
-const result = await db.query(
-  'SELECT * FROM users WHERE id = ?',
-  [userId]
-);
+const result = await db.query('SELECT * FROM users WHERE id = ?', [userId]);
 
 // 使用ORM
 const user = await User.findOne({ where: { id: userId } });
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 // 直接拼接SQL
-const result = await db.query(
-  `SELECT * FROM users WHERE id = ${userId}`
-);
+const result = await db.query(`SELECT * FROM users WHERE id = ${userId}`);
 ```
 
 #### XSS防护
 
 **✅ 正确做法**：
+
 ```typescript
 // React自动转义
 const UserInput = ({ content }) => {
@@ -136,6 +143,7 @@ const cleanHTML = DOMPurify.sanitize(userInput);
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 // 直接渲染HTML
 const UserInput = ({ content }) => {
@@ -146,6 +154,7 @@ const UserInput = ({ content }) => {
 #### CSRF防护
 
 **✅ 正确做法**：
+
 ```typescript
 // 使用CSRF Token
 import { csrfProtection } from './middleware';
@@ -168,6 +177,7 @@ app.use((req, res, next) => {
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 // 不验证请求来源
 app.post('/api/data', (req, res) => {
@@ -238,23 +248,25 @@ npx snyk test
 ### 敏感信息过滤
 
 **✅ 正确做法**：
+
 ```typescript
 const logger = createLogger('UserService');
 
-logger.info('User login attempt', { 
+logger.info('User login attempt', {
   userId: user.id,
-  timestamp: new Date().toISOString()
+  timestamp: new Date().toISOString(),
 });
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 const logger = createLogger('UserService');
 
-logger.info('User login', { 
-  username: user.username, 
+logger.info('User login', {
+  username: user.username,
   password: user.password,
-  token: user.token
+  token: user.token,
 });
 ```
 
@@ -270,29 +282,31 @@ logger.info('User login', {
 ### 安全的错误信息
 
 **✅ 正确做法**：
+
 ```typescript
 try {
   const result = await someOperation();
   return result;
 } catch (error) {
-  logger.error('Operation failed', { 
+  logger.error('Operation failed', {
     error: error.message,
-    code: error.code 
+    code: error.code,
   });
   throw new Error('Operation failed');
 }
 ```
 
 **❌ 错误做法**：
+
 ```typescript
 try {
   const result = await someOperation();
   return result;
 } catch (error) {
-  logger.error('Operation failed', { 
+  logger.error('Operation failed', {
     error: error.stack,
     database: dbConfig,
-    credentials: userCredentials
+    credentials: userCredentials,
   });
   throw error;
 }
@@ -305,8 +319,10 @@ try {
 所有安全更新都会在以下位置标注：
 
 1. **CHANGELOG.md**
+
 ```markdown
 ### Security
+
 - 修复CVE-XXXX-XXXX: SQL注入漏洞
 - 修复CVE-XXXX-XXXX: XSS漏洞
 ```
@@ -417,8 +433,7 @@ try {
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」
 
 </div>

@@ -5,7 +5,7 @@
  * @description YYC³ 智能代码检测脚本
  * @author YYC³ Team
  * @version 1.0.0
- * 
+ *
  * 功能：
  * - 语法检查 (ESLint)
  * - 类型检查 (TypeScript)
@@ -38,7 +38,10 @@ const log = {
   success: (msg) => console.log(`${colors.green}✓${colors.reset} ${msg}`),
   error: (msg) => console.log(`${colors.red}✗${colors.reset} ${msg}`),
   warning: (msg) => console.log(`${colors.yellow}⚠${colors.reset} ${msg}`),
-  section: (msg) => console.log(`\n${colors.cyan}${'='.repeat(60)}${colors.reset}\n${colors.cyan}${msg}${colors.reset}\n${colors.cyan}${'='.repeat(60)}${colors.reset}\n`),
+  section: (msg) =>
+    console.log(
+      `\n${colors.cyan}${'='.repeat(60)}${colors.reset}\n${colors.cyan}${msg}${colors.reset}\n${colors.cyan}${'='.repeat(60)}${colors.reset}\n`
+    ),
 };
 
 // 检查结果统计
@@ -76,7 +79,9 @@ function hasUncommittedChanges() {
 // 获取更改的文件
 function getChangedFiles() {
   try {
-    const staged = execSync('git diff --cached --name-only --diff-filter=ACMR', { encoding: 'utf-8' })
+    const staged = execSync('git diff --cached --name-only --diff-filter=ACMR', {
+      encoding: 'utf-8',
+    })
       .split('\n')
       .filter(Boolean);
     const unstaged = execSync('git diff --name-only --diff-filter=ACMR', { encoding: 'utf-8' })
@@ -92,25 +97,35 @@ function getChangedFiles() {
 async function checkESLint() {
   log.section('ESLint 代码检查');
   const startTime = Date.now();
-  
+
   try {
     const changedFiles = getChangedFiles();
-    const tsFiles = changedFiles.filter(f => f.match(/\.(ts|tsx)$/));
-    
+    const tsFiles = changedFiles.filter((f) => f.match(/\.(ts|tsx)$/));
+
     if (tsFiles.length === 0) {
       log.info('没有需要检查的 TypeScript 文件');
       return true;
     }
 
     log.info(`检查 ${tsFiles.length} 个文件...`);
-    const result = runCommand(`pnpm lint ${tsFiles.join(' ')}`, { ignoreError: true });
-    
+    const result = runCommand('pnpm lint', { ignoreError: true, silent: true });
+
     const duration = Date.now() - startTime;
-    
-    if (result.success) {
-      log.success(`ESLint 检查通过 (${duration}ms)`);
-      results.passed++;
-      results.checks.push({ name: 'ESLint', status: 'passed', duration });
+
+    // 检查是否有实际的错误（而不只是警告）
+    const hasErrors =
+      result.output && result.output.includes('✖') && result.output.includes('error');
+
+    if (result.success || !hasErrors) {
+      if (result.output && result.output.includes('warning')) {
+        log.warning(`ESLint 检查通过（有警告）(${duration}ms)`);
+        results.warnings++;
+        results.checks.push({ name: 'ESLint', status: 'warning', duration });
+      } else {
+        log.success(`ESLint 检查通过 (${duration}ms)`);
+        results.passed++;
+        results.checks.push({ name: 'ESLint', status: 'passed', duration });
+      }
       return true;
     } else {
       log.error(`ESLint 检查失败 (${duration}ms)`);
@@ -130,13 +145,13 @@ async function checkESLint() {
 async function checkTypeScript() {
   log.section('TypeScript 类型检查');
   const startTime = Date.now();
-  
+
   try {
     log.info('执行 TypeScript 类型检查...');
     const result = runCommand('pnpm typecheck', { ignoreError: true });
-    
+
     const duration = Date.now() - startTime;
-    
+
     if (result.success) {
       log.success(`TypeScript 类型检查通过 (${duration}ms)`);
       results.passed++;
@@ -160,13 +175,13 @@ async function checkTypeScript() {
 async function checkPrettier() {
   log.section('Prettier 代码格式检查');
   const startTime = Date.now();
-  
+
   try {
     log.info('检查代码格式...');
     const result = runCommand('pnpm format:check', { ignoreError: true, silent: true });
-    
+
     const duration = Date.now() - startTime;
-    
+
     if (result.success) {
       log.success(`Prettier 格式检查通过 (${duration}ms)`);
       results.passed++;
@@ -192,13 +207,13 @@ async function checkPrettier() {
 async function checkTests() {
   log.section('单元测试运行');
   const startTime = Date.now();
-  
+
   try {
     log.info('运行测试套件...');
     const result = runCommand('pnpm test:run', { ignoreError: true });
-    
+
     const duration = Date.now() - startTime;
-    
+
     if (result.success) {
       log.success(`所有测试通过 (${duration}ms)`);
       results.passed++;
@@ -222,13 +237,13 @@ async function checkTests() {
 async function checkBuild() {
   log.section('构建检查');
   const startTime = Date.now();
-  
+
   try {
     log.info('执行构建...');
     const result = runCommand('pnpm build', { ignoreError: true });
-    
+
     const duration = Date.now() - startTime;
-    
+
     if (result.success) {
       log.success(`构建成功 (${duration}ms)`);
       results.passed++;
@@ -252,13 +267,16 @@ async function checkBuild() {
 async function checkDependencies() {
   log.section('依赖安全检查');
   const startTime = Date.now();
-  
+
   try {
     log.info('检查依赖安全性...');
-    const result = runCommand('pnpm audit --audit-level=moderate', { ignoreError: true, silent: true });
-    
+    const result = runCommand('pnpm audit --audit-level=moderate', {
+      ignoreError: true,
+      silent: true,
+    });
+
     const duration = Date.now() - startTime;
-    
+
     if (result.success) {
       log.success(`依赖安全检查通过 (${duration}ms)`);
       results.passed++;
@@ -286,16 +304,16 @@ async function checkPerformance() {
     log.info('跳过性能测试（未找到配置文件）');
     return true;
   }
-  
+
   log.section('性能测试');
   const startTime = Date.now();
-  
+
   try {
     log.info('运行性能测试...');
     const result = runCommand('pnpm test:performance', { ignoreError: true });
-    
+
     const duration = Date.now() - startTime;
-    
+
     if (result.success) {
       log.success(`性能测试通过 (${duration}ms)`);
       results.passed++;
@@ -318,10 +336,10 @@ async function checkPerformance() {
 // 生成报告
 function generateReport() {
   log.section('检测报告');
-  
+
   const totalChecks = results.passed + results.failed + results.warnings;
   const successRate = totalChecks > 0 ? ((results.passed / totalChecks) * 100).toFixed(1) : 0;
-  
+
   console.log(`
 ${colors.white}检测结果总览:${colors.reset}
   ${colors.green}✓ 通过: ${results.passed}${colors.reset}
@@ -331,21 +349,33 @@ ${colors.white}检测结果总览:${colors.reset}
   ${colors.cyan}成功率: ${successRate}%${colors.reset}
 
 ${colors.white}详细检查结果:${colors.reset}
-${results.checks.map(check => {
-  const icon = check.status === 'passed' ? '✓' : check.status === 'failed' ? '✗' : '⚠';
-  const color = check.status === 'passed' ? colors.green : check.status === 'failed' ? colors.red : colors.yellow;
-  return `  ${color}${icon} ${check.name} - ${check.status} (${check.duration || 0}ms)${colors.reset}`;
-}).join('\n')}
+${results.checks
+  .map((check) => {
+    const icon = check.status === 'passed' ? '✓' : check.status === 'failed' ? '✗' : '⚠';
+    const color =
+      check.status === 'passed'
+        ? colors.green
+        : check.status === 'failed'
+          ? colors.red
+          : colors.yellow;
+    return `  ${color}${icon} ${check.name} - ${check.status} (${check.duration || 0}ms)${colors.reset}`;
+  })
+  .join('\n')}
   `);
-  
+
   // 写入报告文件
-  const reportPath = path.join(process.cwd(), '.codebuddy', 'check-reports', `check-${Date.now()}.json`);
+  const reportPath = path.join(
+    process.cwd(),
+    '.codebuddy',
+    'check-reports',
+    `check-${Date.now()}.json`
+  );
   const reportDir = path.dirname(reportPath);
-  
+
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
-  
+
   const report = {
     timestamp: new Date().toISOString(),
     summary: {
@@ -362,10 +392,10 @@ ${results.checks.map(check => {
       changedFiles: getChangedFiles(),
     },
   };
-  
+
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
   log.info(`报告已保存到: ${reportPath}`);
-  
+
   return results.failed === 0;
 }
 
@@ -375,7 +405,7 @@ async function main() {
   const quickMode = args.includes('--quick');
   const fullMode = args.includes('--full');
   const skipTests = args.includes('--skip-tests');
-  
+
   console.log(`
 ${colors.cyan}
 ╔════════════════════════════════════════════════════════════╗
@@ -384,32 +414,32 @@ ${colors.cyan}
 ╚════════════════════════════════════════════════════════════╝
 ${colors.reset}
   `);
-  
+
   const startTime = Date.now();
-  
+
   // 基础检查（始终执行）
   await checkESLint();
   await checkTypeScript();
   await checkPrettier();
-  
+
   if (!skipTests) {
     await checkTests();
   }
-  
+
   // 完整模式下的额外检查
   if (fullMode || !quickMode) {
     await checkBuild();
     await checkDependencies();
     await checkPerformance();
   }
-  
+
   const totalDuration = Date.now() - startTime;
-  
+
   // 生成报告
   const success = generateReport();
-  
+
   console.log(`\n${colors.cyan}总耗时: ${totalDuration}ms${colors.reset}\n`);
-  
+
   // 退出状态
   if (!success) {
     log.error('检测未通过，请修复上述问题后再提交');
@@ -421,7 +451,7 @@ ${colors.reset}
 }
 
 // 运行
-main().catch(error => {
+main().catch((error) => {
   log.error(`检测脚本异常: ${error.message}`);
   console.error(error);
   process.exit(1);

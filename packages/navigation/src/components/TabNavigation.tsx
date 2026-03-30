@@ -26,7 +26,7 @@ export function TabNavigation({
   onTabChange,
   onTabClose,
   maxVisibleTabs = 8,
-  currentLanguage
+  currentLanguage,
 }: TabNavigationProps) {
   const [scrollOffset, setScrollOffset] = useState(0);
   const isZh = currentLanguage === 'zh';
@@ -61,7 +61,7 @@ export function TabNavigation({
         <AnimatePresence mode="popLayout">
           {visibleTabs.map((tab) => {
             const isActive = tab.id === activeTabId;
-            
+
             return (
               <motion.div
                 key={tab.id}
@@ -73,19 +73,16 @@ export function TabNavigation({
                 className={`
                   group relative flex items-center gap-2 px-4 h-full cursor-pointer
                   transition-all duration-200
-                  ${isActive 
-                    ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/10 border-b-2 border-blue-500 text-white' 
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ${
+                    isActive
+                      ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/10 border-b-2 border-blue-500 text-white'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }
                 `}
                 onClick={() => onTabChange(tab.id)}
               >
                 {/* Icon */}
-                {tab.icon && (
-                  <span className="flex-shrink-0 w-4 h-4">
-                    {tab.icon}
-                  </span>
-                )}
+                {tab.icon && <span className="flex-shrink-0 w-4 h-4">{tab.icon}</span>}
 
                 {/* Label */}
                 <span className="text-sm font-medium whitespace-nowrap">
@@ -159,7 +156,7 @@ export function SubTabNavigation({
   activeTabId,
   onTabChange,
   currentLanguage,
-  vertical = false
+  vertical = false,
 }: SubTabNavigationProps) {
   const isZh = currentLanguage === 'zh';
 
@@ -168,7 +165,7 @@ export function SubTabNavigation({
       <div className="flex flex-col gap-1 p-2 bg-slate-900/30 backdrop-blur-lg rounded-xl border border-white/5">
         {tabs.map((tab) => {
           const isActive = tab.id === activeTabId;
-          
+
           return (
             <button
               key={tab.id}
@@ -176,9 +173,10 @@ export function SubTabNavigation({
               className={`
                 relative flex items-center gap-3 px-4 py-2.5 rounded-lg
                 text-sm font-medium transition-all duration-200
-                ${isActive
-                  ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/10 text-white border border-blue-500/30'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                ${
+                  isActive
+                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/10 text-white border border-blue-500/30'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }
               `}
             >
@@ -209,7 +207,7 @@ export function SubTabNavigation({
     <div className="flex items-center gap-2 p-2 bg-slate-900/30 backdrop-blur-lg rounded-xl border border-white/5">
       {tabs.map((tab) => {
         const isActive = tab.id === activeTabId;
-        
+
         return (
           <button
             key={tab.id}
@@ -217,9 +215,10 @@ export function SubTabNavigation({
             className={`
               relative flex items-center gap-2 px-4 py-2 rounded-lg
               text-sm font-medium transition-all duration-200
-              ${isActive
-                ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/10 text-white border border-blue-500/30'
-                : 'text-gray-400 hover:text-white hover:bg-white/5'
+              ${
+                isActive
+                  ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/10 text-white border border-blue-500/30'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
               }
             `}
           >

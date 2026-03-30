@@ -38,18 +38,18 @@ ${colors.reset}
 function checkEnvironment() {
   console.log(`${colors.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
   console.log(`${colors.cyan}步骤 1/5: 检查环境${colors.reset}\n`);
-  
+
   // 检查 Node.js 版本
   const nodeVersion = process.version;
   const majorVersion = parseInt(nodeVersion.slice(1).split('.')[0]);
-  
+
   if (majorVersion < 18) {
     console.log(`${colors.red}✗ Node.js 版本过低 (${nodeVersion})，需要 >= 18${colors.reset}`);
     process.exit(1);
   }
-  
+
   console.log(`${colors.green}✓ Node.js 版本: ${nodeVersion}${colors.reset}`);
-  
+
   // 检查 pnpm
   try {
     const pnpmVersion = execSync('pnpm --version', { encoding: 'utf-8' }).trim();
@@ -59,7 +59,7 @@ function checkEnvironment() {
     console.log(`${colors.yellow}  请运行: npm install -g pnpm${colors.reset}`);
     process.exit(1);
   }
-  
+
   // 检查 Git
   try {
     const gitVersion = execSync('git --version', { encoding: 'utf-8' }).trim();
@@ -68,7 +68,7 @@ function checkEnvironment() {
     console.log(`${colors.red}✗ 未安装 Git${colors.reset}`);
     process.exit(1);
   }
-  
+
   console.log(`${colors.green}✓ 环境检查通过${colors.reset}\n`);
 }
 
@@ -76,15 +76,15 @@ function checkEnvironment() {
 function createDirectories() {
   console.log(`${colors.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
   console.log(`${colors.cyan}步骤 2/5: 创建必要的目录${colors.reset}\n`);
-  
+
   const dirs = [
     '.codebuddy',
     '.codebuddy/check-reports',
     '.codebuddy/branch-reports',
     '.codebuddy/performance-reports',
   ];
-  
-  dirs.forEach(dir => {
+
+  dirs.forEach((dir) => {
     const fullPath = path.join(process.cwd(), dir);
     if (!fs.existsSync(fullPath)) {
       fs.mkdirSync(fullPath, { recursive: true });
@@ -93,7 +93,7 @@ function createDirectories() {
       console.log(`${colors.blue}ℹ 目录已存在: ${dir}${colors.reset}`);
     }
   });
-  
+
   console.log(`${colors.green}✓ 目录创建完成${colors.reset}\n`);
 }
 
@@ -101,7 +101,7 @@ function createDirectories() {
 function installGitHooks() {
   console.log(`${colors.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
   console.log(`${colors.cyan}步骤 3/5: 安装 Git Hooks${colors.reset}\n`);
-  
+
   try {
     execSync('node scripts/setup-git-hooks.js', { stdio: 'inherit' });
     console.log(`${colors.green}✓ Git Hooks 安装完成${colors.reset}\n`);
@@ -114,7 +114,7 @@ function installGitHooks() {
 function installDependencies() {
   console.log(`${colors.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
   console.log(`${colors.cyan}步骤 4/5: 安装依赖${colors.reset}\n`);
-  
+
   try {
     console.log(`${colors.blue}运行 pnpm install...${colors.reset}`);
     execSync('pnpm install', { stdio: 'inherit' });
@@ -129,7 +129,7 @@ function installDependencies() {
 function runTestCheck() {
   console.log(`${colors.blue}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
   console.log(`${colors.cyan}步骤 5/5: 运行测试检查${colors.reset}\n`);
-  
+
   console.log(`${colors.blue}运行快速检查...${colors.reset}`);
   try {
     execSync('node scripts/smart-check.js --quick', { stdio: 'inherit' });
@@ -204,20 +204,19 @@ ${colors.green}祝您编码愉快！${colors.reset}
 // 主函数
 async function main() {
   const startTime = Date.now();
-  
+
   try {
     checkEnvironment();
     createDirectories();
     installGitHooks();
     installDependencies();
     runTestCheck();
-    
+
     const duration = Date.now() - startTime;
-    
+
     console.log(`${colors.cyan}总耗时: ${(duration / 1000).toFixed(2)}秒${colors.reset}\n`);
-    
+
     showInstructions();
-    
   } catch (error) {
     console.error(`${colors.red}初始化失败:${colors.reset}`, error);
     process.exit(1);

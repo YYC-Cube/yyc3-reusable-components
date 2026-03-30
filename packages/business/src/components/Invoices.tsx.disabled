@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { FileText, Plus, Search, Filter, Download, ExternalLink, CheckCircle, Clock, AlertCircle } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 import { AIContextBanner } from './AIContextBanner';
 import { useNavigationContext, generateRecommendations } from '../hooks/useNavigationContext';
 

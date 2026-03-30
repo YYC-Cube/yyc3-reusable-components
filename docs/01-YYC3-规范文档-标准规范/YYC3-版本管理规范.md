@@ -1,8 +1,7 @@
 # YYC³ 组件库 - 版本管理规范
 
-> **规范版本**: v1.0.0
-> **创建日期**: 2024年3月28日
-> **适用范围**: YYC³组件库所有包的版本管理
+> **规范版本**: v1.0.0 **创建日期**: 2024年3月28日 **适用范围**:
+> YYC³组件库所有包的版本管理
 
 ---
 
@@ -27,11 +26,11 @@ YYC³组件库严格遵循[语义化版本规范](https://semver.org/lang/zh-CN/
 
 #### 版本号规则
 
-| 版本号类型 | 格式 | 说明 | 示例 |
-|-----------|------|------|------|
-| **主版本号** | X.0.0 | 不兼容的API修改 | 2.0.0 |
+| 版本号类型   | 格式  | 说明                 | 示例  |
+| ------------ | ----- | -------------------- | ----- |
+| **主版本号** | X.0.0 | 不兼容的API修改      | 2.0.0 |
 | **次版本号** | 1.X.0 | 向下兼容的功能性新增 | 1.1.0 |
-| **修订号** | 1.0.X | 向下兼容的问题修正 | 1.0.1 |
+| **修订号**   | 1.0.X | 向下兼容的问题修正   | 1.0.1 |
 
 #### 版本号示例
 
@@ -76,12 +75,14 @@ YYC³组件库严格遵循[语义化版本规范](https://semver.org/lang/zh-CN/
 
 所有包使用统一的版本号，便于管理和发布。
 
-**适用场景**: 
+**适用场景**:
+
 - 包之间有强依赖关系
 - 需要统一发布
 - 团队规模较小
 
 **示例**:
+
 ```json
 // @yyc3/ui/package.json
 {
@@ -104,11 +105,13 @@ YYC³组件库严格遵循[语义化版本规范](https://semver.org/lang/zh-CN/
 每个包独立管理版本号，根据实际变更更新。
 
 **适用场景**:
+
 - 包之间依赖关系较弱
 - 需要独立发布
 - 团队规模较大
 
 **示例**:
+
 ```json
 // @yyc3/ui/package.json
 {
@@ -269,6 +272,7 @@ pnpm changeset
 ```
 
 选择变更类型：
+
 - `major`: 不兼容的API修改
 - `minor`: 向下兼容的功能性新增
 - `patch`: 向下兼容的问题修正
@@ -354,14 +358,14 @@ pnpm changeset publish
 
 ### 版本更新影响范围
 
-| 包 | 直接依赖 | 间接依赖 | 更新影响 |
-|---|---------|---------|---------|
-| @yyc3/ui | 7个包 | 15+个包 | 🔴 高 |
-| @yyc3/hooks | 2个包 | 5+个包 | 🟡 中 |
-| @yyc3/utils | 2个包 | 8+个包 | 🟡 中 |
-| @yyc3/core | 3个包 | 10+个包 | 🟡 中 |
-| @yyc3/business | 0个包 | 0个包 | 🟢 低 |
-| @yyc3/smart | 0个包 | 0个包 | 🟢 低 |
+| 包             | 直接依赖 | 间接依赖 | 更新影响 |
+| -------------- | -------- | -------- | -------- |
+| @yyc3/ui       | 7个包    | 15+个包  | 🔴 高    |
+| @yyc3/hooks    | 2个包    | 5+个包   | 🟡 中    |
+| @yyc3/utils    | 2个包    | 8+个包   | 🟡 中    |
+| @yyc3/core     | 3个包    | 10+个包  | 🟡 中    |
+| @yyc3/business | 0个包    | 0个包    | 🟢 低    |
+| @yyc3/smart    | 0个包    | 0个包    | 🟢 低    |
 
 ---
 
@@ -388,29 +392,35 @@ pnpm changeset publish
 ## 📦 版本发布
 
 ### 发布版本
+
 - 包名: @yyc3/ui
 - 版本: 1.0.0 → 1.1.0
 
 ### 变更类型
+
 - [ ] major (不兼容的API修改)
 - [x] minor (向下兼容的功能性新增)
 - [ ] patch (向下兼容的问题修正)
 
 ### 变更内容
+
 - 添加新的Button组件
 - 添加新的Input组件
 - 优化Card组件性能
 
 ### 影响范围
+
 - 直接依赖: @yyc3/business, @yyc3/smart
 - 间接依赖: 5+个包
 
 ### 测试
+
 - [ ] 单元测试通过
 - [ ] 集成测试通过
 - [ ] 手动测试通过
 
 ### 文档
+
 - [ ] README已更新
 - [ ] CHANGELOG已更新
 - [ ] API文档已更新
@@ -424,35 +434,43 @@ pnpm changeset publish
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.1.0] - 2024-03-28
 
 ### Added
+
 - 新增Button组件，支持多种样式和变体
 - 新增Input组件，支持验证和格式化
 - 新增Card组件，支持多种布局
 
 ### Changed
+
 - 优化Button组件性能
 - 重构Card组件内部实现
 
 ### Fixed
+
 - 修复Button组件在Safari上的样式问题
 - 修复Input组件的验证逻辑
 
 ### Deprecated
+
 - 无
 
 ### Removed
+
 - 无
 
 ### Security
+
 - 无
 
 ## [1.0.0] - 2024-03-01
 
 ### Added
+
 - 初始版本发布
 - 包含50+基础UI组件
 ```
@@ -472,12 +490,12 @@ const semver = require('semver');
 function checkVersion(filePath) {
   const pkg = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const version = pkg.version;
-  
+
   if (!semver.valid(version)) {
     console.error(`❌ ${filePath}: 版本号格式不正确: ${version}`);
     return false;
   }
-  
+
   console.log(`✅ ${filePath}: 版本号检查通过 ${version}`);
   return true;
 }
@@ -486,18 +504,18 @@ function checkDependencies(filePath) {
   const pkg = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const deps = { ...pkg.dependencies, ...pkg.peerDependencies };
   let allValid = true;
-  
+
   for (const [name, range] of Object.entries(deps)) {
     if (!semver.validRange(range)) {
       console.error(`❌ ${filePath}: 依赖版本范围不正确 ${name}: ${range}`);
       allValid = false;
     }
   }
-  
+
   if (allValid) {
     console.log(`✅ ${filePath}: 依赖版本检查通过`);
   }
-  
+
   return allValid;
 }
 
@@ -506,7 +524,7 @@ const packageDirs = fs.readdirSync(packagesDir);
 
 let allPassed = true;
 
-packageDirs.forEach(dir => {
+packageDirs.forEach((dir) => {
   const pkgPath = path.join(packagesDir, dir, 'package.json');
   if (fs.existsSync(pkgPath)) {
     if (!checkVersion(pkgPath)) allPassed = false;
@@ -536,7 +554,7 @@ function updateVersion(filePath) {
 const packagesDir = path.join(__dirname, '../packages');
 const packageDirs = fs.readdirSync(packagesDir);
 
-packageDirs.forEach(dir => {
+packageDirs.forEach((dir) => {
   const pkgPath = path.join(packagesDir, dir, 'package.json');
   if (fs.existsSync(pkgPath)) {
     updateVersion(pkgPath);

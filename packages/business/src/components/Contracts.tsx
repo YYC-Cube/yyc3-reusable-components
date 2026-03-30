@@ -24,7 +24,7 @@ import {
   RefreshCw,
   TrendingUp,
   BarChart3,
-  PieChart
+  PieChart,
 } from 'lucide-react';
 import {
   AreaChart,
@@ -38,7 +38,7 @@ import {
   Pie,
   Cell,
   BarChart,
-  Bar
+  Bar,
 } from 'recharts';
 
 interface ContractsProps {
@@ -78,7 +78,7 @@ const MOCK_CONTRACTS: Contract[] = [
     status: 'active',
     signDate: '2026-01-10',
     owner: '张伟',
-    tags: ['年度', '铜', '战略']
+    tags: ['年度', '铜', '战略'],
   },
   {
     id: 'CT-2026-002',
@@ -93,7 +93,7 @@ const MOCK_CONTRACTS: Contract[] = [
     status: 'active',
     signDate: '2026-01-28',
     owner: '李娜',
-    tags: ['出口', '钢铁', '印尼']
+    tags: ['出口', '钢铁', '印尼'],
   },
   {
     id: 'CT-2026-003',
@@ -107,7 +107,7 @@ const MOCK_CONTRACTS: Contract[] = [
     endDate: '2027-02-28',
     status: 'pending',
     owner: '王强',
-    tags: ['框架', '铝', '长期']
+    tags: ['框架', '铝', '长期'],
   },
   {
     id: 'CT-2026-004',
@@ -122,7 +122,7 @@ const MOCK_CONTRACTS: Contract[] = [
     status: 'active',
     signDate: '2025-12-20',
     owner: '陈芳',
-    tags: ['物流', '海运']
+    tags: ['物流', '海运'],
   },
   {
     id: 'CT-2026-005',
@@ -137,7 +137,7 @@ const MOCK_CONTRACTS: Contract[] = [
     status: 'expired',
     signDate: '2025-09-25',
     owner: '赵磊',
-    tags: ['现货', '不锈钢']
+    tags: ['现货', '不锈钢'],
   },
   {
     id: 'CT-2026-006',
@@ -151,7 +151,7 @@ const MOCK_CONTRACTS: Contract[] = [
     endDate: '2026-09-30',
     status: 'draft',
     owner: '刘洋',
-    tags: ['加工', '黄铜']
+    tags: ['加工', '黄铜'],
   },
   {
     id: 'CT-2026-007',
@@ -166,7 +166,7 @@ const MOCK_CONTRACTS: Contract[] = [
     status: 'active',
     signDate: '2025-05-20',
     owner: '孙丽',
-    tags: ['租赁', '仓库']
+    tags: ['租赁', '仓库'],
   },
   {
     id: 'CT-2026-008',
@@ -181,8 +181,8 @@ const MOCK_CONTRACTS: Contract[] = [
     status: 'active',
     signDate: '2025-12-15',
     owner: '张伟',
-    tags: ['进口', '铁矿', '澳洲', '年度']
-  }
+    tags: ['进口', '铁矿', '澳洲', '年度'],
+  },
 ];
 
 const CONTRACT_TREND_DATA = [
@@ -212,12 +212,42 @@ const CONTRACT_AMOUNT_DATA = [
 ];
 
 const TEMPLATE_LIST = [
-  { id: 'T1', name: { en: 'Standard Purchase Agreement', zh: '标准采购合同' }, uses: 128, updated: '2026-02-15' },
-  { id: 'T2', name: { en: 'Sales Contract Template', zh: '销售合同模板' }, uses: 95, updated: '2026-02-20' },
-  { id: 'T3', name: { en: 'Framework Agreement', zh: '框架协议模板' }, uses: 42, updated: '2026-01-10' },
-  { id: 'T4', name: { en: 'Service Agreement', zh: '服务合同模板' }, uses: 67, updated: '2026-03-01' },
-  { id: 'T5', name: { en: 'Lease Agreement', zh: '租赁合同模板' }, uses: 31, updated: '2026-01-25' },
-  { id: 'T6', name: { en: 'Processing Contract', zh: '加工合同模板' }, uses: 23, updated: '2026-02-08' },
+  {
+    id: 'T1',
+    name: { en: 'Standard Purchase Agreement', zh: '标准采购合同' },
+    uses: 128,
+    updated: '2026-02-15',
+  },
+  {
+    id: 'T2',
+    name: { en: 'Sales Contract Template', zh: '销售合同模板' },
+    uses: 95,
+    updated: '2026-02-20',
+  },
+  {
+    id: 'T3',
+    name: { en: 'Framework Agreement', zh: '框架协议模板' },
+    uses: 42,
+    updated: '2026-01-10',
+  },
+  {
+    id: 'T4',
+    name: { en: 'Service Agreement', zh: '服务合同模板' },
+    uses: 67,
+    updated: '2026-03-01',
+  },
+  {
+    id: 'T5',
+    name: { en: 'Lease Agreement', zh: '租赁合同模板' },
+    uses: 31,
+    updated: '2026-01-25',
+  },
+  {
+    id: 'T6',
+    name: { en: 'Processing Contract', zh: '加工合同模板' },
+    uses: 23,
+    updated: '2026-02-08',
+  },
 ];
 
 export function Contracts({ currentLanguage }: ContractsProps) {
@@ -234,16 +264,45 @@ export function Contracts({ currentLanguage }: ContractsProps) {
     { id: 'analytics', label: { en: 'Analytics', zh: '数据分析' }, icon: PieChart },
   ];
 
-  const statusConfig: Record<ContractStatus, { label: { en: string; zh: string }; color: string; bg: string; icon: React.ElementType }> = {
-    draft: { label: { en: 'Draft', zh: '草稿' }, color: 'text-gray-400', bg: 'bg-gray-500/20', icon: Edit3 },
-    pending: { label: { en: 'Pending', zh: '待审批' }, color: 'text-amber-400', bg: 'bg-amber-500/20', icon: Clock },
-    active: { label: { en: 'Active', zh: '执行中' }, color: 'text-emerald-400', bg: 'bg-emerald-500/20', icon: CheckCircle2 },
-    expired: { label: { en: 'Expired', zh: '已到期' }, color: 'text-red-400', bg: 'bg-red-500/20', icon: AlertTriangle },
-    terminated: { label: { en: 'Terminated', zh: '已终止' }, color: 'text-rose-400', bg: 'bg-rose-500/20', icon: XCircle },
+  const statusConfig: Record<
+    ContractStatus,
+    { label: { en: string; zh: string }; color: string; bg: string; icon: React.ElementType }
+  > = {
+    draft: {
+      label: { en: 'Draft', zh: '草稿' },
+      color: 'text-gray-400',
+      bg: 'bg-gray-500/20',
+      icon: Edit3,
+    },
+    pending: {
+      label: { en: 'Pending', zh: '待审批' },
+      color: 'text-amber-400',
+      bg: 'bg-amber-500/20',
+      icon: Clock,
+    },
+    active: {
+      label: { en: 'Active', zh: '执行中' },
+      color: 'text-emerald-400',
+      bg: 'bg-emerald-500/20',
+      icon: CheckCircle2,
+    },
+    expired: {
+      label: { en: 'Expired', zh: '已到期' },
+      color: 'text-red-400',
+      bg: 'bg-red-500/20',
+      icon: AlertTriangle,
+    },
+    terminated: {
+      label: { en: 'Terminated', zh: '已终止' },
+      color: 'text-rose-400',
+      bg: 'bg-rose-500/20',
+      icon: XCircle,
+    },
   };
 
-  const filteredContracts = MOCK_CONTRACTS.filter(c => {
-    const matchSearch = searchTerm === '' ||
+  const filteredContracts = MOCK_CONTRACTS.filter((c) => {
+    const matchSearch =
+      searchTerm === '' ||
       c.title.zh.includes(searchTerm) ||
       c.title.en.toLowerCase().includes(searchTerm.toLowerCase()) ||
       c.contractNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -254,10 +313,13 @@ export function Contracts({ currentLanguage }: ContractsProps) {
 
   const stats = {
     total: MOCK_CONTRACTS.length,
-    active: MOCK_CONTRACTS.filter(c => c.status === 'active').length,
-    pending: MOCK_CONTRACTS.filter(c => c.status === 'pending').length,
-    totalAmount: MOCK_CONTRACTS.filter(c => c.status === 'active').reduce((sum, c) => sum + c.amount, 0),
-    expiringSoon: MOCK_CONTRACTS.filter(c => {
+    active: MOCK_CONTRACTS.filter((c) => c.status === 'active').length,
+    pending: MOCK_CONTRACTS.filter((c) => c.status === 'pending').length,
+    totalAmount: MOCK_CONTRACTS.filter((c) => c.status === 'active').reduce(
+      (sum, c) => sum + c.amount,
+      0
+    ),
+    expiringSoon: MOCK_CONTRACTS.filter((c) => {
       if (c.status !== 'active') return false;
       const end = new Date(c.endDate);
       const now = new Date();
@@ -282,7 +344,9 @@ export function Contracts({ currentLanguage }: ContractsProps) {
           </div>
           <div>
             <h1 className="text-2xl text-white">{isZh ? '合同管理' : 'Contract Management'}</h1>
-            <p className="text-sm text-gray-400">{isZh ? '电子合同全生命周期管理' : 'Full lifecycle electronic contract management'}</p>
+            <p className="text-sm text-gray-400">
+              {isZh ? '电子合同全生命周期管理' : 'Full lifecycle electronic contract management'}
+            </p>
           </div>
         </div>
         <button className="flex items-center space-x-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-xl hover:from-indigo-600 hover:to-blue-600 transition-all shadow-lg shadow-indigo-500/25">
@@ -293,7 +357,7 @@ export function Contracts({ currentLanguage }: ContractsProps) {
 
       {/* Tabs */}
       <div className="flex space-x-1 p-1 bg-slate-800/40 backdrop-blur-xl rounded-xl border border-white/5">
-        {tabs.map(tab => {
+        {tabs.map((tab) => {
           const TabIcon = tab.icon;
           return (
             <button
@@ -324,7 +388,7 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                 sub: isZh ? '本年度' : 'This Year',
                 icon: FileText,
                 gradient: 'from-blue-500 to-cyan-500',
-                trend: '+12%'
+                trend: '+12%',
               },
               {
                 label: isZh ? '执行中' : 'Active',
@@ -332,7 +396,7 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                 sub: isZh ? '正常履约' : 'On Track',
                 icon: CheckCircle2,
                 gradient: 'from-emerald-500 to-green-500',
-                trend: '+8%'
+                trend: '+8%',
               },
               {
                 label: isZh ? '合同总金额' : 'Total Amount',
@@ -340,7 +404,7 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                 sub: isZh ? '执行中合同' : 'Active Contracts',
                 icon: DollarSign,
                 gradient: 'from-amber-500 to-orange-500',
-                trend: '+23%'
+                trend: '+23%',
               },
               {
                 label: isZh ? '即将到期' : 'Expiring Soon',
@@ -348,26 +412,33 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                 sub: isZh ? '90天内到期' : 'Within 90 Days',
                 icon: AlertTriangle,
                 gradient: 'from-red-500 to-rose-500',
-                trend: '-2'
+                trend: '-2',
               },
             ].map((stat, idx) => {
               const StatIcon = stat.icon;
               return (
-                <div key={idx} className="relative group bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all">
+                <div
+                  key={idx}
+                  className="relative group bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all"
+                >
                   <div className="flex items-start justify-between">
                     <div>
                       <p className="text-sm text-gray-400">{stat.label}</p>
                       <p className="text-2xl text-white mt-1">{stat.value}</p>
                       <p className="text-xs text-gray-500 mt-1">{stat.sub}</p>
                     </div>
-                    <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.gradient} opacity-80 flex items-center justify-center`}>
+                    <div
+                      className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.gradient} opacity-80 flex items-center justify-center`}
+                    >
                       <StatIcon className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   <div className="mt-3 flex items-center space-x-1">
                     <ArrowUpRight className="w-3 h-3 text-emerald-400" />
                     <span className="text-xs text-emerald-400">{stat.trend}</span>
-                    <span className="text-xs text-gray-500">{isZh ? '较上期' : 'vs last period'}</span>
+                    <span className="text-xs text-gray-500">
+                      {isZh ? '较上期' : 'vs last period'}
+                    </span>
                   </div>
                 </div>
               );
@@ -393,13 +464,36 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis dataKey="month" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                    <XAxis
+                      dataKey="month"
+                      stroke="#64748b"
+                      tick={{ fill: '#94a3b8', fontSize: 12 }}
+                    />
                     <YAxis stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
                     <Tooltip
-                      contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                      contentStyle={{
+                        background: 'rgba(15,23,42,0.95)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '12px',
+                        color: '#fff',
+                      }}
                     />
-                    <Area type="monotone" dataKey="active" stroke="#6366f1" fill="url(#activeGrad)" strokeWidth={2} name={isZh ? '活跃合同' : 'Active'} />
-                    <Area type="monotone" dataKey="new" stroke="#10b981" fill="url(#newGrad)" strokeWidth={2} name={isZh ? '新增合同' : 'New'} />
+                    <Area
+                      type="monotone"
+                      dataKey="active"
+                      stroke="#6366f1"
+                      fill="url(#activeGrad)"
+                      strokeWidth={2}
+                      name={isZh ? '活跃合同' : 'Active'}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="new"
+                      stroke="#10b981"
+                      fill="url(#newGrad)"
+                      strokeWidth={2}
+                      name={isZh ? '新增合同' : 'New'}
+                    />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
@@ -407,7 +501,9 @@ export function Contracts({ currentLanguage }: ContractsProps) {
 
             {/* Contract Type Distribution */}
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
-              <h3 className="text-white mb-4">{isZh ? '合同类型分布' : 'Contract Type Distribution'}</h3>
+              <h3 className="text-white mb-4">
+                {isZh ? '合同类型分布' : 'Contract Type Distribution'}
+              </h3>
               <div className="h-64 flex items-center">
                 <div className="w-1/2 h-full">
                   <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
@@ -426,7 +522,12 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                         ))}
                       </Pie>
                       <Tooltip
-                        contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                        contentStyle={{
+                          background: 'rgba(15,23,42,0.95)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          borderRadius: '12px',
+                          color: '#fff',
+                        }}
                       />
                     </RechartsPie>
                   </ResponsiveContainer>
@@ -435,7 +536,10 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                   {CONTRACT_TYPE_DATA.map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                        <div
+                          className="w-3 h-3 rounded-full"
+                          style={{ backgroundColor: item.color }}
+                        />
                         <span className="text-sm text-gray-300">{item.name}</span>
                       </div>
                       <span className="text-sm text-white">{item.value}%</span>
@@ -458,23 +562,31 @@ export function Contracts({ currentLanguage }: ContractsProps) {
               </button>
             </div>
             <div className="space-y-3">
-              {MOCK_CONTRACTS.slice(0, 5).map(contract => {
+              {MOCK_CONTRACTS.slice(0, 5).map((contract) => {
                 const statusConf = statusConfig[contract.status];
                 const StatusIcon = statusConf.icon;
                 return (
                   <div
                     key={contract.id}
                     className="flex items-center justify-between p-3 rounded-xl bg-slate-900/40 border border-white/5 hover:border-white/10 transition-all cursor-pointer"
-                    onClick={() => setSelectedContract(contract.id === selectedContract ? null : contract.id)}
+                    onClick={() =>
+                      setSelectedContract(contract.id === selectedContract ? null : contract.id)
+                    }
                   >
                     <div className="flex items-center space-x-4 flex-1 min-w-0">
-                      <div className={`w-9 h-9 rounded-lg ${statusConf.bg} flex items-center justify-center flex-shrink-0`}>
+                      <div
+                        className={`w-9 h-9 rounded-lg ${statusConf.bg} flex items-center justify-center flex-shrink-0`}
+                      >
                         <StatusIcon className={`w-4 h-4 ${statusConf.color}`} />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center space-x-2">
-                          <span className="text-sm text-white truncate">{isZh ? contract.title.zh : contract.title.en}</span>
-                          <span className="text-xs text-gray-500 flex-shrink-0">{contract.contractNo}</span>
+                          <span className="text-sm text-white truncate">
+                            {isZh ? contract.title.zh : contract.title.en}
+                          </span>
+                          <span className="text-xs text-gray-500 flex-shrink-0">
+                            {contract.contractNo}
+                          </span>
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5">{contract.partner}</p>
                       </div>
@@ -482,9 +594,13 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                     <div className="flex items-center space-x-6 flex-shrink-0">
                       <div className="text-right hidden md:block">
                         <p className="text-sm text-white">{formatAmount(contract.amount)}</p>
-                        <p className="text-xs text-gray-500">{contract.startDate} ~ {contract.endDate}</p>
+                        <p className="text-xs text-gray-500">
+                          {contract.startDate} ~ {contract.endDate}
+                        </p>
                       </div>
-                      <span className={`text-xs px-2.5 py-1 rounded-full ${statusConf.bg} ${statusConf.color}`}>
+                      <span
+                        className={`text-xs px-2.5 py-1 rounded-full ${statusConf.bg} ${statusConf.color}`}
+                      >
                         {isZh ? statusConf.label.zh : statusConf.label.en}
                       </span>
                     </div>
@@ -505,14 +621,16 @@ export function Contracts({ currentLanguage }: ContractsProps) {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
-                placeholder={isZh ? '搜索合同编号、名称、合作方...' : 'Search contract no, name, partner...'}
+                placeholder={
+                  isZh ? '搜索合同编号、名称、合作方...' : 'Search contract no, name, partner...'
+                }
                 value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500/50"
               />
             </div>
             <div className="flex gap-2">
-              {(['all', 'active', 'pending', 'draft', 'expired'] as const).map(status => (
+              {(['all', 'active', 'pending', 'draft', 'expired'] as const).map((status) => (
                 <button
                   key={status}
                   onClick={() => setStatusFilter(status)}
@@ -523,8 +641,12 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                   }`}
                 >
                   {status === 'all'
-                    ? (isZh ? '全部' : 'All')
-                    : (isZh ? statusConfig[status].label.zh : statusConfig[status].label.en)}
+                    ? isZh
+                      ? '全部'
+                      : 'All'
+                    : isZh
+                      ? statusConfig[status].label.zh
+                      : statusConfig[status].label.en}
                 </button>
               ))}
             </div>
@@ -532,7 +654,7 @@ export function Contracts({ currentLanguage }: ContractsProps) {
 
           {/* Contract Cards */}
           <div className="space-y-3">
-            {filteredContracts.map(contract => {
+            {filteredContracts.map((contract) => {
               const statusConf = statusConfig[contract.status];
               const StatusIcon = statusConf.icon;
               const isExpanded = selectedContract === contract.id;
@@ -549,13 +671,19 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                     onClick={() => setSelectedContract(isExpanded ? null : contract.id)}
                   >
                     <div className="flex items-center space-x-4 flex-1 min-w-0">
-                      <div className={`w-11 h-11 rounded-xl ${statusConf.bg} flex items-center justify-center flex-shrink-0`}>
+                      <div
+                        className={`w-11 h-11 rounded-xl ${statusConf.bg} flex items-center justify-center flex-shrink-0`}
+                      >
                         <StatusIcon className={`w-5 h-5 ${statusConf.color}`} />
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center space-x-3">
-                          <span className="text-white truncate">{isZh ? contract.title.zh : contract.title.en}</span>
-                          <span className={`text-xs px-2.5 py-0.5 rounded-full ${statusConf.bg} ${statusConf.color}`}>
+                          <span className="text-white truncate">
+                            {isZh ? contract.title.zh : contract.title.en}
+                          </span>
+                          <span
+                            className={`text-xs px-2.5 py-0.5 rounded-full ${statusConf.bg} ${statusConf.color}`}
+                          >
                             {isZh ? statusConf.label.zh : statusConf.label.en}
                           </span>
                         </div>
@@ -569,7 +697,9 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                     <div className="flex items-center space-x-4 flex-shrink-0">
                       <div className="text-right hidden lg:block">
                         <p className="text-white">{formatAmount(contract.amount)}</p>
-                        <p className="text-xs text-gray-500">{isZh ? contract.type.zh : contract.type.en}</p>
+                        <p className="text-xs text-gray-500">
+                          {isZh ? contract.type.zh : contract.type.en}
+                        </p>
                       </div>
                       <MoreVertical className="w-4 h-4 text-gray-500" />
                     </div>
@@ -581,15 +711,23 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                         <div>
                           <p className="text-xs text-gray-500 mb-1">{isZh ? '合同类型' : 'Type'}</p>
-                          <p className="text-sm text-white">{isZh ? contract.type.zh : contract.type.en}</p>
+                          <p className="text-sm text-white">
+                            {isZh ? contract.type.zh : contract.type.en}
+                          </p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 mb-1">{isZh ? '合同金额' : 'Amount'}</p>
-                          <p className="text-sm text-white">{contract.currency} {contract.amount.toLocaleString()}</p>
+                          <p className="text-xs text-gray-500 mb-1">
+                            {isZh ? '合同金额' : 'Amount'}
+                          </p>
+                          <p className="text-sm text-white">
+                            {contract.currency} {contract.amount.toLocaleString()}
+                          </p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 mb-1">{isZh ? '有效期' : 'Period'}</p>
-                          <p className="text-sm text-white">{contract.startDate} ~ {contract.endDate}</p>
+                          <p className="text-sm text-white">
+                            {contract.startDate} ~ {contract.endDate}
+                          </p>
                         </div>
                         <div>
                           <p className="text-xs text-gray-500 mb-1">{isZh ? '负责人' : 'Owner'}</p>
@@ -597,8 +735,11 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mt-4">
-                        {contract.tags.map(tag => (
-                          <span key={tag} className="text-xs px-2 py-0.5 rounded-full bg-slate-700/50 text-gray-300 border border-white/5">
+                        {contract.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs px-2 py-0.5 rounded-full bg-slate-700/50 text-gray-300 border border-white/5"
+                          >
                             {tag}
                           </span>
                         ))}
@@ -611,14 +752,16 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                           <Edit3 className="w-3.5 h-3.5" /> <span>{isZh ? '编辑' : 'Edit'}</span>
                         </button>
                         <button className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs hover:bg-emerald-500/30 transition-all">
-                          <Download className="w-3.5 h-3.5" /> <span>{isZh ? '下载' : 'Download'}</span>
+                          <Download className="w-3.5 h-3.5" />{' '}
+                          <span>{isZh ? '下载' : 'Download'}</span>
                         </button>
                         <button className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 text-xs hover:bg-blue-500/30 transition-all">
                           <Send className="w-3.5 h-3.5" /> <span>{isZh ? '发送' : 'Send'}</span>
                         </button>
                         {contract.status === 'expired' && (
                           <button className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 text-xs hover:bg-purple-500/30 transition-all">
-                            <RefreshCw className="w-3.5 h-3.5" /> <span>{isZh ? '续签' : 'Renew'}</span>
+                            <RefreshCw className="w-3.5 h-3.5" />{' '}
+                            <span>{isZh ? '续签' : 'Renew'}</span>
                           </button>
                         )}
                       </div>
@@ -642,15 +785,22 @@ export function Contracts({ currentLanguage }: ContractsProps) {
       {activeTab === 'templates' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-gray-400 text-sm">{isZh ? `共 ${TEMPLATE_LIST.length} 个合同模板` : `${TEMPLATE_LIST.length} templates available`}</p>
+            <p className="text-gray-400 text-sm">
+              {isZh
+                ? `共 ${TEMPLATE_LIST.length} 个合同模板`
+                : `${TEMPLATE_LIST.length} templates available`}
+            </p>
             <button className="flex items-center space-x-2 px-4 py-2 bg-indigo-500/20 text-indigo-300 rounded-xl border border-indigo-500/30 hover:bg-indigo-500/30 transition-all text-sm">
               <Plus className="w-4 h-4" />
               <span>{isZh ? '新建模板' : 'New Template'}</span>
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {TEMPLATE_LIST.map(template => (
-              <div key={template.id} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all group cursor-pointer">
+            {TEMPLATE_LIST.map((template) => (
+              <div
+                key={template.id}
+                className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5 hover:border-white/10 transition-all group cursor-pointer"
+              >
                 <div className="flex items-start justify-between">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-indigo-500/20 to-blue-500/20 flex items-center justify-center border border-indigo-500/20">
                     <FileText className="w-5 h-5 text-indigo-400" />
@@ -662,7 +812,10 @@ export function Contracts({ currentLanguage }: ContractsProps) {
                 <h4 className="text-white mt-3">{isZh ? template.name.zh : template.name.en}</h4>
                 <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
                   <span>{isZh ? `已使用 ${template.uses} 次` : `Used ${template.uses} times`}</span>
-                  <span>{isZh ? '更新于 ' : 'Updated '}{template.updated}</span>
+                  <span>
+                    {isZh ? '更新于 ' : 'Updated '}
+                    {template.updated}
+                  </span>
                 </div>
                 <div className="flex gap-2 mt-4">
                   <button className="flex-1 py-2 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs hover:bg-indigo-500/30 transition-all text-center">
@@ -683,18 +836,41 @@ export function Contracts({ currentLanguage }: ContractsProps) {
         <div className="space-y-6">
           {/* Amount Comparison Chart */}
           <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
-            <h3 className="text-white mb-4">{isZh ? '采购 vs 销售合同金额对比 (万元)' : 'Purchase vs Sales Contract Amount (10K CNY)'}</h3>
+            <h3 className="text-white mb-4">
+              {isZh
+                ? '采购 vs 销售合同金额对比 (万元)'
+                : 'Purchase vs Sales Contract Amount (10K CNY)'}
+            </h3>
             <div className="h-72">
               <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                 <BarChart data={CONTRACT_AMOUNT_DATA}>
                   <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                  <XAxis dataKey="month" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
+                  <XAxis
+                    dataKey="month"
+                    stroke="#64748b"
+                    tick={{ fill: '#94a3b8', fontSize: 12 }}
+                  />
                   <YAxis stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
                   <Tooltip
-                    contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                    contentStyle={{
+                      background: 'rgba(15,23,42,0.95)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      borderRadius: '12px',
+                      color: '#fff',
+                    }}
                   />
-                  <Bar dataKey="purchase" fill="#6366f1" radius={[6, 6, 0, 0]} name={isZh ? '采购' : 'Purchase'} />
-                  <Bar dataKey="sales" fill="#10b981" radius={[6, 6, 0, 0]} name={isZh ? '销售' : 'Sales'} />
+                  <Bar
+                    dataKey="purchase"
+                    fill="#6366f1"
+                    radius={[6, 6, 0, 0]}
+                    name={isZh ? '采购' : 'Purchase'}
+                  />
+                  <Bar
+                    dataKey="sales"
+                    fill="#10b981"
+                    radius={[6, 6, 0, 0]}
+                    name={isZh ? '销售' : 'Sales'}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -705,26 +881,38 @@ export function Contracts({ currentLanguage }: ContractsProps) {
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <TrendingUp className="w-5 h-5 text-emerald-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '平均合同周期' : 'Avg Contract Duration'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '平均合同周期' : 'Avg Contract Duration'}
+                </span>
               </div>
               <p className="text-2xl text-white">8.3 {isZh ? '个月' : 'months'}</p>
-              <p className="text-xs text-emerald-400 mt-1">+0.5 {isZh ? '较上年' : 'vs last year'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                +0.5 {isZh ? '较上年' : 'vs last year'}
+              </p>
             </div>
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <RefreshCw className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '合同续签率' : 'Renewal Rate'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '合同续签率' : 'Renewal Rate'}
+                </span>
               </div>
               <p className="text-2xl text-white">78.5%</p>
-              <p className="text-xs text-emerald-400 mt-1">+5.2% {isZh ? '较上季度' : 'vs last quarter'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                +5.2% {isZh ? '较上季度' : 'vs last quarter'}
+              </p>
             </div>
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
               <div className="flex items-center space-x-3 mb-3">
                 <Clock className="w-5 h-5 text-amber-400" />
-                <span className="text-gray-400 text-sm">{isZh ? '平均审批时长' : 'Avg Approval Time'}</span>
+                <span className="text-gray-400 text-sm">
+                  {isZh ? '平均审批时长' : 'Avg Approval Time'}
+                </span>
               </div>
               <p className="text-2xl text-white">3.2 {isZh ? '天' : 'days'}</p>
-              <p className="text-xs text-emerald-400 mt-1">-1.1 {isZh ? '天较上月' : 'days vs last month'}</p>
+              <p className="text-xs text-emerald-400 mt-1">
+                -1.1 {isZh ? '天较上月' : 'days vs last month'}
+              </p>
             </div>
           </div>
         </div>

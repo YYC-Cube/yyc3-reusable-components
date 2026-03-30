@@ -50,10 +50,10 @@
  *   YYC3_LOG_LEVEL          - 日志级别 (default: info)
  */
 
-import express, { Request, Response, NextFunction } from "express";
-import cors from "cors";
-import { Pool, PoolConfig } from "pg";
-import { config as dotenvConfig } from "dotenv";
+import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import { Pool, PoolConfig } from 'pg';
+import { config as dotenvConfig } from 'dotenv';
 import type {
   QueryRequestBody,
   QueryConditionPayload,
@@ -62,8 +62,8 @@ import type {
   MigrationStatusData,
   MigrationRunData,
   ServerConfig,
-} from "./types";
-import { ALLOWED_TABLES, SAFE_IDENTIFIER_REGEX } from "./types";
+} from './types';
+import { ALLOWED_TABLES, SAFE_IDENTIFIER_REGEX } from './types';
 
 /* ══════════════════════════════════════════════════════════════════════
  *  环境变量加载 / Load Environment Variables
@@ -88,26 +88,30 @@ const LOG_LEVELS = { debug: 0, info: 1, warn: 2, error: 3 } as const;
  * @param {"debug" | "info" | "warn" | "error"} configuredLevel - 配置的日志级别
  * @returns 日志方法集合 / Logger methods collection
  */
-function createLogger(configuredLevel: "debug" | "info" | "warn" | "error") {
+function createLogger(configuredLevel: 'debug' | 'info' | 'warn' | 'error') {
   const threshold = LOG_LEVELS[configuredLevel];
 
-  const emit = (level: "debug" | "info" | "warn" | "error", message: string, meta?: Record<string, unknown>) => {
+  const emit = (
+    level: 'debug' | 'info' | 'warn' | 'error',
+    message: string,
+    meta?: Record<string, unknown>
+  ) => {
     if (LOG_LEVELS[level] < threshold) return;
     const entry = {
       timestamp: new Date().toISOString(),
       level: level.toUpperCase(),
-      service: "yyc3-api-proxy",
+      service: 'yyc3-api-proxy',
       message,
       ...meta,
     };
-    process.stdout.write(JSON.stringify(entry) + "\n");
+    process.stdout.write(JSON.stringify(entry) + '\n');
   };
 
   return {
-    debug: (msg: string, meta?: Record<string, unknown>) => emit("debug", msg, meta),
-    info: (msg: string, meta?: Record<string, unknown>) => emit("info", msg, meta),
-    warn: (msg: string, meta?: Record<string, unknown>) => emit("warn", msg, meta),
-    error: (msg: string, meta?: Record<string, unknown>) => emit("error", msg, meta),
+    debug: (msg: string, meta?: Record<string, unknown>) => emit('debug', msg, meta),
+    info: (msg: string, meta?: Record<string, unknown>) => emit('info', msg, meta),
+    warn: (msg: string, meta?: Record<string, unknown>) => emit('warn', msg, meta),
+    error: (msg: string, meta?: Record<string, unknown>) => emit('error', msg, meta),
   };
 }
 
@@ -123,14 +127,17 @@ function createLogger(configuredLevel: "debug" | "info" | "warn" | "error") {
  */
 function loadConfig(): ServerConfig {
   return {
-    port: parseInt(process.env.YYC3_PORT ?? "3721", 10),
-    corsOrigins: (process.env.YYC3_CORS_ORIGINS ?? "http://localhost:5173,http://localhost:3000,http://localhost:5174").split(","),
-    authToken: process.env.YYC3_AUTH_TOKEN ?? "",
+    port: parseInt(process.env.YYC3_PORT ?? '3721', 10),
+    corsOrigins: (
+      process.env.YYC3_CORS_ORIGINS ??
+      'http://localhost:5173,http://localhost:3000,http://localhost:5174'
+    ).split(','),
+    authToken: process.env.YYC3_AUTH_TOKEN ?? '',
     pgConnectionString: buildPgConnectionString(),
-    pgPoolSize: parseInt(process.env.YYC3_PG_POOL_SIZE ?? "10", 10),
+    pgPoolSize: parseInt(process.env.YYC3_PG_POOL_SIZE ?? '10', 10),
     pgIdleTimeout: 30000,
     pgConnectionTimeout: 5000,
-    logLevel: (process.env.YYC3_LOG_LEVEL ?? "info") as ServerConfig["logLevel"],
+    logLevel: (process.env.YYC3_LOG_LEVEL ?? 'info') as ServerConfig['logLevel'],
   };
 }
 
@@ -141,12 +148,12 @@ function loadConfig(): ServerConfig {
  * @returns {string} 连接字符串 / Connection string
  */
 function buildPgConnectionString(): string {
-  const host = process.env.YYC3_PG_HOST ?? "localhost";
-  const port = process.env.YYC3_PG_PORT ?? "5432";
-  const db = process.env.YYC3_PG_DATABASE ?? "yyc3_family";
-  const user = process.env.YYC3_PG_USER ?? "yyc3_admin";
-  const password = process.env.YYC3_PG_PASSWORD ?? "";
-  const ssl = process.env.YYC3_PG_SSL ?? "prefer";
+  const host = process.env.YYC3_PG_HOST ?? 'localhost';
+  const port = process.env.YYC3_PG_PORT ?? '5432';
+  const db = process.env.YYC3_PG_DATABASE ?? 'yyc3_family';
+  const user = process.env.YYC3_PG_USER ?? 'yyc3_admin';
+  const password = process.env.YYC3_PG_PASSWORD ?? '';
+  const ssl = process.env.YYC3_PG_SSL ?? 'prefer';
   return `postgresql://${user}:${encodeURIComponent(password)}@${host}:${port}/${db}?sslmode=${ssl}`;
 }
 
@@ -198,7 +205,7 @@ function createAuthMiddleware(authToken: string) {
         success: false,
         data: null,
         affectedRows: 0,
-        error: "UNAUTHORIZED / 未授权：无效的认证令牌",
+        error: 'UNAUTHORIZED / 未授权：无效的认证令牌',
         executionTime: 0,
         timestamp: new Date().toISOString(),
       });
@@ -218,8 +225,8 @@ function createAuthMiddleware(authToken: string) {
 function createRequestLogger(logger: ReturnType<typeof createLogger>) {
   return (req: Request, res: Response, next: NextFunction): void => {
     const start = Date.now();
-    res.on("finish", () => {
-      logger.info("REQUEST_PROCESSED", {
+    res.on('finish', () => {
+      logger.info('REQUEST_PROCESSED', {
         method: req.method,
         path: req.path,
         status: res.statusCode,
@@ -302,18 +309,18 @@ function buildWhereClause(
     const col = `"${cond.column}"`;
 
     switch (cond.operator) {
-      case "IS NULL":
+      case 'IS NULL':
         parts.push(`${col} IS NULL`);
         break;
-      case "IS NOT NULL":
+      case 'IS NOT NULL':
         parts.push(`${col} IS NOT NULL`);
         break;
-      case "IN": {
+      case 'IN': {
         if (!Array.isArray(cond.value)) {
           throw new Error(`IN_REQUIRES_ARRAY / IN 操作符需要数组值`);
         }
         const placeholders = cond.value.map((_, i) => `$${paramOffset + values.length + i}`);
-        parts.push(`${col} IN (${placeholders.join(", ")})`);
+        parts.push(`${col} IN (${placeholders.join(', ')})`);
         values.push(...(cond.value as Array<string | number>));
         break;
       }
@@ -325,7 +332,7 @@ function buildWhereClause(
   }
 
   return {
-    clause: parts.length > 0 ? `WHERE ${parts.join(" AND ")}` : "",
+    clause: parts.length > 0 ? `WHERE ${parts.join(' AND ')}` : '',
     values,
   };
 }
@@ -354,13 +361,13 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 返回数据库连接状态、版本、活跃连接数、数据库大小等
    * Returns database connection status, version, active connections, database size, etc.
    */
-  router.get("/health", async (_req: Request, res: Response): Promise<void> => {
+  router.get('/health', async (_req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     try {
       const client = await pool.connect();
       try {
-        const versionResult = await client.query("SELECT version()");
-        const versionStr: string = versionResult.rows[0]?.version ?? "Unknown";
+        const versionResult = await client.query('SELECT version()');
+        const versionStr: string = versionResult.rows[0]?.version ?? 'Unknown';
 
         const statsResult = await client.query(`
           SELECT 
@@ -374,7 +381,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         const latency = Date.now() - start;
 
         const healthData: HealthData = {
-          status: "connected",
+          status: 'connected',
           latency,
           serverVersion: versionStr,
           activeConnections: parseInt(stats.active_connections, 10),
@@ -398,11 +405,12 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("HEALTH_CHECK_FAILED", { error: (err as Error).message });
-      res.status(503).json(errorResponse(
-        `PG_CONNECTION_FAILED / 数据库连接失败: ${(err as Error).message}`,
-        start
-      ));
+      logger.error('HEALTH_CHECK_FAILED', { error: (err as Error).message });
+      res
+        .status(503)
+        .json(
+          errorResponse(`PG_CONNECTION_FAILED / 数据库连接失败: ${(err as Error).message}`, start)
+        );
     }
   });
 
@@ -415,26 +423,27 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 接收前端 DatabaseQuery 格式，构建并执行 SQL
    * Receives frontend DatabaseQuery format, builds and executes SQL
    */
-  router.post("/query", async (req: Request, res: Response): Promise<void> => {
+  router.post('/query', async (req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     const body: QueryRequestBody = req.body;
 
     /** 验证表名 / Validate table name */
     if (!body.table || !isValidTable(body.table)) {
-      res.status(400).json(errorResponse(
-        `INVALID_TABLE / 无效表名: ${body.table}. 允许的表: ${ALLOWED_TABLES.join(", ")}`,
-        start
-      ));
+      res
+        .status(400)
+        .json(
+          errorResponse(
+            `INVALID_TABLE / 无效表名: ${body.table}. 允许的表: ${ALLOWED_TABLES.join(', ')}`,
+            start
+          )
+        );
       return;
     }
 
     /** 验证操作类型 / Validate action type */
-    const validActions = ["SELECT", "INSERT", "UPDATE", "DELETE", "UPSERT"];
+    const validActions = ['SELECT', 'INSERT', 'UPDATE', 'DELETE', 'UPSERT'];
     if (!body.action || !validActions.includes(body.action)) {
-      res.status(400).json(errorResponse(
-        `INVALID_ACTION / 无效操作: ${body.action}`,
-        start
-      ));
+      res.status(400).json(errorResponse(`INVALID_ACTION / 无效操作: ${body.action}`, start));
       return;
     }
 
@@ -444,27 +453,28 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         let result;
 
         switch (body.action) {
-          case "SELECT": {
-            const cols = body.columns?.every(c => isSafeIdentifier(c))
-              ? body.columns.map(c => `"${c}"`).join(", ")
-              : "*";
+          case 'SELECT': {
+            const cols = body.columns?.every((c) => isSafeIdentifier(c))
+              ? body.columns.map((c) => `"${c}"`).join(', ')
+              : '*';
             const { clause, values } = body.conditions
               ? buildWhereClause(body.conditions)
-              : { clause: "", values: [] };
+              : { clause: '', values: [] };
 
-            let orderClause = "";
+            let orderClause = '';
             if (body.orderBy && body.orderBy.length > 0) {
               const orderParts = body.orderBy
-                .filter(o => isSafeIdentifier(o.column))
-                .map(o => `"${o.column}" ${o.direction === "DESC" ? "DESC" : "ASC"}`);
-              if (orderParts.length > 0) orderClause = `ORDER BY ${orderParts.join(", ")}`;
+                .filter((o) => isSafeIdentifier(o.column))
+                .map((o) => `"${o.column}" ${o.direction === 'DESC' ? 'DESC' : 'ASC'}`);
+              if (orderParts.length > 0) orderClause = `ORDER BY ${orderParts.join(', ')}`;
             }
 
-            const limitClause = body.limit ? `LIMIT ${Math.min(body.limit, 1000)}` : "LIMIT 100";
-            const offsetClause = body.offset ? `OFFSET ${Math.max(0, body.offset)}` : "";
+            const limitClause = body.limit ? `LIMIT ${Math.min(body.limit, 1000)}` : 'LIMIT 100';
+            const offsetClause = body.offset ? `OFFSET ${Math.max(0, body.offset)}` : '';
 
-            const sql = `SELECT ${cols} FROM "${body.table}" ${clause} ${orderClause} ${limitClause} ${offsetClause}`.trim();
-            logger.debug("QUERY_EXECUTE", { sql, params: values });
+            const sql =
+              `SELECT ${cols} FROM "${body.table}" ${clause} ${orderClause} ${limitClause} ${offsetClause}`.trim();
+            logger.debug('QUERY_EXECUTE', { sql, params: values });
             result = await client.query(sql, values);
 
             res.json({
@@ -478,18 +488,18 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
             break;
           }
 
-          case "INSERT": {
+          case 'INSERT': {
             if (!body.data || Object.keys(body.data).length === 0) {
-              res.status(400).json(errorResponse("INSERT_REQUIRES_DATA / INSERT 需要数据", start));
+              res.status(400).json(errorResponse('INSERT_REQUIRES_DATA / INSERT 需要数据', start));
               return;
             }
 
             const keys = Object.keys(body.data).filter(isSafeIdentifier);
-            const vals = keys.map(k => body.data![k]);
+            const vals = keys.map((k) => body.data![k]);
             const placeholders = keys.map((_, i) => `$${i + 1}`);
 
-            const sql = `INSERT INTO "${body.table}" (${keys.map(k => `"${k}"`).join(", ")}) VALUES (${placeholders.join(", ")}) RETURNING *`;
-            logger.debug("QUERY_INSERT", { sql });
+            const sql = `INSERT INTO "${body.table}" (${keys.map((k) => `"${k}"`).join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`;
+            logger.debug('QUERY_INSERT', { sql });
             result = await client.query(sql, vals);
 
             res.json({
@@ -503,21 +513,31 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
             break;
           }
 
-          case "UPDATE": {
+          case 'UPDATE': {
             if (!body.data || !body.conditions || body.conditions.length === 0) {
-              res.status(400).json(errorResponse("UPDATE_REQUIRES_DATA_AND_CONDITIONS / UPDATE 需要数据和条件", start));
+              res
+                .status(400)
+                .json(
+                  errorResponse(
+                    'UPDATE_REQUIRES_DATA_AND_CONDITIONS / UPDATE 需要数据和条件',
+                    start
+                  )
+                );
               return;
             }
 
             const dataKeys = Object.keys(body.data).filter(isSafeIdentifier);
             const setParts = dataKeys.map((k, i) => `"${k}" = $${i + 1}`);
-            const setVals = dataKeys.map(k => body.data![k]);
+            const setVals = dataKeys.map((k) => body.data![k]);
 
-            const { clause, values: whereVals } = buildWhereClause(body.conditions, dataKeys.length + 1);
+            const { clause, values: whereVals } = buildWhereClause(
+              body.conditions,
+              dataKeys.length + 1
+            );
             const allVals = [...setVals, ...whereVals];
 
-            const sql = `UPDATE "${body.table}" SET ${setParts.join(", ")}, "updated_at" = NOW() ${clause} RETURNING *`;
-            logger.debug("QUERY_UPDATE", { sql });
+            const sql = `UPDATE "${body.table}" SET ${setParts.join(', ')}, "updated_at" = NOW() ${clause} RETURNING *`;
+            logger.debug('QUERY_UPDATE', { sql });
             result = await client.query(sql, allVals);
 
             res.json({
@@ -531,15 +551,22 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
             break;
           }
 
-          case "DELETE": {
+          case 'DELETE': {
             if (!body.conditions || body.conditions.length === 0) {
-              res.status(400).json(errorResponse("DELETE_REQUIRES_CONDITIONS / DELETE 需要条件（防止误删全表）", start));
+              res
+                .status(400)
+                .json(
+                  errorResponse(
+                    'DELETE_REQUIRES_CONDITIONS / DELETE 需要条件（防止误删全表）',
+                    start
+                  )
+                );
               return;
             }
 
             const { clause, values: delVals } = buildWhereClause(body.conditions);
             const sql = `DELETE FROM "${body.table}" ${clause} RETURNING *`;
-            logger.debug("QUERY_DELETE", { sql });
+            logger.debug('QUERY_DELETE', { sql });
             result = await client.query(sql, delVals);
 
             res.json({
@@ -553,23 +580,23 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
             break;
           }
 
-          case "UPSERT": {
+          case 'UPSERT': {
             if (!body.data) {
-              res.status(400).json(errorResponse("UPSERT_REQUIRES_DATA / UPSERT 需要数据", start));
+              res.status(400).json(errorResponse('UPSERT_REQUIRES_DATA / UPSERT 需要数据', start));
               return;
             }
 
             const upsertKeys = Object.keys(body.data).filter(isSafeIdentifier);
-            const upsertVals = upsertKeys.map(k => body.data![k]);
+            const upsertVals = upsertKeys.map((k) => body.data![k]);
             const upsertPlaceholders = upsertKeys.map((_, i) => `$${i + 1}`);
             const updateSet = upsertKeys
-              .filter(k => k !== "id")
+              .filter((k) => k !== 'id')
               .map((k, i) => `"${k}" = EXCLUDED."${k}"`)
-              .join(", ");
+              .join(', ');
 
-            const idCol = upsertKeys.includes("id") ? "id" : upsertKeys[0];
-            const sql = `INSERT INTO "${body.table}" (${upsertKeys.map(k => `"${k}"`).join(", ")}) VALUES (${upsertPlaceholders.join(", ")}) ON CONFLICT ("${idCol}") DO UPDATE SET ${updateSet}, "updated_at" = NOW() RETURNING *`;
-            logger.debug("QUERY_UPSERT", { sql });
+            const idCol = upsertKeys.includes('id') ? 'id' : upsertKeys[0];
+            const sql = `INSERT INTO "${body.table}" (${upsertKeys.map((k) => `"${k}"`).join(', ')}) VALUES (${upsertPlaceholders.join(', ')}) ON CONFLICT ("${idCol}") DO UPDATE SET ${updateSet}, "updated_at" = NOW() RETURNING *`;
+            logger.debug('QUERY_UPSERT', { sql });
             result = await client.query(sql, upsertVals);
 
             res.json({
@@ -587,11 +614,14 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("QUERY_FAILED", { error: (err as Error).message, table: body.table, action: body.action });
-      res.status(500).json(errorResponse(
-        `QUERY_ERROR / 查询错误: ${(err as Error).message}`,
-        start
-      ));
+      logger.error('QUERY_FAILED', {
+        error: (err as Error).message,
+        table: body.table,
+        action: body.action,
+      });
+      res
+        .status(500)
+        .json(errorResponse(`QUERY_ERROR / 查询错误: ${(err as Error).message}`, start));
     }
   });
 
@@ -601,7 +631,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 列表查询端点
    * List records endpoint
    */
-  router.get("/data/:table", async (req: Request, res: Response): Promise<void> => {
+  router.get('/data/:table', async (req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     const { table } = req.params;
 
@@ -613,8 +643,8 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
     try {
       const limit = Math.min(parseInt(req.query.limit as string, 10) || 100, 1000);
       const offset = Math.max(parseInt(req.query.offset as string, 10) || 0, 0);
-      const orderBy = (req.query.orderBy as string) || "updated_at";
-      const orderDir = (req.query.orderDir as string)?.toUpperCase() === "ASC" ? "ASC" : "DESC";
+      const orderBy = (req.query.orderBy as string) || 'updated_at';
+      const orderDir = (req.query.orderDir as string)?.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
 
       if (!isSafeIdentifier(orderBy)) {
         res.status(400).json(errorResponse(`INVALID_ORDER_COLUMN / 非法排序列: ${orderBy}`, start));
@@ -642,8 +672,10 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("LIST_FAILED", { error: (err as Error).message, table });
-      res.status(500).json(errorResponse(`LIST_ERROR / 查询失败: ${(err as Error).message}`, start));
+      logger.error('LIST_FAILED', { error: (err as Error).message, table });
+      res
+        .status(500)
+        .json(errorResponse(`LIST_ERROR / 查询失败: ${(err as Error).message}`, start));
     }
   });
 
@@ -653,7 +685,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 插入记录端点
    * Insert record endpoint
    */
-  router.post("/data/:table", async (req: Request, res: Response): Promise<void> => {
+  router.post('/data/:table', async (req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     const { table } = req.params;
 
@@ -664,19 +696,19 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
 
     const data: Record<string, unknown> = req.body;
     if (!data || Object.keys(data).length === 0) {
-      res.status(400).json(errorResponse("EMPTY_BODY / 请求体为空", start));
+      res.status(400).json(errorResponse('EMPTY_BODY / 请求体为空', start));
       return;
     }
 
     try {
       const keys = Object.keys(data).filter(isSafeIdentifier);
-      const vals = keys.map(k => data[k]);
+      const vals = keys.map((k) => data[k]);
       const placeholders = keys.map((_, i) => `$${i + 1}`);
 
       const client = await pool.connect();
       try {
         const result = await client.query(
-          `INSERT INTO "${table}" (${keys.map(k => `"${k}"`).join(", ")}) VALUES (${placeholders.join(", ")}) RETURNING *`,
+          `INSERT INTO "${table}" (${keys.map((k) => `"${k}"`).join(', ')}) VALUES (${placeholders.join(', ')}) RETURNING *`,
           vals
         );
 
@@ -692,8 +724,10 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("INSERT_FAILED", { error: (err as Error).message, table });
-      res.status(500).json(errorResponse(`INSERT_ERROR / 插入失败: ${(err as Error).message}`, start));
+      logger.error('INSERT_FAILED', { error: (err as Error).message, table });
+      res
+        .status(500)
+        .json(errorResponse(`INSERT_ERROR / 插入失败: ${(err as Error).message}`, start));
     }
   });
 
@@ -703,7 +737,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 单条查询端点
    * Get single record endpoint
    */
-  router.get("/data/:table/:id", async (req: Request, res: Response): Promise<void> => {
+  router.get('/data/:table/:id', async (req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     const { table, id } = req.params;
 
@@ -734,7 +768,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("GET_RECORD_FAILED", { error: (err as Error).message, table, id });
+      logger.error('GET_RECORD_FAILED', { error: (err as Error).message, table, id });
       res.status(500).json(errorResponse(`GET_ERROR / 查询失败: ${(err as Error).message}`, start));
     }
   });
@@ -745,7 +779,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 更新记录端点
    * Update record endpoint
    */
-  router.put("/data/:table/:id", async (req: Request, res: Response): Promise<void> => {
+  router.put('/data/:table/:id', async (req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     const { table, id } = req.params;
 
@@ -756,19 +790,21 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
 
     const data: Record<string, unknown> = req.body;
     if (!data || Object.keys(data).length === 0) {
-      res.status(400).json(errorResponse("EMPTY_BODY / 请求体为空", start));
+      res.status(400).json(errorResponse('EMPTY_BODY / 请求体为空', start));
       return;
     }
 
     try {
-      const keys = Object.keys(data).filter(k => isSafeIdentifier(k) && k !== "id" && k !== "created_at");
+      const keys = Object.keys(data).filter(
+        (k) => isSafeIdentifier(k) && k !== 'id' && k !== 'created_at'
+      );
       const setParts = keys.map((k, i) => `"${k}" = $${i + 1}`);
-      const vals = [...keys.map(k => data[k]), id];
+      const vals = [...keys.map((k) => data[k]), id];
 
       const client = await pool.connect();
       try {
         const result = await client.query(
-          `UPDATE "${table}" SET ${setParts.join(", ")}, "updated_at" = NOW() WHERE id = $${keys.length + 1} RETURNING *`,
+          `UPDATE "${table}" SET ${setParts.join(', ')}, "updated_at" = NOW() WHERE id = $${keys.length + 1} RETURNING *`,
           vals
         );
 
@@ -789,8 +825,10 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("UPDATE_FAILED", { error: (err as Error).message, table, id });
-      res.status(500).json(errorResponse(`UPDATE_ERROR / 更新失败: ${(err as Error).message}`, start));
+      logger.error('UPDATE_FAILED', { error: (err as Error).message, table, id });
+      res
+        .status(500)
+        .json(errorResponse(`UPDATE_ERROR / 更新失败: ${(err as Error).message}`, start));
     }
   });
 
@@ -800,7 +838,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 删除记录端点
    * Delete record endpoint
    */
-  router.delete("/data/:table/:id", async (req: Request, res: Response): Promise<void> => {
+  router.delete('/data/:table/:id', async (req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     const { table, id } = req.params;
 
@@ -831,8 +869,10 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("DELETE_FAILED", { error: (err as Error).message, table, id });
-      res.status(500).json(errorResponse(`DELETE_ERROR / 删除失败: ${(err as Error).message}`, start));
+      logger.error('DELETE_FAILED', { error: (err as Error).message, table, id });
+      res
+        .status(500)
+        .json(errorResponse(`DELETE_ERROR / 删除失败: ${(err as Error).message}`, start));
     }
   });
 
@@ -842,7 +882,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 列出所有可用表
    * List all available tables
    */
-  router.get("/tables", async (_req: Request, res: Response): Promise<void> => {
+  router.get('/tables', async (_req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     try {
       const client = await pool.connect();
@@ -874,8 +914,10 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("LIST_TABLES_FAILED", { error: (err as Error).message });
-      res.status(500).json(errorResponse(`TABLES_ERROR / 查询表失败: ${(err as Error).message}`, start));
+      logger.error('LIST_TABLES_FAILED', { error: (err as Error).message });
+      res
+        .status(500)
+        .json(errorResponse(`TABLES_ERROR / 查询表失败: ${(err as Error).message}`, start));
     }
   });
 
@@ -885,7 +927,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 迁移状态端点
    * Migration status endpoint
    */
-  router.get("/migrations/status", async (_req: Request, res: Response): Promise<void> => {
+  router.get('/migrations/status', async (_req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     try {
       const client = await pool.connect();
@@ -902,7 +944,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         const statusData: MigrationStatusData = {
           completed: parseInt(row.completed, 10),
           pending: parseInt(row.pending, 10),
-          currentVersion: row.current_version ?? "0.0.0",
+          currentVersion: row.current_version ?? '0.0.0',
         };
 
         res.json({
@@ -917,8 +959,15 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("MIGRATION_STATUS_FAILED", { error: (err as Error).message });
-      res.status(500).json(errorResponse(`MIGRATION_STATUS_ERROR / 迁移状态查询失败: ${(err as Error).message}`, start));
+      logger.error('MIGRATION_STATUS_FAILED', { error: (err as Error).message });
+      res
+        .status(500)
+        .json(
+          errorResponse(
+            `MIGRATION_STATUS_ERROR / 迁移状态查询失败: ${(err as Error).message}`,
+            start
+          )
+        );
     }
   });
 
@@ -931,7 +980,7 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
    * 检查并记录迁移版本，实际 DDL 应通过 psql 执行
    * Checks and records migration versions, actual DDL should be run via psql
    */
-  router.post("/migrations/run", async (_req: Request, res: Response): Promise<void> => {
+  router.post('/migrations/run', async (_req: Request, res: Response): Promise<void> => {
     const start = Date.now();
     try {
       const client = await pool.connect();
@@ -940,19 +989,19 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         const currentResult = await client.query(
           `SELECT max(version) AS current_version FROM migration_log WHERE status = 'completed'`
         );
-        const currentVersion = currentResult.rows[0]?.current_version ?? "0.0.0";
+        const currentVersion = currentResult.rows[0]?.current_version ?? '0.0.0';
 
         /** 记录本次版本检查 / Record this version check */
         await client.query(
           `INSERT INTO migration_log (version, name, status, checksum) 
            VALUES ($1, $2, 'completed', md5($2)) 
            ON CONFLICT (version) DO NOTHING`,
-          ["0.9.4", "personalize_layer"]
+          ['0.9.4', 'personalize_layer']
         );
 
         const runData: MigrationRunData = {
-          migrationsRun: currentVersion === "0.9.4" ? 0 : 1,
-          currentVersion: "0.9.4",
+          migrationsRun: currentVersion === '0.9.4' ? 0 : 1,
+          currentVersion: '0.9.4',
         };
 
         res.json({
@@ -967,8 +1016,12 @@ function createApiRouter(pool: Pool, logger: ReturnType<typeof createLogger>): e
         client.release();
       }
     } catch (err) {
-      logger.error("MIGRATION_RUN_FAILED", { error: (err as Error).message });
-      res.status(500).json(errorResponse(`MIGRATION_RUN_ERROR / 迁移执行失败: ${(err as Error).message}`, start));
+      logger.error('MIGRATION_RUN_FAILED', { error: (err as Error).message });
+      res
+        .status(500)
+        .json(
+          errorResponse(`MIGRATION_RUN_ERROR / 迁移执行失败: ${(err as Error).message}`, start)
+        );
     }
   });
 
@@ -991,75 +1044,75 @@ async function startServer(): Promise<void> {
 
   /** 全局中间件 / Global Middleware */
   app.use(cors({ origin: config.corsOrigins, credentials: true }));
-  app.use(express.json({ limit: "10mb" }));
+  app.use(express.json({ limit: '10mb' }));
   app.use(createRequestLogger(logger));
-  app.use("/api/v1", createAuthMiddleware(config.authToken));
+  app.use('/api/v1', createAuthMiddleware(config.authToken));
 
   /** API 路由 / API Routes */
-  app.use("/api/v1", createApiRouter(pool, logger));
+  app.use('/api/v1', createApiRouter(pool, logger));
 
   /** 根路径信息 / Root path info */
-  app.get("/", (_req: Request, res: Response) => {
+  app.get('/', (_req: Request, res: Response) => {
     res.json({
-      service: "YYC³ AI Family - Local API Proxy",
-      version: "0.9.4",
-      codename: "Personalize",
-      apiBase: "/api/v1",
+      service: 'YYC³ AI Family - Local API Proxy',
+      version: '0.9.4',
+      codename: 'Personalize',
+      apiBase: '/api/v1',
       endpoints: [
-        "GET  /api/v1/health",
-        "POST /api/v1/query",
-        "GET  /api/v1/data/:table",
-        "POST /api/v1/data/:table",
-        "GET  /api/v1/data/:table/:id",
-        "PUT  /api/v1/data/:table/:id",
-        "DELETE /api/v1/data/:table/:id",
-        "GET  /api/v1/tables",
-        "GET  /api/v1/migrations/status",
-        "POST /api/v1/migrations/run",
+        'GET  /api/v1/health',
+        'POST /api/v1/query',
+        'GET  /api/v1/data/:table',
+        'POST /api/v1/data/:table',
+        'GET  /api/v1/data/:table/:id',
+        'PUT  /api/v1/data/:table/:id',
+        'DELETE /api/v1/data/:table/:id',
+        'GET  /api/v1/tables',
+        'GET  /api/v1/migrations/status',
+        'POST /api/v1/migrations/run',
       ],
-      status: "OPERATIONAL",
+      status: 'OPERATIONAL',
     });
   });
 
   /** 验证数据库连接 / Verify database connection */
   try {
     const client = await pool.connect();
-    const vr = await client.query("SELECT version()");
+    const vr = await client.query('SELECT version()');
     client.release();
-    logger.info("PG_CONNECTED", {
-      version: (vr.rows[0]?.version as string).split(",")[0],
+    logger.info('PG_CONNECTED', {
+      version: (vr.rows[0]?.version as string).split(',')[0],
       pool: config.pgPoolSize,
     });
   } catch (err) {
-    logger.error("PG_CONNECTION_FAILED", { error: (err as Error).message });
-    logger.warn("SERVER_STARTING_WITHOUT_PG", {
-      hint: "请确保 PostgreSQL 15 已启动并运行 docs/postgresql-15-schema.sql / Ensure PostgreSQL 15 is running and execute docs/postgresql-15-schema.sql",
+    logger.error('PG_CONNECTION_FAILED', { error: (err as Error).message });
+    logger.warn('SERVER_STARTING_WITHOUT_PG', {
+      hint: '请确保 PostgreSQL 15 已启动并运行 docs/postgresql-15-schema.sql / Ensure PostgreSQL 15 is running and execute docs/postgresql-15-schema.sql',
     });
   }
 
   /** 启动监听 / Start listening */
   app.listen(config.port, () => {
-    logger.info("SERVER_STARTED", {
+    logger.info('SERVER_STARTED', {
       port: config.port,
       cors: config.corsOrigins,
-      auth: config.authToken ? "ENABLED" : "DISABLED",
+      auth: config.authToken ? 'ENABLED' : 'DISABLED',
       endpoints: 10,
     });
-    logger.info("YYC3_PROXY_READY", {
+    logger.info('YYC3_PROXY_READY', {
       message: `API 代理服务已就绪 / API proxy service ready at http://localhost:${config.port}`,
     });
   });
 
   /** 优雅关闭 / Graceful shutdown */
   const shutdown = async (signal: string) => {
-    logger.info("SHUTDOWN_SIGNAL_RECEIVED", { signal });
+    logger.info('SHUTDOWN_SIGNAL_RECEIVED', { signal });
     await pool.end();
-    logger.info("PG_POOL_CLOSED");
+    logger.info('PG_POOL_CLOSED');
     process.exit(0);
   };
 
-  process.on("SIGINT", () => shutdown("SIGINT"));
-  process.on("SIGTERM", () => shutdown("SIGTERM"));
+  process.on('SIGINT', () => shutdown('SIGINT'));
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
 }
 
 /** 执行启动 / Execute startup */

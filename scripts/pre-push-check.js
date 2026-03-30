@@ -49,13 +49,13 @@ function getPushCommitCount() {
 function checkBranchProtection() {
   const branch = getCurrentBranch();
   const protectedBranches = ['main', 'master', 'develop', 'staging', 'production'];
-  
+
   if (protectedBranches.includes(branch)) {
     console.log(`${colors.yellow}⚠ 检测到受保护分支: ${branch}${colors.reset}`);
     console.log(`${colors.yellow}请确保您有权限推送到此分支${colors.reset}\n`);
     return true;
   }
-  
+
   return false;
 }
 
@@ -96,28 +96,28 @@ function checkConflicts() {
 // 主检查流程
 async function main() {
   console.log(`${colors.cyan}执行推送前检查...${colors.reset}\n`);
-  
+
   // 1. 分支保护检查
   console.log('检查分支保护规则...');
   const isProtected = checkBranchProtection();
-  
+
   // 2. 检查推送提交数
   console.log('检查待推送提交...');
   const commitCount = checkUnpushedCommits();
-  
+
   if (commitCount === 0) {
     console.log(`${colors.yellow}没有需要推送的提交${colors.reset}`);
     process.exit(0);
   }
-  
+
   // 3. 检查远程分支
   console.log('检查远程分支状态...');
   checkRemoteBranch();
-  
+
   // 4. 检查冲突（如果远程分支存在）
   console.log('检查潜在冲突...');
   const hasConflicts = checkConflicts();
-  
+
   if (hasConflicts) {
     console.log(`${colors.red}
 ╔════════════════════════════════════════╗
@@ -131,7 +131,7 @@ ${colors.reset}`);
     console.log('  3. 重新推送\n');
     process.exit(1);
   }
-  
+
   // 5. 运行完整代码检查
   console.log('运行完整代码检查...\n');
   try {
@@ -148,33 +148,33 @@ ${colors.reset}`);
 ${colors.reset}`);
     process.exit(1);
   }
-  
+
   // 6. 对于受保护分支，额外确认
   if (isProtected) {
     console.log(`\n${colors.magenta}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}`);
     console.log(`${colors.yellow}您即将推送到受保护的分支: ${getCurrentBranch()}${colors.reset}`);
     console.log(`${colors.magenta}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${colors.reset}\n`);
-    
+
     // 可以在这里添加额外的确认逻辑
     console.log(`${colors.green}继续推送...${colors.reset}\n`);
   }
-  
+
   console.log(`${colors.green}
 ╔════════════════════════════════════════╗
 ║     ✓ Pre-Push 检查通过               ║
 ║     可以继续推送                       ║
 ╚════════════════════════════════════════╝
 ${colors.reset}`);
-  
+
   console.log(`${colors.cyan}推送信息:${colors.reset}`);
   console.log(`  分支: ${getCurrentBranch()}`);
   console.log(`  提交数: ${commitCount}`);
   console.log(`  受保护: ${isProtected ? '是' : '否'}\n`);
-  
+
   process.exit(0);
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error(`${colors.red}Pre-push hook 异常:${colors.reset}`, error);
   process.exit(1);
 });

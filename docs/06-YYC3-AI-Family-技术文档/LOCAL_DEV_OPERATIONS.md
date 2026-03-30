@@ -1,7 +1,6 @@
 # YYC3 AI Family - Local Development Operations / 本地开发操作手册
 
-> Version: 0.9.4 [Personalize]
-> 快速参考卡片，所有操作均在项目根目录执行
+> Version: 0.9.4 [Personalize] 快速参考卡片，所有操作均在项目根目录执行
 
 ---
 
@@ -91,22 +90,22 @@ cd server && npm run health
 
 在 `server/` 目录下执行：
 
-| Command | Description |
-|---------|-------------|
-| `npm run setup` | 一键初始化（install + .env） |
-| `npm run dev` | 开发模式启动（热重载） |
-| `npm start` | 生产模式启动 |
-| `npm run build` | TypeScript 编译 |
-| `npm run typecheck` | 类型检查（不生成文件） |
-| `npm run db:create` | 创建数据库和角色 |
-| `npm run db:init` | 用 yyc3_admin 执行 DDL |
+| Command                 | Description                  |
+| ----------------------- | ---------------------------- |
+| `npm run setup`         | 一键初始化（install + .env） |
+| `npm run dev`           | 开发模式启动（热重载）       |
+| `npm start`             | 生产模式启动                 |
+| `npm run build`         | TypeScript 编译              |
+| `npm run typecheck`     | 类型检查（不生成文件）       |
+| `npm run db:create`     | 创建数据库和角色             |
+| `npm run db:init`       | 用 yyc3_admin 执行 DDL       |
 | `npm run db:init:super` | 用 postgres 超级用户执行 DDL |
-| `npm run db:reset` | 删除并重建数据库 |
-| `npm run db:verify` | 验证表结构 |
-| `npm run db:stats` | 查看表行数统计 |
-| `npm run health` | 检查代理健康状态 |
-| `npm run tables` | 列出所有表 |
-| `npm run e2e:test` | E2E 自动验证全部 10 个端点 |
+| `npm run db:reset`      | 删除并重建数据库             |
+| `npm run db:verify`     | 验证表结构                   |
+| `npm run db:stats`      | 查看表行数统计               |
+| `npm run health`        | 检查代理健康状态             |
+| `npm run tables`        | 列出所有表                   |
+| `npm run e2e:test`      | E2E 自动验证全部 10 个端点   |
 
 ---
 
@@ -174,18 +173,18 @@ npx tsx e2e-test.ts http://192.168.1.100:3721
 
 ### 测试覆盖的 10 个端点 / 10 Endpoints Covered
 
-| # | Method | Endpoint | Test Action |
-|---|--------|----------|-------------|
-| 01 | GET | /health | 健康检查 |
-| 02 | GET | /tables | 表清单 |
-| 03 | GET | /migrations/status | 迁移状态 |
-| 04 | POST | /migrations/run | 执行迁移 |
-| 05 | POST | /data/chats | 插入测试记录 |
-| 06 | GET | /data/chats | 列表查询 |
-| 07 | GET | /data/chats/:id | 单条查询 |
-| 08 | PUT | /data/chats/:id | 更新记录 |
-| 09 | POST | /query | 结构化查询 |
-| 10 | DELETE | /data/chats/:id | 删除记录（清理） |
+| #   | Method | Endpoint           | Test Action      |
+| --- | ------ | ------------------ | ---------------- |
+| 01  | GET    | /health            | 健康检查         |
+| 02  | GET    | /tables            | 表清单           |
+| 03  | GET    | /migrations/status | 迁移状态         |
+| 04  | POST   | /migrations/run    | 执行迁移         |
+| 05  | POST   | /data/chats        | 插入测试记录     |
+| 06  | GET    | /data/chats        | 列表查询         |
+| 07  | GET    | /data/chats/:id    | 单条查询         |
+| 08  | PUT    | /data/chats/:id    | 更新记录         |
+| 09  | POST   | /query             | 结构化查询       |
+| 10  | DELETE | /data/chats/:id    | 删除记录（清理） |
 
 ---
 
@@ -209,15 +208,16 @@ npx tsx e2e-test.ts http://192.168.1.100:3721
 2. **心跳失败** → 自动进入 Mock 模式（前端使用本地模拟数据）
 3. **Mock 模式** → 启动重连探针（5s 初始间隔，指数退避至 60s 封顶）
 4. **探针成功 2 次** → 确认恢复，退出 Mock 模式，恢复心跳
-5. **前端 UI** → 通过 `useDatabaseConfig().isMockMode` 和 `reconnectStats` 显示状态
+5. **前端 UI** → 通过 `useDatabaseConfig().isMockMode` 和 `reconnectStats`
+   显示状态
 
 ### Hook API
 
 ```typescript
 const {
-  isMockMode,          // boolean - 是否模拟模式
-  reconnectStats,      // { attempts, probeInterval, consecutiveSuccess }
-  connectionStatus,    // "disconnected" | "connecting" | "connected" | "error" | "migrating"
+  isMockMode, // boolean - 是否模拟模式
+  reconnectStats, // { attempts, probeInterval, consecutiveSuccess }
+  connectionStatus, // "disconnected" | "connecting" | "connected" | "error" | "migrating"
 } = useDatabaseConfig();
 ```
 
@@ -226,6 +226,7 @@ const {
 ## File Inventory / 文件清单 (v0.9.4)
 
 ### Frontend Layer / 前端层
+
 ```
 /types/database.ts              ← 数据库类型定义
 /repositories/DatabaseRepository.ts  ← REST API 客户端 + 自动重连
@@ -235,6 +236,7 @@ const {
 ```
 
 ### Server Layer / 服务端层
+
 ```
 /server/yyc3-api-proxy.ts       ← Express 代理入口 (10 endpoints)
 /server/types.ts                ← 服务端类型定义
@@ -246,6 +248,7 @@ const {
 ```
 
 ### Database Layer / 数据库层
+
 ```
 /docs/postgresql-15-schema.sql  ← DDL 建表脚本 (8 tables)
 /docs/DATABASE_SETUP_GUIDE.md   ← 完整安装指南
@@ -253,6 +256,7 @@ const {
 ```
 
 ### DevOps / 运维
+
 ```
 /docker-compose.yml             ← 三容器编排 (PG + Proxy + Frontend)
 /.dockerignore                  ← Docker 构建排除
@@ -261,4 +265,4 @@ const {
 
 ---
 
-*Last Updated: 2026-02-14 | YYC3 AI Family v0.9.4 [Personalize]*
+_Last Updated: 2026-02-14 | YYC3 AI Family v0.9.4 [Personalize]_

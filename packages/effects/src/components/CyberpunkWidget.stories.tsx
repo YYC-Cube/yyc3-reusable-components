@@ -10,7 +10,11 @@
  */
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { CyberpunkWidget, type CyberpunkWidgetProps, type WidgetTabConfig } from './CyberpunkWidget';
+import {
+  CyberpunkWidget,
+  type CyberpunkWidgetProps,
+  type WidgetTabConfig,
+} from './CyberpunkWidget';
 
 const meta: Meta<CyberpunkWidgetProps> = {
   title: 'Effects/Cyberpunk/CyberpunkWidget',
@@ -84,9 +88,20 @@ const defaultTabs: WidgetTabConfig[] = [
     content: (
       <div style={{ padding: '20px', color: '#fff' }}>
         <h3 style={{ color: '#00ffcc', marginBottom: '12px' }}>工具列表</h3>
-        <ul style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px', listStyle: 'none', padding: 0 }}>
-          <li style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>📊 数据分析</li>
-          <li style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>🔄 工作流编排</li>
+        <ul
+          style={{
+            color: 'rgba(255,255,255,0.7)',
+            fontSize: '14px',
+            listStyle: 'none',
+            padding: 0,
+          }}
+        >
+          <li style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+            📊 数据分析
+          </li>
+          <li style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+            🔄 工作流编排
+          </li>
           <li style={{ padding: '8px 0' }}>🤖 AI 模型管理</li>
         </ul>
       </div>
@@ -168,9 +183,7 @@ export const SingleTab: Story = {
         content: (
           <div style={{ padding: '20px', color: '#fff' }}>
             <h3 style={{ color: '#00f0ff', marginBottom: '12px' }}>通知中心</h3>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>
-              暂无新通知
-            </p>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '14px' }}>暂无新通知</p>
           </div>
         ),
       },

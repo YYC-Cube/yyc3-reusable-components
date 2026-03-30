@@ -214,9 +214,7 @@ export const Clickable: Story = {
     children: (
       <div style={{ color: '#fff' }}>
         <h3 style={{ marginBottom: '8px', color: '#00f0ff' }}>可点击卡片</h3>
-        <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)' }}>
-          点击这个卡片触发事件。
-        </p>
+        <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.7)' }}>点击这个卡片触发事件。</p>
       </div>
     ),
     color: '#00f0ff',

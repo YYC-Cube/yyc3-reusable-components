@@ -74,10 +74,12 @@ const BRANCH_STRATEGY = {
 function getAllBranches() {
   try {
     const output = execSync('git branch -a', { encoding: 'utf-8' });
-    const branches = output.split('\n').map(b => b.trim().replace('* ', '').replace('remotes/origin/', ''));
+    const branches = output
+      .split('\n')
+      .map((b) => b.trim().replace('* ', '').replace('remotes/origin/', ''));
     return {
-      local: branches.filter(b => !b.startsWith('remotes/')),
-      remote: branches.filter(b => b.startsWith('remotes/')),
+      local: branches.filter((b) => !b.startsWith('remotes/')),
+      remote: branches.filter((b) => b.startsWith('remotes/')),
     };
   } catch (error) {
     return { local: [], remote: [] };
@@ -110,7 +112,7 @@ function createBranch(branchName, baseBranch = 'main') {
       console.log(`${colors.yellow}⚠ 分支已存在: ${branchName}${colors.reset}`);
       return false;
     }
-    
+
     execSync(`git checkout -b ${branchName} ${baseBranch}`, { stdio: 'inherit' });
     console.log(`${colors.green}✓ 创建并切换到分支: ${branchName}${colors.reset}`);
     return true;
@@ -137,16 +139,16 @@ function deleteBranch(branchName, force = false) {
 function mergeBranch(sourceBranch, targetBranch, noFF = true) {
   try {
     const currentBranch = getCurrentBranch();
-    
+
     // 切换到目标分支
     execSync(`git checkout ${targetBranch}`, { stdio: 'inherit' });
-    
+
     // 合并
     const ffFlag = noFF ? '--no-ff' : '--ff';
     execSync(`git merge ${ffFlag} ${sourceBranch}`, { stdio: 'inherit' });
-    
+
     console.log(`${colors.green}✓ 已合并 ${sourceBranch} 到 ${targetBranch}${colors.reset}`);
-    
+
     // 切回原分支
     execSync(`git checkout ${currentBranch}`, { stdio: 'inherit' });
     return true;
@@ -168,64 +170,73 @@ ${colors.reset}
 
   const branches = getAllBranches();
   const currentBranch = getCurrentBranch();
-  
-  console.log(`${colors.white}当前分支:${colors.reset} ${colors.green}${currentBranch}${colors.reset}\n`);
-  
+
+  console.log(
+    `${colors.white}当前分支:${colors.reset} ${colors.green}${currentBranch}${colors.reset}\n`
+  );
+
   console.log(`${colors.white}本地分支 (${branches.local.length}):${colors.reset}`);
-  branches.local.forEach(branch => {
-    const strategy = Object.keys(BRANCH_STRATEGY).find(key => {
+  branches.local.forEach((branch) => {
+    const strategy = Object.keys(BRANCH_STRATEGY).find((key) => {
       if (key.includes('*')) {
         const prefix = key.replace('*', '');
         return branch.startsWith(prefix);
       }
       return branch === key;
     });
-    
+
     const isProtected = strategy ? BRANCH_STRATEGY[strategy].protected : false;
     const icon = branch === currentBranch ? '→' : ' ';
     const protectionIcon = isProtected ? '🔒' : '  ';
-    
+
     console.log(`  ${icon} ${protectionIcon} ${branch}`);
     if (strategy && BRANCH_STRATEGY[strategy].description) {
       console.log(`      ${colors.blue}${BRANCH_STRATEGY[strategy].description}${colors.reset}`);
     }
   });
-  
+
   console.log(`\n${colors.white}远程分支 (${branches.remote.length}):${colors.reset}`);
-  branches.remote.slice(0, 10).forEach(branch => {
+  branches.remote.slice(0, 10).forEach((branch) => {
     console.log(`    ${branch}`);
   });
-  
+
   if (branches.remote.length > 10) {
-    console.log(`    ${colors.yellow}... 还有 ${branches.remote.length - 10} 个分支${colors.reset}`);
+    console.log(
+      `    ${colors.yellow}... 还有 ${branches.remote.length - 10} 个分支${colors.reset}`
+    );
   }
 }
 
 // 生成分支报告
 function generateReport() {
-  const reportPath = path.join(process.cwd(), '.codebuddy', 'branch-reports', `branches-${Date.now()}.json`);
+  const reportPath = path.join(
+    process.cwd(),
+    '.codebuddy',
+    'branch-reports',
+    `branches-${Date.now()}.json`
+  );
   const reportDir = path.dirname(reportPath);
-  
+
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
-  
+
   const branches = getAllBranches();
   const currentBranch = getCurrentBranch();
-  
+
   const report = {
     timestamp: new Date().toISOString(),
     currentBranch,
     branches: {
-      local: branches.local.map(branch => {
-        const strategy = Object.keys(BRANCH_STRATEGY).find(key => {
+      local: branches.local.map((branch) => {
+        const strategy = Object.keys(BRANCH_STRATEGY).find((key) => {
           if (key.includes('*')) {
             const prefix = key.replace('*', '');
             return branch.startsWith(prefix);
           }
           return branch === key;
         });
-        
+
         return {
           name: branch,
           type: strategy || 'custom',
@@ -237,10 +248,10 @@ function generateReport() {
     },
     strategy: BRANCH_STRATEGY,
   };
-  
+
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
   console.log(`\n${colors.cyan}报告已保存到: ${reportPath}${colors.reset}\n`);
-  
+
   return report;
 }
 
@@ -281,9 +292,11 @@ ${colors.reset}
   node scripts/branch-manager.js report
 
 分支策略:
-  ${Object.entries(BRANCH_STRATEGY).map(([key, value]) => {
-    return `${colors.green}${key.padEnd(15)}${colors.reset} - ${value.description}`;
-  }).join('\n  ')}
+  ${Object.entries(BRANCH_STRATEGY)
+    .map(([key, value]) => {
+      return `${colors.green}${key.padEnd(15)}${colors.reset} - ${value.description}`;
+    })
+    .join('\n  ')}
 `);
 }
 
@@ -291,22 +304,22 @@ ${colors.reset}
 async function main() {
   const args = process.argv.slice(2);
   const command = args[0];
-  
+
   if (!command || command === 'help') {
     showHelp();
     return;
   }
-  
+
   switch (command) {
     case 'list':
     case 'ls':
       analyzeBranches();
       break;
-      
+
     case 'current':
       console.log(`\n当前分支: ${colors.green}${getCurrentBranch()}${colors.reset}\n`);
       break;
-      
+
     case 'create': {
       const branchName = args[1];
       const baseIndex = args.indexOf('--base');
@@ -314,30 +327,30 @@ async function main() {
       createBranch(branchName, baseBranch);
       break;
     }
-      
+
     case 'delete': {
       const branchName = args[1];
       const force = args.includes('--force');
       deleteBranch(branchName, force);
       break;
     }
-      
+
     case 'merge': {
       const sourceBranch = args[1];
       const noFF = !args.includes('--ff');
       mergeBranch(sourceBranch, getCurrentBranch(), noFF);
       break;
     }
-      
+
     case 'analyze':
       analyzeBranches();
       break;
-      
+
     case 'report':
       analyzeBranches();
       generateReport();
       break;
-      
+
     default:
       console.log(`${colors.red}未知命令: ${command}${colors.reset}`);
       showHelp();
@@ -345,7 +358,7 @@ async function main() {
   }
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.error(`${colors.red}分支管理工具异常:${colors.reset}`, error);
   process.exit(1);
 });

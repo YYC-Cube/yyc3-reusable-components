@@ -1,4 +1,4 @@
-import { PerformanceMetrics, PERFORMANCE_THRESHOLDS } from './performance-monitor';
+import { PERFORMANCE_THRESHOLDS } from './performance-monitor';
 
 export interface BenchmarkResult {
   componentName: string;
@@ -31,11 +31,7 @@ export class PerformanceBenchmark {
     });
   }
 
-  runBenchmark(
-    componentName: string,
-    metric: string,
-    value: number
-  ): BenchmarkResult {
+  runBenchmark(componentName: string, metric: string, value: number): BenchmarkResult {
     const threshold = PERFORMANCE_THRESHOLDS[metric as keyof typeof PERFORMANCE_THRESHOLDS];
     const result: BenchmarkResult = {
       componentName,
@@ -52,7 +48,7 @@ export class PerformanceBenchmark {
 
   checkRegression(componentName: string, metric: string): RegressionResult | null {
     const componentResults = this.results.filter(
-      r => r.componentName === componentName && r.metric === metric
+      (r) => r.componentName === componentName && r.metric === metric
     );
 
     if (componentResults.length < 2) return null;
@@ -74,13 +70,13 @@ export class PerformanceBenchmark {
   }
 
   checkAllRegressions(): RegressionResult[] {
-    const uniqueComponents = [...new Set(this.results.map(r => r.componentName))];
-    const uniqueMetrics = [...new Set(this.results.map(r => r.metric))];
+    const uniqueComponents = [...new Set(this.results.map((r) => r.componentName))];
+    const uniqueMetrics = [...new Set(this.results.map((r) => r.metric))];
 
     const regressions: RegressionResult[] = [];
 
-    uniqueComponents.forEach(componentName => {
-      uniqueMetrics.forEach(metric => {
+    uniqueComponents.forEach((componentName) => {
+      uniqueMetrics.forEach((metric) => {
         const regression = this.checkRegression(componentName, metric);
         if (regression && regression.hasRegression) {
           regressions.push(regression);
@@ -91,7 +87,10 @@ export class PerformanceBenchmark {
     return regressions;
   }
 
-  compareWithBaseline(componentName: string, metric: string): {
+  compareWithBaseline(
+    componentName: string,
+    metric: string
+  ): {
     currentValue: number;
     baselineValue: number;
     difference: number;
@@ -99,7 +98,7 @@ export class PerformanceBenchmark {
     isWithinBaseline: boolean;
   } | null {
     const latestResult = this.results
-      .filter(r => r.componentName === componentName && r.metric === metric)
+      .filter((r) => r.componentName === componentName && r.metric === metric)
       .pop();
 
     if (!latestResult) return null;
@@ -127,19 +126,19 @@ export class PerformanceBenchmark {
   }
 
   getResultsByComponent(componentName: string): BenchmarkResult[] {
-    return this.results.filter(r => r.componentName === componentName);
+    return this.results.filter((r) => r.componentName === componentName);
   }
 
   getResultsByMetric(metric: string): BenchmarkResult[] {
-    return this.results.filter(r => r.metric === metric);
+    return this.results.filter((r) => r.metric === metric);
   }
 
   getFailedBenchmarks(): BenchmarkResult[] {
-    return this.results.filter(r => !r.passed);
+    return this.results.filter((r) => !r.passed);
   }
 
   getPassedBenchmarks(): BenchmarkResult[] {
-    return this.results.filter(r => r.passed);
+    return this.results.filter((r) => r.passed);
   }
 
   getBenchmarkSummary(): {
@@ -150,7 +149,7 @@ export class PerformanceBenchmark {
     regressions: number;
   } {
     const totalBenchmarks = this.results.length;
-    const passedBenchmarks = this.results.filter(r => r.passed).length;
+    const passedBenchmarks = this.results.filter((r) => r.passed).length;
     const failedBenchmarks = totalBenchmarks - passedBenchmarks;
     const passRate = totalBenchmarks > 0 ? (passedBenchmarks / totalBenchmarks) * 100 : 0;
     const regressions = this.checkAllRegressions().length;
@@ -175,7 +174,7 @@ export class PerformanceBenchmark {
   exportBaseline(): Record<string, Record<string, number>> {
     const baseline: Record<string, Record<string, number>> = {};
 
-    this.results.forEach(result => {
+    this.results.forEach((result) => {
       if (!baseline[result.componentName]) {
         baseline[result.componentName] = {};
       }

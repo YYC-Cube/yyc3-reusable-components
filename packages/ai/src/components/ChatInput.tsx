@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Button } from "./ui/button";
-import { Textarea } from "./ui/textarea";
-import { Send } from "lucide-react";
+import { useState } from 'react';
+import { Button } from './ui/button';
+import { Textarea } from './ui/textarea';
+import { Send } from 'lucide-react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -9,18 +9,18 @@ interface ChatInputProps {
 }
 
 export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim() && !disabled) {
       onSendMessage(message.trim());
-      setMessage("");
+      setMessage('');
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
@@ -36,9 +36,9 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
         className="min-h-[60px] pr-12 bg-input border-border resize-none text-base"
         disabled={disabled}
       />
-      <Button 
-        type="submit" 
-        size="sm" 
+      <Button
+        type="submit"
+        size="sm"
         disabled={!message.trim() || disabled}
         className="absolute bottom-3 right-3 h-8 w-8 p-0"
       >

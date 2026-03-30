@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
 
-const CHANNELS_KEY = "yyc3_channels_meta";
+const CHANNELS_KEY = 'yyc3_channels_meta';
 
 export interface Channel {
   id: string;
@@ -11,15 +11,15 @@ export interface Channel {
 }
 
 const DEFAULT_CHANNEL: Channel = {
-  id: "main",
-  name: "Main Console",
+  id: 'main',
+  name: 'Main Console',
   createdAt: new Date(),
-  preset: "General"
+  preset: 'General',
 };
 
 export function useChannelManager() {
   const [channels, setChannels] = useState<Channel[]>([DEFAULT_CHANNEL]);
-  const [activeChannelId, setActiveChannelId] = useState<string>("main");
+  const [activeChannelId, setActiveChannelId] = useState<string>('main');
 
   // Load channels
   useEffect(() => {
@@ -27,15 +27,15 @@ export function useChannelManager() {
       const stored = localStorage.getItem(CHANNELS_KEY);
       if (stored) {
         const parsed = JSON.parse(stored, (key, value) => {
-            if (key === "createdAt") return new Date(value);
-            return value;
+          if (key === 'createdAt') return new Date(value);
+          return value;
         });
         setChannels(parsed);
       } else {
         localStorage.setItem(CHANNELS_KEY, JSON.stringify([DEFAULT_CHANNEL]));
       }
     } catch (e) {
-      console.error("Failed to load channels:", e);
+      console.error('Failed to load channels:', e);
     }
   }, []);
 
@@ -45,38 +45,45 @@ export function useChannelManager() {
     setChannels(newChannels);
   }, []);
 
-  const createChannel = useCallback((name: string, options?: { isEncrypted?: boolean, preset?: string }) => {
-    const newChannel: Channel = {
-      id: `chan_${Date.now()}`,
-      name: name,
-      createdAt: new Date(),
-      isEncrypted: options?.isEncrypted,
-      preset: options?.preset || "General"
-    };
-    saveChannels([...channels, newChannel]);
-    return newChannel.id;
-  }, [channels, saveChannels]);
+  const createChannel = useCallback(
+    (name: string, options?: { isEncrypted?: boolean; preset?: string }) => {
+      const newChannel: Channel = {
+        id: `chan_${Date.now()}`,
+        name: name,
+        createdAt: new Date(),
+        isEncrypted: options?.isEncrypted,
+        preset: options?.preset || 'General',
+      };
+      saveChannels([...channels, newChannel]);
+      return newChannel.id;
+    },
+    [channels, saveChannels]
+  );
 
-  const deleteChannel = useCallback((id: string) => {
-    if (id === "main") return; // Protect main channel
-    
-    // Clean up channel data
-    localStorage.removeItem(`yyc3_chat_history_${id}`);
-    
-    const newChannels = channels.filter(c => c.id !== id);
-    saveChannels(newChannels);
-    
-    if (activeChannelId === id) {
-      setActiveChannelId("main");
-    }
-  }, [channels, activeChannelId, saveChannels]);
+  const deleteChannel = useCallback(
+    (id: string) => {
+      if (id === 'main') return; // Protect main channel
 
-  const updateChannelName = useCallback((id: string, name: string) => {
-    const newChannels = channels.map(c => 
-      c.id === id ? { ...c, name } : c
-    );
-    saveChannels(newChannels);
-  }, [channels, saveChannels]);
+      // Clean up channel data
+      localStorage.removeItem(`yyc3_chat_history_${id}`);
+
+      const newChannels = channels.filter((c) => c.id !== id);
+      saveChannels(newChannels);
+
+      if (activeChannelId === id) {
+        setActiveChannelId('main');
+      }
+    },
+    [channels, activeChannelId, saveChannels]
+  );
+
+  const updateChannelName = useCallback(
+    (id: string, name: string) => {
+      const newChannels = channels.map((c) => (c.id === id ? { ...c, name } : c));
+      saveChannels(newChannels);
+    },
+    [channels, saveChannels]
+  );
 
   return {
     channels,
@@ -84,6 +91,6 @@ export function useChannelManager() {
     setActiveChannelId,
     createChannel,
     deleteChannel,
-    updateChannelName
+    updateChannelName,
   };
 }

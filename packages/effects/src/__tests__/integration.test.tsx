@@ -19,19 +19,28 @@ import { GlitchText } from '../components/GlitchText';
 import { NeonCard } from '../components/NeonCard';
 
 // Mock IntersectionObserver
-vi.stubGlobal('IntersectionObserver', vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-})));
+vi.stubGlobal(
+  'IntersectionObserver',
+  vi.fn().mockImplementation(() => ({
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+  }))
+);
 
 // Mock requestAnimationFrame
-vi.stubGlobal('requestAnimationFrame', vi.fn().mockImplementation((cb: FrameRequestCallback) => {
-  return setTimeout(() => cb(0), 16);
-}));
-vi.stubGlobal('cancelAnimationFrame', vi.fn().mockImplementation((id: number) => {
-  clearTimeout(id);
-}));
+vi.stubGlobal(
+  'requestAnimationFrame',
+  vi.fn().mockImplementation((cb: FrameRequestCallback) => {
+    return setTimeout(() => cb(0), 16);
+  })
+);
+vi.stubGlobal(
+  'cancelAnimationFrame',
+  vi.fn().mockImplementation((id: number) => {
+    clearTimeout(id);
+  })
+);
 
 // Mock canvas context
 HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue({
@@ -150,10 +159,18 @@ describe('特效组件集成测试', () => {
     it('应支持多个NeonCard网格布局', () => {
       const { container } = render(
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-          <NeonCard color="#00f0ff" noReveal><div>卡片1</div></NeonCard>
-          <NeonCard color="#00ffcc" noReveal><div>卡片2</div></NeonCard>
-          <NeonCard color="#ff00ff" noReveal><div>卡片3</div></NeonCard>
-          <NeonCard color="#ff6600" noReveal><div>卡片4</div></NeonCard>
+          <NeonCard color="#00f0ff" noReveal>
+            <div>卡片1</div>
+          </NeonCard>
+          <NeonCard color="#00ffcc" noReveal>
+            <div>卡片2</div>
+          </NeonCard>
+          <NeonCard color="#ff00ff" noReveal>
+            <div>卡片3</div>
+          </NeonCard>
+          <NeonCard color="#ff6600" noReveal>
+            <div>卡片4</div>
+          </NeonCard>
         </div>
       );
 

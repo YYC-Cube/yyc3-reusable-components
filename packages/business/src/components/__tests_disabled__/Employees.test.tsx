@@ -101,7 +101,13 @@ describe('Employees', () => {
 
   it('handles navigation context', () => {
     const onNavigate = vi.fn();
-    render(<Employees {...defaultProps} navigationContext={{ source: 'performance', employeeId: 'EMP-001' }} onNavigate={onNavigate} />);
+    render(
+      <Employees
+        {...defaultProps}
+        navigationContext={{ source: 'performance', employeeId: 'EMP-001' }}
+        onNavigate={onNavigate}
+      />
+    );
     expect(onNavigate).toBeDefined();
   });
 

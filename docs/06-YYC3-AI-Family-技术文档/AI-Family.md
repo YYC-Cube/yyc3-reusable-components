@@ -1,22 +1,21 @@
 # YYC3-Development-Operations 智能编程自动化系统 - 完整规划方案
 
-> ***YanYuCloudCube***
-> 言启象限 | 语枢未来
-> ***Words Initiate Quadrants, Language Serves as Core for Future***
-> 万象归元于云枢 | 深栈智启新纪元
-> ***All things converge in cloud pivot; Deep stacks ignite a new era of intelligence***
+> **_YanYuCloudCube_** 言启象限 | 语枢未来 **_Words Initiate Quadrants, Language
+> Serves as Core for Future_** 万象归元于云枢 | 深栈智启新纪元 **_All things
+> converge in cloud pivot; Deep stacks ignite a new era of intelligence_**
 
 ---
 
-   ██╗   ██╗██╗   ██╗ ██████╗██████╗     ███████╗  █████╗  ███╗   ███╗ ██╗  ██╗    ██╗   ██╗
-   ╚██╗ ██╔╝╚██╗ ██╔╝██╔════╝╚════██╗    ██╔════╝ ██╔══██╗ ████╗ ████║ ██║  ██║    ╚██╗ ██╔╝
-    ╚████╔╝  ╚████╔╝ ██║      █████╔╝    █████╗   ███████║ ██╔████╔██║ ██║  ██║     ╚████╔╝
-     ╚██╔╝    ╚██╔╝  ██║      ╚═══██╗    ██╔══╝   ██╔══██║ ██║╚██╔╝██║ ██║  ██║      ╚██╔╝
-      ██║      ██║   ╚██████╗██████╔╝    ██║      ██║  ██║ ██║ ╚═╝ ██║ ██║  ███████╗  ██║
-      ╚═╝      ╚═╝    ╚═════╝╚═════╝     ╚═╝      ╚═╝  ╚═╝ ╚═╝     ╚═╝ ╚═╝  ╚══════╝  ╚═╝
+██╗ ██╗██╗ ██╗ ██████╗██████╗ ███████╗ █████╗ ███╗ ███╗ ██╗ ██╗ ██╗ ██╗ ╚██╗
+██╔╝╚██╗ ██╔╝██╔════╝╚════██╗ ██╔════╝ ██╔══██╗ ████╗ ████║ ██║ ██║ ╚██╗ ██╔╝
+╚████╔╝ ╚████╔╝ ██║ █████╔╝ █████╗ ███████║ ██╔████╔██║ ██║ ██║ ╚████╔╝ ╚██╔╝
+╚██╔╝ ██║ ╚═══██╗ ██╔══╝ ██╔══██║ ██║╚██╔╝██║ ██║ ██║ ╚██╔╝ ██║ ██║
+╚██████╗██████╔╝ ██║ ██║ ██║ ██║ ╚═╝ ██║ ██║ ███████╗ ██║ ╚═╝ ╚═╝ ╚═════╝╚═════╝
+╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚═╝ ╚══════╝ ╚═╝
 
-***YanYuCloudCube***            万象归元于云枢 | 深栈智启新纪元          ***YYC³ AI Family***
-***All things converge in the cloud pivot; Deep stacks ignite a new era of intelligence***
+**_YanYuCloudCube_** 万象归元于云枢 | 深栈智启新纪元 **_YYC³ AI Family_** **_All
+things converge in the cloud pivot; Deep stacks ignite a new era of
+intelligence_**
 
 ## 📋 核心问题分析
 
@@ -437,7 +436,7 @@ services:
   app:
     image: yyc3-intelligence-platform:latest
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - postgres
       - redis
@@ -447,7 +446,7 @@ services:
   postgres:
     image: postgres:15
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -455,13 +454,13 @@ services:
   redis:
     image: redis:7
     ports:
-      - "6379:6379"
+      - '6379:6379'
 
   # 搜索
   elasticsearch:
     image: elasticsearch:8
     ports:
-      - "9200:9200"
+      - '9200:9200'
     environment:
       - discovery.type=single-node
 
@@ -469,8 +468,8 @@ services:
   gitea:
     image: gitea/gitea:latest
     ports:
-      - "3001:3000"
-      - "22:22"
+      - '3001:3000'
+      - '22:22'
     volumes:
       - gitea_data:/data
 
@@ -478,8 +477,8 @@ services:
   minio:
     image: minio/minio:latest
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - '9000:9000'
+      - '9001:9001'
     volumes:
       - minio_data:/data
 
@@ -546,7 +545,7 @@ services:
   glm-api:
     image: yyc3-glm-api:latest
     ports:
-      - "8080:8080"
+      - '8080:8080'
     environment:
       - GLM_API_KEY=${GLM_API_KEY}
 
@@ -554,7 +553,7 @@ services:
   ollama:
     image: ollama/ollama:latest
     ports:
-      - "11434:11434"
+      - '11434:11434'
     volumes:
       - ollama_data:/root/.ollama
 ```
@@ -899,8 +898,8 @@ services:
       - DB_PASSWD=gitea
     restart: always
     ports:
-      - "3001:3000"
-      - "22:22"
+      - '3001:3000'
+      - '22:22'
     volumes:
       - ./gitea:/data
       - /etc/timezone:/etc/timezone:ro
@@ -1082,7 +1081,7 @@ services:
   web:
     build: ./web
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - api
       - postgres
@@ -1099,7 +1098,7 @@ services:
   api:
     build: ./api
     ports:
-      - "8000:8000"
+      - '8000:8000'
     depends_on:
       - postgres
       - redis
@@ -1120,7 +1119,7 @@ services:
   postgres:
     image: postgres:15-alpine
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -1129,7 +1128,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -1138,12 +1137,12 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
     volumes:
       - redis_data:/data
     command: redis-server --appendonly yes
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 10s
       timeout: 3s
       retries: 5
@@ -1152,16 +1151,17 @@ services:
   elasticsearch:
     image: elasticsearch:8.11.0
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - '9200:9200'
+      - '9300:9300'
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      test:
+        ['CMD-SHELL', 'curl -f http://localhost:9200/_cluster/health || exit 1']
       interval: 30s
       timeout: 10s
       retries: 5
@@ -1170,8 +1170,8 @@ services:
   minio:
     image: minio/minio:latest
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - '9000:9000'
+      - '9001:9001'
     environment:
       - MINIO_ROOT_USER=minioadmin
       - MINIO_ROOT_PASSWORD=minioadmin
@@ -1179,7 +1179,7 @@ services:
       - minio_data:/data
     command: server /data --console-address ":9001"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
       interval: 30s
       timeout: 20s
       retries: 3
@@ -1188,8 +1188,8 @@ services:
   gitea:
     image: gitea/gitea:1.21.0
     ports:
-      - "3001:3000"
-      - "22:22"
+      - '3001:3000'
+      - '22:22'
     environment:
       - USER_UID=1000
       - USER_GID=1000
@@ -1205,7 +1205,7 @@ services:
     depends_on:
       - postgres
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/api/health']
       interval: 30s
       timeout: 10s
       retries: 5
@@ -1214,13 +1214,13 @@ services:
   ollama:
     image: ollama/ollama:latest
     ports:
-      - "11434:11434"
+      - '11434:11434'
     volumes:
       - ollama_data:/root/.ollama
     environment:
       - OLLAMA_ORIGINS="*"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      test: ['CMD', 'curl', '-f', 'http://localhost:11434/api/tags']
       interval: 30s
       timeout: 10s
       retries: 5
@@ -1229,8 +1229,8 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/ssl:/etc/nginx/ssl:ro
@@ -1662,9 +1662,8 @@ echo "发布完成！"
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for the Future***」
-> 「***All things converge in the cloud pivot; Deep stacks ignite a new era of intelligence***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for the Future_**」「**_All things converge
+> in the cloud pivot; Deep stacks ignite a new era of intelligence_**」
 
 </div>

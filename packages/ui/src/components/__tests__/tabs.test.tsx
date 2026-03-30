@@ -52,7 +52,9 @@ describe('Tabs', () => {
     fireEvent.click(tab2);
 
     // 检查 tab1 变为 inactive
-    const tab1Trigger = container.querySelector('[data-slot="tabs-trigger"][data-state="inactive"]');
+    const tab1Trigger = container.querySelector(
+      '[data-slot="tabs-trigger"][data-state="inactive"]'
+    );
     expect(tab1Trigger).toBeInTheDocument();
   });
 

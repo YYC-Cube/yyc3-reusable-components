@@ -17,7 +17,7 @@
 
 /* ──────────────────── 配置 / Config ──────────────────── */
 
-const BASE_URL = process.argv[2] ?? "http://localhost:3721";
+const BASE_URL = process.argv[2] ?? 'http://localhost:3721';
 const API_BASE = `${BASE_URL}/api/v1`;
 
 /** 测试用临时聊天 ID / Test temporary chat ID */
@@ -65,7 +65,7 @@ async function testEndpoint(
   try {
     const options: RequestInit = {
       method,
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     };
 
     if (body) {
@@ -92,7 +92,7 @@ async function testEndpoint(
       passed: false,
       status: 0,
       duration: Date.now() - start,
-      error: err instanceof Error ? err.message : "FETCH_FAILED",
+      error: err instanceof Error ? err.message : 'FETCH_FAILED',
     };
   }
 }
@@ -100,7 +100,7 @@ async function testEndpoint(
 /* ──────────────────── 测试套件 / Test Suite ──────────────────── */
 
 async function runTests(): Promise<void> {
-  const line = "═".repeat(72);
+  const line = '═'.repeat(72);
 
   process.stdout.write(`\n${line}\n`);
   process.stdout.write(`  YYC³ AI Family - E2E Endpoint Verification\n`);
@@ -111,116 +111,88 @@ async function runTests(): Promise<void> {
   const results: TestResult[] = [];
 
   /* ── Test 1: GET /health ── */
-  results.push(await testEndpoint(
-    1,
-    "健康检查 / Health Check",
-    "GET",
-    "/health"
-  ));
+  results.push(await testEndpoint(1, '健康检查 / Health Check', 'GET', '/health'));
 
   /* ── Test 2: GET /tables ── */
-  results.push(await testEndpoint(
-    2,
-    "表清单 / List Tables",
-    "GET",
-    "/tables"
-  ));
+  results.push(await testEndpoint(2, '表清单 / List Tables', 'GET', '/tables'));
 
   /* ── Test 3: GET /migrations/status ── */
-  results.push(await testEndpoint(
-    3,
-    "迁移状态 / Migration Status",
-    "GET",
-    "/migrations/status"
-  ));
+  results.push(await testEndpoint(3, '迁移状态 / Migration Status', 'GET', '/migrations/status'));
 
   /* ── Test 4: POST /migrations/run ── */
-  results.push(await testEndpoint(
-    4,
-    "执行迁移 / Run Migrations",
-    "POST",
-    "/migrations/run"
-  ));
+  results.push(await testEndpoint(4, '执行迁移 / Run Migrations', 'POST', '/migrations/run'));
 
   /* ── Test 5: POST /data/:table (Insert) ── */
-  results.push(await testEndpoint(
-    5,
-    "插入记录 / Insert Record",
-    "POST",
-    "/data/chats",
-    {
-      id: TEST_CHAT_ID,
-      channel_id: "main",
-      title: "E2E Test Chat",
-      messages: "[]",
-    },
-    201
-  ));
+  results.push(
+    await testEndpoint(
+      5,
+      '插入记录 / Insert Record',
+      'POST',
+      '/data/chats',
+      {
+        id: TEST_CHAT_ID,
+        channel_id: 'main',
+        title: 'E2E Test Chat',
+        messages: '[]',
+      },
+      201
+    )
+  );
 
   /* ── Test 6: GET /data/:table (List) ── */
-  results.push(await testEndpoint(
-    6,
-    "列表查询 / List Records",
-    "GET",
-    "/data/chats?limit=5&orderBy=updated_at&orderDir=DESC"
-  ));
+  results.push(
+    await testEndpoint(
+      6,
+      '列表查询 / List Records',
+      'GET',
+      '/data/chats?limit=5&orderBy=updated_at&orderDir=DESC'
+    )
+  );
 
   /* ── Test 7: GET /data/:table/:id (Single) ── */
-  results.push(await testEndpoint(
-    7,
-    "单条查询 / Get Single Record",
-    "GET",
-    `/data/chats/${TEST_CHAT_ID}`
-  ));
+  results.push(
+    await testEndpoint(7, '单条查询 / Get Single Record', 'GET', `/data/chats/${TEST_CHAT_ID}`)
+  );
 
   /* ── Test 8: PUT /data/:table/:id (Update) ── */
-  results.push(await testEndpoint(
-    8,
-    "更新记录 / Update Record",
-    "PUT",
-    `/data/chats/${TEST_CHAT_ID}`,
-    { title: "E2E Test Chat - Updated" }
-  ));
+  results.push(
+    await testEndpoint(8, '更新记录 / Update Record', 'PUT', `/data/chats/${TEST_CHAT_ID}`, {
+      title: 'E2E Test Chat - Updated',
+    })
+  );
 
   /* ── Test 9: POST /query (Structured Query) ── */
-  results.push(await testEndpoint(
-    9,
-    "结构化查询 / Structured Query",
-    "POST",
-    "/query",
-    {
-      table: "agents",
-      action: "SELECT",
-      columns: ["agent_id", "name", "status"],
-      conditions: [{ column: "status", operator: "=", value: "active" }],
-      orderBy: [{ column: "name", direction: "ASC" }],
+  results.push(
+    await testEndpoint(9, '结构化查询 / Structured Query', 'POST', '/query', {
+      table: 'agents',
+      action: 'SELECT',
+      columns: ['agent_id', 'name', 'status'],
+      conditions: [{ column: 'status', operator: '=', value: 'active' }],
+      orderBy: [{ column: 'name', direction: 'ASC' }],
       limit: 10,
-    }
-  ));
+    })
+  );
 
   /* ── Test 10: DELETE /data/:table/:id (Delete) ── */
-  results.push(await testEndpoint(
-    10,
-    "删除记录 / Delete Record",
-    "DELETE",
-    `/data/chats/${TEST_CHAT_ID}`
-  ));
+  results.push(
+    await testEndpoint(10, '删除记录 / Delete Record', 'DELETE', `/data/chats/${TEST_CHAT_ID}`)
+  );
 
   /* ──────────────────── 结果输出 / Results Output ──────────────────── */
 
-  process.stdout.write("\n");
+  process.stdout.write('\n');
 
-  const maxNameLen = Math.max(...results.map(r => r.name.length));
+  const maxNameLen = Math.max(...results.map((r) => r.name.length));
 
   for (const r of results) {
-    const icon = r.passed ? "✓" : "✗";
-    const color = r.passed ? "\x1b[32m" : "\x1b[31m";
-    const reset = "\x1b[0m";
+    const icon = r.passed ? '✓' : '✗';
+    const color = r.passed ? '\x1b[32m' : '\x1b[31m';
+    const reset = '\x1b[0m';
     const paddedName = r.name.padEnd(maxNameLen);
     const methodPad = r.method.padEnd(6);
 
     process.stdout.write(
-      `  ${color}${icon}${reset} [${String(r.index).padStart(2, "0")}] ${methodPad} ${r.path.padEnd(35)} ${paddedName}  ${r.duration}ms  ${r.status}\n`
+      `  ${color}${icon}${reset} [${String(r.index).padStart(2, '0')}] ${methodPad} ${r.path.padEnd(35)} ${paddedName}  ${r.duration}ms  ${r.status}\n`
     );
 
     if (r.error) {
@@ -230,8 +202,8 @@ async function runTests(): Promise<void> {
 
   /* ──────────────────── 汇总 / Summary ──────────────────── */
 
-  const passed = results.filter(r => r.passed).length;
-  const failed = results.filter(r => !r.passed).length;
+  const passed = results.filter((r) => r.passed).length;
+  const failed = results.filter((r) => !r.passed).length;
   const totalDuration = results.reduce((sum, r) => sum + r.duration, 0);
 
   process.stdout.write(`\n${line}\n`);

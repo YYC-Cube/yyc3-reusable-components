@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Warehouse as WarehouseIcon, 
-  Search, 
-  Plus, 
-  Filter, 
+import {
+  Warehouse as WarehouseIcon,
+  Search,
+  Plus,
+  Filter,
   Download,
   TrendingUp,
   Package,
@@ -13,9 +13,9 @@ import {
   AlertCircle,
   CheckCircle2,
   Clock,
-  BarChart3
+  BarChart3,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface WarehouseProps {
   currentLanguage: string;
@@ -34,7 +34,7 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
       utilization: 77,
       status: 'active',
       zones: 12,
-      materials: 45
+      materials: 45,
     },
     {
       id: 'WH-JED-002',
@@ -45,7 +45,7 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
       utilization: 83,
       status: 'active',
       zones: 10,
-      materials: 38
+      materials: 38,
     },
     {
       id: 'WH-DAM-003',
@@ -56,7 +56,7 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
       utilization: 78,
       status: 'active',
       zones: 15,
-      materials: 52
+      materials: 52,
     },
     {
       id: 'WH-MED-004',
@@ -67,8 +67,8 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
       utilization: 49,
       status: 'under-maintenance',
       zones: 8,
-      materials: 28
-    }
+      materials: 28,
+    },
   ];
 
   const stats = [
@@ -77,29 +77,29 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
       value: '150,000 kg',
       change: '+0%',
       color: 'from-blue-500 to-cyan-500',
-      icon: Boxes
+      icon: Boxes,
     },
     {
       title: { en: 'Current Stock', zh: '当前库存' },
       value: '110,900 kg',
       change: '+12.5%',
       color: 'from-green-500 to-emerald-500',
-      icon: Package
+      icon: Package,
     },
     {
       title: { en: 'Avg Utilization', zh: '平均利用率' },
       value: '71.8%',
       change: '+5.2%',
       color: 'from-amber-500 to-orange-500',
-      icon: BarChart3
+      icon: BarChart3,
     },
     {
       title: { en: 'Active Warehouses', zh: '活跃仓库' },
       value: '3/4',
       change: '-25%',
       color: 'from-purple-500 to-pink-500',
-      icon: WarehouseIcon
-    }
+      icon: WarehouseIcon,
+    },
   ];
 
   const getStatusConfig = (status: string) => {
@@ -107,18 +107,18 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
       active: {
         color: 'bg-green-500/20 text-green-400 border-green-500/30',
         icon: CheckCircle2,
-        label: { en: 'Active', zh: '活跃' }
+        label: { en: 'Active', zh: '活跃' },
       },
       'under-maintenance': {
         color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
         icon: Clock,
-        label: { en: 'Under Maintenance', zh: '维护中' }
+        label: { en: 'Under Maintenance', zh: '维护中' },
       },
       inactive: {
         color: 'bg-red-500/20 text-red-400 border-red-500/30',
         icon: AlertCircle,
-        label: { en: 'Inactive', zh: '停用' }
-      }
+        label: { en: 'Inactive', zh: '停用' },
+      },
     };
     return configs[status as keyof typeof configs];
   };
@@ -136,7 +136,9 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
               {currentLanguage === 'en' ? 'Warehouse Management' : '智能仓储'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Manage warehouse locations and inventory distribution' : '管理仓库位置和库存分配'}
+              {currentLanguage === 'en'
+                ? 'Manage warehouse locations and inventory distribution'
+                : '管理仓库位置和库存分配'}
             </p>
           </div>
         </div>
@@ -168,7 +170,9 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
                   <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
                   <span className="text-amber-400 text-sm font-medium">{stat.change}</span>
                 </div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+                ></div>
               </div>
             </div>
           );
@@ -194,7 +198,9 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
             <select className="px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all duration-300">
               <option value="all">{currentLanguage === 'en' ? 'All Status' : '所有状态'}</option>
               <option value="active">{currentLanguage === 'en' ? 'Active' : '活跃'}</option>
-              <option value="maintenance">{currentLanguage === 'en' ? 'Maintenance' : '维护中'}</option>
+              <option value="maintenance">
+                {currentLanguage === 'en' ? 'Maintenance' : '维护中'}
+              </option>
             </select>
             <Button className="bg-slate-800/50 hover:bg-slate-700/50 text-white px-4 py-3 rounded-xl transition-all duration-300">
               <Filter className="w-4 h-4 mr-2" />
@@ -233,9 +239,13 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
                     <p className="text-gray-400 text-sm">{warehouse.id}</p>
                   </div>
                 </div>
-                <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}>
+                <span
+                  className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}
+                >
                   <StatusIcon className="w-3 h-3" />
-                  <span>{statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}</span>
+                  <span>
+                    {statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}
+                  </span>
                 </span>
               </div>
 
@@ -287,21 +297,26 @@ export function Warehouse({ currentLanguage }: WarehouseProps) {
                   <span className="text-gray-400 text-sm">
                     {currentLanguage === 'en' ? 'Utilization' : '利用率'}
                   </span>
-                  <span className={`text-sm font-medium ${
-                    warehouse.utilization >= 80 ? 'text-red-400' :
-                    warehouse.utilization >= 60 ? 'text-yellow-400' : 'text-green-400'
-                  }`}>
+                  <span
+                    className={`text-sm font-medium ${
+                      warehouse.utilization >= 80
+                        ? 'text-red-400'
+                        : warehouse.utilization >= 60
+                          ? 'text-yellow-400'
+                          : 'text-green-400'
+                    }`}
+                  >
                     {warehouse.utilization}%
                   </span>
                 </div>
                 <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className={`h-full rounded-full transition-all duration-500 ${
                       warehouse.utilization >= 80
                         ? 'bg-gradient-to-r from-red-500 to-orange-500'
                         : warehouse.utilization >= 60
-                        ? 'bg-gradient-to-r from-yellow-500 to-orange-500'
-                        : 'bg-gradient-to-r from-green-500 to-emerald-500'
+                          ? 'bg-gradient-to-r from-yellow-500 to-orange-500'
+                          : 'bg-gradient-to-r from-green-500 to-emerald-500'
                     }`}
                     style={{ width: `${warehouse.utilization}%` }}
                   ></div>

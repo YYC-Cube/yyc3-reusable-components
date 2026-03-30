@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { 
-  Receipt, 
-  Search, 
+import {
+  Receipt,
+  Search,
   Download,
   Calendar,
   CheckCircle2,
@@ -12,9 +12,9 @@ import {
   DollarSign,
   Shield,
   BarChart3,
-  Upload
+  Upload,
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 
 interface VATProps {
   currentLanguage: string;
@@ -32,7 +32,7 @@ export function VAT({ currentLanguage }: VATProps) {
       netVAT: '¥ 56,440',
       dueDate: '2025-02-28',
       submittedDate: null,
-      status: 'pending'
+      status: 'pending',
     },
     {
       id: 'VAT-2024-12',
@@ -42,7 +42,7 @@ export function VAT({ currentLanguage }: VATProps) {
       netVAT: '¥ 88,889',
       dueDate: '2025-01-31',
       submittedDate: '2025-01-25',
-      status: 'submitted'
+      status: 'submitted',
     },
     {
       id: 'VAT-2024-11',
@@ -52,7 +52,7 @@ export function VAT({ currentLanguage }: VATProps) {
       netVAT: '¥ 75,309',
       dueDate: '2024-12-31',
       submittedDate: '2024-12-28',
-      status: 'approved'
+      status: 'approved',
     },
     {
       id: 'VAT-2024-10',
@@ -62,41 +62,41 @@ export function VAT({ currentLanguage }: VATProps) {
       netVAT: '¥ 77,778',
       dueDate: '2024-11-30',
       submittedDate: '2024-11-29',
-      status: 'approved'
-    }
+      status: 'approved',
+    },
   ];
 
   const taxCompliance = [
     {
       requirement: { en: 'E-Invoice Generation', zh: '电子发票生成' },
       status: 'compliant',
-      description: { en: 'XML format with digital signature', zh: 'XML格式带数字签名' }
+      description: { en: 'XML format with digital signature', zh: 'XML格式带数字签名' },
     },
     {
       requirement: { en: 'QR Code Integration', zh: '二维码集成' },
       status: 'compliant',
-      description: { en: 'Encoded invoice data', zh: '编码发票数据' }
+      description: { en: 'Encoded invoice data', zh: '编码发票数据' },
     },
     {
       requirement: { en: 'Digital Certificate', zh: '数字证书' },
       status: 'compliant',
-      description: { en: 'Valid digital certificate', zh: '有效数字证书' }
+      description: { en: 'Valid digital certificate', zh: '有效数字证书' },
     },
     {
       requirement: { en: 'Sequential Numbering', zh: '序列编号' },
       status: 'compliant',
-      description: { en: 'Unique invoice numbering system', zh: '唯一发票编号系统' }
+      description: { en: 'Unique invoice numbering system', zh: '唯一发票编号系统' },
     },
     {
       requirement: { en: 'Audit Trail', zh: '审计跟踪' },
       status: 'compliant',
-      description: { en: 'Complete transaction logging', zh: '完整交易记录' }
+      description: { en: 'Complete transaction logging', zh: '完整交易记录' },
     },
     {
       requirement: { en: 'Data Retention', zh: '数据保留' },
       status: 'warning',
-      description: { en: 'Archive approaching 80% capacity', zh: '归档容量接近80%' }
-    }
+      description: { en: 'Archive approaching 80% capacity', zh: '归档容量接近80%' },
+    },
   ];
 
   const stats = [
@@ -105,29 +105,29 @@ export function VAT({ currentLanguage }: VATProps) {
       value: '¥ 755,765',
       change: '+12.5%',
       color: 'from-green-500 to-emerald-500',
-      icon: TrendingUp
+      icon: TrendingUp,
     },
     {
       title: { en: 'Total Tax Paid', zh: '总支付税额' },
       value: '¥ 457,349',
       change: '+8.2%',
       color: 'from-red-500 to-pink-500',
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       title: { en: 'Net Tax Position', zh: '净税额' },
       value: '¥ 298,416',
       change: '+18.3%',
       color: 'from-blue-500 to-cyan-500',
-      icon: BarChart3
+      icon: BarChart3,
     },
     {
       title: { en: 'Tax Compliance', zh: '税务合规率' },
       value: '98.5%',
       change: '+2.1%',
       color: 'from-purple-500 to-pink-500',
-      icon: Shield
-    }
+      icon: Shield,
+    },
   ];
 
   const getStatusConfig = (status: string) => {
@@ -135,23 +135,23 @@ export function VAT({ currentLanguage }: VATProps) {
       pending: {
         color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
         icon: Clock,
-        label: { en: 'Pending', zh: '待提交' }
+        label: { en: 'Pending', zh: '待提交' },
       },
       submitted: {
         color: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
         icon: Upload,
-        label: { en: 'Submitted', zh: '已提交' }
+        label: { en: 'Submitted', zh: '已提交' },
       },
       approved: {
         color: 'bg-green-500/20 text-green-400 border-green-500/30',
         icon: CheckCircle2,
-        label: { en: 'Approved', zh: '已批准' }
+        label: { en: 'Approved', zh: '已批准' },
       },
       overdue: {
         color: 'bg-red-500/20 text-red-400 border-red-500/30',
         icon: AlertCircle,
-        label: { en: 'Overdue', zh: '逾期' }
-      }
+        label: { en: 'Overdue', zh: '逾期' },
+      },
     };
     return configs[status as keyof typeof configs];
   };
@@ -161,18 +161,18 @@ export function VAT({ currentLanguage }: VATProps) {
       compliant: {
         color: 'bg-green-500/20 text-green-400 border-green-500/30',
         icon: CheckCircle2,
-        label: { en: 'Compliant', zh: '合规' }
+        label: { en: 'Compliant', zh: '合规' },
       },
       warning: {
         color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
         icon: AlertCircle,
-        label: { en: 'Warning', zh: '警告' }
+        label: { en: 'Warning', zh: '警告' },
       },
       'non-compliant': {
         color: 'bg-red-500/20 text-red-400 border-red-500/30',
         icon: AlertCircle,
-        label: { en: 'Non-Compliant', zh: '不合规' }
-      }
+        label: { en: 'Non-Compliant', zh: '不合规' },
+      },
     };
     return configs[status as keyof typeof configs];
   };
@@ -190,7 +190,9 @@ export function VAT({ currentLanguage }: VATProps) {
               {currentLanguage === 'en' ? 'Tax Compliance' : '税务合规'}
             </h1>
             <p className="text-gray-400 mt-1">
-              {currentLanguage === 'en' ? 'Manage tax returns and e-invoicing compliance' : '管理税务申报和电子发票合规'}
+              {currentLanguage === 'en'
+                ? 'Manage tax returns and e-invoicing compliance'
+                : '管理税务申报和电子发票合规'}
             </p>
           </div>
         </div>
@@ -222,7 +224,9 @@ export function VAT({ currentLanguage }: VATProps) {
                   <p className="text-3xl font-bold text-white mb-2">{stat.value}</p>
                   <span className="text-violet-400 text-sm font-medium">{stat.change}</span>
                 </div>
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
+                ></div>
               </div>
             </div>
           );
@@ -262,9 +266,9 @@ export function VAT({ currentLanguage }: VATProps) {
                 {vatReturns.map((vat, index) => {
                   const statusConfig = getStatusConfig(vat.status);
                   const StatusIcon = statusConfig.icon;
-                  
+
                   return (
-                    <tr 
+                    <tr
                       key={vat.id}
                       className="hover:bg-slate-800/30 transition-colors duration-200 group"
                     >
@@ -286,9 +290,13 @@ export function VAT({ currentLanguage }: VATProps) {
                         <span className="text-violet-400 font-semibold">{vat.netVAT}</span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}>
+                        <span
+                          className={`inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium border ${statusConfig.color}`}
+                        >
                           <StatusIcon className="w-3 h-3" />
-                          <span>{statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}</span>
+                          <span>
+                            {statusConfig.label[currentLanguage as keyof typeof statusConfig.label]}
+                          </span>
                         </span>
                       </td>
                     </tr>
@@ -311,7 +319,7 @@ export function VAT({ currentLanguage }: VATProps) {
             {taxCompliance.map((item, index) => {
               const config = getComplianceConfig(item.status);
               const StatusIcon = config.icon;
-              
+
               return (
                 <div
                   key={index}
@@ -321,10 +329,15 @@ export function VAT({ currentLanguage }: VATProps) {
                     <h3 className="text-white font-medium text-sm">
                       {item.requirement[currentLanguage as keyof typeof item.requirement]}
                     </h3>
-                    <StatusIcon className={`w-4 h-4 flex-shrink-0 ${
-                      item.status === 'compliant' ? 'text-green-400' :
-                      item.status === 'warning' ? 'text-yellow-400' : 'text-red-400'
-                    }`} />
+                    <StatusIcon
+                      className={`w-4 h-4 flex-shrink-0 ${
+                        item.status === 'compliant'
+                          ? 'text-green-400'
+                          : item.status === 'warning'
+                            ? 'text-yellow-400'
+                            : 'text-red-400'
+                      }`}
+                    />
                   </div>
                   <p className="text-gray-400 text-xs">
                     {item.description[currentLanguage as keyof typeof item.description]}
@@ -333,7 +346,7 @@ export function VAT({ currentLanguage }: VATProps) {
               );
             })}
           </div>
-          
+
           {/* Overall Compliance Score */}
           <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-green-500/10 to-emerald-500/5 border border-green-500/30">
             <div className="flex items-center justify-between mb-2">
@@ -343,7 +356,10 @@ export function VAT({ currentLanguage }: VATProps) {
               <span className="text-green-400 font-bold text-lg">98.5%</span>
             </div>
             <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full" style={{ width: '98.5%' }}></div>
+              <div
+                className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"
+                style={{ width: '98.5%' }}
+              ></div>
             </div>
           </div>
         </div>

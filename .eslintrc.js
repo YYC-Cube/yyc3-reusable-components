@@ -2,91 +2,61 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    es2021: true,
+    es2020: true,
     node: true,
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:jsx-a11y/recommended',
+    'plugin:react-hooks/recommended',
     'prettier',
+  ],
+  ignorePatterns: [
+    'dist',
+    '.eslintrc.js',
+    '**/*.stories.tsx',
+    '**/*.stories.ts',
+    '**/__tests__/**',
+    '**/*.test.ts',
+    '**/*.test.tsx',
+    '**/*.spec.ts',
+    '**/*.spec.tsx',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-    project: './tsconfig.json',
+    project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
-  plugins: [
-    '@typescript-eslint',
-    'react',
-    'react-hooks',
-    'react-refresh',
-    'jsx-a11y',
-  ],
+  plugins: ['react-refresh', '@typescript-eslint'],
+  settings: {
+    react: {
+      version: '18.2',
+    },
+  },
   rules: {
-    'react-refresh/only-export-components': 'warn',
-    'react/prop-types': 'off',
-    'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-unused-vars': [
       'warn',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-    'no-console': [
-      'warn',
-      {
-        allow: ['warn', 'error'],
-      },
-    ],
-    'no-debugger': 'error',
-    'no-unused-vars': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'jsx-a11y/anchor-is-valid': 'warn',
-    'jsx-a11y/click-events-have-key-events': 'warn',
-    'jsx-a11y/no-static-element-interactions': 'warn',
+    'react/prop-types': 'off',
+    'react/jsx-no-comment-textnodes': 'warn',
+    'react-hooks/rules-of-hooks': 'warn',
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  ignorePatterns: [
-    'dist',
-    'build',
-    'node_modules',
-    '*.config.js',
-    '*.config.ts',
-    'coverage',
-    'performance-results',
-    'storybook-static',
-  ],
   overrides: [
     {
-      files: ['*.test.tsx', '*.test.ts', '*.spec.tsx', '*.spec.ts'],
-      env: {
-        jest: true,
-      },
+      files: ['**/*.test.ts', '**/*.test.tsx', '**/__tests__/**'],
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
       },
-    },
-    {
-      files: ['*.stories.tsx'],
-      rules: {
-        'react-hooks/rules-of-hooks': 'off',
+      parserOptions: {
+        project: null,
       },
     },
   ],

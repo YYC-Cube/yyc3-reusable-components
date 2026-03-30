@@ -15,7 +15,7 @@ import {
   MoreHorizontal,
   FileText
 } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '@yyc3/ui';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { AIContextBanner } from './AIContextBanner';
 import { useNavigationContext, generateRecommendations } from '../hooks/useNavigationContext';

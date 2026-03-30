@@ -1,10 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 
 // 手势类型
-export type GestureType = 
-  | 'swipe-left' 
-  | 'swipe-right' 
-  | 'swipe-up' 
+export type GestureType =
+  | 'swipe-left'
+  | 'swipe-right'
+  | 'swipe-up'
   | 'swipe-down'
   | 'pinch-in'
   | 'pinch-out'
@@ -23,7 +23,7 @@ interface GestureConfig {
   onDoubleTap?: () => void;
   onLongPress?: () => void;
   onTap?: () => void;
-  
+
   // 配置参数
   swipeThreshold?: number; // 滑动阈值（px）
   longPressDelay?: number; // 长按延迟（ms）
@@ -296,12 +296,7 @@ interface DraggableProps {
   className?: string;
 }
 
-export function Draggable({
-  children,
-  onDrag,
-  onDragEnd,
-  className = '',
-}: DraggableProps) {
+export function Draggable({ children, onDrag, onDragEnd, className = '' }: DraggableProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const startPos = useRef({ x: 0, y: 0 });

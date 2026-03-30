@@ -4,7 +4,8 @@
 
 ## 📦 简介
 
-`@yyc3/hooks` 提供了13个高质量的自定义React Hooks，帮助开发者快速实现常见功能模式。
+`@yyc3/hooks` 提供了13个高质量的自定义React
+Hooks，帮助开发者快速实现常见功能模式。
 
 ## 🎯 特性
 
@@ -35,13 +36,13 @@ import { useAI, useResponsive, usePersistedState } from '@yyc3/hooks';
 function App() {
   // AI配置管理
   const { config, updateConfig } = useAI();
-  
+
   // 响应式设计
   const { isMobile, isTablet, isDesktop } = useResponsive();
-  
+
   // 持久化状态
   const [theme, setTheme] = usePersistedState('theme', 'dark');
-  
+
   return (
     <div>
       <p>Current theme: {theme}</p>
@@ -54,26 +55,32 @@ function App() {
 ## 📚 Hooks列表
 
 ### 状态管理
+
 - `usePersistedState` - 持久化状态到localStorage
 - `useUISettings` - UI设置管理
 
 ### 响应式
+
 - `useResponsive` - 响应式设计断点检测
 
 ### AI相关
+
 - `useAI` - AI配置管理
 - `useChatPersistence` - 聊天记录持久化
 
 ### 数据库和配置
+
 - `useDatabaseConfig` - 数据库配置管理
 - `useSupabaseSync` - Supabase数据同步
 
 ### 导航
+
 - `useChannelConfig` - 频道配置
 - `useChannelManager` - 频道管理
 - `useNavigationContext` - 导航上下文
 
 ### 业务功能
+
 - `useDevOps` - DevOps工具集成
 - `useNotifications` - 通知管理
 

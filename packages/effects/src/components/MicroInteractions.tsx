@@ -153,7 +153,21 @@ export function MagneticButton({
 }
 
 // 输入框聚焦动画
-interface AnimatedInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type MotionConflictProps =
+  | 'onAnimationStart'
+  | 'onAnimationEnd'
+  | 'onDragStart'
+  | 'onDrag'
+  | 'onDragEnd'
+  | 'onDragOver'
+  | 'onDragEnter'
+  | 'onDragLeave'
+  | 'onDrop';
+
+interface AnimatedInputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  MotionConflictProps
+> {
   label?: string;
   icon?: React.ReactNode;
 }
@@ -238,12 +252,7 @@ interface AnimatedSwitchProps {
   className?: string;
 }
 
-export function AnimatedSwitch({
-  checked,
-  onChange,
-  label,
-  className = '',
-}: AnimatedSwitchProps) {
+export function AnimatedSwitch({ checked, onChange, label, className = '' }: AnimatedSwitchProps) {
   return (
     <label className={`flex items-center gap-3 cursor-pointer ${className}`}>
       <div className="relative">
@@ -281,12 +290,7 @@ interface LoadingButtonProps {
   className?: string;
 }
 
-export function LoadingButton({
-  children,
-  loading,
-  onClick,
-  className = '',
-}: LoadingButtonProps) {
+export function LoadingButton({ children, loading, onClick, className = '' }: LoadingButtonProps) {
   return (
     <motion.button
       whileHover={!loading ? { scale: 1.05 } : {}}
@@ -448,11 +452,7 @@ export function LikeButton({ className = '' }: { className?: string }) {
   };
 
   return (
-    <motion.button
-      onClick={handleClick}
-      animate={controls}
-      className={`relative ${className}`}
-    >
+    <motion.button onClick={handleClick} animate={controls} className={`relative ${className}`}>
       <motion.svg
         className="w-8 h-8"
         viewBox="0 0 24 24"

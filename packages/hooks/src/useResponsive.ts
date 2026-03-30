@@ -286,9 +286,10 @@ export function useFoldableScreen() {
   useEffect(() => {
     // 检测CSS环境变量
     const checkFoldable = () => {
-      const spanning = window.matchMedia('(spanning: single-fold-vertical)').matches ||
-                       window.matchMedia('(spanning: single-fold-horizontal)').matches;
-      
+      const spanning =
+        window.matchMedia('(spanning: single-fold-vertical)').matches ||
+        window.matchMedia('(spanning: single-fold-horizontal)').matches;
+
       setIsFoldable(spanning);
       setIsSpanned(spanning);
     };

@@ -22,7 +22,7 @@ import {
   BarChart3,
   Users,
   DollarSign,
-  Activity
+  Activity,
 } from 'lucide-react';
 import {
   BarChart,
@@ -34,7 +34,7 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell
+  Cell,
 } from 'recharts';
 
 interface LeadsProps {
@@ -64,62 +64,151 @@ interface Lead {
 
 const MOCK_LEADS: Lead[] = [
   {
-    id: 'LD-001', company: '山东齐鲁钢铁集团', contact: '王建国', phone: '138-6612-3456',
-    email: 'wang@qilusteel.cn', source: { en: 'Exhibition', zh: '展会' }, stage: 'negotiation',
-    value: 5200000, probability: 75, assignee: '张伟', lastActivity: '2小时前',
-    createdAt: '2026-01-15', tags: ['大客户', '钢铁'], starred: true,
-    notes: '客户对废钢HMS1号需求量大，月均采购约500吨'
+    id: 'LD-001',
+    company: '山东齐鲁钢铁集团',
+    contact: '王建国',
+    phone: '138-6612-3456',
+    email: 'wang@qilusteel.cn',
+    source: { en: 'Exhibition', zh: '展会' },
+    stage: 'negotiation',
+    value: 5200000,
+    probability: 75,
+    assignee: '张伟',
+    lastActivity: '2小时前',
+    createdAt: '2026-01-15',
+    tags: ['大客户', '钢铁'],
+    starred: true,
+    notes: '客户对废钢HMS1号需求量大，月均采购约500吨',
   },
   {
-    id: 'LD-002', company: 'Hyundai Metal Trading Co.', contact: 'Kim Sung-ho', phone: '+82-2-1234-5678',
-    email: 'kim@hyundaimetals.kr', source: { en: 'Referral', zh: '转介绍' }, stage: 'proposal',
-    value: 8800000, probability: 60, assignee: '李娜', lastActivity: '1天前',
-    createdAt: '2026-02-01', tags: ['国际', '韩国', '铜'],  starred: true,
-    notes: '韩国客户，对废铜和铝合金有长期需求'
+    id: 'LD-002',
+    company: 'Hyundai Metal Trading Co.',
+    contact: 'Kim Sung-ho',
+    phone: '+82-2-1234-5678',
+    email: 'kim@hyundaimetals.kr',
+    source: { en: 'Referral', zh: '转介绍' },
+    stage: 'proposal',
+    value: 8800000,
+    probability: 60,
+    assignee: '李娜',
+    lastActivity: '1天前',
+    createdAt: '2026-02-01',
+    tags: ['国际', '韩国', '铜'],
+    starred: true,
+    notes: '韩国客户，对废铜和铝合金有长期需求',
   },
   {
-    id: 'LD-003', company: '江苏华鑫新材料', contact: '陈明', phone: '139-1234-5678',
-    email: 'chen@huaxinnew.cn', source: { en: 'Website', zh: '官网' }, stage: 'qualified',
-    value: 3500000, probability: 45, assignee: '王强', lastActivity: '3天前',
-    createdAt: '2026-02-10', tags: ['铝合金', '新客户'], starred: false,
-    notes: '通过官网询价，主要需求铝合金废料'
+    id: 'LD-003',
+    company: '江苏华鑫新材料',
+    contact: '陈明',
+    phone: '139-1234-5678',
+    email: 'chen@huaxinnew.cn',
+    source: { en: 'Website', zh: '官网' },
+    stage: 'qualified',
+    value: 3500000,
+    probability: 45,
+    assignee: '王强',
+    lastActivity: '3天前',
+    createdAt: '2026-02-10',
+    tags: ['铝合金', '新客户'],
+    starred: false,
+    notes: '通过官网询价，主要需求铝合金废料',
   },
   {
-    id: 'LD-004', company: '福建三钢集团', contact: '林志强', phone: '136-8888-9999',
-    email: 'lin@sansteel.cn', source: { en: 'Cold Call', zh: '电话拓展' }, stage: 'contacted',
-    value: 2100000, probability: 25, assignee: '赵磊', lastActivity: '5天前',
-    createdAt: '2026-02-20', tags: ['钢铁', '福建'], starred: false,
-    notes: '初次接触，已发送公司介绍材料'
+    id: 'LD-004',
+    company: '福建三钢集团',
+    contact: '林志强',
+    phone: '136-8888-9999',
+    email: 'lin@sansteel.cn',
+    source: { en: 'Cold Call', zh: '电话拓展' },
+    stage: 'contacted',
+    value: 2100000,
+    probability: 25,
+    assignee: '赵磊',
+    lastActivity: '5天前',
+    createdAt: '2026-02-20',
+    tags: ['钢铁', '福建'],
+    starred: false,
+    notes: '初次接触，已发送公司介绍材料',
   },
   {
-    id: 'LD-005', company: '深圳宝安废旧物资回收', contact: '刘芳', phone: '135-6666-7777',
-    email: 'liu@baoan-recycle.cn', source: { en: 'WeChat', zh: '微信' }, stage: 'new',
-    value: 1500000, probability: 15, assignee: '陈芳', lastActivity: '1周前',
-    createdAt: '2026-03-01', tags: ['回收', '深圳'], starred: false,
-    notes: '微信咨询废铜回收价格'
+    id: 'LD-005',
+    company: '深圳宝安废旧物资回收',
+    contact: '刘芳',
+    phone: '135-6666-7777',
+    email: 'liu@baoan-recycle.cn',
+    source: { en: 'WeChat', zh: '微信' },
+    stage: 'new',
+    value: 1500000,
+    probability: 15,
+    assignee: '陈芳',
+    lastActivity: '1周前',
+    createdAt: '2026-03-01',
+    tags: ['回收', '深圳'],
+    starred: false,
+    notes: '微信咨询废铜回收价格',
   },
   {
-    id: 'LD-006', company: 'PT Indo Copper Trading', contact: 'Budi Santoso', phone: '+62-21-555-0123',
-    email: 'budi@indocopper.id', source: { en: 'Exhibition', zh: '展会' }, stage: 'won',
-    value: 12000000, probability: 100, assignee: '张伟', lastActivity: '2天前',
-    createdAt: '2025-12-10', tags: ['国际', '印尼', '铜', '大客户'], starred: true,
-    notes: '已签约，年度框架协议1200万'
+    id: 'LD-006',
+    company: 'PT Indo Copper Trading',
+    contact: 'Budi Santoso',
+    phone: '+62-21-555-0123',
+    email: 'budi@indocopper.id',
+    source: { en: 'Exhibition', zh: '展会' },
+    stage: 'won',
+    value: 12000000,
+    probability: 100,
+    assignee: '张伟',
+    lastActivity: '2天前',
+    createdAt: '2025-12-10',
+    tags: ['国际', '印尼', '铜', '大客户'],
+    starred: true,
+    notes: '已签约，年度框架协议1200万',
   },
   {
-    id: 'LD-007', company: '河北冀东钢材', contact: '马超', phone: '137-5555-6666',
-    email: 'ma@jidongsteel.cn', source: { en: 'Referral', zh: '转介绍' }, stage: 'lost',
-    value: 4000000, probability: 0, assignee: '李娜', lastActivity: '2周前',
-    createdAt: '2026-01-05', tags: ['钢材', '已流失'], starred: false,
-    notes: '客户选择了竞争对手，价格因素'
+    id: 'LD-007',
+    company: '河北冀东钢材',
+    contact: '马超',
+    phone: '137-5555-6666',
+    email: 'ma@jidongsteel.cn',
+    source: { en: 'Referral', zh: '转介绍' },
+    stage: 'lost',
+    value: 4000000,
+    probability: 0,
+    assignee: '李娜',
+    lastActivity: '2周前',
+    createdAt: '2026-01-05',
+    tags: ['钢材', '已流失'],
+    starred: false,
+    notes: '客户选择了竞争对手，价格因素',
   },
 ];
 
-const STAGE_CONFIG: Record<LeadStage, { label: { en: string; zh: string }; color: string; bg: string }> = {
+const STAGE_CONFIG: Record<
+  LeadStage,
+  { label: { en: string; zh: string }; color: string; bg: string }
+> = {
   new: { label: { en: 'New', zh: '新线索' }, color: 'text-blue-400', bg: 'bg-blue-500/20' },
-  contacted: { label: { en: 'Contacted', zh: '已联系' }, color: 'text-cyan-400', bg: 'bg-cyan-500/20' },
-  qualified: { label: { en: 'Qualified', zh: '已确认' }, color: 'text-indigo-400', bg: 'bg-indigo-500/20' },
-  proposal: { label: { en: 'Proposal', zh: '已报价' }, color: 'text-purple-400', bg: 'bg-purple-500/20' },
-  negotiation: { label: { en: 'Negotiation', zh: '谈判中' }, color: 'text-amber-400', bg: 'bg-amber-500/20' },
+  contacted: {
+    label: { en: 'Contacted', zh: '已联系' },
+    color: 'text-cyan-400',
+    bg: 'bg-cyan-500/20',
+  },
+  qualified: {
+    label: { en: 'Qualified', zh: '已确认' },
+    color: 'text-indigo-400',
+    bg: 'bg-indigo-500/20',
+  },
+  proposal: {
+    label: { en: 'Proposal', zh: '已报价' },
+    color: 'text-purple-400',
+    bg: 'bg-purple-500/20',
+  },
+  negotiation: {
+    label: { en: 'Negotiation', zh: '谈判中' },
+    color: 'text-amber-400',
+    bg: 'bg-amber-500/20',
+  },
   won: { label: { en: 'Won', zh: '已成交' }, color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
   lost: { label: { en: 'Lost', zh: '已流失' }, color: 'text-red-400', bg: 'bg-red-500/20' },
 };
@@ -153,16 +242,23 @@ export function Leads({ currentLanguage }: LeadsProps) {
     { id: 'analytics' as TabType, label: { en: 'Analytics', zh: '转化分析' }, icon: BarChart3 },
   ];
 
-  const activePipeline = (['new', 'contacted', 'qualified', 'proposal', 'negotiation'] as LeadStage[]);
+  const activePipeline = [
+    'new',
+    'contacted',
+    'qualified',
+    'proposal',
+    'negotiation',
+  ] as LeadStage[];
 
   const formatAmount = (amount: number) => {
     if (amount >= 10000) return `¥${(amount / 10000).toFixed(0)}万`;
     return `¥${amount.toLocaleString()}`;
   };
 
-  const totalPipelineValue = MOCK_LEADS
-    .filter(l => !['won', 'lost'].includes(l.stage))
-    .reduce((sum, l) => sum + l.value * (l.probability / 100), 0);
+  const totalPipelineValue = MOCK_LEADS.filter((l) => !['won', 'lost'].includes(l.stage)).reduce(
+    (sum, l) => sum + l.value * (l.probability / 100),
+    0
+  );
 
   return (
     <div className="p-6 space-y-6 max-w-[1600px] mx-auto">
@@ -175,7 +271,9 @@ export function Leads({ currentLanguage }: LeadsProps) {
           <div>
             <h1 className="text-2xl text-white">{isZh ? '线索管理' : 'Lead Management'}</h1>
             <p className="text-sm text-gray-400">
-              {isZh ? `管道总价值: ${formatAmount(totalPipelineValue)} (加权)` : `Pipeline Value: ${formatAmount(totalPipelineValue)} (Weighted)`}
+              {isZh
+                ? `管道总价值: ${formatAmount(totalPipelineValue)} (加权)`
+                : `Pipeline Value: ${formatAmount(totalPipelineValue)} (Weighted)`}
             </p>
           </div>
         </div>
@@ -188,14 +286,41 @@ export function Leads({ currentLanguage }: LeadsProps) {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
-          { label: isZh ? '活跃线索' : 'Active Leads', value: MOCK_LEADS.filter(l => !['won', 'lost'].includes(l.stage)).length, icon: Target, color: 'text-violet-400', bg: 'bg-violet-500/20' },
-          { label: isZh ? '本月新增' : 'New This Month', value: 12, icon: Zap, color: 'text-blue-400', bg: 'bg-blue-500/20' },
-          { label: isZh ? '已成交' : 'Won', value: MOCK_LEADS.filter(l => l.stage === 'won').length, icon: CheckCircle2, color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
-          { label: isZh ? '转化率' : 'Conversion Rate', value: '15.6%', icon: TrendingUp, color: 'text-amber-400', bg: 'bg-amber-500/20' },
+          {
+            label: isZh ? '活跃线索' : 'Active Leads',
+            value: MOCK_LEADS.filter((l) => !['won', 'lost'].includes(l.stage)).length,
+            icon: Target,
+            color: 'text-violet-400',
+            bg: 'bg-violet-500/20',
+          },
+          {
+            label: isZh ? '本月新增' : 'New This Month',
+            value: 12,
+            icon: Zap,
+            color: 'text-blue-400',
+            bg: 'bg-blue-500/20',
+          },
+          {
+            label: isZh ? '已成交' : 'Won',
+            value: MOCK_LEADS.filter((l) => l.stage === 'won').length,
+            icon: CheckCircle2,
+            color: 'text-emerald-400',
+            bg: 'bg-emerald-500/20',
+          },
+          {
+            label: isZh ? '转化率' : 'Conversion Rate',
+            value: '15.6%',
+            icon: TrendingUp,
+            color: 'text-amber-400',
+            bg: 'bg-amber-500/20',
+          },
         ].map((stat, idx) => {
           const StatIcon = stat.icon;
           return (
-            <div key={idx} className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-4 flex items-center space-x-3">
+            <div
+              key={idx}
+              className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-4 flex items-center space-x-3"
+            >
               <div className={`w-10 h-10 rounded-xl ${stat.bg} flex items-center justify-center`}>
                 <StatIcon className={`w-5 h-5 ${stat.color}`} />
               </div>
@@ -210,7 +335,7 @@ export function Leads({ currentLanguage }: LeadsProps) {
 
       {/* Tabs */}
       <div className="flex space-x-1 p-1 bg-slate-800/40 backdrop-blur-xl rounded-xl border border-white/5">
-        {tabs.map(tab => {
+        {tabs.map((tab) => {
           const TabIcon = tab.icon;
           return (
             <button
@@ -232,9 +357,9 @@ export function Leads({ currentLanguage }: LeadsProps) {
       {/* Pipeline View */}
       {activeTab === 'pipeline' && (
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {activePipeline.map(stage => {
+          {activePipeline.map((stage) => {
             const config = STAGE_CONFIG[stage];
-            const stageLeads = MOCK_LEADS.filter(l => l.stage === stage);
+            const stageLeads = MOCK_LEADS.filter((l) => l.stage === stage);
             const stageValue = stageLeads.reduce((sum, l) => sum + l.value, 0);
 
             return (
@@ -242,7 +367,9 @@ export function Leads({ currentLanguage }: LeadsProps) {
                 {/* Column Header */}
                 <div className={`p-3 rounded-xl ${config.bg} border border-white/5`}>
                   <div className="flex items-center justify-between">
-                    <span className={`text-sm ${config.color}`}>{isZh ? config.label.zh : config.label.en}</span>
+                    <span className={`text-sm ${config.color}`}>
+                      {isZh ? config.label.zh : config.label.en}
+                    </span>
                     <span className="text-xs text-gray-400 bg-slate-900/50 px-2 py-0.5 rounded-full">
                       {stageLeads.length}
                     </span>
@@ -251,7 +378,7 @@ export function Leads({ currentLanguage }: LeadsProps) {
                 </div>
 
                 {/* Lead Cards */}
-                {stageLeads.map(lead => (
+                {stageLeads.map((lead) => (
                   <div
                     key={lead.id}
                     className="bg-slate-800/60 backdrop-blur-xl rounded-xl border border-white/5 p-3 hover:border-white/10 transition-all cursor-pointer group"
@@ -259,7 +386,9 @@ export function Leads({ currentLanguage }: LeadsProps) {
                   >
                     <div className="flex items-start justify-between mb-2">
                       <p className="text-sm text-white truncate flex-1">{lead.company}</p>
-                      {lead.starred && <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400 flex-shrink-0 ml-1" />}
+                      {lead.starred && (
+                        <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400 flex-shrink-0 ml-1" />
+                      )}
                     </div>
                     <p className="text-xs text-gray-400">{lead.contact}</p>
                     <div className="flex items-center justify-between mt-2">
@@ -285,12 +414,18 @@ export function Leads({ currentLanguage }: LeadsProps) {
                           <Phone className="w-3 h-3" /> <span>{lead.phone}</span>
                         </div>
                         <div className="flex items-center space-x-2 text-xs text-gray-400">
-                          <Mail className="w-3 h-3" /> <span className="truncate">{lead.email}</span>
+                          <Mail className="w-3 h-3" />{' '}
+                          <span className="truncate">{lead.email}</span>
                         </div>
                         <p className="text-xs text-gray-500">{lead.notes}</p>
                         <div className="flex gap-1.5 flex-wrap mt-2">
-                          {lead.tags.map(tag => (
-                            <span key={tag} className="text-xs px-1.5 py-0.5 rounded bg-slate-700/50 text-gray-300">{tag}</span>
+                          {lead.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs px-1.5 py-0.5 rounded bg-slate-700/50 text-gray-300"
+                            >
+                              {tag}
+                            </span>
                           ))}
                         </div>
                       </div>
@@ -318,7 +453,7 @@ export function Leads({ currentLanguage }: LeadsProps) {
               type="text"
               placeholder={isZh ? '搜索公司、联系人...' : 'Search company, contact...'}
               value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 bg-slate-800/60 border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-violet-500/50"
             />
           </div>
@@ -328,43 +463,73 @@ export function Leads({ currentLanguage }: LeadsProps) {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-white/5">
-                    <th className="text-left text-xs text-gray-500 py-3 px-4">{isZh ? '公司/联系人' : 'Company/Contact'}</th>
-                    <th className="text-left text-xs text-gray-500 py-3 px-4">{isZh ? '来源' : 'Source'}</th>
-                    <th className="text-left text-xs text-gray-500 py-3 px-4">{isZh ? '阶段' : 'Stage'}</th>
-                    <th className="text-right text-xs text-gray-500 py-3 px-4">{isZh ? '预估金额' : 'Est. Value'}</th>
-                    <th className="text-right text-xs text-gray-500 py-3 px-4">{isZh ? '概率' : 'Prob.'}</th>
-                    <th className="text-left text-xs text-gray-500 py-3 px-4">{isZh ? '负责人' : 'Assignee'}</th>
-                    <th className="text-right text-xs text-gray-500 py-3 px-4">{isZh ? '最后活动' : 'Last Activity'}</th>
+                    <th className="text-left text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '公司/联系人' : 'Company/Contact'}
+                    </th>
+                    <th className="text-left text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '来源' : 'Source'}
+                    </th>
+                    <th className="text-left text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '阶段' : 'Stage'}
+                    </th>
+                    <th className="text-right text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '预估金额' : 'Est. Value'}
+                    </th>
+                    <th className="text-right text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '概率' : 'Prob.'}
+                    </th>
+                    <th className="text-left text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '负责人' : 'Assignee'}
+                    </th>
+                    <th className="text-right text-xs text-gray-500 py-3 px-4">
+                      {isZh ? '最后活动' : 'Last Activity'}
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {MOCK_LEADS.filter(l =>
-                    searchTerm === '' ||
-                    l.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    l.contact.toLowerCase().includes(searchTerm.toLowerCase())
-                  ).map(lead => {
+                  {MOCK_LEADS.filter(
+                    (l) =>
+                      searchTerm === '' ||
+                      l.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                      l.contact.toLowerCase().includes(searchTerm.toLowerCase())
+                  ).map((lead) => {
                     const config = STAGE_CONFIG[lead.stage];
                     return (
-                      <tr key={lead.id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                      <tr
+                        key={lead.id}
+                        className="border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                      >
                         <td className="py-3 px-4">
                           <div className="flex items-center space-x-3">
-                            {lead.starred && <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />}
+                            {lead.starred && (
+                              <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                            )}
                             <div>
                               <p className="text-sm text-white">{lead.company}</p>
                               <p className="text-xs text-gray-500">{lead.contact}</p>
                             </div>
                           </div>
                         </td>
-                        <td className="py-3 px-4 text-xs text-gray-400">{isZh ? lead.source.zh : lead.source.en}</td>
+                        <td className="py-3 px-4 text-xs text-gray-400">
+                          {isZh ? lead.source.zh : lead.source.en}
+                        </td>
                         <td className="py-3 px-4">
-                          <span className={`text-xs px-2 py-0.5 rounded-full ${config.bg} ${config.color}`}>
+                          <span
+                            className={`text-xs px-2 py-0.5 rounded-full ${config.bg} ${config.color}`}
+                          >
                             {isZh ? config.label.zh : config.label.en}
                           </span>
                         </td>
-                        <td className="py-3 px-4 text-right text-sm text-white">{formatAmount(lead.value)}</td>
-                        <td className="py-3 px-4 text-right text-sm text-gray-400">{lead.probability}%</td>
+                        <td className="py-3 px-4 text-right text-sm text-white">
+                          {formatAmount(lead.value)}
+                        </td>
+                        <td className="py-3 px-4 text-right text-sm text-gray-400">
+                          {lead.probability}%
+                        </td>
                         <td className="py-3 px-4 text-xs text-gray-400">{lead.assignee}</td>
-                        <td className="py-3 px-4 text-right text-xs text-gray-500">{lead.lastActivity}</td>
+                        <td className="py-3 px-4 text-right text-xs text-gray-500">
+                          {lead.lastActivity}
+                        </td>
                       </tr>
                     );
                   })}
@@ -386,12 +551,32 @@ export function Leads({ currentLanguage }: LeadsProps) {
                 <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                   <BarChart data={CONVERSION_DATA} layout="vertical">
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                    <XAxis type="number" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} />
-                    <YAxis dataKey="stage" type="category" stroke="#64748b" tick={{ fill: '#94a3b8', fontSize: 12 }} width={60} />
-                    <Tooltip
-                      contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                    <XAxis
+                      type="number"
+                      stroke="#64748b"
+                      tick={{ fill: '#94a3b8', fontSize: 12 }}
                     />
-                    <Bar dataKey="count" fill="#8b5cf6" radius={[0, 6, 6, 0]} name={isZh ? '数量' : 'Count'} />
+                    <YAxis
+                      dataKey="stage"
+                      type="category"
+                      stroke="#64748b"
+                      tick={{ fill: '#94a3b8', fontSize: 12 }}
+                      width={60}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: 'rgba(15,23,42,0.95)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '12px',
+                        color: '#fff',
+                      }}
+                    />
+                    <Bar
+                      dataKey="count"
+                      fill="#8b5cf6"
+                      radius={[0, 6, 6, 0]}
+                      name={isZh ? '数量' : 'Count'}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -399,18 +584,33 @@ export function Leads({ currentLanguage }: LeadsProps) {
 
             {/* Lead Source */}
             <div className="bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/5 p-5">
-              <h3 className="text-white mb-4">{isZh ? '线索来源分布' : 'Lead Source Distribution'}</h3>
+              <h3 className="text-white mb-4">
+                {isZh ? '线索来源分布' : 'Lead Source Distribution'}
+              </h3>
               <div className="h-64 flex items-center">
                 <div className="w-1/2 h-full">
                   <ResponsiveContainer width="100%" height="100%" minWidth={1} minHeight={1}>
                     <PieChart>
-                      <Pie data={SOURCE_DATA} cx="50%" cy="50%" innerRadius={45} outerRadius={75} paddingAngle={3} dataKey="value">
+                      <Pie
+                        data={SOURCE_DATA}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={45}
+                        outerRadius={75}
+                        paddingAngle={3}
+                        dataKey="value"
+                      >
                         {SOURCE_DATA.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
                       <Tooltip
-                        contentStyle={{ background: 'rgba(15,23,42,0.95)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: '#fff' }}
+                        contentStyle={{
+                          background: 'rgba(15,23,42,0.95)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          borderRadius: '12px',
+                          color: '#fff',
+                        }}
                       />
                     </PieChart>
                   </ResponsiveContainer>
@@ -419,7 +619,10 @@ export function Leads({ currentLanguage }: LeadsProps) {
                   {SOURCE_DATA.map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                        <div
+                          className="w-3 h-3 rounded-full"
+                          style={{ backgroundColor: item.color }}
+                        />
                         <span className="text-sm text-gray-300">{item.name}</span>
                       </div>
                       <span className="text-sm text-white">{item.value}%</span>

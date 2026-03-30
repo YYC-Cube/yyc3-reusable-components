@@ -94,19 +94,23 @@ git push origin release/v1.0.0
 ## [1.0.0] - 2024-01-01
 
 ### Added
+
 - 新增Button组件
 - 新增Input组件
 - 新增usePersistedState Hook
 
 ### Changed
+
 - 优化组件性能
 - 更新文档结构
 
 ### Fixed
+
 - 修复Button组件样式问题
 - 修复usePersistedState类型错误
 
 ### Security
+
 - 修复XSS漏洞
 ```
 
@@ -188,11 +192,12 @@ pnpm deploy:storybook
 ### 验证步骤
 
 1. **npm包验证**
+
    ```bash
    # 检查包是否发布成功
    npm view @yyc3/ui
    npm view @yyc3/business
-   
+
    # 在新项目中测试安装
    npm install @yyc3/ui
    ```
@@ -342,32 +347,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           registry-url: 'https://registry.npmjs.org'
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      
+
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Run tests
         run: pnpm test
-      
+
       - name: Build
         run: pnpm build
-      
+
       - name: Publish to npm
         run: pnpm -r publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -393,29 +398,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
-      
+
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Lint
         run: pnpm lint
-      
+
       - name: Type check
         run: pnpm typecheck
-      
+
       - name: Test
         run: pnpm test
-      
+
       - name: Build
         run: pnpm build
 ```
@@ -465,12 +470,12 @@ jobs:
 
 ### 2024年发布计划
 
-| 版本 | 计划日期 | 类型 | 说明 |
-|------|----------|------|------|
-| 1.0.0 | 2024-01-01 | 主版本 | 初始发布 |
+| 版本  | 计划日期   | 类型   | 说明         |
+| ----- | ---------- | ------ | ------------ |
+| 1.0.0 | 2024-01-01 | 主版本 | 初始发布     |
 | 1.1.0 | 2024-02-01 | 次版本 | 新增业务组件 |
-| 1.2.0 | 2024-03-01 | 次版本 | 新增Hooks |
-| 1.3.0 | 2024-04-01 | 次版本 | 性能优化 |
+| 1.2.0 | 2024-03-01 | 次版本 | 新增Hooks    |
+| 1.3.0 | 2024-04-01 | 次版本 | 性能优化     |
 | 2.0.0 | 2024-07-01 | 主版本 | 重大架构变更 |
 
 ## 联系方式
@@ -490,8 +495,7 @@ jobs:
 
 <div align="center">
 
-> 「***YanYuCloudCube***」
-> 「***<admin@0379.email>***」
-> 「***Words Initiate Quadrants, Language Serves as Core for Future***」
+> 「**_YanYuCloudCube_**」「**_<admin@0379.email>_**」「**_Words Initiate
+> Quadrants, Language Serves as Core for Future_**」
 
 </div>
