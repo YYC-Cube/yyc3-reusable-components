@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@yyc3/ui": "workspace:*",
-    "recharts": "^2.10.0",
-    "lucide-react": "^0.300.0"
+    "recharts": "^3.8.1",
+    "lucide-react": "^1.7.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

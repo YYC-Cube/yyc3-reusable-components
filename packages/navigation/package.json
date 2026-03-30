@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@yyc3/ui": "workspace:*",
-    "lucide-react": "^0.300.0"
+    "lucide-react": "^1.7.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

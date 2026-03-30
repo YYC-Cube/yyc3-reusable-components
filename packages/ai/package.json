@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@yyc3/ui": "workspace:*",
-    "lucide-react": "^0.300.0",
-    "marked": "^9.1.0",
+    "lucide-react": "^1.7.0",
+    "marked": "^17.0.5",
     "dompurify": "^3.0.0"
   },
   "devDependencies": {
