@@ -59,7 +59,7 @@ jobs:
       
       - name: Comment PR with performance results
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
@@ -162,7 +162,7 @@ jobs:
         continue-on-error: true
       
       - name: Comment PR with comparison results
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
